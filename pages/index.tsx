@@ -12,9 +12,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://ariful.io">Ariful's personal</a>
-        </h1>
+        <h3 className={styles.title}>
+          Welcome to <a href="https://ariful.io">Ariful's personal portfolio.</a>
+        </h3>
       </main>
     </div>
   )
