@@ -1,0 +1,133 @@
+{
+  "extends": [
+    "airbnb",
+    // "prettier/react",
+    // "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "classes": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "jest": true,
+    "mocha": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true,
+    "chrome": true
+  },
+  "rules": {
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "import/no-unresolved": [
+      0,
+      {
+        "caseSensitive": false
+      }
+    ],
+    // these are simple formatting, like space, quotes etc.
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 80,
+        "editor.formatOnSave": true,
+        "proseWrap": "always",
+        "tabWidth": 2,
+        "requireConfig": false,
+        "useTabs": false,
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "semi": true
+      }
+    ],
+    // TODO: probably should use a debugging tool instead
+    "no-console": [
+      "off",
+      {
+        "allow": [
+          "off",
+          "error",
+          "debug"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "prefer-const": "off", // Turn rule off
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "react/no-array-index-key": "off",
+    "no-underscore-dangle": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "no-return-assign": "off",
+    "default-param-last": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "consistent-return": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-shadow": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "no-useless-escape": "off",
+    "react/require-default-props": "off",
+    "react/forbid-prop-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-unstable-nested-components": "off",
+    "no-unsafe-optional-chaining": "off",
+    "no-nested-ternary": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/jsx-props-no-spreading": "warn",
+    "react/no-unescaped-entities": "warn"
+  },
+  "plugins": [
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ]
+}
