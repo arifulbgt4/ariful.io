@@ -5,15 +5,15 @@ import IntroCard from 'components/IntroCard';
 
 import PostList from 'containers/PostList';
 
-import { Wrapper } from './styles';
+import { Wrapper, Column } from './styles';
 
 const HeroContainer = () => (
   <Wrapper>
     <Container>
       <Row>
-        <Col>
+        <Column>
           <IntroCard title="Hello" description="I am Ariful islam" />
-        </Col>
+        </Column>
         <Col>
           <PostList />
         </Col>
