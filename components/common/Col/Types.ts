@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
 
 export interface ICol {
-  children: ReactElement | ReactElement[];
+  children: ReactElement | ReactElement[] | string;
 }
