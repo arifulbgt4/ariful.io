@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
+import ThemeProvider from 'theme';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -23,10 +24,10 @@ const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider>
       <GlobalStyle />
-      <Component {...pageProps} />{' '}
-    </>
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
 
