@@ -3,6 +3,9 @@ import Col from 'components/common/Col';
 
 export const Wrapper = styled.div``;
 
-export const Column = styled(Col)`
-  width: 50%;
+export const LeftColumn = styled(Col)`
+  max-width: 70%;
+`;
+export const RightColumn = styled(Col)`
+  max-width: 30%;
 `;
