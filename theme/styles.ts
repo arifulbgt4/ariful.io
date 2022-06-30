@@ -8,7 +8,7 @@ const lightStyle: IStyles = {
 
 const darkStyle: IStyles = {
   color: {
-    bodyBg: '#f6ece0',
+    bodyBg: '#000',
   },
 };
 
