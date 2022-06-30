@@ -2,7 +2,6 @@ import React from 'react';
 import PostCard from 'components/PostCard';
 import Row from 'components/common/Row';
 
-// import { IPostListData } from './Types';
 import { PostListWrapper, Column } from './styles';
 
 const data: Array<{ id: number; title: string }> = [

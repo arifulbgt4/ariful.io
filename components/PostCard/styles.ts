@@ -4,14 +4,14 @@ export const PostWrapper = styled.div`
   margin: 10px;
   display: flex;
   justify-content: space-between;
-  background-color: #f2f8f9;
+  background-color: #fff;
   border-radius: 4px;
   padding: 16px 12px;
   margin: 12px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
-  border: 1px solid #f2f8f9;
+  border: 1px solid #fff;
   position: relative;
   svg {
     width: 22px;
@@ -35,7 +35,7 @@ export const PostWrapper = styled.div`
     z-index: -1;
     top: 12px;
     right: -10px;
-    background: #00838d;
+    background: #000;
     height: 32px;
     width: 32px;
     border-radius: 32px;
