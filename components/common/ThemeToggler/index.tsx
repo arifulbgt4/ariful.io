@@ -6,6 +6,7 @@ import { Wrapper } from './styles';
 const ThemeToggler = () => {
   const context: any = useContext(ThemeContext);
   const { toggleTheme, theme } = context;
+  console.log('🚀 ~ file: index.tsx ~ line 9 ~ ThemeToggler ~ theme', theme);
 
   const toggleState = () => {
     toggleTheme();

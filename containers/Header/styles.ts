@@ -3,7 +3,7 @@ import Col from 'components/common/Col';
 
 export const HeaderWrapper = styled.header`
   display: block;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid ${({ theme }) => theme.color.primary};
   max-width: 80%;
   margin: 40px auto;
 `;
@@ -22,7 +22,7 @@ export const UserIconWrapper = styled.div`
   margin: 5px;
   width: 36px;
   height: 36px;
-  background: #ddd;
+  background: ${({ theme }) => theme.color.primary};
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -35,8 +35,8 @@ export const SocialWrapper = styled.div`
   display: flex;
   margin-right: 40px;
   .glassIco {
-    color: #fff;
-    background: #000;
+    color: ${({ theme }) => theme.color.text};
+    /* background: ${({ theme }) => theme.color.background}; */
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
@@ -50,6 +50,7 @@ export const SocialWrapper = styled.div`
     align-items: center;
     &:hover {
       background: #686868;
+      color: ${({ theme }) => theme.color.primary};
     }
     svg {
       width: 20px;

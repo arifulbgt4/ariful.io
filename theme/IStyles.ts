@@ -1,5 +1,8 @@
 export interface IStyles {
   color: {
-    bodyBg: string;
+    text: string;
+    background: string;
+    primary: string;
+    secondary: string;
   };
 }

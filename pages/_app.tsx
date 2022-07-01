@@ -9,11 +9,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #f6ece0;
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.text};
+    
   }
 
   a {
-    color: inherit;
+    color: ${({ theme }) => theme.color.text};
     text-decoration: none;
   }
 
