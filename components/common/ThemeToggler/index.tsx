@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { Moon, Sun } from 'components/icons';
+import { ThemeContext } from 'theme';
 import { Wrapper } from './styles';
 
 const ThemeToggler = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-
-  // useEffect(() => {
-  //   updateTheme(isEnabled);
-  // }, [isEnabled]);
+  const context: any = useContext(ThemeContext);
+  const { toggleTheme, theme } = context;
 
   const toggleState = () => {
-    setIsEnabled((prevState) => !prevState);
+    toggleTheme();
   };
   return (
     <Wrapper>
       <label className="toggle-wrapper" htmlFor="toggle">
-        <div className={`toggle ${isEnabled ? 'enabled' : 'disabled'}`}>
+        <div className={`toggle ${theme === 'light' ? 'enabled' : 'disabled'}`}>
           <div className="icons">
             <Sun />
             <Moon />
@@ -24,7 +22,7 @@ const ThemeToggler = () => {
             id="toggle"
             name="toggle"
             type="checkbox"
-            checked={isEnabled}
+            checked={theme === 'light'}
             onClick={toggleState}
           />
         </div>
