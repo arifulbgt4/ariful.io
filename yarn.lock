@@ -1152,6 +1152,11 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
+"@csstools/convert-colors@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-2.0.0.tgz#6dd323583b40cfe05aaaca30debbb30f26742bbf"
+  integrity sha512-P7BVvddsP2Wl5v3drJ3ArzpdfXMqoZ/oHOV/yFiGFb3JQr9Z9UXZ9tnHAKJsO89lfprR1F9ExW3Yij21EjEBIA==
+
 "@design-systems/utils@2.12.0":
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/@design-systems/utils/-/utils-2.12.0.tgz#955c108be07cb8f01532207cbfea8f848fa760c9"
@@ -9015,6 +9020,13 @@ react-element-to-jsx-string@^14.3.4:
     is-plain-object "5.0.0"
     react-is "17.0.2"
 
+react-icon-cloud@^3.0.3:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-icon-cloud/-/react-icon-cloud-3.0.7.tgz#204e50f3803be3f9d29c904b3eb63165a19b92e1"
+  integrity sha512-q1x3ZI1vu5HEgb+pOs1HWDlZaxnN5k9aC73FbI+2BmR+jUOtCBDBeNlPOoZ12X5Pc5iTMUWfrc8w/OoJzykYow==
+  dependencies:
+    "@csstools/convert-colors" "^2.0.0"
+
 react-inspector@^5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-5.1.1.tgz#58476c78fde05d5055646ed8ec02030af42953c8"
@@ -9684,6 +9696,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
+
+simple-icons@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-7.3.0.tgz#7d4c39fee669d31913c30476609db1ffdd0cc684"
+  integrity sha512-ehXi2/CS1wSSld2E7wsgbtNTlJXAVycpLD9U2KT7B9meYs+TK+JaGKVYQCB8eU4DES7N5W+xT8wpSBXjiCfdUQ==
 
 sisteransi@^1.0.5:
   version "1.0.5"

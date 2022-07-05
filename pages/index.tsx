@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import HeroContainer from 'containers/HeroContainer';
 import Header from 'containers/Header';
+// import CloudCanvous from 'components/CloudCanvous';
 
 const Home: NextPage = () => (
   <>
@@ -13,6 +14,7 @@ const Home: NextPage = () => (
     <main>
       <Header />
       <HeroContainer />
+      {/* <CloudCanvous /> */}
     </main>
   </>
 );

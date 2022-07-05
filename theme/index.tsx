@@ -31,7 +31,7 @@ const Theme = ({ children }: ITheme) => {
     }
   }, []);
 
-  const contextValue = { toggleTheme };
+  const contextValue = { toggleTheme, theme };
 
   return (
     <ThemeContext.Provider value={contextValue}>
