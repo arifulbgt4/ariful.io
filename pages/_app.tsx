@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
 import ThemeProvider from 'theme';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<any>`
   html,
   body {
     padding: 0;
