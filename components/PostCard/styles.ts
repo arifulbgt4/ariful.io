@@ -13,20 +13,20 @@ export const PostWrapper = styled.div`
   overflow: hidden;
   border: 1px solid #fff;
   position: relative;
+  transition: all 0.2s ease-out;
   svg {
     width: 22px;
   }
 
   &:hover {
-    transition: all 0.2s ease-out;
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
     /* top: -4px; */
     border: 1px solid #cccccc;
     background-color: white;
-    svg {
-      width: 26px;
-      color: #fff;
-    }
+    // svg {
+    //   width: 26px;
+    //   color: #fff;
+    // }
   }
 
   &:before {
