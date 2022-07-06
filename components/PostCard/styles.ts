@@ -16,6 +16,7 @@ export const PostWrapper = styled.div`
   transition: all 0.2s ease-out;
   svg {
     width: 22px;
+    color: #000;
   }
 
   &:hover {
@@ -23,13 +24,12 @@ export const PostWrapper = styled.div`
     /* top: -4px; */
     border: 1px solid #cccccc;
     background-color: white;
-    // svg {
-    //   width: 26px;
-    //   color: #fff;
-    // }
+    svg {
+      width: 25px;
+    }
   }
 
-  &:before {
+  /* &:before {
     content: '';
     position: absolute;
     z-index: -1;
@@ -46,7 +46,7 @@ export const PostWrapper = styled.div`
 
   &:hover:before {
     transform-origin: 50% 50%;
-  }
+  } */
 `;
 
 export const PostTitle = styled.h3`
