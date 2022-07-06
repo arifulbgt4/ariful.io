@@ -14,7 +14,9 @@ export const PostWrapper = styled.div`
   border: 1px solid #fff;
   position: relative;
   transition: all 0.2s ease-out;
+  cursor: pointer;
   svg {
+    transition: all 0.2s ease-out;
     width: 22px;
     color: #000;
   }
