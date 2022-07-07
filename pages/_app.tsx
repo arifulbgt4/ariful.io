@@ -22,6 +22,9 @@ const GlobalStyle = createGlobalStyle<any>`
   * {
     box-sizing: border-box;
   }
+  main{
+    height: calc(100vh - 100px);
+  }
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
