@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app';
 import { createGlobalStyle } from 'styled-components';
+
 import ThemeProvider from 'theme';
+import Header from 'containers/Header';
 
 const GlobalStyle = createGlobalStyle<any>`
   html,
@@ -31,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <GlobalStyle />
+      <Header />
       <Component {...pageProps} />
     </ThemeProvider>
   );
