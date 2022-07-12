@@ -57,7 +57,7 @@ export const SocialWrapper = styled.div`
     }
   }
 `;
-export const BannerWrapper = styled.div`
+export const BannerWrapper = styled.h3`
   display: flex;
 `;
 

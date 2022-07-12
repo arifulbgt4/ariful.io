@@ -15,7 +15,7 @@ import {
 const Header = () => (
   <HeaderWrapper>
     <Column>
-      <BannerWrapper>ArifulIslam.io</BannerWrapper>
+      <BannerWrapper>Journey to learning</BannerWrapper>
       <ThemeToggler />
       <UserWrapper>
         <SocialWrapper>
