@@ -5,4 +5,15 @@ export interface IStyles {
     primary: string;
     secondary: string;
   };
+  fonts: {
+    a: string;
+    b: string;
+  };
+  fontWeight: {
+    light: number;
+    regular: number;
+    medium: number;
+    semiBold: number;
+    bold: number;
+  };
 }

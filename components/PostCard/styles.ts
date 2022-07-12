@@ -54,4 +54,6 @@ export const PostWrapper = styled.div`
 export const PostTitle = styled.h3`
   color: #000;
   margin: 0;
+  font-family: ${({ theme }) => theme.fonts.a};
+  font-weight: ${({ theme }) => theme.fontWeight.light};
 `;

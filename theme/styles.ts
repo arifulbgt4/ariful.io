@@ -7,6 +7,17 @@ const lightStyle: IStyles = {
     primary: '#ddd',
     secondary: '#6D59F0',
   },
+  fonts: {
+    a: "'Source Code Pro', monospace",
+    b: "'Anton', sans-serif",
+  },
+  fontWeight: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+  },
 };
 
 const darkStyle: IStyles = {
@@ -15,6 +26,17 @@ const darkStyle: IStyles = {
     background: '#000',
     primary: '#ddd',
     secondary: '#6D59F0',
+  },
+  fonts: {
+    a: "'Source Code Pro', monospace",
+    b: "'Anton', sans-serif",
+  },
+  fontWeight: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
   },
 };
 

@@ -59,6 +59,8 @@ export const SocialWrapper = styled.div`
 `;
 export const BannerWrapper = styled.h3`
   display: flex;
+  font-family: ${({ theme }) => theme.fonts.b};
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
 `;
 
 export const Text = styled.p`
