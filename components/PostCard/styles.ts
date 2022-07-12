@@ -4,28 +4,28 @@ export const PostWrapper = styled.div`
   margin: 10px;
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.postCard.bg};
   border-radius: 4px;
   padding: 16px 12px;
   margin: 12px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
-  border: 1px solid #fff;
+  border: ${({ theme }) => theme.postCard.border};
   position: relative;
   transition: all 0.2s ease-out;
   cursor: pointer;
   svg {
     transition: all 0.2s ease-out;
     width: 22px;
-    color: #000;
+    color: ${({ theme }) => theme.postCard.textColor};
   }
 
   &:hover {
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    box-shadow: ${({ theme }) => theme.postCard.hoverShadow};
     /* top: -4px; */
-    border: 1px solid #cccccc;
-    background-color: white;
+    border: ${({ theme }) => theme.postCard.hoverBorder};
+    background-color: ${({ theme }) => theme.postCard.hoverBg};
     svg {
       width: 25px;
     }
@@ -52,7 +52,7 @@ export const PostWrapper = styled.div`
 `;
 
 export const PostTitle = styled.h3`
-  color: #000;
+  color: ${({ theme }) => theme.postCard.textColor};
   margin: 0;
   font-family: ${({ theme }) => theme.fonts.a};
   font-weight: ${({ theme }) => theme.fontWeight.light};
