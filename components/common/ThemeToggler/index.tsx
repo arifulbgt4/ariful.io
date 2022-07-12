@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import { Moon, Sun } from 'components/icons';
 import { ThemeContext } from 'theme';
@@ -18,15 +19,15 @@ const ThemeToggler = () => {
             <Sun />
             <Moon />
           </div>
-          <input
-            id="toggle"
-            name="toggle"
-            type="checkbox"
-            checked={theme === 'light'}
-            onClick={toggleState}
-          />
         </div>
       </label>
+      <input
+        id="toggle"
+        name="toggle"
+        type="checkbox"
+        // checked={theme === 'light'}
+        onClick={toggleState}
+      />
     </Wrapper>
   );
 };
