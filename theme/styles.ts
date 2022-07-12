@@ -18,7 +18,6 @@ const lightStyle: IStyles = {
   },
   fonts: {
     a: "'Source Code Pro', monospace",
-    b: "'Anton', sans-serif",
   },
   fontWeight: {
     light: 300,
@@ -47,7 +46,6 @@ const darkStyle: IStyles = {
   },
   fonts: {
     a: "'Source Code Pro', monospace",
-    b: "'Anton', sans-serif",
   },
   fontWeight: {
     light: 300,

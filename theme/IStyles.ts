@@ -16,7 +16,6 @@ export interface IStyles {
   };
   fonts: {
     a: string;
-    b: string;
   };
   fontWeight: {
     light: number;
