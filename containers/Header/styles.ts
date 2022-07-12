@@ -57,8 +57,10 @@ export const SocialWrapper = styled.div`
     }
   }
 `;
-export const BannerWrapper = styled.div`
+export const BannerWrapper = styled.h3`
   display: flex;
+  font-family: ${({ theme }) => theme.fonts.a};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
 `;
 
 export const Text = styled.p`
