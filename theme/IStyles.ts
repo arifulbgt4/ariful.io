@@ -24,4 +24,8 @@ export interface IStyles {
     semiBold: number;
     bold: number;
   };
+  theme: {
+    bg: string;
+    fill: string;
+  };
 }

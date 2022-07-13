@@ -26,6 +26,10 @@ const lightStyle: IStyles = {
     semiBold: 600,
     bold: 700,
   },
+  theme: {
+    bg: '#333333',
+    fill: '#ffffff',
+  },
 };
 
 const darkStyle: IStyles = {
@@ -53,6 +57,10 @@ const darkStyle: IStyles = {
     medium: 500,
     semiBold: 600,
     bold: 700,
+  },
+  theme: {
+    bg: '#ffffff',
+    fill: '#333333',
   },
 };
 

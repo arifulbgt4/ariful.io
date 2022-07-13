@@ -8,7 +8,7 @@ import { ITheme } from './ITheme';
 export const ThemeContext = createContext({});
 
 const Theme = ({ children }: ITheme) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   const themeProvider = useMemo(() => {
     if (theme === 'dark') {
