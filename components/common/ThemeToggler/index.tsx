@@ -11,23 +11,10 @@ const ThemeToggler = () => {
   const toggleState = () => {
     toggleTheme();
   };
+
   return (
-    <Wrapper>
-      <label className="toggle-wrapper" htmlFor="toggle">
-        <div className={`toggle ${theme === 'light' ? 'enabled' : 'disabled'}`}>
-          <div className="icons">
-            <Sun />
-            <Moon />
-          </div>
-        </div>
-      </label>
-      <input
-        id="toggle"
-        name="toggle"
-        type="checkbox"
-        // checked={theme === 'light'}
-        onClick={toggleState}
-      />
+    <Wrapper onClick={toggleState}>
+      <Moon />
     </Wrapper>
   );
 };

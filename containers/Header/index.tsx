@@ -16,7 +16,6 @@ const Header = () => (
   <HeaderWrapper>
     <Column>
       <BannerWrapper>Journey to learning</BannerWrapper>
-      <ThemeToggler />
       <UserWrapper>
         <SocialWrapper>
           <a className="glassIco" href="#">
@@ -33,6 +32,7 @@ const Header = () => (
           <UserIcon />
         </UserIconWrapper>
         <Text>Ariful islam</Text>
+        <ThemeToggler />
       </UserWrapper>
     </Column>
   </HeaderWrapper>
