@@ -1,7 +1,6 @@
 import Container from 'components/common/Container';
 import Row from 'components/common/Row';
-import Col from 'components/common/Col';
-// import IntroCard from 'components/IntroCard';
+import IntroCard from 'components/IntroCard';
 
 import PostList from 'containers/PostList';
 
@@ -14,7 +13,9 @@ const HeroContainer = () => (
         <LeftColumn>
           <PostList />
         </LeftColumn>
-        <RightColumn>empty</RightColumn>
+        <RightColumn>
+          <IntroCard />
+        </RightColumn>
       </Row>
     </Container>
   </Wrapper>
