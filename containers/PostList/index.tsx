@@ -12,7 +12,7 @@ const PostList = ({ data }: IPosts) => (
         {data &&
           data.map((item) => (
             <Column key={item.id}>
-              <PostCard title={item.title} />
+              <PostCard title={item.title} id={item.id} />
             </Column>
           ))}
       </>
