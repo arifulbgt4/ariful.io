@@ -6,21 +6,21 @@ import PostList from 'containers/PostList';
 
 import { Wrapper, LeftColumn, RightColumn } from './styles';
 
-const data: Array<{ id: number; title: string }> = [
+const data: Array<{ id: string; title: string }> = [
   {
-    id: 1,
+    id: '1',
     title: 'title 1',
   },
   {
-    id: 2,
+    id: '2',
     title: 'title 2',
   },
   {
-    id: 3,
+    id: '3',
     title: 'title 3',
   },
   {
-    id: 4,
+    id: '4',
     title: 'title 4',
   },
 ];

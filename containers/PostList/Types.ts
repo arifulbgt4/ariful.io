@@ -1,5 +1,5 @@
 export interface IPostList {
-  id: number;
+  id: string;
   title: string;
 }
 
