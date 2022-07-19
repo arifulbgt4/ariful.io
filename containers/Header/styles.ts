@@ -5,7 +5,7 @@ export const HeaderWrapper = styled.header`
   display: block;
   border-bottom: 1px solid ${({ theme }) => theme.color.primary};
   max-width: 80%;
-  margin: 40px auto;
+  margin: 25px auto;
 `;
 
 export const Column = styled.div`

@@ -18,13 +18,28 @@ const Header = () => (
       <BannerWrapper>Journey to learning</BannerWrapper>
       <UserWrapper>
         <SocialWrapper>
-          <a className="glassIco" href="#">
+          <a
+            className="glassIco"
+            target="_blank"
+            href="https://www.facebook.com/ariful25278/"
+            rel="noreferrer"
+          >
             <Facebook />
           </a>
-          <a className="glassIco" href="#">
+          <a
+            className="glassIco"
+            target="_blank"
+            href="https://www.linkedin.com/in/ariful25278/"
+            rel="noreferrer"
+          >
             <Linkedin />
           </a>
-          <a className="glassIco" href="#">
+          <a
+            className="glassIco"
+            target="_blank"
+            href="https://github.com/arifulbgt4"
+            rel="noreferrer"
+          >
             <Github />
           </a>
         </SocialWrapper>
