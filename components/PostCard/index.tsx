@@ -5,7 +5,7 @@ import { IPostCard } from './Types';
 import { PostWrapper, PostTitle } from './styles';
 
 const PostCard = ({ title, id }: IPostCard) => (
-  <Link href={`/p/${id}`}>
+  <Link href={`?postId=${id}`} as={`/p/${id}`}>
     <PostWrapper>
       <PostTitle>{title}</PostTitle>
       <ArrowIcons />
