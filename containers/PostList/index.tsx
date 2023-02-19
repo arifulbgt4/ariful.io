@@ -1,6 +1,6 @@
 import PostCard from 'components/PostCard';
 import Row from 'components/common/Row';
-import PostModal from 'components/PostModal';
+import PostModal from 'containers/PostModal';
 
 import { IPostList, IPosts } from './Types';
 import { PostListWrapper, Column } from './styles';
