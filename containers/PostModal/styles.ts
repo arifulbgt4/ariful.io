@@ -6,3 +6,7 @@ Modal.setAppElement('#__next');
 export const ModalWrapper = styled(Modal)`
   width: 300px;
 `;
+
+export const Wrapper = styled.div`
+  width: 100%;
+`;

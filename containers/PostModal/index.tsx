@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
-import { ModalWrapper } from './styles';
+import PostPageContents from 'containers/PostPageContents';
+import { ModalWrapper, Wrapper } from './styles';
 
 const customStyles = {
   overlay: {
@@ -19,7 +20,9 @@ const PostModal = () => {
       onRequestClose={onClose}
       style={customStyles}
     >
-      Hello
+      <Wrapper>
+        <PostPageContents />
+      </Wrapper>
     </ModalWrapper>
   );
 };
