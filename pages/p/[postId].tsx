@@ -1,10 +1,11 @@
+import React from 'react';
+
 import PostPageContents from 'containers/PostPageContents';
-import { PageWrapper } from './styles';
 
 const Post = () => (
-  <PageWrapper>
+  <div>
     <PostPageContents />
-  </PageWrapper>
+  </div>
 );
 
 export default Post;
