@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
 import PostPageContents from 'containers/PostPageContents';
+
 import { ModalWrapper, Wrapper } from './styles';
 
 const customStyles = {
@@ -16,9 +17,9 @@ const PostModal = () => {
   };
   return (
     <ModalWrapper
-      isOpen={!!router?.query?.postId}
-      onRequestClose={onClose}
-      style={customStyles}
+      open={!!router?.query?.postId}
+      onClose={onClose}
+      // style={customStyles}
     >
       <Wrapper>
         <PostPageContents />
