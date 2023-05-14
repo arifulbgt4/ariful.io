@@ -23,6 +23,9 @@ const PostModal = () => {
     >
       <Wrapper>
         <PostPageContents />
+        <button onClick={onClose} type="button">
+          close
+        </button>
       </Wrapper>
     </ModalWrapper>
   );
