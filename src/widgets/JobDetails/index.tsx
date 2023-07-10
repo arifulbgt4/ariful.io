@@ -1,5 +1,8 @@
 "use client";
+export * from "./Types";
 
+// React
+import { FC } from "react";
 // @mui
 import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
@@ -17,18 +20,29 @@ import Link from "@mui/material/Link";
 // Icons
 import Launch from "@mui/icons-material/Launch";
 
-const JobDetails = () => {
+// Types
+import { JobDetailsOptions } from "./Types";
+
+const JobDetails: FC<JobDetailsOptions> = ({ data }) => {
+  const { title, company, address, works, url, startDate, endDate } = data;
   return (
     <Card sx={{ mb: 2 }}>
       <CardHeader
-        title="Lead Front-end Developer (remote)"
-        subheader="RoadStr - Los Angeles, USA"
+        title={title}
+        subheader={`${company} - ${address}`}
         action={
           <Stack direction="row" spacing={1} alignItems="center">
-            <Typography variant="caption">11/2021 - 02/2023</Typography>
-            <Link variant="body2" href="https://roadstr.io" target="_blank">
+            <Typography variant="caption">
+              {startDate} - {endDate}
+            </Typography>
+            {/* <Link
+              color="text.primary"
+              variant="body2"
+              href={url}
+              target="_blank"
+            >
               <Launch fontSize="small" />
-            </Link>
+            </Link> */}
           </Stack>
         }
       />
@@ -41,46 +55,15 @@ const JobDetails = () => {
             },
           }}
         >
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" color="secondary" />
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              Technical leadership: Ensuring that the codebase is clean,
-              scalable, and maintainable.
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" color="secondary" />
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              Team management: Managing and mentoring front-end development team
-              members, setting goals and deadlines, and ensuring that the team
-              is working efficiently.
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" color="secondary" />
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              Quality assurance: Ensuring the quality of the front-end codebase
-              through testing, debugging, and code review to best practices.
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" color="secondary" />
-            </TimelineSeparator>
-            <TimelineContent>
-              Documentation: Ensuring that the codebase is well documented,
-              including the code, architecture, and design decisions.
-            </TimelineContent>
-          </TimelineItem>
+          {works?.map((work, i) => (
+            <TimelineItem key={i}>
+              <TimelineSeparator>
+                <TimelineDot variant="outlined" color="secondary" />
+                {works.length - 1 > i && <TimelineConnector />}
+              </TimelineSeparator>
+              <TimelineContent>{work}</TimelineContent>
+            </TimelineItem>
+          ))}
         </Timeline>
       </CardContent>
     </Card>
