@@ -36,7 +36,7 @@ const PortfolioHeader = () => {
   };
 
   return (
-    <ScrollTrigger threshold={0}>
+    <ScrollTrigger threshold={30}>
       {(trigger) => (
         <AppBar
           position="sticky"
