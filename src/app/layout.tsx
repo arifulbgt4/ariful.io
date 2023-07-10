@@ -1,4 +1,5 @@
 import ThemeContextProvider from "src/theme";
+import Footer from "src/widgets/Footer";
 
 export const metadata = {
   title: "Ariful islam",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeContextProvider>
-        <body suppressHydrationWarning={true}>{children}</body>
+        <body suppressHydrationWarning={true}>
+          {children}
+          <Footer />
+        </body>
       </ThemeContextProvider>
     </html>
   );

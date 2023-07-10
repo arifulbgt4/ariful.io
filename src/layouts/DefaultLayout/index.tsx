@@ -13,11 +13,7 @@ import { DefaultLayoutOptions } from "./Types";
 
 const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   return (
-    <Stack
-      sx={{
-        mb: 5,
-      }}
-    >
+    <Stack>
       {/* <ListNavigation /> */}
       <Container maxWidth="md">
         <PortfolioHeader />
