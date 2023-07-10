@@ -24,12 +24,15 @@ const PortfolioHeader = () => {
       sx={{
         background: (theme) => theme.palette.grey[900],
         boxShadow: 5,
+        mb: 2,
+        borderRadius: 2,
+        overflow: "hidden",
       }}
     >
       <Box
         sx={{
           p: 3,
-          borderRadius: 1,
+          pt: 1,
         }}
       >
         <Grid container>
