@@ -103,7 +103,12 @@ const PortfolioHeader = () => {
               top: 8,
             }}
           >
-            <Tabs onChange={onHandleTabs} value={pathName}>
+            <Tabs
+              textColor="inherit"
+              indicatorColor="secondary"
+              onChange={onHandleTabs}
+              value={pathName}
+            >
               <Tab label="Work History" value="/" />
               {/* <Tab label="Projects" value="/projects" />
               <Tab label="Blogs" value="/blogs" /> */}
