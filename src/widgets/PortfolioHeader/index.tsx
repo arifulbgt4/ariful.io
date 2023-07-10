@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { useRouter, usePathname } from "next/navigation";
 // @mui
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Tabs from "@mui/material/Tabs";
@@ -36,53 +35,81 @@ const PortfolioHeader = () => {
   };
 
   return (
-    <ScrollTrigger threshold={30}>
+    <ScrollTrigger disableHysteresis>
       {(trigger) => (
-        <AppBar
-          position="sticky"
-          color="inherit"
-          sx={{
-            boxShadow: 5,
-            mb: 3,
-            borderRadius: 2,
-            overflow: "hidden",
-          }}
-        >
-          <Box>
-            <Collapse in={!trigger} timeout="auto" unmountOnExit>
-              <Card elevation={0}>
-                <CardHeader
-                  avatar={<Avatar variant="rounded">A</Avatar>}
-                  title="Ariful islam"
-                  subheader="Fullstack Developer"
-                  action={
-                    <IconButton onClick={toggleColorMode}>
-                      {themes.palette.mode === "dark" ? (
-                        <LightModeOutlined />
-                      ) : (
-                        <DarkModeOutlined />
-                      )}
-                    </IconButton>
-                  }
-                />
-                <CardContent sx={{ pt: 0 }}>
-                  <Typography variant="subtitle1">
-                    I possess over eight years of expertise in front-end
-                    technologies and frameworks, with a strong emphasis on
-                    creating clean, efficient, and user-friendly interfaces for
-                    web and mobile applications.
-                  </Typography>
-                </CardContent>
-              </Card>
+        <>
+          <Card elevation={0} sx={{ mt: 2 }}>
+            <Collapse
+              in={!trigger}
+              timeout={{
+                exit: 500,
+                enter: 250,
+              }}
+              unmountOnExit
+              easing={{
+                enter: "cubic-bezier(0, 0, 0, 0)",
+                exit: "cubic-bezier(0, 0, 0, 0)",
+              }}
+            >
+              <CardHeader
+                avatar={<Avatar variant="rounded">A</Avatar>}
+                title="Ariful islam"
+                subheader="Fullstack Developer"
+                action={
+                  <IconButton onClick={toggleColorMode}>
+                    {themes.palette.mode === "dark" ? (
+                      <LightModeOutlined />
+                    ) : (
+                      <DarkModeOutlined />
+                    )}
+                  </IconButton>
+                }
+              />
             </Collapse>
+            <Collapse
+              in={!trigger}
+              timeout={{
+                exit: 500,
+                enter: 400,
+              }}
+              unmountOnExit
+              easing={{
+                enter: "cubic-bezier(0, 0, 0, 0)",
+                exit: "cubic-bezier(0, 0, 0, 0)",
+              }}
+            >
+              <CardContent sx={{ pt: 0 }}>
+                <Typography variant="subtitle1">
+                  I possess over eight years of expertise in front-end
+                  technologies and frameworks, with a strong emphasis on
+                  creating clean, efficient, and user-friendly interfaces for
+                  web and mobile applications.
+                </Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
 
+          <AppBar
+            position="sticky"
+            color="inherit"
+            sx={{
+              boxShadow: 5,
+              mb: 5,
+              borderRadius: 1,
+              overflow: "hidden",
+              transition: "0.5s",
+            }}
+            style={{
+              top: 8,
+            }}
+          >
             <Tabs onChange={onHandleTabs} value={pathName}>
               <Tab label="Work History" value="/" />
               {/* <Tab label="Projects" value="/projects" />
               <Tab label="Blogs" value="/blogs" /> */}
             </Tabs>
-          </Box>
-        </AppBar>
+          </AppBar>
+        </>
       )}
     </ScrollTrigger>
   );

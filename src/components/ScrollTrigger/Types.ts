@@ -4,4 +4,5 @@ export interface ScrollTriggerOptions {
   window?: () => Window;
   children: (t: boolean) => ReactElement;
   threshold?: number;
+  disableHysteresis?: boolean;
 }

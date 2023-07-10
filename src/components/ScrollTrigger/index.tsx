@@ -9,9 +9,10 @@ const ScrollTrigger: FC<ScrollTriggerOptions> = ({
   children,
   window,
   threshold = 0,
+  disableHysteresis = false,
 }) => {
   const trigger = useScrollTrigger({
-    disableHysteresis: true,
+    disableHysteresis: !disableHysteresis,
     threshold,
     target: window ? window() : undefined,
   });
