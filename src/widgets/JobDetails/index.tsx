@@ -24,15 +24,10 @@ const JobDetails = () => {
         title="Lead Front-end Developer (remote)"
         subheader="RoadStr - Los Angeles, USA"
         action={
-          <Stack
-            sx={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Typography sx={{ mr: 1 }}>11/2021 - 02/2023</Typography>
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Typography variant="caption">11/2021 - 02/2023</Typography>
             <Link variant="body2" href="https://roadstr.io" target="_blank">
-              <Launch />
+              <Launch fontSize="small" />
             </Link>
           </Stack>
         }
