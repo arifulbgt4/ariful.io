@@ -1,4 +1,5 @@
 import ThemeContextProvider from "src/theme";
+import DefaultLayout from "src/layouts/DefaultLayout";
 
 export const metadata = {
   title: "Next.js & mui boilerplate",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeContextProvider>
-        <body suppressHydrationWarning={true}>{children}</body>
+        <body suppressHydrationWarning={true}>
+          <DefaultLayout>{children}</DefaultLayout>
+        </body>
       </ThemeContextProvider>
     </html>
   );
