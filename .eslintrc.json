@@ -1,0 +1,36 @@
+{
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "src",
+            "./src/"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".js",
+          ".jsx",
+          ".json"
+        ]
+      }
+    }
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:storybook/recommended"
+  ],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "@mui/*/*/*"
+        ]
+      }
+    ],
+    "import/no-anonymous-default-export": "off",
+    "react/no-unescaped-entities": "off"
+  }
+}
