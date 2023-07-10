@@ -48,7 +48,7 @@ export default {
   },
   h4: {
     ...roboto.style,
-    fontWeight: 300,
+    fontWeight: 400,
     fontSize: "2.125rem",
     lineHeight: 1.235,
     letterSpacing: "0.00735em",
