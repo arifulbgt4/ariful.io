@@ -38,7 +38,7 @@ const PortfolioHeader = () => {
     <ScrollTrigger>
       {(trigger) => (
         <>
-          <Card elevation={0} sx={{ mt: 2 }}>
+          <Card elevation={0}>
             <Collapse
               in={!trigger}
               timeout={{
