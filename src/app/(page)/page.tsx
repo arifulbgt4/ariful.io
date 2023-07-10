@@ -50,8 +50,6 @@ export default function Home() {
       {DATA_JOBS.map((job: JobOptions, i) => (
         <JobDetails key={i} data={job} />
       ))}
-      {/* <JobDetails />
-      <JobDetails /> */}
     </>
   );
 }
