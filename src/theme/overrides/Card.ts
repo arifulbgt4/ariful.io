@@ -28,7 +28,7 @@ const MuiCardHeader: Components<Theme>["MuiCardHeader"] = {
   styleOverrides: {
     root: ({ theme, ownerState }) => ({}),
     title: ({ theme, ownerState }) => ({
-      fontSize: 24,
+      fontSize: 20,
     }),
   },
 };

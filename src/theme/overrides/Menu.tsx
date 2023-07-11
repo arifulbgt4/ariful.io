@@ -21,9 +21,9 @@ const MuiMenuItem: Components<Theme>["MuiMenuItem"] = {
   styleOverrides: {
     root: ({ theme, ownerState }) => ({}),
   },
-  // defaultProps: {
-  //   component: LinkBehavior,
-  // } as MenuItemMUIProps,
+  defaultProps: {
+    component: LinkBehavior,
+  } as MenuItemMUIProps,
 };
 
 export default {
