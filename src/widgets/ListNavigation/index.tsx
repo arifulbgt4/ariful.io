@@ -1,30 +1,45 @@
 import {
   ListItemIcon,
   ListItemText,
-  //   MenuItem,
+  MenuItem,
   MenuList,
   Paper,
   Link,
+  Box,
+  menuItemClasses,
 } from "@mui/material";
+
+import { ContactPageOutlined as ContactPageOutlinedIcon } from "@mui/icons-material";
 
 const ListNavigation = () => {
   return (
-    <Paper
-      //   elevation={0}
+    <Box
       sx={{
-        // maxWidth: 400,
         position: "sticky",
-        // left: 25,
         top: 40,
+        pr: 8,
       }}
     >
-      <MenuList>
-        <Link href="/faqs">
-          {/* <ListItemIcon></ListItemIcon> */}
+      <MenuList disablePadding>
+        <MenuItem
+          href="/faq"
+          sx={{
+            borderRadius: 2.5,
+            [`&.${menuItemClasses.selected}`]: {
+              color: (theme) => theme.palette.primary.main,
+              "& svg": {
+                color: (theme) => theme.palette.primary.main,
+              },
+            },
+          }}
+        >
+          <ListItemIcon>
+            <ContactPageOutlinedIcon fontSize="small" />
+          </ListItemIcon>
           <ListItemText>Contact Me</ListItemText>
-        </Link>
+        </MenuItem>
       </MenuList>
-    </Paper>
+    </Box>
   );
 };
 
