@@ -12,10 +12,10 @@ const ListNavigation = () => {
     <Paper
       //   elevation={0}
       sx={{
-        maxWidth: 320,
+        // maxWidth: 400,
         position: "sticky",
-        left: 40,
-        top: 80,
+        // left: 25,
+        top: 40,
       }}
     >
       <MenuList>
