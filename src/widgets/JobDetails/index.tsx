@@ -56,7 +56,10 @@ const JobDetails: FC<JobDetailsOptions> = ({ data }) => {
           }}
         >
           {works?.map((work, i) => (
-            <TimelineItem key={i}>
+            <TimelineItem
+              sx={{ minHeight: (theme) => theme.spacing(5.2) }}
+              key={i}
+            >
               <TimelineSeparator>
                 <TimelineDot variant="outlined" color="secondary" />
                 {works.length - 1 > i && <TimelineConnector />}

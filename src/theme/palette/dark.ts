@@ -8,9 +8,9 @@ export default {
     contrastText: "rgba(0, 0, 0, 0.87)",
   },
   secondary: {
-    dark: "#ab47bc",
-    main: "#ce93d8",
-    light: "#f3e5f5",
+    dark: "#93d89f",
+    main: "#9fdaa9",
+    light: "#a2e6ae",
     contrastText: "rgba(0, 0, 0, 0.87)",
   },
   error: {

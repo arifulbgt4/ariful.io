@@ -56,9 +56,15 @@ export const Template: Story = {
         }}
         {...args}
       >
-        <MenuItem onClick={onClose as any}>Profile</MenuItem>
-        <MenuItem onClick={onClose as any}>My account</MenuItem>
-        <MenuItem onClick={onClose as any}>Logout</MenuItem>
+        <MenuItem href="#" onClick={onClose as any}>
+          Profile
+        </MenuItem>
+        <MenuItem href="#" onClick={onClose as any}>
+          My account
+        </MenuItem>
+        <MenuItem href="#" onClick={onClose as any}>
+          Logout
+        </MenuItem>
       </Menu>
     );
   },

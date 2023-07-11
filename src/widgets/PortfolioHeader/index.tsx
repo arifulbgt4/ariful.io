@@ -1,117 +1,66 @@
-//React
-import { useContext } from "react";
-// Next
-import { useRouter, usePathname } from "next/navigation";
 // @mui
-import AppBar from "@mui/material/AppBar";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import IconButton from "@mui/material/IconButton";
-import Collapse from "@mui/material/Collapse";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import { useTheme } from "@mui/material/styles";
+import {
+  Box,
+  Link,
+  Stack,
+  Avatar,
+  Typography,
+  IconButton,
+} from "@mui/material";
 // Icons
-import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
-import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
+import {
+  GitHub as GitHubIcon,
+  LinkedIn as LinkedInIcon,
+} from "@mui/icons-material";
 
-// Components
-import ScrollTrigger from "src/components/ScrollTrigger";
-// Context
-import { ColorModeContext } from "src/theme";
-
-const PortfolioHeader = () => {
-  const router = useRouter();
-  const pathName = usePathname();
-  const themes = useTheme();
-
-  const { toggleColorMode } = useContext(ColorModeContext);
-
-  const onHandleTabs = (v: any, newValue: string) => {
-    router.push(newValue);
-  };
-
+const PortfolioHeader = ({ triger }: { triger: boolean }) => {
   return (
-    <ScrollTrigger>
-      {(trigger) => (
-        <>
-          <Card elevation={0} sx={{ mt: 2 }}>
-            <Collapse
-              in={!trigger}
-              timeout={{
-                exit: 500,
-                enter: 250,
-              }}
-              unmountOnExit
-              easing={{
-                enter: "cubic-bezier(0, 0, 0, 0)",
-                exit: "cubic-bezier(0, 0, 0, 0)",
-              }}
-            >
-              <CardHeader
-                avatar={<Avatar variant="rounded">A</Avatar>}
-                title="Ariful islam"
-                subheader="Fullstack Developer"
-                action={
-                  <IconButton onClick={toggleColorMode}>
-                    {themes.palette.mode === "dark" ? (
-                      <LightModeOutlined />
-                    ) : (
-                      <DarkModeOutlined />
-                    )}
-                  </IconButton>
-                }
-              />
-            </Collapse>
-            <Collapse
-              in={!trigger}
-              timeout={{
-                exit: 80,
-                enter: 50,
-              }}
-              unmountOnExit
-              easing={{
-                enter: "cubic-bezier(0, 0, 0, 0)",
-                exit: "cubic-bezier(0, 0, 0, 0)",
-              }}
-            >
-              <CardContent sx={{ pt: 0 }}>
-                <Typography variant="subtitle1">
-                  I possess over eight years of expertise in front-end
-                  technologies and frameworks, with a strong emphasis on
-                  creating clean, efficient, and user-friendly interfaces for
-                  web and mobile applications.
-                </Typography>
-              </CardContent>
-            </Collapse>
-          </Card>
+    <Stack direction="row" justifyContent="space-between" alignItems="center">
+      <Stack
+        direction="row"
+        sx={{
+          p: 2,
+          pb: 0,
+        }}
+      >
+        <Link underline="none" href="/">
+          <Avatar variant="rounded" sx={{ width: 46, height: 46, mr: 1.5 }}>
+            A
+          </Avatar>
+        </Link>
 
-          <AppBar
-            position="sticky"
-            color="inherit"
-            sx={{
-              boxShadow: 5,
-              mb: 5,
-              borderRadius: 1,
-              overflow: "hidden",
-              transition: "0.5s",
-            }}
-            style={{
-              top: 8,
-            }}
+        <Box>
+          <Link underline="hover" color="text.primary" href="/" variant="h5">
+            Ariful islam
+          </Link>
+          <Typography color="text.secondary" variant="subtitle2">
+            Fullstack engineer
+          </Typography>
+        </Box>
+      </Stack>
+      {!triger && (
+        <Stack direction="row" sx={{ mr: 4, mt: 2 }}>
+          <Link
+            underline="none"
+            href="https://www.linkedin.com/in/ariful25278/"
+            target="_blank"
           >
-            <Tabs onChange={onHandleTabs} value={pathName}>
-              <Tab label="Work History" value="/" />
-              {/* <Tab label="Projects" value="/projects" />
-              <Tab label="Blogs" value="/blogs" /> */}
-            </Tabs>
-          </AppBar>
-        </>
+            <IconButton size="small">
+              <LinkedInIcon />
+            </IconButton>
+          </Link>
+          <Link
+            underline="none"
+            href="https://github.com/arifulbgt4"
+            target="_blank"
+          >
+            <IconButton size="small">
+              <GitHubIcon />
+            </IconButton>
+          </Link>
+        </Stack>
       )}
-    </ScrollTrigger>
+    </Stack>
   );
 };
 
