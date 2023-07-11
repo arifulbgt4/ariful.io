@@ -1,3 +1,5 @@
+// Next
+import { usePathname } from "next/navigation";
 // @mui
 import {
   ListItemIcon,
@@ -10,10 +12,12 @@ import {
 import { ContactPageOutlined as ContactPageOutlinedIcon } from "@mui/icons-material";
 
 const ListNavigation = () => {
+  const pathName = usePathname();
   return (
     <MenuList disablePadding sx={{ px: 2 }}>
       <MenuItem
         href="/contact"
+        selected={Boolean(pathName === "/contact")}
         sx={{
           borderRadius: 2.5,
           [`&.${menuItemClasses.selected}`]: {

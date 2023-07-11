@@ -28,6 +28,8 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   const pathName = usePathname();
   const themes = useTheme();
 
+  console.log("first", LANDING_PATHS.includes(pathName));
+
   const { toggleColorMode } = useContext(ColorModeContext);
   return (
     <ScrollTrigger threshold={100}>
@@ -43,9 +45,19 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
           >
             <Grid
               item
-              xs={LANDING_PATHS.includes(pathName) ? (trigger ? 9 : 6) : 9}
+              xs={
+                Boolean(LANDING_PATHS.includes(pathName))
+                  ? trigger
+                    ? 9
+                    : 6
+                  : 9
+              }
             >
-              <PortfolioHeader />
+              <PortfolioHeader
+                triger={
+                  Boolean(LANDING_PATHS.includes(pathName)) ? trigger : true
+                }
+              />
             </Grid>
             <Grid item xs={3}>
               <Stack direction="row" justifyContent="end">
