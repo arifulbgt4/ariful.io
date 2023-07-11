@@ -1,9 +1,12 @@
 "use client";
+// React
+import { useContext } from "react";
+// @mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { useContext } from "react";
 import Button from "@mui/material/Button";
 
+// Context
 import { ColorModeContext } from "src/theme";
 
 const Laboratory = ({ children }: { children: React.ReactNode }) => {

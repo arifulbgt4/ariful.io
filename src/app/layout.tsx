@@ -1,4 +1,8 @@
+// Context
 import ThemeContextProvider from "src/theme";
+// Layouts
+import DefaultLayout from "src/layouts/DefaultLayout";
+// Widgets
 import Footer from "src/widgets/Footer";
 
 export const metadata = {
@@ -17,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
-          {children}
+          <DefaultLayout>{children}</DefaultLayout>
           <Footer />
         </body>
       </ThemeContextProvider>

@@ -1,4 +1,6 @@
+// @mui
 import { Box, Link, Paper, Stack, Typography, IconButton } from "@mui/material";
+// Icons
 import {
   GitHub as GitHubIcon,
   LanguageOutlined as LanguageOutlinedIcon,
@@ -8,8 +10,8 @@ const OpenSource = () => {
   return (
     <Box
       sx={{
-        position: "sticky",
-        top: 50,
+        zIndex: 3,
+        background: (theme) => theme.palette.background.default,
       }}
     >
       <Typography variant="h6" sx={{ mb: 4 }}>

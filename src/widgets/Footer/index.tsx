@@ -1,4 +1,5 @@
 "use client";
+// @mui
 import { Stack, Typography } from "@mui/material";
 
 const Footer = () => {

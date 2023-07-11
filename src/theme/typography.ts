@@ -55,8 +55,8 @@ export default {
   },
   h5: {
     ...roboto.style,
-    fontWeight: 400,
-    fontSize: "1.5rem",
+    fontWeight: 500,
+    fontSize: "1.25rem",
     lineHeight: 1.334,
     letterSpacing: "0em",
   },

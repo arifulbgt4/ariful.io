@@ -2,6 +2,7 @@
 import { FC, cloneElement } from "react";
 // @mui
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+
 // Types
 import { ScrollTriggerOptions } from "./Types";
 
