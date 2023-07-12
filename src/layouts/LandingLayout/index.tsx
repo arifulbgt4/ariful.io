@@ -37,7 +37,6 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
         position="sticky"
         color="inherit"
         sx={{
-          boxShadow: 5,
           mb: 5,
           borderRadius: 1,
           overflow: "hidden",

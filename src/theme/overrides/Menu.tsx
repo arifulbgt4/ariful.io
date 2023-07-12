@@ -9,8 +9,10 @@ const LinkBehavior = forwardRef<
   Omit<LinkProps, "href"> & { href: LinkProps["href"] }
 >((props, ref) => {
   const { href, ...other } = props;
+  // console.log("props", props);
   return <LinkNext ref={ref} href={href} {...other} />;
 });
+
 const MuiMenu: Components<Theme>["MuiMenu"] = {
   styleOverrides: {
     root: ({ theme, ownerState }) => ({}),
