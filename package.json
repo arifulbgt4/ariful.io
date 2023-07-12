@@ -25,9 +25,11 @@
     "@types/react-dom": "18.2.4",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
+    "final-form": "^4.20.9",
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-final-form": "^6.5.9",
     "react-scroll-parallax": "^3.4.2",
     "typescript": "5.1.3"
   },

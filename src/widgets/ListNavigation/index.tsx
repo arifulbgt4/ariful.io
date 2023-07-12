@@ -22,6 +22,7 @@ const ListNavigation = () => {
           borderRadius: 2.5,
           [`&.${menuItemClasses.selected}`]: {
             color: (theme) => theme.palette.primary.main,
+            background: "transparent",
             "& svg": {
               color: (theme) => theme.palette.primary.main,
             },
@@ -31,7 +32,7 @@ const ListNavigation = () => {
         <ListItemIcon>
           <ContactPageOutlinedIcon fontSize="small" />
         </ListItemIcon>
-        <ListItemText>Contact Me</ListItemText>
+        <ListItemText>Contact</ListItemText>
       </MenuItem>
     </MenuList>
   );

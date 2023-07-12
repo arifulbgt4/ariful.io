@@ -28,9 +28,8 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   const pathName = usePathname();
   const themes = useTheme();
 
-  console.log("first", LANDING_PATHS.includes(pathName));
-
   const { toggleColorMode } = useContext(ColorModeContext);
+
   return (
     <ScrollTrigger threshold={100}>
       {(trigger) => (

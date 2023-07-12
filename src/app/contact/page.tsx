@@ -1,5 +1,7 @@
+import ContactForm from "src/widgets/ContactForm";
+
 const ContactPage = () => {
-  return <div>ContactPage</div>;
+  return <ContactForm />;
 };
 
 export default ContactPage;
