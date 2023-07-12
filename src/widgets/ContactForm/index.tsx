@@ -23,7 +23,7 @@ const ContactForm = () => {
   return (
     <Grid container>
       <Grid item xs={12} md={8}>
-        <Paper sx={{ px: 5, py: 4, borderRadius: 2 }}>
+        <Box sx={{ px: 5, py: 4, borderRadius: 2 }}>
           <Typography variant="h5" sx={{ mb: 4 }}>
             Contact me directly
           </Typography>
@@ -41,10 +41,10 @@ const ContactForm = () => {
                     size="small"
                     fullWidth
                     fieldProps={{
-                      validate: composeValidators(required("Name is required")),
+                      validate: composeValidators(required("Name required")),
                     }}
                     sx={{
-                      mb: 2,
+                      mb: 2.5,
                     }}
                   />
                   <TextField
@@ -54,10 +54,10 @@ const ContactForm = () => {
                     size="small"
                     fullWidth
                     fieldProps={{
-                      validate: composeValidators(required("Name is required")),
+                      validate: composeValidators(required("Email required")),
                     }}
                     sx={{
-                      mb: 2,
+                      mb: 2.5,
                     }}
                   />
                   <TextField
@@ -67,10 +67,10 @@ const ContactForm = () => {
                     size="small"
                     fullWidth
                     fieldProps={{
-                      validate: composeValidators(required("Name is required")),
+                      validate: composeValidators(required("Subject required")),
                     }}
                     sx={{
-                      mb: 2,
+                      mb: 2.5,
                     }}
                   />
                   <TextField
@@ -82,7 +82,7 @@ const ContactForm = () => {
                     rows={5}
                     fullWidth
                     fieldProps={{
-                      validate: composeValidators(required("Name is required")),
+                      validate: composeValidators(required("Message required")),
                     }}
                     sx={{
                       mb: 3,
@@ -92,6 +92,7 @@ const ContactForm = () => {
                   <Button
                     type="submit"
                     variant="contained"
+                    color="info"
                     disabled={submitting}
                   >
                     Submit
@@ -100,7 +101,7 @@ const ContactForm = () => {
               );
             }}
           />
-        </Paper>
+        </Box>
       </Grid>
     </Grid>
   );
