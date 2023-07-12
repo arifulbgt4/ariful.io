@@ -32,7 +32,7 @@ const ListNavigation = () => {
         <ListItemIcon>
           <ContactPageOutlinedIcon fontSize="small" />
         </ListItemIcon>
-        <ListItemText>Contact Me</ListItemText>
+        <ListItemText>Contact</ListItemText>
       </MenuItem>
     </MenuList>
   );

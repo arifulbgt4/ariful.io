@@ -16,19 +16,20 @@ import {
 // Types
 import { FormDataOptions } from "./Types";
 
-const ContactForm = () => {
-  const onSubmitForm = (values: FormDataOptions) => {};
+const INITIAL_VALUES: FormDataOptions = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 
-  const INITIAL_VALUES: FormDataOptions = {
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  };
+const ContactForm = () => {
+  const onSubmitForm = async (values: FormDataOptions) => {};
+
   return (
     <Box>
       <Typography variant="h4">Contact me</Typography>
-      <FinalForm
+      {/* <FinalForm
         onSubmit={onSubmitForm}
         initialValues={INITIAL_VALUES}
         render={({ handleSubmit, values, errors, submitting }) => {
@@ -43,13 +44,13 @@ const ContactForm = () => {
                   validate: composeValidators(required("Name is required")),
                 }}
               />
-              <Button type="submit" disabled={submitting}>
+              <Button type="submit" variant="contained" disabled={submitting}>
                 Submit
               </Button>
             </form>
           );
         }}
-      />
+      /> */}
     </Box>
   );
 };
