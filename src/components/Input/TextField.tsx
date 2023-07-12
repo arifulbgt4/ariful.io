@@ -28,9 +28,10 @@ const TextField: FC<TextFieldProps> = ({
   );
 };
 
-// ||------------------------------||
-// ||   Mui TextField Wrapper      ||
-// ||------------------------------||
+// ||-----------------------------------||
+// ||   Mui TextField Wrapper           ||
+// ||   *** Don't export the component  ||
+// ||-----------------------------------||
 const TextFieldWrapper: FC<TextFieldWrapperProps> = ({
   input: { name, value, type, onChange, onBlur, onFocus, ...restInput },
   meta,

@@ -1,12 +1,7 @@
 // @mui
 import { TextFieldProps as MuiTextFieldProps } from "@mui/material";
-
-import {
-  FieldProps,
-  FieldRenderProps,
-  FieldMetaState,
-  UseFieldConfig,
-} from "react-final-form";
+// packages
+import { FieldProps, FieldRenderProps, FieldMetaState } from "react-final-form";
 
 export interface TextFieldProps
   extends Partial<Omit<MuiTextFieldProps, "onChange">> {

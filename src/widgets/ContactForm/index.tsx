@@ -1,18 +1,17 @@
 "use client";
 // @mui
-import {
-  Box,
-  Typography,
-  FormControl,
-  TextField as MuiTextField,
-  Input,
-  Button,
-} from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 // packages
-import { Form as FinalForm, Field, FormRenderProps } from "react-final-form";
+import { Form as FinalForm } from "react-final-form";
 
 // components
-import { TextField, required } from "src/components/Input";
+import {
+  TextField,
+  required,
+  composeValidators,
+  minLength,
+  maxLength,
+} from "src/components/Input";
 
 // Types
 import { FormDataOptions } from "./Types";
@@ -32,28 +31,21 @@ const ContactForm = () => {
       <FinalForm
         onSubmit={onSubmitForm}
         initialValues={INITIAL_VALUES}
-        render={({ handleSubmit, values, errors }) => {
+        render={({ handleSubmit, values, errors, submitting }) => {
           console.log("values", values);
           return (
             <form onSubmit={handleSubmit}>
-              {/* <Field
-                name="name"
-                variants="dd"
-                render={({ input, meta }) => {
-                  console.log("input", input);
-                  console.log("meta", meta);
-                  return <TextField key={12} name={input.name} />;
-                }}
-              /> */}
-
               <TextField
                 name="name"
-                helperText="hey ff"
+                label="Name"
+                required
                 fieldProps={{
-                  validate: required("Name is required"),
+                  validate: composeValidators(required("Name is required")),
                 }}
               />
-              <Button type="submit">Send email</Button>
+              <Button type="submit" disabled={submitting}>
+                Submit
+              </Button>
             </form>
           );
         }}
