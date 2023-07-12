@@ -28,7 +28,7 @@ const ContactForm = () => {
 
   return (
     <Box>
-      <Typography variant="h4">Contact me</Typography>
+      <Typography variant="h5">Contact me directly</Typography>
       {/* <FinalForm
         onSubmit={onSubmitForm}
         initialValues={INITIAL_VALUES}
