@@ -50,7 +50,7 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
           onChange={onHandleTabs}
           value={pathName}
         >
-          <Tab label="Work History" value="/" />
+          <Tab label="Job History" value="/" />
         </Tabs>
       </AppBar>
       {children}
