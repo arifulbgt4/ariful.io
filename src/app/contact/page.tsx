@@ -1,3 +1,4 @@
+// Widgets
 import ContactForm from "src/widgets/ContactForm";
 
 const ContactPage = () => {
