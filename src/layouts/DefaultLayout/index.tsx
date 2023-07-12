@@ -33,7 +33,12 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   return (
     <ScrollTrigger threshold={100}>
       {(trigger) => (
-        <Container maxWidth={false}>
+        <Container
+          maxWidth={false}
+          sx={{
+            minHeight: "100vh",
+          }}
+        >
           <Grid
             container
             spacing={12}
