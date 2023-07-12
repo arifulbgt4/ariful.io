@@ -1,14 +1,20 @@
 "use client";
+// React
+import { FC } from "react";
 // @mui
 import { Box, Typography, Button, Grid, Paper } from "@mui/material";
 // packages
 import { Form as FinalForm } from "react-final-form";
+import { FormApi } from "final-form";
 
 // components
 import { TextField, required, composeValidators } from "src/components/Input";
 
 // Types
-import { FormDataOptions } from "./Types";
+import { ContactFormProps, FormDataOptions } from "./Types";
+
+// actions
+import { sendEmail } from "./actions";
 
 const INITIAL_VALUES: FormDataOptions = {
   name: "",
@@ -17,8 +23,18 @@ const INITIAL_VALUES: FormDataOptions = {
   message: "",
 };
 
-const ContactForm = () => {
-  const onSubmitForm = async (values: FormDataOptions) => {};
+const ContactForm: FC<ContactFormProps> = () => {
+  const onSubmitForm = async (
+    values: FormDataOptions,
+    form: FormApi<FormDataOptions, FormDataOptions>
+  ) => {
+    try {
+      await sendEmail(values);
+      form.restart();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <Grid container>
@@ -31,7 +47,6 @@ const ContactForm = () => {
             onSubmit={onSubmitForm}
             initialValues={INITIAL_VALUES}
             render={({ handleSubmit, values, errors, submitting }) => {
-              console.log("values", values);
               return (
                 <form onSubmit={handleSubmit}>
                   <TextField
@@ -107,4 +122,6 @@ const ContactForm = () => {
   );
 };
 
+// Exports
+export * from "./Types";
 export default ContactForm;
