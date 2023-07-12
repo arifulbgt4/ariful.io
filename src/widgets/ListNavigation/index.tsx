@@ -22,6 +22,7 @@ const ListNavigation = () => {
           borderRadius: 2.5,
           [`&.${menuItemClasses.selected}`]: {
             color: (theme) => theme.palette.primary.main,
+            background: "transparent",
             "& svg": {
               color: (theme) => theme.palette.primary.main,
             },

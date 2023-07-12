@@ -20,7 +20,9 @@ const MuiListItemButton: Components<Theme>["MuiListItemButton"] = {
 
 const MuiListItemIcon: Components<Theme>["MuiListItemIcon"] = {
   styleOverrides: {
-    root: ({ theme, ownerState }) => ({}),
+    root: ({ theme, ownerState }) => ({
+      minWidth: `${theme.spacing(3.75)}!important`,
+    }),
   },
 };
 
