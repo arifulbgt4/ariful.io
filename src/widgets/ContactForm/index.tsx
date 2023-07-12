@@ -4,12 +4,15 @@ import {
   Box,
   Typography,
   FormControl,
-  TextField,
+  TextField as MuiTextField,
   Input,
   Button,
 } from "@mui/material";
 // packages
 import { Form as FinalForm, Field, FormRenderProps } from "react-final-form";
+
+// components
+import { TextField, required } from "src/components/Input";
 
 // Types
 import { FormDataOptions } from "./Types";
@@ -30,7 +33,7 @@ const ContactForm = () => {
         onSubmit={onSubmitForm}
         initialValues={INITIAL_VALUES}
         render={({ handleSubmit, values, errors }) => {
-          console.log("values", errors);
+          console.log("values", values);
           return (
             <form onSubmit={handleSubmit}>
               {/* <Field
@@ -43,7 +46,13 @@ const ContactForm = () => {
                 }}
               /> */}
 
-              <TextField name="name" required />
+              <TextField
+                name="name"
+                helperText="hey ff"
+                fieldProps={{
+                  validate: required("Name is required"),
+                }}
+              />
               <Button type="submit">Send email</Button>
             </form>
           );
