@@ -1,17 +1,11 @@
 "use client";
 // @mui
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Grid } from "@mui/material";
 // packages
 import { Form as FinalForm } from "react-final-form";
 
 // components
-import {
-  TextField,
-  required,
-  composeValidators,
-  minLength,
-  maxLength,
-} from "src/components/Input";
+import { TextField, required, composeValidators } from "src/components/Input";
 
 // Types
 import { FormDataOptions } from "./Types";
@@ -28,8 +22,10 @@ const ContactForm = () => {
 
   return (
     <Box>
-      <Typography variant="h5">Contact me directly</Typography>
-      {/* <FinalForm
+      <Typography variant="h5" sx={{ mb: 3 }}>
+        Contact me directly
+      </Typography>
+      <FinalForm
         onSubmit={onSubmitForm}
         initialValues={INITIAL_VALUES}
         render={({ handleSubmit, values, errors, submitting }) => {
@@ -40,17 +36,64 @@ const ContactForm = () => {
                 name="name"
                 label="Name"
                 required
+                size="small"
+                fullWidth
                 fieldProps={{
                   validate: composeValidators(required("Name is required")),
                 }}
+                sx={{
+                  mb: 2,
+                }}
               />
+              <TextField
+                name="email"
+                label="Email"
+                required
+                size="small"
+                fullWidth
+                fieldProps={{
+                  validate: composeValidators(required("Name is required")),
+                }}
+                sx={{
+                  mb: 2,
+                }}
+              />
+              <TextField
+                name="subject"
+                label="Subject"
+                required
+                size="small"
+                fullWidth
+                fieldProps={{
+                  validate: composeValidators(required("Name is required")),
+                }}
+                sx={{
+                  mb: 2,
+                }}
+              />
+              <TextField
+                name="message"
+                label="Message"
+                required
+                size="small"
+                multiline
+                rows={5}
+                fullWidth
+                fieldProps={{
+                  validate: composeValidators(required("Name is required")),
+                }}
+                sx={{
+                  mb: 3,
+                }}
+              />
+
               <Button type="submit" variant="contained" disabled={submitting}>
                 Submit
               </Button>
             </form>
           );
         }}
-      /> */}
+      />
     </Box>
   );
 };
