@@ -8,12 +8,7 @@ import {
 
 const OpenSource = () => {
   return (
-    <Box
-      sx={{
-        zIndex: 3,
-        background: (theme) => theme.palette.background.default,
-      }}
-    >
+    <Box>
       <Typography variant="h6" sx={{ mb: 4 }}>
         Open Source Contributions
       </Typography>
