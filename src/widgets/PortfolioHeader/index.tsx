@@ -1,3 +1,5 @@
+// React
+import { FC } from "react";
 // @mui
 import {
   Box,
@@ -12,10 +14,29 @@ import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
 } from "@mui/icons-material";
+// packages
+import { useParallax } from "react-scroll-parallax";
 
-const PortfolioHeader = ({ triger }: { triger: boolean }) => {
+import { PortfolioHeaderProps } from "./Types";
+
+const PortfolioHeader: FC<PortfolioHeaderProps> = ({
+  disableLinks = false,
+  animation = true,
+  upAnimation = false,
+}) => {
+  const parallax = useParallax<HTMLDivElement>({
+    translateY: [animation ? -800 : 0, 0, "easeIn"],
+    ...(upAnimation && { translateY: [550, -150, "easeIn"] }),
+  });
+
   return (
-    <Stack direction="row" justifyContent="space-between" alignItems="center">
+    <Stack
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
+      position={animation ? "fixed" : "relative"}
+      ref={parallax.ref}
+    >
       <Stack
         direction="row"
         sx={{
@@ -38,7 +59,7 @@ const PortfolioHeader = ({ triger }: { triger: boolean }) => {
           </Typography>
         </Box>
       </Stack>
-      {!triger && (
+      {!disableLinks && (
         <Stack direction="row" sx={{ mr: 4, mt: 2 }}>
           <Link
             underline="none"
