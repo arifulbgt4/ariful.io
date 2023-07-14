@@ -6,6 +6,8 @@ import { useRouter, usePathname } from "next/navigation";
 // @mui
 import { Box, Typography, AppBar, Tabs, Tab } from "@mui/material";
 
+import PortfolioHeader from "src/widgets/PortfolioHeader";
+
 // Types
 import { LandingLayoutOptions } from "./Types";
 
@@ -19,14 +21,8 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
 
   return (
     <>
-      <Box
-        p={2}
-        position="relative"
-        sx={{
-          zIndex: 3,
-          background: (theme) => theme.palette.background.default,
-        }}
-      >
+      <PortfolioHeader animation={false} upAnimation />
+      <Box p={2} position="relative">
         <Typography variant="subtitle1">
           I possess over eight years of expertise in front-end technologies and
           frameworks, with a strong emphasis on creating clean, efficient, and
