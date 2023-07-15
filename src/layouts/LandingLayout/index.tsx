@@ -4,12 +4,26 @@ import { FC } from "react";
 // Next
 import { useRouter, usePathname } from "next/navigation";
 // @mui
-import { Box, Typography, AppBar, Tabs, Tab, Hidden } from "@mui/material";
+import {
+  Box,
+  Typography,
+  AppBar,
+  Tabs,
+  Tab,
+  Hidden,
+  Stack,
+  Link,
+  IconButton,
+} from "@mui/material";
 
 import PortfolioHeader from "src/widgets/PortfolioHeader";
 
 // Types
 import { LandingLayoutOptions } from "./Types";
+import {
+  GitHub as GitHubIcon,
+  LinkedIn as LinkedInIcon,
+} from "@mui/icons-material";
 
 const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
   const router = useRouter();
@@ -30,6 +44,28 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
           frameworks, with a strong emphasis on creating clean, efficient, and
           user-friendly interfaces for web and mobile applications.
         </Typography>
+        <Hidden implementation="css" mdUp>
+          <Stack direction="row" sx={{ mr: 4, mt: 2 }}>
+            <Link
+              underline="none"
+              href="https://www.linkedin.com/in/ariful25278/"
+              target="_blank"
+            >
+              <IconButton size="small">
+                <LinkedInIcon />
+              </IconButton>
+            </Link>
+            <Link
+              underline="none"
+              href="https://github.com/arifulbgt4"
+              target="_blank"
+            >
+              <IconButton size="small">
+                <GitHubIcon />
+              </IconButton>
+            </Link>
+          </Stack>
+        </Hidden>
       </Box>
       <AppBar
         position="sticky"
