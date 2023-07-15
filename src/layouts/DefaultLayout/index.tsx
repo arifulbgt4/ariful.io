@@ -51,7 +51,7 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
           spacing={10}
           position="sticky"
           alignItems="center"
-          top={-85}
+          top={-80}
           sx={(theme) => ({
             [theme.breakpoints.down("md")]: {
               zIndex: 3000,

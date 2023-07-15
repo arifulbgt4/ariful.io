@@ -27,7 +27,7 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
 }) => {
   const parallax = useParallax<HTMLDivElement>({
     translateY: [animation ? -800 : 0, 0, "easeIn"],
-    ...(upAnimation && { translateY: [520, -158, "easeIn"] }),
+    ...(upAnimation && { translateY: [530, -117, "easeIn"] }),
     opacity: [-10, 10],
   });
 

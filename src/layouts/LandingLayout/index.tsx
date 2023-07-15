@@ -34,7 +34,13 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
   };
 
   return (
-    <>
+    <Box
+      sx={(theme) => ({
+        [theme.breakpoints.up("md")]: {
+          mt: -4,
+        },
+      })}
+    >
       <Hidden implementation="css" mdDown>
         <PortfolioHeader animation={false} upAnimation />
       </Hidden>
@@ -92,7 +98,7 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
         </Tabs>
       </AppBar>
       {children}
-    </>
+    </Box>
   );
 };
 
