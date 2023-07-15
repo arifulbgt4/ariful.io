@@ -39,7 +39,16 @@ const ContactForm: FC<ContactFormProps> = () => {
   return (
     <Grid container>
       <Grid item xs={12} md={8}>
-        <Box sx={{ px: 5, py: 4, borderRadius: 2 }}>
+        <Box
+          sx={(theme) => ({
+            px: 5,
+            py: 4,
+            borderRadius: 2,
+            [theme.breakpoints.down("md")]: {
+              px: 0,
+            },
+          })}
+        >
           <Typography variant="h5" sx={{ mb: 4 }}>
             Contact me directly
           </Typography>
