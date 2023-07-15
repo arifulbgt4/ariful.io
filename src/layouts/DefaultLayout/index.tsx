@@ -5,7 +5,15 @@ import { FC, useContext } from "react";
 // Next
 import { usePathname } from "next/navigation";
 // @mui
-import { Container, Box, Stack, Grid, IconButton } from "@mui/material";
+import {
+  Container,
+  Box,
+  Stack,
+  Grid,
+  IconButton,
+  Hidden,
+  Paper,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 // Icons
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
@@ -40,11 +48,16 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
       >
         <Grid
           container
-          spacing={12}
-          justifyContent="end"
+          spacing={10}
           position="sticky"
-          top={-96}
-          zIndex={1}
+          alignItems="center"
+          top={-80}
+          sx={(theme) => ({
+            [theme.breakpoints.down("md")]: {
+              zIndex: 3000,
+              background: (theme) => theme.palette.background.default,
+            },
+          })}
         >
           <Grid item xs={9}>
             <PortfolioHeader
@@ -64,8 +77,8 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
             </Stack>
           </Grid>
         </Grid>
-        <Grid container spacing={12}>
-          <Grid item xs>
+        <Grid container spacing={12} rowSpacing={3}>
+          <Grid component={Hidden} item xs implementation="css" mdDown>
             <Box position="sticky" top={80}>
               <ListNavigation />
             </Box>
@@ -73,10 +86,16 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
           <Grid item xs={12} md={6}>
             {children}
           </Grid>
+
           <Grid item xs>
             <Box position="sticky" top={65}>
               <OpenSource />
             </Box>
+          </Grid>
+          <Grid component={Hidden} item xs={12} implementation="css" mdUp>
+            <Paper sx={{ p: 2 }}>
+              <ListNavigation />
+            </Paper>
           </Grid>
         </Grid>
       </Container>
