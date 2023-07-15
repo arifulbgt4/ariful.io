@@ -4,7 +4,7 @@ import { FC } from "react";
 // Next
 import { useRouter, usePathname } from "next/navigation";
 // @mui
-import { Box, Typography, AppBar, Tabs, Tab } from "@mui/material";
+import { Box, Typography, AppBar, Tabs, Tab, Hidden } from "@mui/material";
 
 import PortfolioHeader from "src/widgets/PortfolioHeader";
 
@@ -21,8 +21,10 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
 
   return (
     <>
-      <PortfolioHeader animation={false} upAnimation />
-      <Box p={2} position="relative">
+      <Hidden implementation="css" mdDown>
+        <PortfolioHeader animation={false} upAnimation />
+      </Hidden>
+      <Box p={2} position="relative" zIndex={3}>
         <Typography variant="subtitle1">
           I possess over eight years of expertise in front-end technologies and
           frameworks, with a strong emphasis on creating clean, efficient, and
@@ -32,13 +34,17 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
       <AppBar
         position="sticky"
         color="inherit"
-        sx={{
+        sx={(theme) => ({
           mb: 5,
           borderRadius: 1,
           overflow: "hidden",
           transition: "0.5s",
           top: 5,
-        }}
+          [theme.breakpoints.down("md")]: {
+            top: theme.spacing(9.4),
+            borderRadius: `0 0 ${theme.spacing(1)} ${theme.spacing(1)}`,
+          },
+        })}
       >
         <Tabs
           textColor="inherit"
