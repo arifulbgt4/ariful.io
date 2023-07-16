@@ -22,7 +22,7 @@ const OpenSource: FC<OpenSourceProps> = () => {
           MuiStory
         </Typography>
         <Typography variant="body2" sx={{ mb: 1 }}>
-          Next.js v13..4.4 & mui core v5.13.3 theming
+          MuiStory is a design system for Next.js that uses MUI Core v5.13.3 theming. It provides a boilerplate that makes it easy to integrate Storybook with MUI to preview your components and their themes in a live environment.
         </Typography>
         <Stack direction="row" spacing={0.4}>
           <Link
