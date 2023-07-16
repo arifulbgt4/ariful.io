@@ -1,3 +1,5 @@
+// React
+import { FC } from "react";
 // @mui
 import { Box, Link, Paper, Stack, Typography, IconButton } from "@mui/material";
 // Icons
@@ -6,7 +8,10 @@ import {
   LanguageOutlined as LanguageOutlinedIcon,
 } from "@mui/icons-material";
 
-const OpenSource = () => {
+// Types
+import { OpenSourceProps } from "./Types";
+
+const OpenSource: FC<OpenSourceProps> = () => {
   return (
     <Box>
       <Typography variant="h6" sx={{ mb: 4 }}>
