@@ -1,3 +1,5 @@
+// Naxt
+import { Analytics } from "@vercel/analytics/react";
 // Context
 import ThemeContextProvider from "src/theme";
 // Layouts
@@ -25,6 +27,7 @@ export default function RootLayout({
           <Footer />
         </body>
       </ThemeContextProvider>
+      <Analytics />
     </html>
   );
 }
