@@ -17,12 +17,15 @@ const OpenSource: FC<OpenSourceProps> = () => {
       <Typography variant="h6" sx={{ mb: 4 }}>
         Open Source Contributions
       </Typography>
-      <Paper sx={{ p: 2, mb: 4 }}>
+      <Paper elevation={6} sx={{ p: 2, mb: 4 }}>
         <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
           MuiStory
         </Typography>
         <Typography variant="body2" sx={{ mb: 1 }}>
-          MuiStory is a design system for Next.js that uses MUI Core v5.13.3 theming. It provides a boilerplate that makes it easy to integrate Storybook with MUI to preview your components and their themes in a live environment.
+          MuiStory is a design system for Next.js that uses MUI Core v5 theming.
+          It provides a boilerplate that makes it easy to integrate Storybook
+          with MUI to preview your components and their themes in a live
+          environment.
         </Typography>
         <Stack direction="row" spacing={0.4}>
           <Link
@@ -45,7 +48,7 @@ const OpenSource: FC<OpenSourceProps> = () => {
           </Link>
         </Stack>
       </Paper>
-      <Paper sx={{ p: 2 }}>
+      <Paper elevation={6} sx={{ p: 2 }}>
         <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
           Wireflow
         </Typography>

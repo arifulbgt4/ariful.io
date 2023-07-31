@@ -73,7 +73,7 @@ export default {
   },
   background: {
     default: "#c9bddf",
-    paper: "#fff",
+    paper: "#c9bddf",
   },
   common: {
     black: "#000",
