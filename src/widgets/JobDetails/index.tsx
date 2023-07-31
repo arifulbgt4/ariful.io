@@ -26,7 +26,7 @@ import { JobDetailsOptions } from "./Types";
 const JobDetails: FC<JobDetailsOptions> = ({ data }) => {
   const { title, company, address, works, url, startDate, endDate } = data;
   return (
-    <Card sx={{ mb: 2 }}>
+    <Card elevation={4}>
       <CardHeader
         title={title}
         subheader={`${company} - ${address}`}

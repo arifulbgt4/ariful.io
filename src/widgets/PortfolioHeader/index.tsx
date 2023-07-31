@@ -51,7 +51,15 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
             }}
           >
             <Link underline="none" href="/">
-              <Avatar variant="rounded" sx={{ width: 46, height: 46, mr: 1.5 }}>
+              <Avatar
+                variant="rounded"
+                sx={{
+                  width: 46,
+                  height: 46,
+                  mr: 1.5,
+                  color: (theme) => theme.palette.text.primary,
+                }}
+              >
                 A
               </Avatar>
             </Link>
