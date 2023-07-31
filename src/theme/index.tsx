@@ -18,7 +18,7 @@ import componentsOverride from "./overrides";
 
 type SupportedLocales = keyof typeof locales;
 
-const DEFAULT_PALETTE_MODE: PaletteMode = "dark";
+const DEFAULT_PALETTE_MODE: PaletteMode = "light";
 const DEFAULT_LOCAL: SupportedLocales = "enUS";
 
 export const ColorModeContext = createContext<{
