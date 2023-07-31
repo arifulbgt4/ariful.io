@@ -57,6 +57,7 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
                   width: 46,
                   height: 46,
                   mr: 1.5,
+                  boxShadow: 4,
                   color: (theme) => theme.palette.text.primary,
                 }}
               >
