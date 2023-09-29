@@ -1,4 +1,5 @@
 // Naxt
+import { type Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 // Context
 import ThemeContextProvider from "src/theme";
@@ -8,7 +9,7 @@ import DefaultLayout from "src/layouts/DefaultLayout";
 import Footer from "src/widgets/Footer";
 import { siteConfig } from "src/global/config";
 
-export const metadata = {
+export const metadata: Metadata = {
   viewport: "initial-scale=1, width=device-width",
   title: { default: siteConfig.name, template: `%s - ${siteConfig.name}` },
   description: siteConfig.description,
