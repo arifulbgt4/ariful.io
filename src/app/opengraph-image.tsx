@@ -6,7 +6,12 @@ export const alt =
   "Experienced Senior Frontend Engineer | JavaScript, React.js, Next.js Expert";
 export const contentType = "image/png";
 
-export default async function OG() {
+export const size = {
+  width: 1200,
+  height: 630,
+};
+
+export default async function Image() {
   return new ImageResponse(
     (
       <div
@@ -19,8 +24,7 @@ export default async function OG() {
       </div>
     ),
     {
-      width: 1200,
-      height: 630,
+      ...size,
     }
   );
 }
