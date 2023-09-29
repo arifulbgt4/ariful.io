@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/server";
-import { siteConfig } from "src/global/config";
 
 export const runtime = "edge";
-export const alt = siteConfig.name;
+export const alt =
+  "Experienced Senior Frontend Engineer | JavaScript, React.js, Next.js Expert";
 export const contentType = "image/png";
 
 export default async function OG() {
