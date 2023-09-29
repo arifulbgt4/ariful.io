@@ -3,7 +3,7 @@ import { ImageResponse } from "next/server";
 import { siteConfig } from "src/global/config";
 
 export const runtime = "edge";
-export const alt = siteConfig.description;
+export const alt = siteConfig.name;
 export const contentType = "image/png";
 
 export default async function OG() {
