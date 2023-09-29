@@ -54,6 +54,7 @@
     "cross-var": "^1.1.0",
     "dotenv-cli": "^7.2.1",
     "eslint-plugin-storybook": "^0.6.12",
+    "next-contentlayer": "^0.3.4",
     "react-element-to-jsx-string": "^15.0.0",
     "remark-gfm": "^3.0.1",
     "storybook": "^7.0.26"
