@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "next/server";
+import { siteConfig } from "src/global/config";
 
 export const runtime = "edge";
 export const alt =
@@ -16,11 +17,19 @@ export default async function Image() {
     (
       <div
         style={{
+          display: "flex",
+          height: "100%",
+          flex: 1,
+          alignContent: "center",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          padding: 30,
           backgroundImage:
             "linear-gradient(to bottom right, #E0E7FF 25%, #ffffff 50%, #CFFAFE 75%)",
         }}
       >
-        <h1>Ariful</h1>
+        <h1 style={{ fontSize: 24 }}>{siteConfig.name}</h1>
       </div>
     ),
     {
