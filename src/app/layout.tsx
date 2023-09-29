@@ -10,7 +10,7 @@ import Footer from "src/widgets/Footer";
 export const metadata = {
   title: "Ariful islam",
   description:
-    "Ariful's personal portfolio, Fullstack, Full-stack, Full stack, Fullstack developer",
+    "Ariful personal portfolio, Fullstack, Full-stack, Full stack, Fullstack developer",
   viewport: "initial-scale=1, width=device-width",
 };
 
