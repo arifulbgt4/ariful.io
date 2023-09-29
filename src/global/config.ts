@@ -1,7 +1,7 @@
 const siteAddress = process.env.NEXT_PUBLIC_SITE_ADDRESS || "http://ariful.io/";
 
 export const siteConfig = {
-  name: "Ariful",
+  name: "Experienced Senior Frontend Engineer | JavaScript, React.js, Next.js Expert",
   url: siteAddress,
   ogImage: `${siteAddress}/opengraph-image`,
   description:
@@ -9,4 +9,18 @@ export const siteConfig = {
   links: {
     github: "https://github.com/arifulbgt4",
   },
+  keywords: [
+    "Frontend Engineer",
+    "JavaScript Develope",
+    "React.js Specialis",
+    "Next.js Expert",
+    "Senior Web Developer",
+    "User-Centric Design",
+    "UI/UX Enthusiast",
+    "Node.js Developer",
+    "Web Application Architect",
+    "Code Refactoring Pro",
+  ],
+  author: "ariful",
+  creator: "ariful",
 };
