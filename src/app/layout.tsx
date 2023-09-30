@@ -61,10 +61,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <meta
-        name="google-site-verification"
-        content={process.env.GOOGLE_SEARCH_VERIFICATION}
-      />
       <Script
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -75,16 +71,20 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-K9MSB3HN');`,
         }}
       />
+      <meta
+        name="google-site-verification"
+        content={process.env.GOOGLE_SEARCH_VERIFICATION}
+      />
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
-          <DefaultLayout>{children}</DefaultLayout>
-          <Footer />
           <noscript
             dangerouslySetInnerHTML={{
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9MSB3HN"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
             }}
           ></noscript>
+          <DefaultLayout>{children}</DefaultLayout>
+          <Footer />
         </body>
       </ThemeContextProvider>
       <Analytics />
