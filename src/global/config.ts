@@ -2,6 +2,7 @@ const siteAddress = process.env.NEXT_PUBLIC_SITE_ADDRESS || "http://ariful.io/";
 
 export const siteConfig = {
   name: "Experienced Senior Frontend Engineer | JavaScript, React.js, Next.js Expert",
+  shortName: "Experienced Senior Frontend Engineer",
   url: siteAddress,
   ogImage: `${siteAddress}opengraph-image`,
   description:
