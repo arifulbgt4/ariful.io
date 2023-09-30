@@ -62,6 +62,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
+        strategy="afterInteractive"
+      />
+      <Script strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-SEZT2YEX07');
+        `}
+      </Script>
+      <Script
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -75,19 +88,6 @@ export default function RootLayout({
         name="google-site-verification"
         content={process.env.GOOGLE_SEARCH_VERIFICATION}
       />
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
-        strategy="afterInteractive"
-      />
-      <Script strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-SEZT2YEX07');
-        `}
-      </Script>
 
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
