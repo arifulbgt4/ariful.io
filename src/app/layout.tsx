@@ -75,7 +75,11 @@ export default function RootLayout({
         name="google-site-verification"
         content={process.env.GOOGLE_SEARCH_VERIFICATION}
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
+        strategy="afterInteractive"
+      />
+      <Script strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -84,10 +88,7 @@ export default function RootLayout({
           gtag('config', 'G-SEZT2YEX07');
         `}
       </Script>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
-        strategy="afterInteractive"
-      />
+
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
           <noscript
