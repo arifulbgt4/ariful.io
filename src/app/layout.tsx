@@ -75,6 +75,16 @@ export default function RootLayout({
         name="google-site-verification"
         content={process.env.GOOGLE_SEARCH_VERIFICATION}
       />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-SEZT2YEX07');
+        `}
+      </Script>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07" />
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
           <noscript
