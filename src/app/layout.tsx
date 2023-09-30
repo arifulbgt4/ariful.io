@@ -61,34 +61,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      <head>
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-K9MSB3HN');`,
-        }}
-      />
-      <meta
-        name="google-site-verification"
-        content={process.env.GOOGLE_SEARCH_VERIFICATION}
-      />
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
-        strategy="afterInteractive"
-      />
-      <Script strategy="afterInteractive">
-        {`
+          }}
+        />
+        <meta
+          name="google-site-verification"
+          content={process.env.GOOGLE_SEARCH_VERIFICATION}
+        />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
+          strategy="afterInteractive"
+        />
+        <Script strategy="afterInteractive">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
           gtag('config', 'G-SEZT2YEX07');
         `}
-      </Script>
-
+        </Script>
+      </head>
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
           <noscript
