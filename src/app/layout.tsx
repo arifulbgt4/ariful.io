@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/inline-script-id */
 // Naxt
 import { type Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
@@ -8,6 +9,7 @@ import DefaultLayout from "src/layouts/DefaultLayout";
 // Widgets
 import Footer from "src/widgets/Footer";
 import { siteConfig } from "src/global/config";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   viewport: "initial-scale=1, width=device-width",
@@ -63,10 +65,26 @@ export default function RootLayout({
         name="google-site-verification"
         content={process.env.GOOGLE_SEARCH_VERIFICATION}
       />
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-K9MSB3HN');`,
+        }}
+      />
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
           <DefaultLayout>{children}</DefaultLayout>
           <Footer />
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9MSB3HN"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          ></noscript>
         </body>
       </ThemeContextProvider>
       <Analytics />
