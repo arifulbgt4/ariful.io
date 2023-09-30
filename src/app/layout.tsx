@@ -74,7 +74,7 @@ export default function RootLayout({
           gtag('config', 'G-SEZT2YEX07');
         `}
       </Script>
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -87,7 +87,7 @@ export default function RootLayout({
       <meta
         name="google-site-verification"
         content={process.env.GOOGLE_SEARCH_VERIFICATION}
-      />
+      /> */}
 
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
