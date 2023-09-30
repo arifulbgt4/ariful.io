@@ -59,6 +59,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta
+        name="google-site-verification"
+        content={process.env.GOOGLE_SEARCH_VERIFICATION}
+      />
       <ThemeContextProvider>
         <body suppressHydrationWarning={true}>
           <DefaultLayout>{children}</DefaultLayout>
