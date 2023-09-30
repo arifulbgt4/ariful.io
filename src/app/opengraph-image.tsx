@@ -45,7 +45,7 @@ export default async function Image() {
             alignItems: "center",
             width: "80%",
             padding: "20px 30px",
-            borderRadius: "30px",
+            borderRadius: "36px",
             backgroundImage:
               "linear-gradient(to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%)",
           }}
