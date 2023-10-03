@@ -88,14 +88,14 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
           },
         })}
       >
-        <Tabs
+        {/* <Tabs
           textColor="inherit"
           indicatorColor="secondary"
           onChange={onHandleTabs}
           value={pathName}
         >
           <Tab label="Job History" value="/" />
-        </Tabs>
+        </Tabs> */}
       </AppBar>
       {children}
     </Box>
