@@ -47,9 +47,9 @@ const DATA_JOBS: JobOptions[] = [
 export default function Home() {
   return (
     <>
-      {DATA_JOBS.map((job: JobOptions, i) => (
+      {/* {DATA_JOBS.map((job: JobOptions, i) => (
         <JobDetails key={i} data={job} />
-      ))}
+      ))} */}
     </>
   );
 }
