@@ -5,6 +5,8 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable Turbopack (empty config silences webpack warning) and leave room for future tuning.
+  turbopack: {},
   // Next.js 16: server actions are stable; removed experimental flag.
 };
 

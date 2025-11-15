@@ -12,7 +12,6 @@ import { siteConfig } from "src/global/config";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  viewport: "initial-scale=1, width=device-width",
   title: { default: siteConfig.name, template: `%s - ${siteConfig.name}` },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
@@ -48,6 +47,11 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: "@ArifulI60735491",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
