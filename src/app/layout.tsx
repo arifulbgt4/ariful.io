@@ -65,6 +65,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* Analytics / Tag Manager Scripts */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
         strategy="afterInteractive"
@@ -72,9 +73,8 @@ export default function RootLayout({
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          function gtag(){dataLayer.push(arguments);} 
           gtag('js', new Date());
-        
           gtag('config', 'G-SEZT2YEX07');
         `}
       </Script>
@@ -88,24 +88,22 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-K9MSB3HN');`,
         }}
       />
-      <meta
-        name="google-site-verification"
-        content={process.env.GOOGLE_SEARCH_VERIFICATION}
-      />
-
-      <ThemeContextProvider>
-        <body suppressHydrationWarning={true}>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9MSB3HN"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          ></noscript>
+      <body suppressHydrationWarning={true}>
+        {/* GTM noscript - static iframe to avoid hydration mismatch */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K9MSB3HN"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <ThemeContextProvider>
           <DefaultLayout>{children}</DefaultLayout>
           <Footer />
-        </body>
-      </ThemeContextProvider>
-      <Analytics />
+        </ThemeContextProvider>
+        <Analytics />
+      </body>
     </html>
   );
 }

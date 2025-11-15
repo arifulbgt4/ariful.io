@@ -5,15 +5,7 @@ import { FC, useContext } from "react";
 // Next
 import { usePathname } from "next/navigation";
 // @mui
-import {
-  Container,
-  Box,
-  Stack,
-  Grid,
-  IconButton,
-  Hidden,
-  Paper,
-} from "@mui/material";
+import { Container, Box, Stack, Grid, IconButton, Paper } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 // Icons
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
@@ -78,7 +70,13 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
           </Grid>
         </Grid>
         <Grid container spacing={12} rowSpacing={3}>
-          <Grid component={Hidden} item xs implementation="css" mdDown>
+          <Grid
+            item
+            xs
+            sx={{
+              display: { xs: "none", sm: "none", md: "none", lg: "block" },
+            }}
+          >
             <Box position="sticky" top={80}>
               <ListNavigation />
             </Box>
@@ -92,7 +90,11 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
               <OpenSource />
             </Box>
           </Grid>
-          <Grid component={Hidden} item xs={12} implementation="css" mdUp>
+          <Grid
+            item
+            xs={12}
+            sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+          >
             <Paper sx={{ p: 2 }}>
               <ListNavigation />
             </Paper>

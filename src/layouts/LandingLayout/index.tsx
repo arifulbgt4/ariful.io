@@ -10,7 +10,6 @@ import {
   AppBar,
   Tabs,
   Tab,
-  Hidden,
   Stack,
   Link,
   IconButton,
@@ -41,16 +40,18 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
         },
       })}
     >
-      <Hidden implementation="css" mdDown>
+      <Box
+        sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" } }}
+      >
         <PortfolioHeader animation={false} upAnimation />
-      </Hidden>
+      </Box>
       <Box p={2} position="relative" zIndex={3}>
         <Typography variant="subtitle1">
           I possess over eight years of expertise in front-end technologies and
           frameworks, with a strong emphasis on creating clean, efficient, and
           user-friendly interfaces for web and mobile applications.
         </Typography>
-        <Hidden implementation="css" mdUp>
+        <Box sx={{ display: { xs: "block", sm: "block", md: "none" } }}>
           <Stack direction="row" sx={{ mr: 4, mt: 2 }}>
             <Link
               underline="none"
@@ -71,7 +72,7 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
               </IconButton>
             </Link>
           </Stack>
-        </Hidden>
+        </Box>
       </Box>
       <AppBar
         position="sticky"

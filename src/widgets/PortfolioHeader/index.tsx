@@ -1,5 +1,6 @@
+"use client";
 // React
-import { FC, RefObject } from "react";
+import React, { FC, RefObject } from "react";
 // @mui
 import {
   Box,
@@ -8,7 +9,6 @@ import {
   Avatar,
   Typography,
   IconButton,
-  Hidden,
 } from "@mui/material";
 // Icons
 import {
@@ -36,7 +36,12 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
 
   return (
     <>
-      <Hidden implementation="css" mdDown>
+      {/* Desktop / medium-and-up header (previously Hidden mdDown) should be visible from md and larger */}
+      <Box
+        sx={{
+          display: { xs: "none", sm: "none", md: "block", lg: "block" },
+        }}
+      >
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -105,8 +110,13 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
             </Stack>
           )}
         </Stack>
-      </Hidden>
-      <Hidden implementation="css" mdUp>
+      </Box>
+      {/* Mobile header (previously Hidden mdUp) visible up to md, hidden on lg+ */}
+      <Box
+        sx={{
+          display: { xs: "block", sm: "block", md: "block", lg: "none" },
+        }}
+      >
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -164,7 +174,7 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
             </Stack>
           )}
         </Stack>
-      </Hidden>
+      </Box>
     </>
   );
 };
