@@ -25,12 +25,6 @@ const LandingLayout: FC<LandingLayoutOptions> = ({ children }) => {
 
       {/* Description Section */}
       <div className="relative z-[3] p-4">
-        <p className="text-base leading-relaxed text-muted-foreground">
-          I possess over eight years of expertise in front-end technologies and
-          frameworks, with a strong emphasis on creating clean, efficient, and
-          user-friendly interfaces for web and mobile applications.
-        </p>
-
         {/* Mobile Social Links */}
         <div className="mt-4 mr-8 flex gap-2 md:hidden">
           <Link

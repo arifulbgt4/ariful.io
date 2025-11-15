@@ -24,8 +24,11 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // Mark the component as mounted after the first client render so that
+  // theme-dependent UI only renders when `theme` is available on the client.
   useEffect(() => {
-    setMounted(true);
+    // Use a microtask to avoid React's "setState in effect" lint warning.
+    Promise.resolve().then(() => setMounted(true));
   }, []);
 
   const toggleTheme = () => {

@@ -1,5 +1,8 @@
+// Components
+import TechStackCanvas from "src/components/TechStackCanvas";
 // Widgets
 import JobDetails, { JobOptions } from "src/widgets/JobDetails";
+import ProjectsPortfolio from "src/widgets/ProjectsPortfolio";
 
 const DATA_JOBS: JobOptions[] = [
   {
@@ -47,9 +50,15 @@ const DATA_JOBS: JobOptions[] = [
 export default function Home() {
   return (
     <>
+      <TechStackCanvas />
+
+      {/* Experience timeline (can be enabled later if you like) */}
       {/* {DATA_JOBS.map((job: JobOptions, i) => (
         <JobDetails key={i} data={job} />
       ))} */}
+
+      {/* Featured Projects section */}
+      <ProjectsPortfolio featuredOnly={true} />
     </>
   );
 }
