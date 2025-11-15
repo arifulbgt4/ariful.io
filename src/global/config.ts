@@ -9,6 +9,7 @@ export type Project = {
   year?: string;
   featured?: boolean;
   image?: string;
+  status?: "live" | "live-code" | "ongoing";
 };
 
 export const PROJECTS: Project[] = [
@@ -21,6 +22,7 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/arifulbgt4/ariful.io",
     year: "2024",
     featured: true,
+    status: "live-code",
   },
   {
     title: "E-Commerce Platform",
@@ -29,6 +31,7 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "Next.js", "Node.js", "MongoDB"],
     year: "2023",
     featured: true,
+    status: "live",
   },
   {
     title: "Real-time Chat Application",
@@ -37,6 +40,7 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "Node.js", "Socket.io", "Redis"],
     year: "2023",
     featured: true,
+    status: "live",
   },
   {
     title: "Dashboard Analytics Platform",
@@ -44,6 +48,7 @@ export const PROJECTS: Project[] = [
       "Comprehensive analytics dashboard with real-time data visualization, custom reports, and interactive charts.",
     techStack: ["React", "TypeScript", "D3.js", "Tailwind CSS"],
     year: "2023",
+    status: "live",
   },
   {
     title: "Task Management System",
@@ -51,6 +56,7 @@ export const PROJECTS: Project[] = [
       "A collaborative project management tool with drag-and-drop boards, team collaboration, and deadline tracking.",
     techStack: ["Next.js", "TypeScript", "React DnD", "PostgreSQL"],
     year: "2022",
+    status: "live",
   },
   {
     title: "Weather Forecast App",
@@ -58,6 +64,7 @@ export const PROJECTS: Project[] = [
       "Beautiful weather application with 7-day forecasts, location-based search, and animated weather icons.",
     techStack: ["React", "TypeScript", "OpenWeather API"],
     year: "2022",
+    status: "live",
   },
   {
     title: "Blog & CMS Platform",
@@ -65,6 +72,7 @@ export const PROJECTS: Project[] = [
       "Full-stack blogging platform with markdown support, SEO optimization, and content management system.",
     techStack: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
     year: "2022",
+    status: "live-code",
   },
   {
     title: "Social Media Dashboard",
@@ -72,6 +80,7 @@ export const PROJECTS: Project[] = [
       "Centralized dashboard for managing multiple social media accounts with analytics and scheduled posting features.",
     techStack: ["React", "Node.js", "GraphQL", "MongoDB"],
     year: "2021",
+    status: "live",
   },
   {
     title: "Music Player App",
@@ -79,6 +88,7 @@ export const PROJECTS: Project[] = [
       "Modern music streaming application with playlist management, audio visualization, and custom equalizer settings.",
     techStack: ["React", "TypeScript", "Web Audio API"],
     year: "2021",
+    status: "live",
   },
   {
     title: "Fitness Tracking App",
@@ -86,6 +96,7 @@ export const PROJECTS: Project[] = [
       "Health and fitness tracker with workout plans, progress tracking, calorie counter, and achievement system.",
     techStack: ["React Native", "TypeScript", "Firebase"],
     year: "2021",
+    status: "live",
   },
   {
     title: "Open Source Contributions",
@@ -95,6 +106,7 @@ export const PROJECTS: Project[] = [
     href: "https://github.com/arifulbgt4?tab=repositories",
     year: "2020 – Present",
     featured: true,
+    status: "live-code",
   },
   {
     title: "Labs & Experiments",
@@ -104,6 +116,7 @@ export const PROJECTS: Project[] = [
     href: "/lab",
     year: "Ongoing",
     featured: true,
+    status: "ongoing",
   },
 ];
 
