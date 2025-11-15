@@ -1,7 +1,7 @@
 "use client";
 
 // React
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 // Next
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -22,6 +22,11 @@ const LANDING_PATHS = ["/"];
 const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   const pathName = usePathname();
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -45,7 +50,9 @@ const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
                 aria-label="Toggle theme"
               >
-                {theme === "dark" ? (
+                {!mounted ? (
+                  <div className="h-5 w-5" />
+                ) : theme === "dark" ? (
                   <Sun className="h-5 w-5" />
                 ) : (
                   <Moon className="h-5 w-5" />

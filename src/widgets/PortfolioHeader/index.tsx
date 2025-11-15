@@ -26,7 +26,7 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
       {/* Desktop / medium-and-up header (visible from md and larger) */}
       <div className="hidden md:block">
         <div
-          ref={parallax.ref}
+          ref={parallax.ref as React.RefObject<HTMLDivElement>}
           className="flex items-center justify-between"
           style={{ opacity: upAnimation ? 1 : 0 }}
         >
