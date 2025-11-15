@@ -1,5 +1,5 @@
 // React
-import { FC } from "react";
+import { FC, RefObject } from "react";
 // @mui
 import {
   Box,
@@ -31,6 +31,9 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
     opacity: [-10, 10],
   });
 
+  // Cast ref to satisfy strict MUI Stack ref typing (expects RefObject<HTMLDivElement>)
+  const stackRef = parallax.ref as RefObject<HTMLDivElement>;
+
   return (
     <>
       <Hidden implementation="css" mdDown>
@@ -38,7 +41,7 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          ref={parallax.ref}
+          ref={stackRef}
           sx={{
             opacity: upAnimation ? 1 : 0,
           }}

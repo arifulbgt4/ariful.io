@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+  "build": "next build --webpack",
     "start": "next start",
     "lint": "next lint",
     "storybook": "dotenv -- cross-var storybook dev -p %STORYBOOK_PORT%",
@@ -12,7 +12,7 @@
     "chromatic": "dotenv -- cross-var chromatic --project-token=%CHROMATIC_PROJECT_TOKEN% --exit-once-uploaded"
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "^9.7.1",
+    "@ducanh2912/next-pwa": "^10.2.9",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@fontsource/material-icons": "^5.0.2",
@@ -24,10 +24,10 @@
     "@types/react-dom": "18.2.4",
     "@vercel/analytics": "^1.0.1",
     "add": "^2.0.6",
-    "eslint": "8.42.0",
-    "eslint-config-next": "13.4.4",
+  "eslint": "9.39.1",
+    "eslint-config-next": "16.0.3",
     "final-form": "^4.20.9",
-    "next": "13.4.4",
+    "next": "16.0.3",
     "nodemailer": "^6.9.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -52,7 +52,6 @@
     "chromatic": "^6.18.0",
     "cross-var": "^1.1.0",
     "dotenv-cli": "^7.2.1",
-    "eslint-plugin-storybook": "^0.6.12",
     "react-element-to-jsx-string": "^15.0.0",
     "remark-gfm": "^3.0.1",
     "storybook": "^7.0.26"

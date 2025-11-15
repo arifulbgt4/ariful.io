@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import { siteConfig } from "src/global/config";
 
-export const runtime = "edge";
+// Removed edge runtime for compatibility with static generation in Next 16
 export const alt = siteConfig.shortName;
 export const contentType = "image/png";
 

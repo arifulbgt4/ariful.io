@@ -1,7 +1,6 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
-// Route segment config
-export const runtime = "edge";
+// Removed edge runtime for compatibility with static generation in Next 16
 
 export function generateImageMetadata() {
   return [

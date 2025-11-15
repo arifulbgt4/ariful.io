@@ -5,9 +5,7 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
+  // Next.js 16: server actions are stable; removed experimental flag.
 };
 
 module.exports = withPWA(nextConfig);
