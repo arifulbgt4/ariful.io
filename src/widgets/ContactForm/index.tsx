@@ -1,8 +1,6 @@
 "use client";
 // React
 import { FC } from "react";
-// @mui
-import { Box, Typography, Button, Grid, Paper } from "@mui/material";
 // packages
 import { Form as FinalForm } from "react-final-form";
 import { FormApi } from "final-form";
@@ -37,97 +35,69 @@ const ContactForm: FC<ContactFormProps> = () => {
   };
 
   return (
-    <Grid container>
-      <Grid item xs={12} md={8}>
-        <Box
-          sx={(theme) => ({
-            px: 5,
-            py: 4,
-            borderRadius: 2,
-            [theme.breakpoints.down("md")]: {
-              px: 0,
-            },
-          })}
-        >
-          <Typography variant="h5" sx={{ mb: 4 }}>
-            Contact me directly
-          </Typography>
+    <div className="grid grid-cols-12">
+      <div className="col-span-12 md:col-span-8">
+        <div className="rounded-lg px-10 py-8 md:px-0">
+          <h2 className="mb-8 text-2xl font-semibold">Contact me directly</h2>
           <FinalForm
             onSubmit={onSubmitForm}
             initialValues={INITIAL_VALUES}
             render={({ handleSubmit, values, errors, submitting }) => {
               return (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <TextField
                     name="name"
                     label="Name"
                     required
-                    size="small"
                     fullWidth
                     fieldProps={{
                       validate: composeValidators(required("Name required")),
-                    }}
-                    sx={{
-                      mb: 2.5,
                     }}
                   />
                   <TextField
                     name="email"
                     label="Email"
                     required
-                    size="small"
                     fullWidth
                     fieldProps={{
                       validate: composeValidators(required("Email required")),
-                    }}
-                    sx={{
-                      mb: 2.5,
                     }}
                   />
                   <TextField
                     name="subject"
                     label="Subject"
                     required
-                    size="small"
                     fullWidth
                     fieldProps={{
                       validate: composeValidators(required("Subject required")),
-                    }}
-                    sx={{
-                      mb: 2.5,
                     }}
                   />
                   <TextField
                     name="message"
                     label="Message"
                     required
-                    size="small"
                     multiline
                     rows={5}
                     fullWidth
                     fieldProps={{
                       validate: composeValidators(required("Message required")),
                     }}
-                    sx={{
-                      mb: 3,
-                    }}
                   />
 
-                  <Button
+                  <button
                     type="submit"
-                    variant="contained"
-                    color="info"
                     disabled={submitting}
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                   >
                     Submit
-                  </Button>
+                  </button>
                 </form>
               );
             }}
           />
-        </Box>
-      </Grid>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 };
 

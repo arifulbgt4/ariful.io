@@ -1,15 +1,17 @@
 /* eslint-disable @next/next/inline-script-id */
-// Naxt
+// Next
 import { type Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-// Context
-import ThemeContextProvider from "src/theme";
+import Script from "next/script";
+// Styles
+import "./globals.css";
+// Components
+import { ThemeProvider } from "src/components/theme-provider";
 // Layouts
 import DefaultLayout from "src/layouts/DefaultLayout";
 // Widgets
 import Footer from "src/widgets/Footer";
 import { siteConfig } from "src/global/config";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: { default: siteConfig.name, template: `%s - ${siteConfig.name}` },
@@ -64,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/* Analytics / Tag Manager Scripts */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-SEZT2YEX07"
@@ -98,10 +100,10 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <ThemeContextProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <DefaultLayout>{children}</DefaultLayout>
           <Footer />
-        </ThemeContextProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

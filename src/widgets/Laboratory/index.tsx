@@ -1,37 +1,25 @@
 "use client";
 // React
-import { useContext } from "react";
-// @mui
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-
-// Context
-import { ColorModeContext } from "src/theme";
+import { useTheme } from "next-themes";
 
 const Laboratory = ({ children }: { children: React.ReactNode }) => {
-  const { toggleColorMode } = useContext(ColorModeContext);
+  const { setTheme, theme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <section>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          boxShadow: 1,
-          alignItems: "center",
-          background: (theme) => theme.palette.action.focus,
-          py: 2,
-          px: 4,
-          mb: 4,
-        }}
-      >
-        <Typography variant="h2" color="primary">
-          Laboratory
-        </Typography>
-        <Button variant="contained" onClick={toggleColorMode}>
+      <div className="mb-8 flex items-center justify-between bg-accent px-8 py-4 shadow-sm">
+        <h2 className="text-4xl font-bold text-primary">Laboratory</h2>
+        <button
+          onClick={toggleTheme}
+          className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
           Change Color Mode
-        </Button>
-      </Box>
+        </button>
+      </div>
       {children}
     </section>
   );

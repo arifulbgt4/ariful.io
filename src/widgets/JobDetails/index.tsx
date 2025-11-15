@@ -3,22 +3,6 @@ export * from "./Types";
 
 // React
 import { FC } from "react";
-// @mui
-import Stack from "@mui/material/Stack";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import Link from "@mui/material/Link";
-
-// Icons
-import Launch from "@mui/icons-material/Launch";
 
 // Types
 import { JobDetailsOptions } from "./Types";
@@ -26,50 +10,47 @@ import { JobDetailsOptions } from "./Types";
 const JobDetails: FC<JobDetailsOptions> = ({ data }) => {
   const { title, company, address, works, url, startDate, endDate } = data;
   return (
-    <Card elevation={6} sx={{ mb: 4 }}>
-      <CardHeader
-        title={title}
-        subheader={`${company} - ${address}`}
-        action={
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Typography variant="caption">
+    <div className="mb-8 rounded-lg border bg-card text-card-foreground shadow-lg">
+      {/* Card Header */}
+      <div className="flex flex-col space-y-1.5 p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex-1">
+            <h3 className="text-2xl font-semibold leading-none tracking-tight">
+              {title}
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {company} - {address}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">
               {startDate} - {endDate}
-            </Typography>
-            {/* <Link
-              color="text.primary"
-              variant="body2"
-              href={url}
-              target="_blank"
-            >
-              <Launch fontSize="small" />
-            </Link> */}
-          </Stack>
-        }
-      />
-      <CardContent>
-        <Timeline
-          sx={{
-            [`& .${timelineItemClasses.root}:before`]: {
-              flex: 0,
-              padding: 0,
-            },
-          }}
-        >
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Card Content - Timeline */}
+      <div className="p-6 pt-0">
+        <div className="space-y-6">
           {works?.map((work, i) => (
-            <TimelineItem
-              sx={{ minHeight: (theme) => theme.spacing(5.2) }}
-              key={i}
-            >
-              <TimelineSeparator>
-                <TimelineDot variant="outlined" color="secondary" />
-                {works.length - 1 > i && <TimelineConnector />}
-              </TimelineSeparator>
-              <TimelineContent>{work}</TimelineContent>
-            </TimelineItem>
+            <div key={i} className="flex gap-4">
+              {/* Timeline Dot and Connector */}
+              <div className="flex flex-col items-center">
+                <div className="h-3 w-3 rounded-full border-2 border-primary bg-background"></div>
+                {works.length - 1 > i && (
+                  <div className="h-full w-0.5 bg-border"></div>
+                )}
+              </div>
+              {/* Timeline Content */}
+              <div className="flex-1 pb-6">
+                <p className="text-sm text-foreground">{work}</p>
+              </div>
+            </div>
           ))}
-        </Timeline>
-      </CardContent>
-    </Card>
+        </div>
+      </div>
+    </div>
   );
 };
 

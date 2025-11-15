@@ -1,15 +1,12 @@
 "use client";
 
 // React
-import { FC, useContext } from "react";
+import { FC } from "react";
 // Next
 import { usePathname } from "next/navigation";
-// @mui
-import { Container, Box, Stack, Grid, IconButton, Paper } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { useTheme } from "next-themes";
 // Icons
-import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
-import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
+import { Moon, Sun } from "lucide-react";
 // packages
 import { ParallaxProvider } from "react-scroll-parallax";
 
@@ -17,8 +14,6 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import PortfolioHeader from "src/widgets/PortfolioHeader";
 import ListNavigation from "src/widgets/ListNavigation";
 import OpenSource from "src/widgets/OpenSource";
-// Context
-import { ColorModeContext } from "src/theme";
 // Types
 import { DefaultLayoutOptions } from "./Types";
 
@@ -26,81 +21,67 @@ const LANDING_PATHS = ["/"];
 
 const DefaultLayout: FC<DefaultLayoutOptions> = ({ children }) => {
   const pathName = usePathname();
-  const themes = useTheme();
+  const { theme, setTheme } = useTheme();
 
-  const { toggleColorMode } = useContext(ColorModeContext);
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <ParallaxProvider>
-      <Container
-        maxWidth={false}
-        sx={{
-          minHeight: "100vh",
-        }}
-      >
-        <Grid
-          container
-          spacing={10}
-          position="sticky"
-          alignItems="center"
-          top={-80}
-          sx={(theme) => ({
-            [theme.breakpoints.down("md")]: {
-              zIndex: 3000,
-              background: (theme) => theme.palette.background.default,
-            },
-          })}
-        >
-          <Grid item xs={9}>
+      <div className="min-h-screen w-full">
+        {/* Header Section */}
+        <div className="sticky -top-20 z-[3000] grid grid-cols-12 items-center gap-10 bg-background md:z-auto md:bg-transparent">
+          <div className="col-span-9">
             <PortfolioHeader
               disableLinks
               animation={Boolean(LANDING_PATHS.includes(pathName))}
             />
-          </Grid>
-          <Grid item xs={3}>
-            <Stack direction="row" justifyContent="end">
-              <IconButton onClick={toggleColorMode}>
-                {themes.palette.mode === "dark" ? (
-                  <LightModeOutlined />
+          </div>
+          <div className="col-span-3">
+            <div className="flex justify-end">
+              <button
+                onClick={toggleTheme}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
                 ) : (
-                  <DarkModeOutlined />
+                  <Moon className="h-5 w-5" />
                 )}
-              </IconButton>
-            </Stack>
-          </Grid>
-        </Grid>
-        <Grid container spacing={12} rowSpacing={3}>
-          <Grid
-            item
-            xs
-            sx={{
-              display: { xs: "none", sm: "none", md: "none", lg: "block" },
-            }}
-          >
-            <Box position="sticky" top={80}>
-              <ListNavigation />
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            {children}
-          </Grid>
+              </button>
+            </div>
+          </div>
+        </div>
 
-          <Grid item xs>
-            <Box position="sticky" top={65}>
-              <OpenSource />
-            </Box>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sx={{ display: { xs: "block", sm: "block", md: "none" } }}
-          >
-            <Paper sx={{ p: 2 }}>
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-12 gap-12 gap-y-3">
+          {/* Left Sidebar - Navigation */}
+          <div className="hidden lg:block lg:col-span-3">
+            <div className="sticky top-20">
               <ListNavigation />
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="col-span-12 md:col-span-6">{children}</div>
+
+          {/* Right Sidebar - Open Source */}
+          <div className="col-span-3 hidden md:block">
+            <div className="sticky top-16">
+              <OpenSource />
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="col-span-12 block md:hidden">
+            <div className="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
+              <ListNavigation />
+            </div>
+          </div>
+        </div>
+      </div>
     </ParallaxProvider>
   );
 };

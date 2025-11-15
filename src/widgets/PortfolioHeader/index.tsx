@@ -1,20 +1,10 @@
 "use client";
 // React
-import React, { FC, RefObject } from "react";
-// @mui
-import {
-  Box,
-  Link,
-  Stack,
-  Avatar,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import React, { FC } from "react";
+// Next
+import Link from "next/link";
 // Icons
-import {
-  GitHub as GitHubIcon,
-  LinkedIn as LinkedInIcon,
-} from "@mui/icons-material";
+import { Github, Linkedin } from "lucide-react";
 // packages
 import { useParallax } from "react-scroll-parallax";
 
@@ -31,150 +21,105 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
     opacity: [-10, 10],
   });
 
-  // Cast ref to satisfy strict MUI Stack ref typing (expects RefObject<HTMLDivElement>)
-  const stackRef = parallax.ref as RefObject<HTMLDivElement>;
-
   return (
     <>
-      {/* Desktop / medium-and-up header (previously Hidden mdDown) should be visible from md and larger */}
-      <Box
-        sx={{
-          display: { xs: "none", sm: "none", md: "block", lg: "block" },
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          ref={stackRef}
-          sx={{
-            opacity: upAnimation ? 1 : 0,
-          }}
+      {/* Desktop / medium-and-up header (visible from md and larger) */}
+      <div className="hidden md:block">
+        <div
+          ref={parallax.ref}
+          className="flex items-center justify-between"
+          style={{ opacity: upAnimation ? 1 : 0 }}
         >
-          <Stack
-            direction="row"
-            sx={{
-              p: 2,
-              pb: 0,
-            }}
-          >
-            <Link underline="none" href="/">
-              <Avatar
-                variant="rounded"
-                sx={{
-                  width: 46,
-                  height: 46,
-                  mr: 1.5,
-                  boxShadow: 4,
-                  color: (theme) => theme.palette.text.primary,
-                }}
-              >
+          <div className="flex p-4 pb-0">
+            <Link href="/" className="no-underline">
+              <div className="mr-3 flex h-[46px] w-[46px] items-center justify-center rounded-md bg-primary text-2xl font-semibold text-primary-foreground shadow-lg">
                 A
-              </Avatar>
+              </div>
             </Link>
 
-            <Box>
+            <div>
               <Link
-                underline="hover"
-                color="text.primary"
                 href="/"
-                variant="h5"
+                className="text-2xl font-bold text-foreground hover:underline"
               >
                 Ariful islam
               </Link>
-              <Typography color="text.secondary" variant="subtitle2">
+              <p className="text-sm text-muted-foreground">
                 Fullstack engineer
-              </Typography>
-            </Box>
-          </Stack>
+              </p>
+            </div>
+          </div>
           {!disableLinks && (
-            <Stack direction="row" sx={{ mr: 4, mt: 2 }}>
+            <div className="mr-8 mt-4 flex gap-2">
               <Link
-                underline="none"
                 href="https://www.linkedin.com/in/ariful25278/"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
+                aria-label="LinkedIn"
               >
-                <IconButton size="small">
-                  <LinkedInIcon />
-                </IconButton>
+                <Linkedin className="h-4 w-4" />
               </Link>
               <Link
-                underline="none"
                 href="https://github.com/arifulbgt4"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
+                aria-label="GitHub"
               >
-                <IconButton size="small">
-                  <GitHubIcon />
-                </IconButton>
+                <Github className="h-4 w-4" />
               </Link>
-            </Stack>
+            </div>
           )}
-        </Stack>
-      </Box>
-      {/* Mobile header (previously Hidden mdUp) visible up to md, hidden on lg+ */}
-      <Box
-        sx={{
-          display: { xs: "block", sm: "block", md: "block", lg: "none" },
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          position="relative"
-          py={1}
-        >
-          <Stack
-            direction="row"
-            sx={{
-              p: 2,
-              pb: 0,
-            }}
-          >
-            <Link underline="none" href="/">
-              <Avatar variant="rounded" sx={{ width: 46, height: 46, mr: 1.5 }}>
+        </div>
+      </div>
+
+      {/* Mobile header (visible up to md, hidden on lg+) */}
+      <div className="block md:hidden">
+        <div className="relative flex items-center justify-between py-2">
+          <div className="flex p-4 pb-0">
+            <Link href="/" className="no-underline">
+              <div className="mr-3 flex h-[46px] w-[46px] items-center justify-center rounded-md bg-primary text-2xl font-semibold text-primary-foreground">
                 A
-              </Avatar>
+              </div>
             </Link>
 
-            <Box>
+            <div>
               <Link
-                underline="hover"
-                color="text.primary"
                 href="/"
-                variant="h5"
+                className="text-2xl font-bold text-foreground hover:underline"
               >
                 Ariful islam
               </Link>
-              <Typography color="text.secondary" variant="subtitle2">
+              <p className="text-sm text-muted-foreground">
                 Fullstack engineer
-              </Typography>
-            </Box>
-          </Stack>
+              </p>
+            </div>
+          </div>
           {!disableLinks && (
-            <Stack direction="row" sx={{ mr: 4, mt: 2 }}>
+            <div className="mr-8 mt-4 flex gap-2">
               <Link
-                underline="none"
                 href="https://www.linkedin.com/in/ariful25278/"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
+                aria-label="LinkedIn"
               >
-                <IconButton size="small">
-                  <LinkedInIcon />
-                </IconButton>
+                <Linkedin className="h-4 w-4" />
               </Link>
               <Link
-                underline="none"
                 href="https://github.com/arifulbgt4"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
+                aria-label="GitHub"
               >
-                <IconButton size="small">
-                  <GitHubIcon />
-                </IconButton>
+                <Github className="h-4 w-4" />
               </Link>
-            </Stack>
+            </div>
           )}
-        </Stack>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };

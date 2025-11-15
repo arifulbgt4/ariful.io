@@ -1,40 +1,29 @@
+"use client";
 // Next
 import { usePathname } from "next/navigation";
-// @mui
-import {
-  ListItemIcon,
-  ListItemText,
-  MenuItem,
-  MenuList,
-  menuItemClasses,
-} from "@mui/material";
+import Link from "next/link";
 // Icons
-import { ContactPageOutlined as ContactPageOutlinedIcon } from "@mui/icons-material";
+import { FileText } from "lucide-react";
+// Utils
+import { cn } from "src/lib/utils";
 
 const ListNavigation = () => {
   const pathName = usePathname();
+  const isActive = pathName === "/contact";
+
   return (
-    <MenuList disablePadding sx={{ px: 2 }}>
-      <MenuItem
+    <nav className="px-4">
+      <Link
         href="/contact"
-        selected={Boolean(pathName === "/contact")}
-        sx={{
-          borderRadius: 2.5,
-          [`&.${menuItemClasses.selected}`]: {
-            color: (theme) => theme.palette.primary.main,
-            background: "transparent",
-            "& svg": {
-              color: (theme) => theme.palette.primary.main,
-            },
-          },
-        }}
+        className={cn(
+          "flex items-center gap-3 rounded-[10px] px-3 py-2 text-sm transition-colors hover:bg-accent",
+          isActive && "text-primary"
+        )}
       >
-        <ListItemIcon>
-          <ContactPageOutlinedIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText>Contact</ListItemText>
-      </MenuItem>
-    </MenuList>
+        <FileText className={cn("h-5 w-5", isActive && "text-primary")} />
+        <span>Contact</span>
+      </Link>
+    </nav>
   );
 };
 
