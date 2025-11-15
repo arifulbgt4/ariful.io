@@ -119,8 +119,8 @@ export const siteConfig = {
   },
   keywords: [
     "Frontend Engineer",
-    "JavaScript Develope",
-    "React.js Specialis",
+    "JavaScript Developer",
+    "React.js Specialist",
     "Next.js Expert",
     "Senior Web Developer",
     "User-Centric Design",
