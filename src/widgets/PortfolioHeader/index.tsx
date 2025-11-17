@@ -91,9 +91,7 @@ const PortfolioHeader: FC<PortfolioHeaderProps> = ({
               >
                 Ariful islam
               </Link>
-              <p className="text-sm text-muted-foreground">
-                Fullstack engineer
-              </p>
+              <p className="text-sm text-muted-foreground">Software engineer</p>
             </div>
           </div>
           {!disableLinks && (
