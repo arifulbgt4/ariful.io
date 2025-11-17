@@ -9,7 +9,6 @@ export type Project = {
   year?: string;
   featured?: boolean;
   image?: string;
-  status?: "live" | "live-code" | "ongoing";
 };
 
 export const PROJECTS: Project[] = [
@@ -22,73 +21,74 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/arifulbgt4/ariful.io",
     year: "2024",
     featured: true,
-    status: "live-code",
   },
   {
     title: "E-Commerce Platform",
     description:
       "A full-featured e-commerce platform with product management, shopping cart, payment integration, and order tracking.",
     techStack: ["React", "Next.js", "Node.js", "MongoDB"],
+    href: "https://example.com/ecommerce",
+    repo: "https://github.com/arifulbgt4/ecommerce-platform",
     year: "2023",
     featured: true,
-    status: "live",
   },
   {
     title: "Real-time Chat Application",
     description:
       "Built a scalable real-time messaging application with WebSocket support, user presence tracking, and message history.",
     techStack: ["React", "Node.js", "Socket.io", "Redis"],
+    repo: "https://github.com/arifulbgt4/chat-app",
     year: "2023",
     featured: true,
-    status: "live",
   },
   {
     title: "Dashboard Analytics Platform",
     description:
       "Comprehensive analytics dashboard with real-time data visualization, custom reports, and interactive charts.",
     techStack: ["React", "TypeScript", "D3.js", "Tailwind CSS"],
+    href: "https://example.com/dashboard",
     year: "2023",
-    status: "live",
   },
   {
     title: "Task Management System",
     description:
       "A collaborative project management tool with drag-and-drop boards, team collaboration, and deadline tracking.",
     techStack: ["Next.js", "TypeScript", "React DnD", "PostgreSQL"],
-    year: "2022",
-    status: "live",
+    year: "Nov 2025",
+    featured: false,
   },
   {
     title: "Weather Forecast App",
     description:
       "Beautiful weather application with 7-day forecasts, location-based search, and animated weather icons.",
     techStack: ["React", "TypeScript", "OpenWeather API"],
+    href: "https://example.com/weather",
     year: "2022",
-    status: "live",
   },
   {
     title: "Blog & CMS Platform",
     description:
       "Full-stack blogging platform with markdown support, SEO optimization, and content management system.",
     techStack: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
+    href: "https://example.com/blog",
+    repo: "https://github.com/arifulbgt4/blog-platform",
     year: "2022",
-    status: "live-code",
   },
   {
     title: "Social Media Dashboard",
     description:
       "Centralized dashboard for managing multiple social media accounts with analytics and scheduled posting features.",
     techStack: ["React", "Node.js", "GraphQL", "MongoDB"],
-    year: "2021",
-    status: "live",
+    year: "Oct 2025",
+    featured: false,
   },
   {
     title: "Music Player App",
     description:
       "Modern music streaming application with playlist management, audio visualization, and custom equalizer settings.",
     techStack: ["React", "TypeScript", "Web Audio API"],
+    href: "https://example.com/music",
     year: "2021",
-    status: "live",
   },
   {
     title: "Fitness Tracking App",
@@ -96,7 +96,6 @@ export const PROJECTS: Project[] = [
       "Health and fitness tracker with workout plans, progress tracking, calorie counter, and achievement system.",
     techStack: ["React Native", "TypeScript", "Firebase"],
     year: "2021",
-    status: "live",
   },
   {
     title: "Open Source Contributions",
@@ -104,9 +103,9 @@ export const PROJECTS: Project[] = [
       "A collection of fixes, features, and improvements I have contributed to various open source projects.",
     techStack: ["React", "Next.js", "Node.js"],
     href: "https://github.com/arifulbgt4?tab=repositories",
+    repo: "https://github.com/arifulbgt4",
     year: "2020 – Present",
     featured: true,
-    status: "live-code",
   },
   {
     title: "Labs & Experiments",
@@ -114,9 +113,8 @@ export const PROJECTS: Project[] = [
       "Small experimental projects from my lab section where I play with new ideas, tools, and animations.",
     techStack: ["Three.js", "Canvas", "UI Experiments"],
     href: "/lab",
-    year: "Ongoing",
+    year: "Aug 2025",
     featured: true,
-    status: "ongoing",
   },
 ];
 

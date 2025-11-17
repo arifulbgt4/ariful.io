@@ -110,7 +110,7 @@ const ProjectsContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const activeFilter = (searchParams.get("tab") as FilterType) || "all";
 
   const handleFilterChange = (filter: FilterType) => {
@@ -124,9 +124,67 @@ const ProjectsContent = () => {
     router.push(newUrl);
   };
 
+  // Helper function to check if project is ongoing
+  const isOngoing = (year?: string): boolean => {
+    if (!year) return false;
+
+    // Check for text indicators
+    const lowerYear = year.toLowerCase();
+    if (lowerYear.includes("ongoing") || lowerYear.includes("present")) {
+      return true;
+    }
+
+    // Check if it's a date in "Mon YYYY" format (e.g., "Aug 2025", "Nov 2025")
+    const monthYearMatch = year.match(
+      /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(\d{4})$/i
+    );
+    if (monthYearMatch) {
+      const monthMap: { [key: string]: number } = {
+        jan: 0,
+        feb: 1,
+        mar: 2,
+        apr: 3,
+        may: 4,
+        jun: 5,
+        jul: 6,
+        aug: 7,
+        sep: 8,
+        oct: 9,
+        nov: 10,
+        dec: 11,
+      };
+      const monthStr = monthYearMatch[1].toLowerCase();
+      const yearNum = parseInt(monthYearMatch[2]);
+      const projectDate = new Date(yearNum, monthMap[monthStr]);
+      const sixMonthsAgo = new Date();
+      sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+      return projectDate >= sixMonthsAgo;
+    }
+
+    return false;
+  };
+
+  // Filter logic based on project properties
   const filteredProjects = PROJECTS.filter((project) => {
     if (activeFilter === "all") return true;
-    return project.status === activeFilter;
+
+    // "live" = has href (live URL), can have repo or not
+    if (activeFilter === "live") {
+      return !!project.href;
+    }
+
+    // "live-code" = has both href AND repo
+    if (activeFilter === "live-code") {
+      return !!project.href && !!project.repo;
+    }
+
+    // "ongoing" = check using Date comparison or text indicators
+    if (activeFilter === "ongoing") {
+      return isOngoing(project.year);
+    }
+
+    return false;
   });
 
   const filterConfig = [
@@ -134,17 +192,17 @@ const ProjectsContent = () => {
     {
       key: "live" as FilterType,
       label: "Live",
-      count: PROJECTS.filter((p) => p.status === "live").length,
+      count: PROJECTS.filter((p) => !!p.href).length,
     },
     {
       key: "live-code" as FilterType,
       label: "Live & Code",
-      count: PROJECTS.filter((p) => p.status === "live-code").length,
+      count: PROJECTS.filter((p) => !!p.href && !!p.repo).length,
     },
     {
       key: "ongoing" as FilterType,
       label: "Ongoing",
-      count: PROJECTS.filter((p) => p.status === "ongoing").length,
+      count: PROJECTS.filter((p) => isOngoing(p.year)).length,
     },
   ];
 
@@ -164,29 +222,35 @@ const ProjectsContent = () => {
         </header>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 border-b pb-4">
-          {filterConfig.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => handleFilterChange(filter.key)}
-              className={`inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                activeFilter === filter.key
-                  ? "bg-primary text-primary-foreground shadow"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-              }`}
-            >
-              {filter.label}
-              <span
-                className={`rounded-full px-2 py-0.5 text-xs ${
+        <div className="relative">
+          <div className="flex flex-wrap gap-2">
+            {filterConfig.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => handleFilterChange(filter.key)}
+                className={`group relative inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
                   activeFilter === filter.key
-                    ? "bg-primary-foreground/20"
-                    : "bg-background/50"
+                    ? "bg-primary text-primary-foreground shadow-md shadow-primary/20 scale-105"
+                    : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground hover:scale-102"
                 }`}
               >
-                {filter.count}
-              </span>
-            </button>
-          ))}
+                <span className="relative z-10">{filter.label}</span>
+                <span
+                  className={`relative z-10 flex h-5 min-w-[20px] items-center justify-center rounded-full px-1.5 text-xs font-semibold transition-all ${
+                    activeFilter === filter.key
+                      ? "bg-primary-foreground/25 text-primary-foreground"
+                      : "bg-background/60 text-muted-foreground group-hover:bg-background/80 group-hover:text-foreground"
+                  }`}
+                >
+                  {filter.count}
+                </span>
+                {activeFilter === filter.key && (
+                  <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 to-primary/10 blur-sm" />
+                )}
+              </button>
+            ))}
+          </div>
+          <div className="mt-4 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         </div>
 
         {/* Projects Grid */}
@@ -350,22 +414,24 @@ const ProjectsContent = () => {
 
 const ProjectsPage = () => {
   return (
-    <Suspense fallback={
-      <div className="container mx-auto max-w-6xl py-8">
-        <section className="relative z-[2] mt-10 space-y-6 rounded-xl border bg-card/80 p-4 shadow-sm backdrop-blur-md md:mt-12 md:p-6">
-          <div className="animate-pulse">
-            <div className="h-8 bg-muted rounded w-1/3 mb-2"></div>
-            <div className="h-4 bg-muted rounded w-2/3"></div>
-            <div className="flex gap-2 mt-6">
-              <div className="h-10 bg-muted rounded w-20"></div>
-              <div className="h-10 bg-muted rounded w-20"></div>
-              <div className="h-10 bg-muted rounded w-28"></div>
-              <div className="h-10 bg-muted rounded w-24"></div>
+    <Suspense
+      fallback={
+        <div className="container mx-auto max-w-6xl py-8">
+          <section className="relative z-[2] mt-10 space-y-6 rounded-xl border bg-card/80 p-4 shadow-sm backdrop-blur-md md:mt-12 md:p-6">
+            <div className="animate-pulse">
+              <div className="h-8 bg-muted rounded w-1/3 mb-2"></div>
+              <div className="h-4 bg-muted rounded w-2/3"></div>
+              <div className="flex gap-2 mt-6">
+                <div className="h-10 bg-muted rounded w-20"></div>
+                <div className="h-10 bg-muted rounded w-20"></div>
+                <div className="h-10 bg-muted rounded w-28"></div>
+                <div className="h-10 bg-muted rounded w-24"></div>
+              </div>
             </div>
-          </div>
-        </section>
-      </div>
-    }>
+          </section>
+        </div>
+      }
+    >
       <ProjectsContent />
     </Suspense>
   );
