@@ -1,0 +1,128 @@
+# Design Guide
+
+## Design objective
+
+The interface should feel like an experienced engineer's working portfolio:
+precise, calm, technically literate, and easy to evaluate. It should not resemble
+a generic neon developer template or hide weak evidence behind animation.
+
+## Principles
+
+1. **Evidence before decoration.** Status, source links, live links, and clear
+   outcomes matter more than visual effects.
+2. **One decision per section.** Every section should answer a specific prospect
+   question and offer a logical next action.
+3. **High signal density.** Use concise copy, visible hierarchy, and progressive
+   disclosure instead of walls of badges.
+4. **Calm motion.** Hover and navigation transitions can provide feedback, but
+   content must remain visible without JavaScript or animation.
+5. **Accessible by default.** Keyboard, contrast, reduced motion, labels, and
+   semantic structure are release requirements.
+
+## Visual tokens
+
+### Color
+
+| Role | Value | Use |
+| --- | --- | --- |
+| Canvas | `#070A0F` | Page background |
+| Raised canvas | `#0B1018` | Cards and content surfaces |
+| Section tint | `#090D14` | Alternating section background |
+| Primary text | Tailwind `white` | Headlines and high-emphasis labels |
+| Body text | `slate-400` | Paragraphs |
+| Muted text | `slate-500/600` | Metadata and secondary labels |
+| Primary accent | `cyan-200/300` | CTAs, focus, links, and proof cues |
+| Secondary accents | `blue-400`, `emerald-300` | Controlled gradients and status |
+
+Accent colors must not carry meaning alone. Add a text label for every status.
+
+### Typography
+
+- UI/body: system sans stack in `app/globals.css`
+- Technical labels and sequence numbers: system monospace
+- Display headings: 900 weight, tight tracking, balanced wrapping
+- Body: 16–20px depending on context, 1.6–1.75 line height
+- Article measure: approximately 48rem (`max-w-3xl`)
+
+Do not load a third-party web font unless the performance and privacy cost is
+explicitly justified.
+
+### Spacing and shape
+
+- Main content width: `max-w-7xl`
+- Page padding: 20px mobile, 28px small screens, 40px large screens
+- Section rhythm: 80px mobile, 112–128px desktop
+- Card radius: 16px
+- Feature-shell radius: 32px
+- Main controls: 12px radius and at least 48px height
+- Borders: low-contrast white at 7–10% opacity
+
+## Core components
+
+Shared CSS classes live in `app/globals.css`:
+
+- `.site-container`
+- `.section-shell`
+- `.section-kicker`
+- `.eyebrow`
+- `.button-primary`
+- `.button-secondary`
+- `.surface-card`
+- `.skill-pill`
+- `.form-control`
+- `.prose-portfolio`
+
+Reuse these before introducing a one-off variant. If a pattern appears three
+times, consider a typed React component.
+
+## Page composition
+
+### Homepage
+
+Positioning hero → public proof → services → selected work → process → about →
+capabilities → insights → qualified enquiry.
+
+This order moves from relevance to evidence, then reduces engagement risk before
+asking for contact.
+
+### Service page
+
+Specific outcome → ideal fit → deliverables → working process → FAQ → enquiry.
+
+### Case study
+
+Status and evidence → challenge → approach → honest outcome → highlights →
+related-project CTA.
+
+### Article
+
+Category and title → summary and reading metadata → readable body → relevant
+service CTA.
+
+## Responsive behavior
+
+- Design from 320px upward; primary QA begins at 390px.
+- Convert two-column hero and contact layouts to one column below large screens.
+- Never require horizontal scrolling for tabs, code, or navigation. Code blocks
+  may scroll internally.
+- Use text wrapping instead of reducing type below legible sizes.
+- Mobile navigation locks body scroll and closes on selection or Escape.
+
+## Accessibility checklist
+
+- One `h1` per route and no skipped structural heading levels.
+- A skip link targets `#main-content`.
+- Visible `:focus-visible` treatment uses cyan with offset.
+- Inputs have persistent labels, useful autocomplete, and server validation.
+- Touch targets are at least 44px; primary controls are 48px.
+- Color contrast meets WCAG AA for body text and interactive states.
+- Decorative elements use `aria-hidden`.
+- Link text describes the destination; repeated cards have a readable title.
+- Motion is disabled under `prefers-reduced-motion`.
+
+## Copy style
+
+Use plain, specific English. Prefer “build a subscription workflow with Stripe
+webhooks” over “create innovative digital transformation.” Avoid “expert,”
+“world-class,” “cutting-edge,” and unsupported superlatives. Name constraints
+and status directly; that is part of the brand.

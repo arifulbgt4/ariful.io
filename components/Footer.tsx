@@ -1,55 +1,41 @@
+import Link from 'next/link';
+import { services, siteConfig } from '@/content/site';
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="relative py-12 border-t border-[#1A1F2E]">
-      <div className="site-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[#00CED1] to-[#0066FF] flex items-center justify-center font-bold text-white text-xs font-mono">
-              EA
-            </div>
-            <div>
-              <span className="text-white font-semibold text-sm">
-                Engineer Arif
-              </span>
-              <span className="block text-[10px] text-[#00CED1]/40 font-mono tracking-widest">
-                DEEP-TECH BUILDER
-              </span>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            {[
-              { label: 'GitHub', href: 'https://github.com/arifulbgt4' },
-              { label: 'Email', href: 'mailto:arifulbgt4@gmail.com' },
-            ].map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="text-sm text-[#8892A8] hover:text-[#00CED1] transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Copyright */}
-          <p className="text-xs text-[#8892A8]/50 font-mono">
-            © {currentYear} Ariful Islam
-          </p>
+    <footer className="border-t border-white/[0.07] bg-[#070A0F] py-12">
+      <div className="site-container grid gap-10 lg:grid-cols-[1.4fr_0.8fr_0.8fr]">
+        <div className="max-w-md">
+          <Link href="/" className="text-lg font-black text-white">Ariful Islam</Link>
+          <p className="mt-4 text-sm leading-6 text-slate-500">Software engineering for SaaS products, AI-enabled workflows, backend systems, and connected-product prototypes.</p>
+          <a href={`mailto:${siteConfig.email}`} className="mt-5 inline-block text-sm font-semibold text-cyan-200 hover:text-white">{siteConfig.email}</a>
         </div>
 
-        {/* Bottom tagline */}
-        <div className="mt-8 text-center">
-          <p className="text-xs text-[#8892A8]/30 font-mono">
-            Building intelligent software, AI-powered systems, and robotics
-            prototypes that connect the digital and physical world.
-          </p>
+        <div>
+          <p className="footer-heading">Explore</p>
+          <div className="mt-4 flex flex-col gap-3 text-sm text-slate-400">
+            <Link href="/#work">Selected work</Link>
+            <Link href="/blog">Insights</Link>
+            <Link href="/#about">About</Link>
+            <Link href="/#contact">Contact</Link>
+          </div>
+        </div>
+
+        <div>
+          <p className="footer-heading">Services</p>
+          <div className="mt-4 flex flex-col gap-3 text-sm text-slate-400">
+            {services.map((service) => <Link key={service.slug} href={`/services/${service.slug}`}>{service.shortTitle}</Link>)}
+          </div>
+        </div>
+      </div>
+
+      <div className="site-container mt-12 flex flex-col gap-4 border-t border-white/[0.07] pt-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Ariful Islam. Built with Next.js.</p>
+        <div className="flex flex-wrap gap-5">
+          <a href={siteConfig.social.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/rss.xml">RSS</Link>
         </div>
       </div>
     </footer>

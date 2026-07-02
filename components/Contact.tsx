@@ -1,178 +1,154 @@
 'use client';
 
 import { useState } from 'react';
-import { useInViewOnce } from '@/hooks/useInViewOnce';
+import { siteConfig } from '@/content/site';
 
-const projectTypes = [
-  'AI Product',
-  'SaaS Platform',
-  'Robotics Prototype',
-  'IoT / Embedded System',
-  'Automation System',
-  'Technical Consulting',
-  'Other',
-];
+const projectTypes = ['SaaS / web product', 'AI integration', 'Backend / API system', 'Connected product prototype', 'Architecture review', 'Other'];
+const budgets = ['Under $2,000', '$2,000–$5,000', '$5,000–$10,000', '$10,000+', 'Not decided'];
+const timelines = ['As soon as possible', 'Within 1 month', '1–3 months', '3+ months', 'Exploring options'];
+
+type FormState = { status: 'idle' | 'submitting' | 'success' | 'error'; message?: string };
 
 export default function Contact() {
-  const [isOpeningEmail, setIsOpeningEmail] = useState(false);
-  const { ref, isVisible: visible } = useInViewOnce<HTMLDivElement>();
+  const [formState, setFormState] = useState<FormState>({ status: 'idle' });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const name = String(formData.get('name') ?? '');
-    const email = String(formData.get('email') ?? '');
-    const projectType = String(formData.get('projectType') ?? 'Project');
-    const message = String(formData.get('message') ?? '');
-    const subject = `${projectType} enquiry from ${name}`;
-    const body = `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\n\n${message}`;
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
 
-    setIsOpeningEmail(true);
-    window.location.href = `mailto:arifulbgt4@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.setTimeout(() => setIsOpeningEmail(false), 2000);
-  };
+    setFormState({ status: 'submitting' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json()) as { ok?: boolean; error?: string };
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'The message could not be sent.');
+      }
+
+      form.reset();
+      setFormState({ status: 'success', message: 'Thanks — your project brief has been sent. I will reply by email.' });
+    } catch {
+      setFormState({
+        status: 'error',
+        message: `The form is temporarily unavailable. Please email ${siteConfig.email} directly.`,
+      });
+    }
+  }
 
   return (
     <section id="contact" className="section-shell">
-      <div className="site-container max-w-5xl" ref={ref}>
-        {/* Section header */}
-        <div
-          className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${
-            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <span className="text-xs font-mono text-[#00CED1]/60 tracking-[0.3em] uppercase mb-4 block">
-            {'// get_in_touch'}
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6">
-            Let&apos;s Build Something{' '}
-            <span className="text-gradient">Together</span>
-          </h2>
-          <p className="text-base sm:text-lg text-[#8892A8] max-w-2xl mx-auto">
-            Have an idea that combines software, AI, hardware, or robotics?
-            Let&apos;s build it.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-          {/* Contact Info */}
-          <div
-            className={`lg:col-span-2 space-y-8 transition-all duration-700 delay-200 ${
-              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="p-6 rounded-xl bg-[#0B0F19] border border-[#1A1F2E]">
-              <h3 className="text-white font-bold mb-4">Direct Contact</h3>
-              <a
-                href="mailto:arifulbgt4@gmail.com"
-                className="flex items-center gap-3 text-[#8892A8] hover:text-[#00CED1] transition-colors mb-3"
-              >
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <span className="break-all">arifulbgt4@gmail.com</span>
-              </a>
-              <a
-                href="https://github.com/arifulbgt4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[#8892A8] hover:text-[#00CED1] transition-colors mb-3"
-              >
-                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                <span className="break-all">github.com/arifulbgt4</span>
-              </a>
-              <div className="flex items-center gap-3 text-[#8892A8]">
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span>@arifulbgt4</span>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-xl bg-gradient-to-br from-[#00CED1]/[0.05] to-[#0066FF]/[0.05] border border-[#00CED1]/10">
-              <h3 className="text-white font-bold mb-2">Quick Info</h3>
-              <p className="text-[#8892A8] text-sm">
-                Based in Bangladesh · Available worldwide for deep-tech projects
+      <div className="site-container">
+        <div className="overflow-hidden rounded-[2rem] border border-cyan-300/10 bg-gradient-to-br from-cyan-300/[0.06] via-[#0B1018] to-blue-500/[0.06]">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="border-b border-white/[0.08] p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+              <p className="section-kicker">Start a conversation</p>
+              <h2 className="mt-5 text-balance text-3xl font-black tracking-[-0.035em] text-white sm:text-5xl">What are you trying to ship?</h2>
+              <p className="mt-5 leading-7 text-slate-400">
+                Share the problem, current stage, and main constraint. A useful first reply will confirm fit, identify missing information, and suggest a concrete next step.
               </p>
+
+              <div className="mt-9 space-y-5 text-sm">
+                <div>
+                  <p className="text-slate-500">Email</p>
+                  <a href={`mailto:${siteConfig.email}`} className="mt-1 block font-semibold text-white hover:text-cyan-200">{siteConfig.email}</a>
+                </div>
+                <div>
+                  <p className="text-slate-500">Location</p>
+                  <p className="mt-1 font-semibold text-white">{siteConfig.location} · Remote worldwide</p>
+                </div>
+                <div>
+                  <p className="text-slate-500">Good first-message material</p>
+                  <p className="mt-1 leading-6 text-slate-300">Target user, desired outcome, existing stack, deadline, and budget range.</p>
+                </div>
+              </div>
+
+              <div className="mt-9 flex gap-3">
+                <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" className="button-secondary px-4 py-2.5 text-sm">LinkedIn ↗</a>
+                <a href={siteConfig.social.github} target="_blank" rel="noreferrer" className="button-secondary px-4 py-2.5 text-sm">GitHub ↗</a>
+              </div>
             </div>
+
+            <form onSubmit={handleSubmit} className="p-7 sm:p-10 lg:p-12">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field label="Your name" name="name" type="text" autoComplete="name" required placeholder="Name" />
+                <Field label="Work email" name="email" type="email" autoComplete="email" required placeholder="you@company.com" />
+                <Field label="Company / product" name="company" type="text" autoComplete="organization" placeholder="Company or product name" />
+                <SelectField label="Project type" name="projectType" options={projectTypes} />
+                <SelectField label="Budget range (USD)" name="budget" options={budgets} />
+                <SelectField label="Target timeline" name="timeline" options={timelines} />
+              </div>
+
+              <div className="mt-5">
+                <label htmlFor="contact-message" className="form-label">Project brief</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  minLength={30}
+                  maxLength={3000}
+                  rows={6}
+                  className="form-control resize-y"
+                  placeholder="What problem are you solving, what exists today, and what would a successful outcome look like?"
+                />
+              </div>
+
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="companyWebsite">Company website</label>
+                <input id="companyWebsite" name="companyWebsite" tabIndex={-1} autoComplete="off" />
+              </div>
+
+              <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <button type="submit" disabled={formState.status === 'submitting'} className="button-primary disabled:cursor-wait disabled:opacity-60">
+                  {formState.status === 'submitting' ? 'Sending…' : 'Send project brief'}
+                  <span aria-hidden="true">↗</span>
+                </button>
+                <p className="text-xs leading-5 text-slate-500">Your details are used only to reply to this enquiry.</p>
+              </div>
+
+              {formState.message ? (
+                <div
+                  role="status"
+                  className={`mt-5 rounded-xl border p-4 text-sm ${
+                    formState.status === 'success'
+                      ? 'border-emerald-300/20 bg-emerald-300/[0.06] text-emerald-200'
+                      : 'border-amber-300/20 bg-amber-300/[0.06] text-amber-100'
+                  }`}
+                >
+                  {formState.message}{' '}
+                  {formState.status === 'error' ? <a href={`mailto:${siteConfig.email}`} className="font-bold underline">Open email</a> : null}
+                </div>
+              ) : null}
+            </form>
           </div>
-
-          {/* Contact Form */}
-          <form
-            onSubmit={handleSubmit}
-            className={`lg:col-span-3 p-5 sm:p-8 rounded-2xl bg-[#0B0F19] border border-[#1A1F2E] transition-all duration-700 delay-300 ${
-              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-              <div>
-                <label htmlFor="contact-name" className="block text-xs font-mono text-[#8892A8] mb-2 uppercase tracking-wider">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="contact-name"
-                  name="name"
-                  autoComplete="name"
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-[#06080D] border border-[#1A1F2E] text-white placeholder:text-[#8892A8]/50 focus:outline-none focus:border-[#00CED1]/50 focus:ring-1 focus:ring-[#00CED1]/20 transition-all"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="contact-email" className="block text-xs font-mono text-[#8892A8] mb-2 uppercase tracking-wider">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  name="email"
-                  autoComplete="email"
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-[#06080D] border border-[#1A1F2E] text-white placeholder:text-[#8892A8]/50 focus:outline-none focus:border-[#00CED1]/50 focus:ring-1 focus:ring-[#00CED1]/20 transition-all"
-                  placeholder="your@email.com"
-                />
-              </div>
-            </div>
-
-            <div className="mb-5">
-              <label htmlFor="contact-project-type" className="block text-xs font-mono text-[#8892A8] mb-2 uppercase tracking-wider">
-                Project Type
-              </label>
-              <select id="contact-project-type" name="projectType" className="w-full px-4 py-3 rounded-lg bg-[#06080D] border border-[#1A1F2E] text-white focus:outline-none focus:border-[#00CED1]/50 focus:ring-1 focus:ring-[#00CED1]/20 transition-all appearance-none">
-                {projectTypes.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="mb-6">
-              <label htmlFor="contact-message" className="block text-xs font-mono text-[#8892A8] mb-2 uppercase tracking-wider">
-                Message
-              </label>
-              <textarea
-                rows={5}
-                id="contact-message"
-                name="message"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-[#06080D] border border-[#1A1F2E] text-white placeholder:text-[#8892A8]/50 focus:outline-none focus:border-[#00CED1]/50 focus:ring-1 focus:ring-[#00CED1]/20 transition-all resize-none"
-                placeholder="Tell me about your project, idea, or collaboration..."
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-4 bg-gradient-to-r from-[#00CED1] to-[#0066FF] text-[#06080D] font-bold rounded-xl hover:shadow-xl hover:shadow-[#00CED1]/20 transition-all duration-300 hover:scale-[1.02]"
-            >
-              {isOpeningEmail ? 'Opening your email app…' : 'Continue in Email'}
-            </button>
-          </form>
         </div>
       </div>
     </section>
+  );
+}
+
+function Field({ label, name, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string; name: string }) {
+  return (
+    <div>
+      <label htmlFor={`contact-${name}`} className="form-label">{label}</label>
+      <input id={`contact-${name}`} name={name} className="form-control" {...props} />
+    </div>
+  );
+}
+
+function SelectField({ label, name, options }: { label: string; name: string; options: string[] }) {
+  return (
+    <div>
+      <label htmlFor={`contact-${name}`} className="form-label">{label}</label>
+      <select id={`contact-${name}`} name={name} className="form-control" defaultValue={options[0]}>
+        {options.map((option) => <option key={option} value={option}>{option}</option>)}
+      </select>
+    </div>
   );
 }

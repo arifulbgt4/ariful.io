@@ -1,5 +1,5 @@
 {
-  "name": "engineer-arif-portfolio",
+  "name": "ariful-io",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,14 +7,18 @@
     "dev:restart": "sh -c 'port=${PORT:-3000}; pids=$(lsof -ti tcp:$port); [ -z \"$pids\" ] || kill $pids; sleep 1; exec next dev -p $port'",
     "build": "next build",
     "start": "next start",
+    "content:check": "node scripts/check-content.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "^16.2.9",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.19.0",
@@ -23,9 +27,12 @@
     "autoprefixer": "^10.4.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.9",
-    "postcss": "^8.4.0",
+    "postcss": "^8.5.10",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.9.0"
+  },
+  "overrides": {
+    "postcss": "$postcss"
   },
   "engines": {
     "node": ">=20.9.0"

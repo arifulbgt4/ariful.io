@@ -1,54 +1,81 @@
 import type { Metadata, Viewport } from 'next';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import { siteConfig } from '@/content/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Engineer Arif — Deep-Tech Product Engineer | AI Systems & Robotics',
-  description:
-    'Building intelligent software, AI-powered systems, and robotics prototypes that connect the digital and physical world. Deep-tech product engineering from Bangladesh.',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: 'Ariful Islam — Software Engineer for SaaS, AI & Backend Systems',
+    template: '%s | Ariful Islam',
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.brandName,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: 'technology',
   keywords: [
-    'Deep-Tech Product Engineer',
-    'AI Systems Builder',
-    'Robotics Prototypes',
-    'Embedded Systems',
-    'IoT Engineering',
-    'Software Architecture',
-    'Underwater Robotics',
-    'ESP32',
-    'SaaS Platforms',
+    'Ariful Islam software engineer',
+    'software engineer Bangladesh',
+    'Next.js developer Bangladesh',
+    'SaaS product engineer',
+    'AI integration engineer',
+    'backend API developer',
+    'TypeScript developer',
+    'Node.js engineer',
+    'RAG developer',
+    'IoT prototype developer',
   ],
-  authors: [{ name: 'Ariful Islam' }],
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Engineer Arif — Deep-Tech Product Engineer',
-    description:
-      'Building intelligent software, AI-powered systems, and robotics prototypes.',
-    url: 'https://engineerarif.dev',
-    siteName: 'Engineer Arif',
-    locale: 'en_US',
     type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    siteName: siteConfig.brandName,
+    title: 'Ariful Islam — Software Engineer for SaaS, AI & Backend Systems',
+    description: siteConfig.description,
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Ariful Islam — Software Engineer' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Engineer Arif — Deep-Tech Product Engineer',
-    description:
-      'Building intelligent software, AI-powered systems, and robotics prototypes.',
+    title: 'Ariful Islam — Software Engineer',
+    description: siteConfig.description,
+    images: ['/opengraph-image'],
   },
-  robots: 'index, follow',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#06080D',
+  colorScheme: 'dark',
+  themeColor: '#070A0F',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="antialiased">{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className="min-w-80 bg-[#070A0F] text-slate-300 antialiased">
+        <a href="#main-content" className="skip-link">Skip to content</a>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

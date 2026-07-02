@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         navy: '#0B0F19',
         'deep-blue': '#0D1B3E',
-        cyan: '#00CED1',
+        'legacy-cyan': '#00CED1',
         'electric-blue': '#0066FF',
         accent: '#2ECC71',
         muted: '#1A1F2E',

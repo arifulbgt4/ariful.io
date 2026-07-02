@@ -1,0 +1,96 @@
+# Content and CMS Guide
+
+## CMS model
+
+The site uses a Git-backed CMS:
+
+- structured portfolio content in `content/site.ts`;
+- Markdown articles in `content/blog/*.md`;
+- repository review as editorial approval; and
+- deployment as publication.
+
+This model is small, secure, versioned, portable, and sufficient for one owner.
+It deliberately avoids a public admin login, database, vendor lock-in, and an
+additional security boundary.
+
+## Blog publishing workflow
+
+1. Copy an existing Markdown post in `content/blog/`.
+2. Use a descriptive lowercase filename with hyphens. The filename becomes the
+   URL slug and should not change after indexing.
+3. Complete the frontmatter:
+
+```yaml
+---
+title: A specific reader outcome
+description: A unique 140 to 160 character search description.
+date: 2026-07-02
+updated: 2026-07-02
+category: Product Engineering
+tags: [Next.js, SaaS, Architecture]
+---
+```
+
+4. Write the article in Markdown. GFM tables, lists, links, blockquotes, inline
+   code, and fenced code blocks are supported.
+5. Link to relevant primary sources when making claims that can change.
+6. Add one useful next step or service connection; do not turn every paragraph
+   into a sales pitch.
+7. Run `npm run content:check` and the full build.
+8. Review the rendered article on mobile and desktop.
+9. Commit and deploy. The article index, homepage, sitemap, RSS, metadata, and
+   Article JSON-LD update automatically.
+
+## Editorial voice
+
+- Direct, technically grounded, and useful to a working team.
+- Explain tradeoffs and failure modes, not only happy paths.
+- Distinguish opinion, experience, public evidence, and inference.
+- Prefer concrete nouns and verbs over marketing adjectives.
+- Use English for public articles to reach the target international audience.
+- Define specialized terms when the likely reader is a founder rather than an
+  engineer.
+
+## Evidence and confidentiality
+
+Before publishing a project claim, answer:
+
+- Is the source public or approved for disclosure?
+- Does the wording distinguish built, planned, and researched work?
+- Is a number reproducible and dated?
+- Does the claim expose a client, private repository, credential, architecture,
+  vulnerability, or personal data?
+- Would a reasonable prospect interpret the statement more strongly than the
+  evidence supports?
+
+If the last answer is yes, narrow the claim.
+
+## Portfolio record workflow
+
+Edit `content/site.ts` for profile, service, work, social, skills, and proof
+updates. Dynamic pages and navigation surfaces use those records. Keep public
+URLs absolute and verify them before deployment.
+
+Rounded public profile metrics should be updated only when crossing the displayed
+threshold. Record the exact source and verification date in
+`docs/PROJECT_CONTEXT.md`.
+
+## Topic selection
+
+Prioritize articles that demonstrate the paid services:
+
+1. a costly product or architecture decision;
+2. a realistic implementation approach;
+3. failure modes and verification;
+4. a checklist a team can use immediately; and
+5. a natural connection to a case study or service.
+
+Avoid generic news summaries and high-volume AI content. One evidence-rich post
+is worth more than several interchangeable posts.
+
+## When to add a hosted CMS
+
+Consider a hosted or authenticated CMS only when a non-technical editor publishes
+frequently enough that Git is the actual bottleneck. Requirements must include
+authentication, authorization, drafts, preview, audit history, backups, schema
+validation, and a migration/export path.
