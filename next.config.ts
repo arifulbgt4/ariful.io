@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
     ],
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/work/muistory-design-system',
+        destination: '/work/ai-dropshipping-commerce-platform',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

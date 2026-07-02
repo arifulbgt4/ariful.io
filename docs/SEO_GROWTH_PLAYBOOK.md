@@ -78,7 +78,7 @@ Publish one substantial article every two to four weeks. Recommended sequence:
 5. WebSocket command acknowledgement for IoT dashboards;
 6. modernizing a Node.js backend without a rewrite;
 7. architecture and delivery documentation for a founder handover; and
-8. lessons from building a public Storybook/MUI design-system workflow.
+8. designing review-gated AI workflows for an international dropshipping platform.
 
 Each article needs a specific query, unique point of view, technical examples,
 and an honest route to a service or project.

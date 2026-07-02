@@ -212,6 +212,15 @@ export type Project = {
   year: string;
   tags: string[];
   highlights: string[];
+  role?: string;
+  flagship?: boolean;
+  systemMap?: { title: string; description: string }[];
+  caseStudySections?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: string[];
+  }[];
   repository?: string;
   liveUrl?: string;
   featured?: boolean;
@@ -219,23 +228,124 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'muistory-design-system',
-    title: 'MuiStory Design System',
-    category: 'Open-source frontend engineering',
+    slug: 'ai-dropshipping-commerce-platform',
+    title: 'AI Dropshipping Commerce Platform',
+    category: 'AI commerce · Dropshipping operations',
     summary:
-      'A Next.js design-system starter that connects MUI theming with Storybook and Chromatic for isolated component review.',
+      'An end-to-end commerce operating system that connects supplier ingestion, international storefronts, AI-assisted pricing and content, creative and campaign workflows, analytics, and controlled automation.',
     challenge:
-      'Product teams need a reliable way to develop and review branded UI components without coupling every change to the full application.',
+      'Dropshipping operations fragment product data, supplier risk, market localization, pricing, creative production, advertising, checkout, and analytics across disconnected tools. Adding AI without controls can make that fragmentation more dangerous by publishing invented claims, unsafe prices, or unreviewed campaigns.',
     approach:
-      'Created a reusable project structure around MUI Core theming, Storybook component stories, and hosted visual review through Chromatic.',
+      'Built a modular Next.js and Prisma platform with separate admin and customer deployment modes, a generic supplier layer, market-specific product profiles, a central multi-provider AI router, review-gated creative and marketing workflows, and currency-aware analytics.',
     outcome:
-      'A public, reusable implementation with source code and a hosted component preview that demonstrates design-system workflow decisions.',
-    status: 'Public project',
-    year: '2024',
-    tags: ['Next.js', 'TypeScript', 'MUI', 'Storybook', 'Chromatic'],
-    highlights: ['Reusable theming foundation', 'Isolated component development', 'Hosted visual review'],
-    repository: 'https://github.com/arifulbgt4/MuiStory',
-    liveUrl: 'https://dev--647c84907213dc4172ffdcde.chromatic.com',
+      'The operational foundation is implemented and verified across Prisma, focused workflow tests, TypeScript, ESLint, and production builds for both admin and customer modes. Live supplier, AI media, storage, and advertising connections remain in credentialed sandbox acceptance before production launch.',
+    status: 'Operational foundation built',
+    year: '2026–Present',
+    role: 'Product architecture · Full-stack engineering · AI systems design',
+    flagship: true,
+    tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'AI routing', 'International commerce', 'Analytics', 'Meta Ads'],
+    highlights: [
+      'Separate admin and customer deployment modes with route and SEO isolation',
+      'Generic supplier model with AliExpress ingestion, review, approval, sync, and risk records',
+      'Country, language, currency, localized content, and editable AI price suggestions per market',
+      'Admin-controlled OpenAI, Anthropic, Gemini, Ollama, LM Studio, and compatible model routing',
+      'Review-gated product enrichment, creative generation, campaign drafting, and supplier operations',
+      'Currency-safe checkout snapshots and analytics that do not merge unlike currencies',
+      'Privacy-minimal event tracking with reviewed AI insights and suggestion-only actions',
+      'Credentialed sandbox acceptance plan for suppliers, media storage, AI providers, and Meta campaigns',
+    ],
+    systemMap: [
+      {
+        title: 'Supplier & product intelligence',
+        description: 'Normalize supplier data, preserve source snapshots, flag risk, and keep imports inactive until review.',
+      },
+      {
+        title: 'AI control plane',
+        description: 'Route each task through dashboard-selected providers, models, capabilities, fallbacks, and approval rules.',
+      },
+      {
+        title: 'International storefront',
+        description: 'Resolve market, language, currency, localized copy, and approved price without device-permission prompts.',
+      },
+      {
+        title: 'Operations & analytics',
+        description: 'Run creatives, campaigns, orders, attribution, insights, and actions through auditable review states.',
+      },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Commerce foundation',
+        title: 'One operating model from supplier import to customer order.',
+        description:
+          'The platform replaces disconnected dropshipping steps with explicit product, supplier, market, order, and operational records.',
+        items: [
+          'A generic supplier schema supports current AliExpress ingestion and future provider adapters.',
+          'Imported products stay inactive until an admin reviews, edits, and explicitly approves them.',
+          'Supplier sync jobs preserve inventory and price snapshots, logs, and risk flags instead of silently overwriting state.',
+          'Customer and admin deployments use different route boundaries, navigation, robots rules, and sitemap exposure.',
+        ],
+      },
+      {
+        eyebrow: '02 / International selling',
+        title: 'The same product can become a controlled offer for each market.',
+        description:
+          'Market profiles keep localization and pricing editable while the storefront and checkout preserve the context the customer actually used.',
+        items: [
+          'Each market can define country, language, currency, local copy, local price, shipping assumptions, tax assumptions, and margin fields.',
+          'AI can suggest a standard price plus alternatives, reasoning, confidence, margin, and risk notes—but an admin must review and save it.',
+          'Market detection follows campaign parameters, saved or manual preference, public request metadata, language, and default market without asking for device location.',
+          'Orders persist market, currency, and price snapshots so historical reporting remains explainable.',
+        ],
+      },
+      {
+        eyebrow: '03 / AI platform architecture',
+        title: 'AI is a configurable service layer, not a hard-coded vendor call.',
+        description:
+          'The admin dashboard controls which provider and model handles each commerce task while the feature code talks to a central router.',
+        items: [
+          'Providers cover OpenAI, Anthropic, Gemini, Ollama, LM Studio, and other OpenAI-compatible runtimes.',
+          'Task routes define primary and fallback models, allowed capabilities, local-model permission, output type, safety level, and approval requirements.',
+          'Jobs, outputs, usage, and provider health checks create an auditable operating trail.',
+          'Local models remain draft engines until the route and validation policy explicitly allow their output.',
+        ],
+      },
+      {
+        eyebrow: '04 / Creative & growth operations',
+        title: 'Generated assets and campaigns move through review, not directly to customers.',
+        description:
+          'Product copy, pricing, image creatives, supplier decisions, campaigns, and analytics recommendations share a review-first operating principle.',
+        items: [
+          'Product enrichment rejects invented certifications, warranties, safety ratings, shipping guarantees, and unverified technical claims.',
+          'Creative assets persist as drafts with approve and reject states before use.',
+          'Approved campaign drafts can be published to Meta as paused campaigns through idempotent, audited jobs.',
+          'AI analytics creates reviewable insights and suggestion-only actions; execution remains deliberately disabled.',
+        ],
+      },
+      {
+        eyebrow: '05 / Analytics integrity',
+        title: 'Business reporting preserves market and currency truth.',
+        description:
+          'The analytics model connects products, markets, suppliers, campaigns, creatives, customers, attribution, and data quality without producing misleading totals.',
+        items: [
+          'Privacy-minimal events are captured through a public ingestion API and persisted as structured records.',
+          'Revenue headlines stay scoped to a reporting currency, with other currencies shown separately instead of added together.',
+          'AI insight runs save model, output, references, review state, and follow-up actions for auditability.',
+          'Admin views cover revenue, product, market, supplier, campaign, creative, customer, attribution, and data-quality signals.',
+        ],
+      },
+      {
+        eyebrow: '06 / Delivery evidence',
+        title: 'The foundation was verified as a two-mode production build.',
+        description:
+          'The implemented backlog reached a clean engineering checkpoint before external accounts and credentials are connected.',
+        items: [
+          'Prisma schema formatting, validation, generation, and database synchronization completed without destructive changes.',
+          'Focused workflow tests passed 5 of 5 with zero failures.',
+          'TypeScript and ESLint completed with zero errors, and repository diff validation passed.',
+          'Production builds passed for both admin and customer modes; remaining work is live credential and sandbox acceptance.',
+        ],
+      },
+    ],
     featured: true,
   },
   {

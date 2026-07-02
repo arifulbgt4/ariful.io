@@ -33,13 +33,15 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
     <main id="main-content" className="page-shell">
       <JsonLd data={{
         '@context': 'https://schema.org',
-        '@type': 'CreativeWork',
+        '@type': project.flagship ? 'SoftwareApplication' : 'CreativeWork',
         name: project.title,
         description: project.summary,
         url,
         creator: { '@id': `${siteConfig.url}/#person` },
         keywords: project.tags.join(', '),
+        featureList: project.highlights,
         dateCreated: `${project.year.split('–')[0]}-01-01`,
+        ...(project.flagship ? { applicationCategory: 'BusinessApplication', operatingSystem: 'Web' } : {}),
       }} />
 
       <article className="site-container">
@@ -52,6 +54,12 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           </div>
           <h1 className="mt-6 text-balance text-4xl font-black tracking-[-0.04em] text-white sm:text-6xl">{project.title}</h1>
           <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-400">{project.summary}</p>
+          {project.role ? (
+            <div className="mt-8 inline-flex max-w-full flex-col gap-1 rounded-xl border border-white/[0.07] bg-white/[0.025] px-5 py-4 sm:flex-row sm:items-center sm:gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">My role</span>
+              <span className="text-sm font-semibold text-white">{project.role}</span>
+            </div>
+          ) : null}
           <div className="mt-8 flex flex-wrap gap-3">
             {project.liveUrl ? <a href={project.liveUrl} target="_blank" rel="noreferrer" className="button-primary">View live ↗</a> : null}
             {project.repository ? <a href={project.repository} target="_blank" rel="noreferrer" className="button-secondary">Source code ↗</a> : null}
@@ -76,6 +84,45 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             <div className="mt-5 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="skill-pill">{tag}</span>)}</div>
           </div>
         </div>
+
+        {project.systemMap ? (
+          <section className="mx-auto mt-16 max-w-5xl">
+            <p className="section-kicker">System architecture</p>
+            <h2 className="mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-4xl">A controlled path from supplier data to business decisions.</h2>
+            <ol className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.07] lg:grid-cols-4">
+              {project.systemMap.map((node, index) => (
+                <li key={node.title} className="relative bg-[#0B1018] p-6">
+                  <span className="font-mono text-xs text-cyan-300/60">0{index + 1}</span>
+                  <h3 className="mt-7 text-lg font-bold text-white">{node.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">{node.description}</p>
+                  {index < project.systemMap!.length - 1 ? <span aria-hidden="true" className="absolute -right-3 top-7 z-10 hidden h-6 w-6 place-items-center rounded-full border border-cyan-300/20 bg-[#0B1018] text-xs text-cyan-200 lg:grid">→</span> : null}
+                </li>
+              ))}
+            </ol>
+          </section>
+        ) : null}
+
+        {project.caseStudySections ? (
+          <div className="mx-auto mt-20 max-w-5xl space-y-16">
+            {project.caseStudySections.map((section, sectionIndex) => (
+              <section key={section.title} className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+                <div>
+                  <p className="section-kicker">{section.eyebrow}</p>
+                  <h2 className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">{section.title}</h2>
+                  <p className="mt-5 leading-7 text-slate-400">{section.description}</p>
+                </div>
+                <ol className="grid gap-3">
+                  {section.items.map((item, itemIndex) => (
+                    <li key={item} className="flex gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-5 text-sm leading-7 text-slate-300">
+                      <span className="font-mono text-xs text-cyan-300/60">{String(sectionIndex + 1).padStart(2, '0')}.{itemIndex + 1}</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ))}
+          </div>
+        ) : null}
 
         <div className="mx-auto mt-12 max-w-5xl rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.04] p-7 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-9">
           <div>

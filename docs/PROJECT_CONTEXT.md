@@ -59,8 +59,16 @@ status labels:
 - public project;
 - live;
 - in development;
+- operational foundation built;
 - experiment; or
 - active R&D.
+
+The `AI Dropshipping Commerce Platform` case study is owner-approved for public
+portfolio use. Its claims are based on the current private `e-commerce-own`
+implementation and verification records. Describe implemented architecture,
+workflows, safeguards, and test/build evidence, but do not expose the private
+repository URL, credentials, customer data, supplier tokens, or claim a live
+production launch before credentialed sandbox acceptance is complete.
 
 No client logos, testimonials, revenue, conversion improvements, or production
 field results are currently verified. Do not add them without direct evidence

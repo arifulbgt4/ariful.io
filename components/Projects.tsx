@@ -16,14 +16,38 @@ export default function Projects() {
 
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           {featuredProjects.map((project, index) => (
-            <article key={project.slug} className="surface-card group overflow-hidden">
-              <div className="border-b border-white/[0.07] p-6 sm:p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="font-mono text-xs uppercase tracking-[0.16em] text-cyan-300/60">{project.category}</p>
-                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400">{project.status}</span>
+            <article
+              key={project.slug}
+              className={`surface-card group overflow-hidden ${
+                project.flagship ? 'lg:col-span-2 border-cyan-300/15 bg-gradient-to-br from-cyan-300/[0.055] via-[#0B1018] to-blue-500/[0.045]' : ''
+              }`}
+            >
+              <div className={`border-b border-white/[0.07] p-6 sm:p-8 ${project.flagship ? 'lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:p-10' : ''}`}>
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <p className="font-mono text-xs uppercase tracking-[0.16em] text-cyan-300/60">{project.category}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.flagship ? <span className="rounded-full border border-cyan-300/20 bg-cyan-300/[0.06] px-3 py-1 text-xs font-semibold text-cyan-200">Flagship build</span> : null}
+                      <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400">{project.status}</span>
+                    </div>
+                  </div>
+                  <h3 className={`mt-5 font-black tracking-tight text-white ${project.flagship ? 'text-3xl sm:text-4xl' : 'text-3xl'}`}>{project.title}</h3>
+                  <p className={`mt-4 leading-7 text-slate-400 ${project.flagship ? 'max-w-3xl text-base sm:text-lg sm:leading-8' : ''}`}>{project.summary}</p>
                 </div>
-                <h3 className="mt-5 text-3xl font-black tracking-tight text-white">{project.title}</h3>
-                <p className="mt-4 leading-7 text-slate-400">{project.summary}</p>
+
+                {project.flagship ? (
+                  <div className="mt-8 rounded-2xl border border-white/[0.07] bg-black/10 p-5 lg:mt-0">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Platform scope</p>
+                    <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                      {project.highlights.slice(0, 4).map((highlight) => (
+                        <li key={highlight} className="flex gap-3 text-sm leading-6 text-slate-300">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
 
               <div className="flex items-center justify-between gap-4 p-6 sm:px-8">
@@ -39,7 +63,7 @@ export default function Projects() {
                   ))}
                 </div>
                 <Link href={`/work/${project.slug}`} className="inline-flex items-center gap-2 font-semibold text-cyan-200 group-hover:text-white">
-                  View case study <span aria-hidden="true">→</span>
+                  {project.flagship ? 'Read flagship case study' : 'View case study'} <span aria-hidden="true">→</span>
                 </Link>
               </div>
               <span className="sr-only">Project {index + 1}</span>
