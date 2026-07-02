@@ -17,21 +17,40 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [mobileOpen]);
+
   return (
     <nav
+      aria-label="Primary navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-[#06080D]/90 backdrop-blur-xl border-b border-[#00CED1]/10 shadow-lg shadow-[#00CED1]/5'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <a href="#home" aria-label="Engineer Arif — Home" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00CED1] to-[#0066FF] flex items-center justify-center font-bold text-white text-sm font-mono tracking-tight group-hover:shadow-lg group-hover:shadow-[#00CED1]/30 transition-shadow duration-300">
             EA
           </div>
@@ -46,7 +65,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -67,8 +86,10 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-          aria-label="Toggle menu"
+          className="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5 rounded-lg"
+          aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
           <span
             className={`w-6 h-0.5 bg-[#00CED1] transition-all duration-300 ${
@@ -90,11 +111,15 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${
-          mobileOpen ? 'max-h-96' : 'max-h-0'
+        id="mobile-navigation"
+        aria-hidden={!mobileOpen}
+        className={`lg:hidden overflow-y-auto transition-all duration-300 ${
+          mobileOpen
+            ? 'visible max-h-[calc(100svh-4.25rem)] opacity-100'
+            : 'invisible max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-[#06080D]/95 backdrop-blur-xl border-t border-[#00CED1]/10 px-6 py-4 flex flex-col gap-1">
+        <div className="bg-[#06080D]/95 backdrop-blur-xl border-t border-[#00CED1]/10 px-4 sm:px-6 py-4 flex flex-col gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}

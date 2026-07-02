@@ -9,21 +9,22 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#06080D] text-[#C8D0E0] overflow-x-hidden">
+    <div className="min-h-screen bg-[#06080D] text-[#C8D0E0] overflow-x-clip">
       <Navbar />
-      <Hero />
-      <div className="section-divider" />
-      <About />
-      <div className="section-divider" />
-      <Domains />
-      <div className="section-divider" />
-      <Projects />
-      <div className="section-divider" />
-      <Services />
-      <div className="section-divider" />
-      <Contact />
-      <div className="section-divider" />
+      <main>
+        <Hero />
+        <div className="section-divider" aria-hidden="true" />
+        <About />
+        <div className="section-divider" aria-hidden="true" />
+        <Domains />
+        <div className="section-divider" aria-hidden="true" />
+        <Projects />
+        <div className="section-divider" aria-hidden="true" />
+        <Services />
+        <div className="section-divider" aria-hidden="true" />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

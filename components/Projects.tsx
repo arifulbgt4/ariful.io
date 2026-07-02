@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const projects = [
   {
@@ -61,36 +61,24 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
-      { threshold: 0.05 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible: visible } = useInViewOnce<HTMLDivElement>(0.05);
 
   return (
-    <section id="projects" className="relative py-24 sm:py-32">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+    <section id="projects" className="section-shell">
+      <div className="site-container" ref={ref}>
         {/* Section header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <span className="text-xs font-mono text-[#00CED1]/60 tracking-[0.3em] uppercase mb-4 block">
-            // featured_work
+            {'// featured_work'}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-lg text-[#8892A8] max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#8892A8] max-w-2xl mx-auto">
             From SaaS platforms to underwater robotics — engineering at every scale.
           </p>
         </div>
@@ -100,7 +88,7 @@ export default function Projects() {
           {projects.map((project, i) => (
             <div
               key={project.title}
-              className={`group relative p-6 sm:p-8 rounded-2xl bg-[#0B0F19] border border-[#1A1F2E] hover:border-[${project.color}]/30 transition-all duration-500 overflow-hidden ${
+              className={`group relative p-5 sm:p-8 rounded-2xl bg-[#0B0F19] border border-[#1A1F2E] hover:border-[#00CED1]/30 transition-all duration-500 overflow-hidden ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${200 + i * 100}ms` }}
@@ -127,7 +115,7 @@ export default function Projects() {
                 />
               </div>
 
-              <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+              <div className="flex flex-col lg:flex-row lg:items-start gap-5 sm:gap-6">
                 {/* Left: Meta */}
                 <div className="lg:w-64 flex-shrink-0">
                   <div className="flex items-center gap-3 mb-2">
@@ -148,7 +136,7 @@ export default function Projects() {
                   <p className="text-sm font-medium text-[#8892A8] mb-3">
                     {project.subtitle}
                   </p>
-                  <div className="flex items-center gap-4 text-xs text-[#8892A8]/60 font-mono">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[#8892A8]/60 font-mono">
                     <span>{project.year}</span>
                     <span className="flex items-center gap-1.5">
                       <span
@@ -161,7 +149,7 @@ export default function Projects() {
                 </div>
 
                 {/* Right: Description & tags */}
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <p className="text-[#8892A8] leading-relaxed mb-5">
                     {project.description}
                   </p>
@@ -174,15 +162,6 @@ export default function Projects() {
                         {tag}
                       </span>
                     ))}
-                  </div>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden lg:flex items-center self-center">
-                  <div className="w-10 h-10 rounded-full border border-[#1A1F2E] flex items-center justify-center text-[#8892A8] group-hover:border-[#00CED1]/40 group-hover:text-[#00CED1] group-hover:translate-x-1 transition-all duration-300">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
                   </div>
                 </div>
               </div>

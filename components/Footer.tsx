@@ -1,7 +1,9 @@
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative py-12 border-t border-[#1A1F2E]">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="site-container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <div className="flex items-center gap-3">
@@ -19,7 +21,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {[
               { label: 'GitHub', href: 'https://github.com/arifulbgt4' },
               { label: 'Email', href: 'mailto:arifulbgt4@gmail.com' },
@@ -38,7 +40,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-xs text-[#8892A8]/50 font-mono">
-            © 2024 Ariful Islam
+            © {currentYear} Ariful Islam
           </p>
         </div>
 

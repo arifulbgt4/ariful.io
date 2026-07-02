@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const services = [
   {
@@ -46,36 +46,24 @@ const services = [
 ];
 
 export default function Services() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
-      { threshold: 0.05 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible: visible } = useInViewOnce<HTMLDivElement>(0.05);
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 bg-[#080B14]">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+    <section id="services" className="section-shell bg-[#080B14]">
+      <div className="site-container" ref={ref}>
         {/* Section header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <span className="text-xs font-mono text-[#00CED1]/60 tracking-[0.3em] uppercase mb-4 block">
-            // engineering_services
+            {'// engineering_services'}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             Engineering <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-lg text-[#8892A8] max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#8892A8] max-w-2xl mx-auto">
             End-to-end deep-tech engineering solutions from concept to production.
           </p>
         </div>
@@ -85,7 +73,7 @@ export default function Services() {
           {services.map((service, i) => (
             <div
               key={service.title}
-              className={`group p-6 rounded-xl bg-[#0B0F19] border border-[#1A1F2E] hover:border-[#00CED1]/30 transition-all duration-500 ${
+              className={`group p-5 sm:p-6 rounded-xl bg-[#0B0F19] border border-[#1A1F2E] hover:border-[#00CED1]/30 transition-all duration-500 ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${100 + i * 50}ms` }}
@@ -107,7 +95,7 @@ export default function Services() {
 
         {/* Bottom banner */}
         <div
-          className={`mt-16 p-8 rounded-2xl bg-gradient-to-r from-[#00CED1]/5 to-[#0066FF]/5 border border-[#00CED1]/10 transition-all duration-700 delay-300 ${
+          className={`mt-10 sm:mt-16 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#00CED1]/5 to-[#0066FF]/5 border border-[#00CED1]/10 transition-all duration-700 delay-300 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -122,7 +110,7 @@ export default function Services() {
             </div>
             <a
               href="#contact"
-              className="px-6 py-3 bg-[#00CED1] text-[#06080D] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00CED1]/20 transition-all duration-300 hover:scale-105 text-center"
+              className="w-full md:w-auto shrink-0 px-6 py-3 bg-[#00CED1] text-[#06080D] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00CED1]/20 transition-all duration-300 hover:scale-105 text-center"
             >
               Start Project
             </a>

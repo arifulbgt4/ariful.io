@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const identityCards = [
   {
@@ -42,37 +42,25 @@ const identityCards = [
 ];
 
 export default function About() {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible: visible } = useInViewOnce<HTMLDivElement>();
 
   return (
-    <section id="about" className="relative py-24 sm:py-32">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+    <section id="about" className="section-shell">
+      <div className="site-container" ref={ref}>
         {/* Section header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <span className="text-xs font-mono text-[#00CED1]/60 tracking-[0.3em] uppercase mb-4 block">
-            // who_i_am
+            {'// who_i_am'}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5 text-balance">
             Engineering at the{' '}
             <span className="text-gradient">Intersection</span>
           </h2>
-          <p className="text-lg text-[#8892A8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#8892A8] max-w-3xl mx-auto leading-relaxed">
             Ariful Islam is a technology builder who works at the intersection of
             software, artificial intelligence, electronics, mechanical systems, and
             real-world product development. His work focuses on turning complex ideas
@@ -84,7 +72,7 @@ export default function About() {
 
         {/* Core statement */}
         <div
-          className={`relative mb-16 p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[#00CED1]/[0.05] to-[#0066FF]/[0.05] border border-[#00CED1]/10 transition-all duration-700 delay-200 ${
+          className={`relative mb-10 sm:mb-16 p-6 sm:p-10 rounded-2xl bg-gradient-to-br from-[#00CED1]/[0.05] to-[#0066FF]/[0.05] border border-[#00CED1]/10 transition-all duration-700 delay-200 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -102,16 +90,16 @@ export default function About() {
           {identityCards.map((card, i) => (
             <div
               key={card.title}
-              className={`group p-6 rounded-xl bg-[#0B0F19] border border-[#1A1F2E] hover:border-[#00CED1]/30 transition-all duration-500 ${
+              className={`group p-5 sm:p-6 rounded-xl bg-[#0B0F19] border border-[#1A1F2E] hover:border-[#00CED1]/30 transition-all duration-500 ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${300 + i * 100}ms` }}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3 sm:gap-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#00CED1]/10 text-[#00CED1] flex items-center justify-center group-hover:bg-[#00CED1]/20 transition-colors">
                   {card.icon}
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-white font-bold mb-1">{card.title}</h3>
                   <p className="text-[#8892A8] text-sm leading-relaxed">
                     {card.desc}

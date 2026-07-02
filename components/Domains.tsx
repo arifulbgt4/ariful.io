@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const domains = [
   {
@@ -11,6 +12,7 @@ const domains = [
       </svg>
     ),
     title: 'Intelligent Software Systems',
+    shortTitle: 'Software',
     color: '#00CED1',
     skills: [
       'Next.js', 'React', 'TypeScript', 'Node.js', 'NestJS',
@@ -27,6 +29,7 @@ const domains = [
       </svg>
     ),
     title: 'AI & Automation Systems',
+    shortTitle: 'AI & Automation',
     color: '#0066FF',
     skills: [
       'AI Agents', 'Local LLM Workflows', 'Ollama', 'Prompt Engineering',
@@ -42,6 +45,7 @@ const domains = [
       </svg>
     ),
     title: 'Electronics & Embedded Systems',
+    shortTitle: 'Embedded',
     color: '#2ECC71',
     skills: [
       'ESP32', 'Arduino', 'Raspberry Pi', 'Sensor Integration',
@@ -57,6 +61,7 @@ const domains = [
       </svg>
     ),
     title: 'Robotics & Underwater Systems',
+    shortTitle: 'Robotics',
     color: '#FF6B35',
     skills: [
       'Underwater Drone Research', 'Submarine Prototypes', 'Live Monitoring',
@@ -73,6 +78,7 @@ const domains = [
       </svg>
     ),
     title: 'Mechanical & Product Design',
+    shortTitle: 'Mechanical',
     color: '#A855F7',
     skills: [
       'Structure Planning', 'Waterproof Housing', 'Sensor Placement',
@@ -88,6 +94,7 @@ const domains = [
       </svg>
     ),
     title: 'Cloud & Deployment',
+    shortTitle: 'Cloud',
     color: '#F59E0B',
     skills: [
       'AWS Concepts', 'Docker', 'GitHub Actions', 'Vercel',
@@ -98,54 +105,48 @@ const domains = [
 ];
 
 export default function Domains() {
-  const [visible, setVisible] = useState(false);
   const [activeDomain, setActiveDomain] = useState('software');
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, isVisible: visible } = useInViewOnce<HTMLDivElement>();
 
   const active = domains.find((d) => d.id === activeDomain)!;
 
   return (
-    <section id="domains" className="relative py-24 sm:py-32 bg-[#080B14]">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
+    <section id="domains" className="section-shell bg-[#080B14]">
+      <div className="site-container" ref={ref}>
         {/* Section header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <span className="text-xs font-mono text-[#00CED1]/60 tracking-[0.3em] uppercase mb-4 block">
-            // engineering_domains
+            {'// engineering_domains'}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             Core <span className="text-gradient">Domains</span>
           </h2>
-          <p className="text-lg text-[#8892A8] max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#8892A8] max-w-2xl mx-auto">
             Six interconnected engineering disciplines powering every project.
           </p>
         </div>
 
         {/* Domain tabs */}
         <div
-          className={`flex flex-wrap justify-center gap-2 mb-12 transition-all duration-700 delay-200 ${
+          className={`grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 mb-8 sm:mb-12 transition-all duration-700 delay-200 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
+          role="tablist"
+          aria-label="Engineering domains"
         >
           {domains.map((d) => (
             <button
               key={d.id}
               onClick={() => setActiveDomain(d.id)}
-              className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+              role="tab"
+              id={`domain-tab-${d.id}`}
+              aria-selected={activeDomain === d.id}
+              aria-controls="domain-panel"
+              className={`min-w-0 px-3 sm:px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
                 activeDomain === d.id
                   ? 'text-[#06080D] shadow-lg'
                   : 'text-[#8892A8] bg-[#0B0F19] border border-[#1A1F2E] hover:border-[#00CED1]/30'
@@ -160,6 +161,7 @@ export default function Domains() {
               }
             >
               {d.icon}
+              <span className="sm:hidden truncate">{d.shortTitle}</span>
               <span className="hidden sm:inline">{d.title}</span>
             </button>
           ))}
@@ -167,25 +169,28 @@ export default function Domains() {
 
         {/* Active domain content */}
         <div
-          className={`p-8 sm:p-10 rounded-2xl bg-[#0B0F19] border border-[#1A1F2E] transition-all duration-500 ${
+          id="domain-panel"
+          role="tabpanel"
+          aria-labelledby={`domain-tab-${active.id}`}
+          className={`p-5 sm:p-10 rounded-2xl bg-[#0B0F19] border border-[#1A1F2E] transition-all duration-500 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '400ms' }}
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-start sm:items-center gap-3 mb-6">
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center"
+              className="w-10 h-10 shrink-0 rounded-lg flex items-center justify-center"
               style={{ backgroundColor: `${active.color}15`, color: active.color }}
             >
               {active.icon}
             </div>
-            <h3 className="text-xl font-bold text-white">{active.title}</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-white">{active.title}</h3>
           </div>
           <div className="flex flex-wrap gap-3">
             {active.skills.map((skill) => (
               <span
                 key={skill}
-                className="px-4 py-2.5 rounded-lg text-sm font-medium bg-[#06080D] border border-[#1A1F2E] text-[#C8D0E0] hover:border-current transition-all duration-300"
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium bg-[#06080D] border border-[#1A1F2E] text-[#C8D0E0] hover:border-current transition-all duration-300"
                 style={{ ['--tw-border-opacity' as string]: 1 }}
               >
                 {skill}
