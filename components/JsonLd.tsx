@@ -1,14 +1,22 @@
+type JsonLdDocument = Record<string, unknown> & {
+  '@context': string;
+  '@type'?: string;
+};
+
 type JsonLdProps = {
-  data: Record<string, unknown> | Record<string, unknown>[];
+  data: JsonLdDocument | JsonLdDocument[];
 };
 
 export default function JsonLd({ data }: JsonLdProps) {
-  return (
+  const documents = Array.isArray(data) ? data : [data];
+
+  return documents.map((document, index) => (
     <script
+      key={`${document['@type'] ?? 'schema'}-${index}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(data).replace(/</g, '\\u003c'),
+        __html: JSON.stringify(document).replace(/</g, '\\u003c'),
       }}
     />
-  );
+  ));
 }
