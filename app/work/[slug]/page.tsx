@@ -124,6 +124,45 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           </div>
         ) : null}
 
+        {project.clientApplications ? (
+          <section className="mx-auto mt-20 max-w-5xl rounded-[2rem] border border-cyan-300/10 bg-gradient-to-br from-cyan-300/[0.055] via-[#0B1018] to-blue-500/[0.04] p-7 sm:p-10">
+            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+              <div>
+                <p className="section-kicker">Client relevance</p>
+                <h2 className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">What this build means for a commerce team.</h2>
+                <p className="mt-5 leading-7 text-slate-400">This is not presented as a revenue or production-scale claim. It is engineering evidence for the platform, workflow, and operating problems I can help a client solve.</p>
+                {project.relatedService ? (
+                  <Link href={project.relatedService.href} className="button-primary mt-7">
+                    Explore {project.relatedService.title} ↗
+                  </Link>
+                ) : null}
+              </div>
+              <ul className="grid gap-3">
+                {project.clientApplications.map((application) => (
+                  <li key={application} className="flex gap-3 rounded-xl border border-white/[0.07] bg-black/10 p-5 text-sm leading-7 text-slate-300">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                    {application}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ) : null}
+
+        {project.relatedArticles ? (
+          <section className="mx-auto mt-12 max-w-5xl">
+            <p className="section-kicker">Related engineering notes</p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {project.relatedArticles.map((article) => (
+                <Link key={article.href} href={article.href} className="link-card">
+                  <span className="font-semibold leading-6 text-white">{article.title}</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <div className="mx-auto mt-12 max-w-5xl rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.04] p-7 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-9">
           <div>
             <p className="section-kicker">Have a related problem?</p>

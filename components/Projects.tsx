@@ -10,8 +10,8 @@ export default function Projects() {
       <div className="site-container">
         <SectionHeading
           eyebrow="Selected work / Evidence"
-          title="Public builds, active products, and clearly labelled R&D."
-          description="Each project page separates what was built, what is still in progress, and what can be verified publicly."
+          title="A flagship AI commerce system, public builds, and clearly labelled R&D."
+          description="Each project page separates what was built, what remains in progress, and what the engineering evidence means for a prospective client."
         />
 
         <div className="mt-12 grid gap-5 lg:grid-cols-2">

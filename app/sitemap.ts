@@ -3,11 +3,11 @@ import { getAllPosts } from '@/lib/blog';
 import { projects, services, siteConfig } from '@/content/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['', '/services', '/work', '/blog', '/privacy'].map((route) => ({
+  const staticRoutes = ['', '/hire', '/services', '/work', '/blog', '/privacy'].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? ('weekly' as const) : ('monthly' as const),
-    priority: route === '' ? 1 : route === '/privacy' ? 0.2 : 0.8,
+    priority: route === '' ? 1 : route === '/hire' ? 0.9 : route === '/privacy' ? 0.2 : 0.8,
   }));
 
   const serviceRoutes = services.map((service) => ({

@@ -5,9 +5,9 @@ export const siteConfig = {
   email: 'arifulbgt4@gmail.com',
   location: 'Dhaka, Bangladesh',
   availability: 'Available for selected remote projects',
-  headline: 'Software engineer building SaaS, AI systems, and connected products',
+  headline: 'Software engineer and product builder for SaaS, AI commerce, backend systems, and connected products',
   description:
-    'Ariful Islam is a software engineer in Dhaka helping startups and product teams build production-ready SaaS platforms, AI features, backend systems, and connected-product prototypes.',
+    'Ariful Islam is a multidisciplinary software engineer and product builder in Dhaka helping founders and teams ship SaaS, AI commerce, backend, automation, and connected-product systems.',
   social: {
     github: 'https://github.com/arifulbgt4',
     linkedin: 'https://www.linkedin.com/in/ariful25278',
@@ -31,6 +31,7 @@ export type Service = {
   technologies: string[];
   process: string[];
   faqs: { question: string; answer: string }[];
+  evidence?: { title: string; description: string; href: string; label: string }[];
 };
 
 export const services: Service[] = [
@@ -76,8 +77,75 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: 'ai-commerce-platform-engineering',
+    eyebrow: '02 / AI commerce systems',
+    title: 'AI Commerce & Dropshipping Platform Engineering',
+    shortTitle: 'AI commerce',
+    summary:
+      'Design and build controlled commerce platforms spanning supplier ingestion, international offers, AI-assisted operations, checkout, campaigns, and trustworthy analytics.',
+    idealFor:
+      'Commerce founders and product teams replacing disconnected dropshipping tools, introducing AI into an existing operation, or building a multi-market platform that needs explicit review, data, and deployment boundaries.',
+    deliverables: [
+      'Commerce workflow discovery and platform architecture',
+      'Supplier ingestion, normalization, review, and synchronization',
+      'Market-specific language, currency, pricing, and checkout flows',
+      'Provider-agnostic AI routing with editable, approval-gated output',
+      'Creative, campaign, analytics, and operational workflows',
+      'Testing, sandbox acceptance plan, deployment, and handover',
+    ],
+    technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'LLM APIs', 'Supplier APIs', 'Meta Ads', 'Analytics'],
+    process: [
+      'Map the supplier-to-order workflow, markets, operators, integrations, and costly failure modes.',
+      'Define deterministic commerce records and the narrow tasks where AI can safely assist.',
+      'Build one reviewable vertical slice before expanding providers, markets, creatives, or campaigns.',
+      'Verify customer and admin boundaries, currency integrity, external sandboxes, monitoring, and handover.',
+    ],
+    faqs: [
+      {
+        question: 'Can you work on an existing dropshipping or commerce product?',
+        answer:
+          'Yes. The first step can be an architecture and operations review focused on one expensive bottleneck—supplier data, localization, pricing, AI content, campaign workflow, checkout, or analytics—without requiring a full rebuild.',
+      },
+      {
+        question: 'Will AI publish products, prices, or campaigns automatically?',
+        answer:
+          'Not by default. Consequential outputs begin as editable drafts with validation, review, approval, audit history, and deliberately bounded publishing. Automation can expand only after a narrow workflow is measured and proven safe.',
+      },
+      {
+        question: 'Can the platform support multiple countries and currencies?',
+        answer:
+          'Yes. The architecture can preserve market-specific content and approved pricing, carry market context through checkout, and store order currency snapshots so reporting does not combine unlike currencies into misleading totals.',
+      },
+      {
+        question: 'Can different AI providers or local models be used?',
+        answer:
+          'Yes. A central task router can make provider and model selection configurable while enforcing capability, fallback, validation, cost, and human-approval rules for each workflow.',
+      },
+    ],
+    evidence: [
+      {
+        title: 'AI Dropshipping Commerce Platform',
+        description: 'Flagship case study covering the implemented supplier, market, AI-control, campaign, checkout, and analytics foundation.',
+        href: '/work/ai-dropshipping-commerce-platform',
+        label: 'Read the case study',
+      },
+      {
+        title: 'Architecture for an operable AI dropshipping platform',
+        description: 'A founder-oriented breakdown of system boundaries, review states, international commerce, and launch acceptance.',
+        href: '/blog/how-to-architect-ai-dropshipping-platform',
+        label: 'Read the architecture guide',
+      },
+      {
+        title: 'Why consequential AI output needs approval',
+        description: 'A practical model for draft, review, approval, audit, and safe publishing across commerce operations.',
+        href: '/blog/why-ai-dropshipping-automation-needs-human-approval',
+        label: 'Read the control guide',
+      },
+    ],
+  },
+  {
     slug: 'ai-integration-automation',
-    eyebrow: '02 / Applied AI',
+    eyebrow: '03 / Applied AI',
     title: 'AI Integration & Workflow Automation',
     shortTitle: 'AI & automation',
     summary:
@@ -118,7 +186,7 @@ export const services: Service[] = [
   },
   {
     slug: 'backend-api-engineering',
-    eyebrow: '03 / Systems engineering',
+    eyebrow: '04 / Systems engineering',
     title: 'Backend, API & Realtime Systems',
     shortTitle: 'Backend systems',
     summary:
@@ -159,7 +227,7 @@ export const services: Service[] = [
   },
   {
     slug: 'connected-product-prototyping',
-    eyebrow: '04 / Physical + digital',
+    eyebrow: '05 / Physical + digital',
     title: 'Connected Product Prototyping',
     shortTitle: 'Connected products',
     summary:
@@ -221,6 +289,9 @@ export type Project = {
     description: string;
     items: string[];
   }[];
+  clientApplications?: string[];
+  relatedService?: { title: string; href: string };
+  relatedArticles?: { title: string; href: string }[];
   repository?: string;
   liveUrl?: string;
   featured?: boolean;
@@ -346,6 +417,27 @@ export const projects: Project[] = [
         ],
       },
     ],
+    clientApplications: [
+      'Design or modernize a supplier-to-order commerce platform with explicit operational boundaries.',
+      'Add multi-market language, currency, pricing, checkout, and reporting without losing historical truth.',
+      'Introduce AI for product, pricing, creative, campaign, or analytics work through editable and approval-gated workflows.',
+      'Create a provider-independent AI control plane with task routes, fallbacks, usage history, and local-model safeguards.',
+      'Audit an existing AI commerce stack and turn fragmented tools into a staged, testable delivery roadmap.',
+    ],
+    relatedService: {
+      title: 'AI Commerce & Dropshipping Platform Engineering',
+      href: '/services/ai-commerce-platform-engineering',
+    },
+    relatedArticles: [
+      {
+        title: 'How to Architect an AI Dropshipping Platform That Can Actually Operate',
+        href: '/blog/how-to-architect-ai-dropshipping-platform',
+      },
+      {
+        title: 'Why AI Dropshipping Automation Needs Human Approval Before It Goes Live',
+        href: '/blog/why-ai-dropshipping-automation-needs-human-approval',
+      },
+    ],
     featured: true,
   },
   {
@@ -465,9 +557,36 @@ export const engineeringDomains = [
   },
   {
     title: 'Connected systems',
-    skills: ['ESP32', 'Raspberry Pi', 'Sensors', 'Camera modules', 'Realtime control', 'IoT prototyping'],
+    skills: ['ESP32', 'Raspberry Pi', 'Sensors', 'Camera modules', 'Automation', 'Realtime control', 'Aquaculture R&D'],
+  },
+  {
+    title: 'Product invention',
+    skills: ['Product architecture', 'Rapid prototyping', 'System integration', 'Experiment design', 'CAD concepts', 'Risk mapping'],
   },
 ];
+
+export const engagementOptions = [
+  {
+    title: 'Architecture or AI-readiness review',
+    summary: 'A bounded review of the current product, workflow, data, risks, and highest-value technical decisions.',
+    outcome: 'Findings, priority risks, target architecture, and an implementation roadmap.',
+  },
+  {
+    title: 'Focused prototype sprint',
+    summary: 'A time-bounded build that tests one expensive product, AI, integration, or connected-system assumption.',
+    outcome: 'Working evidence, documented limitations, and a clear build, change, or stop decision.',
+  },
+  {
+    title: 'Production product slice',
+    summary: 'One complete workflow delivered across interface, backend, data, integrations, verification, and deployment.',
+    outcome: 'Reviewable production software with operating notes and a maintainable handover.',
+  },
+  {
+    title: 'Ongoing engineering partnership',
+    summary: 'Embedded ownership for a product with clear decision-makers, priorities, and a consistent delivery cadence.',
+    outcome: 'Incremental releases, visible tradeoffs, maintained documentation, and reduced delivery risk.',
+  },
+] as const;
 
 export const engagementSteps = [
   {

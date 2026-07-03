@@ -20,7 +20,7 @@ export default function Home() {
       alternateName: siteConfig.brandName,
       url: siteConfig.url,
       image: 'https://avatars.githubusercontent.com/u/22605783?v=4',
-      jobTitle: 'Software Engineer',
+      jobTitle: 'Software Engineer and Product Builder',
       description: siteConfig.description,
       email: `mailto:${siteConfig.email}`,
       address: {

@@ -30,6 +30,7 @@ Node.js 20.9 or newer is required by the package manifest.
 | Route | Rendering | Purpose |
 | --- | --- | --- |
 | `/` | Static | Primary portfolio and conversion page |
+| `/hire` | Static | Shareable client-fit, engagement, and evidence landing page |
 | `/services` | Static | Service index |
 | `/services/[slug]` | Static params | Search landing pages, deliverables, process, and FAQs |
 | `/work` | Static | Case-study index |

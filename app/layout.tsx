@@ -7,7 +7,7 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'Ariful Islam — Software Engineer for SaaS, AI & Backend Systems',
+    default: 'Ariful Islam — SaaS, AI Commerce & Backend Engineer',
     template: '%s | Ariful Islam',
   },
   description: siteConfig.description,
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     'software engineer Bangladesh',
     'Next.js developer Bangladesh',
     'SaaS product engineer',
+    'AI commerce platform engineer',
+    'AI dropshipping platform developer',
     'AI integration engineer',
     'backend API developer',
     'TypeScript developer',
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteConfig.url,
     siteName: siteConfig.brandName,
-    title: 'Ariful Islam — Software Engineer for SaaS, AI & Backend Systems',
+    title: 'Ariful Islam — SaaS, AI Commerce & Backend Engineer',
     description: siteConfig.description,
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Ariful Islam — Software Engineer' }],
   },

@@ -17,6 +17,21 @@ acquisition portfolio. The site must make it easy for a qualified prospect to:
 The portfolio is a business system, not a visual demo. Prioritize credibility,
 clarity, accessibility, performance, search discoverability, and conversion.
 
+## Personal context inheritance
+
+- Apply the safe durable user context and collaboration preferences from the
+  global `~/.codex/AGENTS.md` in every task in this repository. Do not depend on
+  memory recall alone for Ariful's core professional context.
+- Position Ariful as a Software Engineer, multidisciplinary product builder,
+  and inventor rather than limiting the current narrative to frontend,
+  backend, or full-stack labels.
+- When relevant, the broader portfolio narrative may connect software and AI
+  with embedded electronics, sensors, mechanical/CAD work, automation,
+  aquaculture technology, and the AI-enabled underwater/submarine R&D effort.
+- Treat this personal context as direction for understanding and positioning,
+  not as automatic permission to publish an unverified claim. Public content
+  must still follow the evidence rules and repository sources of truth below.
+
 ## Read before changing code
 
 Read these documents in order:

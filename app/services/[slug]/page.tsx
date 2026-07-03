@@ -102,6 +102,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </ol>
             </section>
 
+            {service.evidence ? (
+              <section>
+                <h2 className="text-3xl font-black text-white">Evidence and useful reading</h2>
+                <div className="mt-6 grid gap-4">
+                  {service.evidence.map((item) => (
+                    <article key={item.href} className="surface-card p-5 sm:p-6">
+                      <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+                      <Link href={item.href} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white">
+                        {item.label} <span aria-hidden="true">→</span>
+                      </Link>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
             <section>
               <h2 className="text-3xl font-black text-white">Common questions</h2>
               <div className="mt-6 divide-y divide-white/[0.07] rounded-2xl border border-white/[0.07] bg-[#0B1018] px-6">

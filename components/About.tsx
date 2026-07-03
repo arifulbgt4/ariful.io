@@ -8,16 +8,16 @@ export default function About() {
       <div className="site-container grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <SectionHeading
           eyebrow="About / Engineering perspective"
-          title="A software engineer who can work across the whole product system."
-          description="My strongest work sits where product decisions, system design, and implementation meet. I make the tradeoffs visible and leave the next engineer with a system they can understand."
+          title="A multidisciplinary builder working across software, AI, and physical systems."
+          description="My strongest work sits where product decisions, system design, experimentation, and implementation meet. I make the tradeoffs visible and leave the next engineer with a system they can understand."
         />
 
         <div className="space-y-6 text-base leading-8 text-slate-400">
           <p>
-            I work primarily with TypeScript, React, Next.js, Node.js, backend APIs, and data systems. My current AI work covers LLM integration, RAG, embeddings, tool-using workflows, MCP, and local-model experiments.
+            I work as a software engineer, product builder, and inventor, with software as the core of my delivery. My primary stack includes TypeScript, React, Next.js, Node.js, backend APIs, and data systems. My current AI work covers LLM integration, RAG, embeddings, tool-using workflows, MCP, local models, and review-gated commerce automation.
           </p>
           <p>
-            I also prototype physical-digital systems with ESP32, Raspberry Pi, sensors, cameras, and realtime interfaces. That broader systems perspective is useful when software has to communicate with devices, operators, external providers, or imperfect real-world processes.
+            I also explore physical-digital systems through ESP32, Raspberry Pi, sensors, cameras, automation, realtime interfaces, and mechanical or CAD concepts. My aquaculture-focused underwater monitoring work is active R&amp;D—not a field-validated product—but it reflects how I decompose uncertain real-world problems into testable systems.
           </p>
           <p>
             I build publicly on GitHub, write down architecture decisions, and present research as research. I do not turn unfinished prototypes into inflated production claims.

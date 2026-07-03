@@ -15,9 +15,12 @@ in Bangladesh, and the combined SaaS/AI/backend positioning.
 
 ### Commercial intent
 
-Each `/services/[slug]` route targets one service family:
+The `/hire` route targets direct identity-plus-commercial intent such as hiring
+Ariful for product engineering. Each `/services/[slug]` route targets one
+service family:
 
 - SaaS and web product engineering;
+- AI commerce and dropshipping platform engineering;
 - AI integration and workflow automation;
 - backend, API, and realtime systems; and
 - connected-product prototyping.
@@ -80,12 +83,18 @@ Publish one substantial article every two to four weeks. Recommended sequence:
 7. architecture and delivery documentation for a founder handover; and
 8. designing review-gated AI workflows for an international dropshipping platform.
 
+The AI dropshipping architecture and human-approval articles are published and
+should be distributed as the first commercial topic cluster. Both link to the
+flagship case study and the dedicated AI commerce service page.
+
 Each article needs a specific query, unique point of view, technical examples,
 and an honest route to a service or project.
 
 ## Authority building
 
 - Keep GitHub profile, LinkedIn headline, and portfolio positioning consistent.
+- Use `/hire` as the broad direct-response link and use the AI commerce service,
+  case study, or article when outreach is based on a commerce-specific signal.
 - Add the portfolio and relevant article links to public repository descriptions.
 - Turn public project decisions into technical articles and short LinkedIn posts.
 - Contribute useful fixes or documentation to relevant open-source projects.

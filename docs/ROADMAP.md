@@ -1,7 +1,9 @@
 # Roadmap
 
-The foundational portfolio, service pages, case studies, Markdown CMS, contact
-API, SEO outputs, and operating documentation are implemented. These next items
+The foundational portfolio, hire page, five service pages, case studies,
+Markdown CMS, contact API, SEO outputs, and operating documentation are
+implemented. The AI commerce case study, dedicated service page, and two-article
+topic cluster form the primary client-hunting proof funnel. These next items
 require owner credentials, new evidence, or an explicit product decision.
 
 ## P0 — Launch configuration

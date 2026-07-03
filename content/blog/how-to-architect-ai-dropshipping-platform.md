@@ -175,4 +175,4 @@ If those answers are missing, adding more AI will increase operational ambiguity
 
 An AI commerce platform is a strong fit for a staged engagement: architecture and workflow discovery, one vertical supplier-to-order slice, controlled AI integration, then external sandbox acceptance.
 
-You can review the complete [AI Dropshipping Commerce Platform case study](/work/ai-dropshipping-commerce-platform), explore my [SaaS product engineering service](/services/saas-product-engineering), or [send a project brief](/#contact) with your target market, supplier situation, existing stack, and desired operating outcome.
+You can review the complete [AI Dropshipping Commerce Platform case study](/work/ai-dropshipping-commerce-platform), evaluate my [AI commerce and dropshipping platform engineering service](/services/ai-commerce-platform-engineering), or [send a project brief](/#contact) with your target market, supplier situation, existing stack, and desired operating outcome.

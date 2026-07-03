@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { siteConfig } from '@/content/site';
 
-const projectTypes = ['SaaS / web product', 'AI integration', 'Backend / API system', 'Connected product prototype', 'Architecture review', 'Other'];
+const projectTypes = ['AI commerce / dropshipping', 'SaaS / web product', 'AI integration', 'Backend / API system', 'Connected product prototype', 'Architecture review', 'Other'];
 const budgets = ['Under $2,000', '$2,000–$5,000', '$5,000–$10,000', '$10,000+', 'Not decided'];
 const timelines = ['As soon as possible', 'Within 1 month', '1–3 months', '3+ months', 'Exploring options'];
 

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { siteConfig } from '@/content/site';
 
-const capabilities = ['SaaS products', 'AI integration', 'Backend systems', 'Connected prototypes'];
+const capabilities = ['SaaS products', 'AI commerce', 'Backend systems', 'Connected inventions'];
 
 export default function Hero() {
   return (
@@ -21,12 +21,12 @@ export default function Hero() {
           </div>
 
           <h1 className="max-w-4xl text-balance text-4xl font-black leading-[1.03] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
-            I turn complex product ideas into{' '}
-            <span className="text-gradient">software that ships.</span>
+            I turn ambitious product ideas into{' '}
+            <span className="text-gradient">systems that can ship.</span>
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400 sm:text-xl">
-            I&apos;m Ariful Islam, a software engineer in Dhaka. I help founders and product teams build dependable SaaS platforms, AI-enabled workflows, backend systems, and connected-product prototypes.
+            I&apos;m Ariful Islam—a multidisciplinary software engineer, product builder, and inventor in Dhaka. I help founders and product teams build dependable SaaS, AI commerce, backend, automation, and connected-product systems.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -34,8 +34,8 @@ export default function Hero() {
               Tell me about your project
               <span aria-hidden="true">↗</span>
             </Link>
-            <Link href="/#work" className="button-secondary">
-              Review selected work
+            <Link href="/work/ai-dropshipping-commerce-platform" className="button-secondary">
+              See the AI commerce build
             </Link>
           </div>
 
@@ -55,7 +55,7 @@ export default function Hero() {
               />
               <div>
                 <p className="font-bold text-white">Ariful Islam</p>
-                <p className="mt-1 text-sm text-slate-400">Software Engineer</p>
+                <p className="mt-1 text-sm text-slate-400">Software Engineer · Product Builder</p>
                 <p className="mt-2 flex items-center gap-2 text-xs text-cyan-200">
                   <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
                   Dhaka · Working worldwide
@@ -74,7 +74,7 @@ export default function Hero() {
 
             <div className="rounded-xl border border-cyan-300/10 bg-cyan-300/[0.04] p-4">
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Current focus</p>
-              <p className="mt-2 text-sm leading-6 text-slate-300">Production product engineering with practical AI and strong operating boundaries.</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">AI commerce platforms, practical automation, and production product engineering with strong operating boundaries.</p>
             </div>
           </div>
           <div className="absolute -bottom-5 -left-5 -z-10 h-32 w-32 rounded-full border border-cyan-300/10" aria-hidden="true" />

@@ -7,8 +7,8 @@ const navLinks = [
   { label: 'Services', href: '/#services' },
   { label: 'Work', href: '/#work' },
   { label: 'Process', href: '/#process' },
-  { label: 'About', href: '/#about' },
   { label: 'Insights', href: '/blog' },
+  { label: 'Hire me', href: '/hire' },
 ];
 
 export default function Navbar() {
@@ -65,7 +65,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link href="/#contact" className="button-primary ml-3 px-5 py-2.5 text-sm">
-            Discuss a project
+            Send project brief
           </Link>
         </div>
 
@@ -105,7 +105,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link href="/#contact" onClick={() => setMobileOpen(false)} className="button-primary mt-3 text-center">
-            Discuss a project
+            Send project brief
           </Link>
         </div>
       </div>

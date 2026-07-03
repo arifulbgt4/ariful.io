@@ -7,13 +7,14 @@ export default function Footer() {
       <div className="site-container grid gap-10 lg:grid-cols-[1.4fr_0.8fr_0.8fr]">
         <div className="max-w-md">
           <Link href="/" className="text-lg font-black text-white">Ariful Islam</Link>
-          <p className="mt-4 text-sm leading-6 text-slate-500">Software engineering for SaaS products, AI-enabled workflows, backend systems, and connected-product prototypes.</p>
+          <p className="mt-4 text-sm leading-6 text-slate-500">Product engineering for SaaS, AI commerce, backend, automation, and connected-product systems.</p>
           <a href={`mailto:${siteConfig.email}`} className="mt-5 inline-block text-sm font-semibold text-cyan-200 hover:text-white">{siteConfig.email}</a>
         </div>
 
         <div>
           <p className="footer-heading">Explore</p>
           <div className="mt-4 flex flex-col gap-3 text-sm text-slate-400">
+            <Link href="/hire">Hire me</Link>
             <Link href="/#work">Selected work</Link>
             <Link href="/blog">Insights</Link>
             <Link href="/#about">About</Link>

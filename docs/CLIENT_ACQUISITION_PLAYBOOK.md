@@ -17,6 +17,20 @@ Targeted outreach / GitHub / LinkedIn / search / referral
 The site now supports the funnel. Consistent distribution and follow-up are still
 owner-operated work; the portfolio cannot create qualified demand by itself.
 
+## Link selection
+
+Send the narrowest useful page instead of always sending the homepage:
+
+- `/hire` for a referral, general hiring enquiry, or broad founder fit;
+- `/services/ai-commerce-platform-engineering` for a commerce operator actively
+  evaluating a build or modernization partner;
+- `/work/ai-dropshipping-commerce-platform` when the prospect needs technical
+  evidence before discussing scope;
+- either AI dropshipping article when outreach begins with a specific
+  architecture, review, pricing, campaign, or automation risk; and
+- another service page when the observed problem is clearly SaaS, general AI,
+  backend, or connected-product work.
+
 ## Ideal client profile
 
 Prioritize:
@@ -89,6 +103,16 @@ repeated real objections rather than generic conversion advice.
 > silently auto-applying model output. If you are exploring this, I can send a
 > one-page architecture for the smallest reliable test.
 
+### AI commerce or dropshipping platform
+
+> Hi [Name] — I looked at [store/platform/workflow]. Your [supplier ingestion,
+> localization, pricing, creative, campaign, checkout, or analytics step] appears
+> to depend on [specific tool or manual handoff]. I built an AI commerce platform
+> foundation around this exact operating boundary, with editable AI output and
+> approval before consequential actions. Here is the closest [case study or
+> article link]. If this is on your roadmap, I can outline the smallest vertical
+> slice and the integration risks worth testing first. Would that be useful?
+
 ### Follow-up
 
 > Following up once because [specific reason] still looks relevant. The smallest
@@ -128,6 +152,10 @@ until Ariful chooses a commercial model and validates it against actual projects
 Company, contact, role, source, product URL, fit reason, service, observed signal,
 message date, reply, next follow-up, budget, timeline, stage, objection, outcome,
 and relevant portfolio link.
+
+For AI commerce leads, also record the current supplier source, target markets,
+storefront stack, AI workflows already in use, advertising channels, and the
+single operational handoff causing the most cost or risk.
 
 ## Metrics
 

@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Ariful Islam — Software Engineer for SaaS, AI, and Backend Systems';
+export const alt = 'Ariful Islam — SaaS, AI Commerce, Backend, and Connected-Product Engineer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -22,13 +22,13 @@ export default function OpenGraphImage() {
         <div style={{ display: 'flex', width: 56, height: 56, alignItems: 'center', justifyContent: 'center', borderRadius: 16, background: '#A5F3FC', color: '#071016', fontSize: 23, fontWeight: 900 }}>AI</div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span style={{ fontSize: 26, fontWeight: 800 }}>Ariful Islam</span>
-          <span style={{ marginTop: 4, fontSize: 16, color: '#8B9AAF' }}>Software Engineer · Dhaka, Bangladesh</span>
+          <span style={{ marginTop: 4, fontSize: 16, color: '#8B9AAF' }}>Software Engineer · Product Builder · Dhaka</span>
         </div>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 980 }}>
-        <span style={{ fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.045em', fontWeight: 900 }}>Building SaaS, AI systems & connected products.</span>
-        <span style={{ marginTop: 28, fontSize: 24, color: '#A5B1C3' }}>Product engineering for founders and teams that need dependable software.</span>
+        <span style={{ fontSize: 62, lineHeight: 1.05, letterSpacing: '-0.045em', fontWeight: 900 }}>Building SaaS, AI commerce & connected systems.</span>
+        <span style={{ marginTop: 28, fontSize: 24, color: '#A5B1C3' }}>Product engineering from architecture and prototypes to production delivery.</span>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 18 }}>

@@ -19,12 +19,21 @@ The site should answer five questions quickly:
 
 Primary positioning:
 
-> Software engineer building SaaS, AI systems, backend platforms, and connected
-> products.
+> Multidisciplinary software engineer, product builder, and inventor building
+> SaaS, AI commerce, backend, automation, and connected-product systems.
 
-The lead offer is production software engineering. AI and connected-product
-work are complementary capabilities, not unsupported claims of expertise in
-every discipline.
+The lead offer is production software engineering. The owner-provided broader
+context connects that core with applied AI, embedded electronics, sensors,
+automation, mechanical/CAD concepts, aquaculture technology, and physical-
+digital invention. These are presented at their evidenced maturity: delivered
+software, prototype capability, experiment, or active R&D—not as unsupported
+expertise in every discipline.
+
+The primary niche evidence is the AI Dropshipping Commerce Platform. It supports
+a dedicated commercial offer for teams that need supplier ingestion,
+international commerce, controlled AI, creative and campaign operations,
+checkout, or trustworthy analytics. It does not support claims of client
+revenue, production scale, or a live autonomous store.
 
 ## Verified public facts
 
@@ -97,12 +106,20 @@ Primary conversion: submit a qualified project brief.
 
 Secondary conversions:
 
+- review the client-fit guide at `/hire`;
 - email directly;
 - connect on LinkedIn;
 - inspect public GitHub work;
 - read a case study;
 - read an engineering article; or
 - return through an RSS subscription or organic search.
+
+## Commercial entry points
+
+Prospects can begin with an architecture or AI-readiness review, a focused
+prototype sprint, a production product slice, or an ongoing engineering
+partnership. These are scope shapes rather than fixed-price packages; pricing
+follows enough discovery to understand risk and expected outcome.
 
 ## Product constraints
 
