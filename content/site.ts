@@ -477,23 +477,120 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'project-showcase-platform',
-    title: 'Project Showcase',
-    category: 'Web product',
+    slug: 'reusable-b2c-marketplace-platform',
+    title: 'Reusable B2C Marketplace Platform',
+    category: 'Marketplace engineering · Commerce systems',
     summary:
-      'A public TypeScript project for presenting work through a focused, deployable web experience.',
+      'A reusable B2C marketplace foundation for businesses that need buyer-facing product discovery, controlled catalog operations, checkout, cash-on-delivery workflows, and admin-managed order fulfillment.',
     challenge:
-      'A showcase needs clear information hierarchy, responsive behavior, and a deployment path that makes updates easy to publish.',
+      'Many marketplace projects begin as visual storefronts, then become difficult to adapt when business rules, product categories, seller operations, payment methods, fulfillment steps, or admin controls change. The engineering problem is to keep the core marketplace model stable while allowing each client business to customize the experience.',
     approach:
-      'Built the experience as a TypeScript web application and deployed a public version for direct review.',
+      'Planned the marketplace as a modular commerce system with separate buyer, admin, catalog, order, checkout, fulfillment, and customization boundaries. The design keeps the customer-facing interface replaceable while preserving reusable domain rules for products, approvals, inventory, cash-on-delivery orders, and operational reporting.',
     outcome:
-      'The source repository and live deployment provide a verifiable example of frontend delivery and deployment workflow.',
-    status: 'Live',
-    year: '2025',
-    tags: ['TypeScript', 'React', 'Responsive UI', 'Vercel'],
-    highlights: ['Public source', 'Live deployment', 'Responsive presentation'],
-    repository: 'https://github.com/arifulbgt4/project-showcase',
-    liveUrl: 'https://project-showcase-azure.vercel.app',
+      'The current portfolio entry documents the architecture, use cases, and delivery plan for a reusable marketplace foundation. It is presented as a product-engineering case study and implementation direction, not as a launched client marketplace with verified revenue or user metrics.',
+    status: 'Architecture and product foundation planned',
+    year: '2026–Present',
+    role: 'Product architecture · Full-stack engineering · Commerce workflow design',
+    tags: ['Next.js', 'TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Prisma', 'Marketplace', 'Commerce', 'Payments', 'Admin Dashboard'],
+    highlights: [
+      'Reusable B2C marketplace model that can be adapted for different product businesses',
+      'Buyer-facing product discovery, category navigation, cart, checkout, and order tracking boundaries',
+      'Admin-managed catalog approval, inventory state, order status, and fulfillment workflow',
+      'Cash-on-delivery support for local-market commerce with future payment integration boundaries',
+      'Customization model that separates design and business rules from stable marketplace logic',
+      'Honest delivery framing that separates planned architecture, implementation work, and future production validation',
+    ],
+    systemMap: [
+      {
+        title: 'Buyer marketplace',
+        description: 'Product discovery, category browsing, product detail pages, cart, checkout, order confirmation, and account-level order visibility.',
+      },
+      {
+        title: 'Catalog operations',
+        description: 'Admin-managed product records, categories, pricing, images, visibility, inventory state, and approval workflow.',
+      },
+      {
+        title: 'Order & fulfillment',
+        description: 'Checkout creates auditable order records with cash-on-delivery support, status transitions, and operational handoff points.',
+      },
+      {
+        title: 'Business customization',
+        description: 'Client-specific design, catalog rules, fulfillment assumptions, payment methods, and admin workflows can change without rebuilding the core.',
+      },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Marketplace foundation',
+        title: 'A reusable commerce core instead of a one-off storefront.',
+        description:
+          'The project is framed around a marketplace domain model that can serve different B2C businesses while keeping core product, catalog, and order concepts consistent.',
+        items: [
+          'Product and category records provide the base for buyer-facing discovery and admin-controlled catalog management.',
+          'The buyer experience can support browsing, product detail review, cart creation, checkout, and order tracking.',
+          'The architecture separates reusable marketplace logic from client-specific branding, layout, and niche business rules.',
+          'The platform is positioned as a product foundation for commerce delivery, not only a UI showcase.',
+        ],
+      },
+      {
+        eyebrow: '02 / Seller and admin operations',
+        title: 'Operations stay controlled from the admin side.',
+        description:
+          'A marketplace becomes useful to real businesses only when product, inventory, order, and fulfillment states are manageable after launch.',
+        items: [
+          'Admins can review and approve products before they become visible to buyers.',
+          'Catalog operations can include product status, stock state, pricing, category assignment, and media management.',
+          'Order management can expose clear lifecycle states such as pending, confirmed, processing, delivered, cancelled, or failed.',
+          'The admin side should make operational risks visible instead of hiding them behind a generic storefront.',
+        ],
+      },
+      {
+        eyebrow: '03 / Checkout and order flow',
+        title: 'Cash on delivery is treated as a first-class workflow.',
+        description:
+          'For local-market B2C commerce, checkout must support order capture and fulfillment even when online payment is not the first launch requirement.',
+        items: [
+          'The checkout boundary can start with cash on delivery while preserving a future payment-provider integration seam.',
+          'Orders should store customer contact, delivery details, item snapshots, totals, and selected payment method.',
+          'Status changes should be explicit so customer support and fulfillment teams can understand what happened.',
+          'Future payment integration can be added without rewriting the entire marketplace flow.',
+        ],
+      },
+      {
+        eyebrow: '04 / Business customization model',
+        title: 'Different client businesses can change the surface without losing the system.',
+        description:
+          'The marketplace is designed for reuse: the brand, layout, catalog rules, and operational assumptions can change while the core commerce engine remains stable.',
+        items: [
+          'A grocery, electronics, fashion, parts, or niche local-commerce marketplace can share the same foundational workflows.',
+          'Design changes should not require rewriting the catalog, checkout, order, and admin-management boundaries.',
+          'Business-specific rules can be introduced through configuration, scoped code changes, or documented extension points.',
+          'This structure helps clients launch faster while preserving maintainability for future iterations.',
+        ],
+      },
+      {
+        eyebrow: '05 / Delivery evidence and next steps',
+        title: 'The project is intentionally framed as architecture and implementation direction.',
+        description:
+          'The case study avoids unsupported production claims and focuses on the plan, system boundaries, and client-value direction.',
+        items: [
+          'The current entry documents the marketplace scope, architecture, and reusable delivery model.',
+          'Implementation should proceed through small vertical slices: catalog, buyer flow, checkout, admin orders, and fulfillment states.',
+          'Production readiness should be claimed only after repository evidence, deployment checks, test coverage, and real acceptance criteria exist.',
+          'Future work can add online payments, seller modules, analytics, shipping integrations, and marketplace-specific automation.',
+        ],
+      },
+    ],
+    clientApplications: [
+      'Build a B2C marketplace MVP with a reusable commerce foundation.',
+      'Convert an offline product business into an online ordering platform.',
+      'Add admin-controlled product, order, inventory, and fulfillment workflows.',
+      'Support cash-on-delivery commerce for local markets before online payment integration.',
+      'Adapt the marketplace for niche industries without rebuilding the whole system.',
+    ],
+    relatedService: {
+      title: 'SaaS & Web Product Engineering',
+      href: '/services/saas-product-engineering',
+    },
     featured: true,
   },
   {
