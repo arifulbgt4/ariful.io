@@ -5,21 +5,18 @@ import { journalEntries, projects, services, siteConfig } from '@/content/site';
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ['', '/hire', '/resume', '/services', '/work', '/journal', '/blog', '/privacy', '/site-map'].map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: new Date(),
     changeFrequency: route === '' ? ('weekly' as const) : ('monthly' as const),
     priority: route === '' ? 1 : route === '/hire' ? 0.9 : route === '/privacy' ? 0.2 : 0.8,
   }));
 
   const serviceRoutes = services.map((service) => ({
     url: `${siteConfig.url}/services/${service.slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
 
   const workRoutes = projects.map((project) => ({
     url: `${siteConfig.url}/work/${project.slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

@@ -90,6 +90,12 @@ Do not duplicate business facts in a component when they can be imported from
   limiting, safe HTML escaping, and the direct-email fallback.
 - New indexable pages need unique metadata, canonical URLs, and sitemap entries.
 - New blog posts are included automatically through the content loader.
+- Search-console submission is content-driven: keep the scheduled workflow in
+  `.github/workflows/search-indexing.yml` enabled. It must submit the sitemap to
+  Google Search Console and Bing Webmaster Tools only after `content/site.ts` or
+  a published `content/blog/*.md` article changes, and never more than once in
+  any rolling seven-day period. Do not submit when the indexed content is
+  unchanged.
 
 ## Required verification
 

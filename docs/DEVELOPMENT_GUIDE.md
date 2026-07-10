@@ -26,6 +26,7 @@ configuration error and the interface offers direct email until Resend is set.
 | `npm run dev` | Start the development server |
 | `npm run dev:restart` | Stop the current port process and restart development |
 | `npm run content:check` | Validate profile records and blog frontmatter/content |
+| `npm run search:check` | Check whether indexable content differs from the last successful search-console submission without contacting either provider |
 | `npm run typecheck` | Run TypeScript without emitting files |
 | `npm run lint` | Run Next.js and TypeScript ESLint rules |
 | `npm run lint:fix` | Apply safe lint fixes |

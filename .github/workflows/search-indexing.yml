@@ -1,0 +1,47 @@
+name: Submit changed content to search consoles
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 2 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: search-console-submission
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    name: Submit sitemap only when content changed
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Restore last successful submission state
+        uses: actions/cache/restore@v4
+        with:
+          path: .search-submission-state
+          key: search-submission-state-${{ github.run_id }}
+          restore-keys: |
+            search-submission-state-
+
+      - name: Detect content changes and submit sitemap
+        id: submit
+        env:
+          GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SEARCH_CONSOLE_SITE_URL: ${{ vars.GOOGLE_SEARCH_CONSOLE_SITE_URL }}
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+          SEARCH_SITE_URL: https://ariful.io
+          SEARCH_SITEMAP_URL: https://ariful.io/sitemap.xml
+        run: node scripts/submit-search-updates.mjs
+
+      - name: Save successful submission state
+        if: steps.submit.outputs.submitted == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .search-submission-state
+          key: search-submission-state-${{ github.run_id }}

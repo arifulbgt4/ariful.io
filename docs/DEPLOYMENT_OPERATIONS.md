@@ -23,6 +23,27 @@ Verify the `ariful.io` sender domain in Resend before using a custom From addres
 The default Resend onboarding sender is suitable only for initial account tests
 under Resend's restrictions.
 
+### GitHub Actions search credentials
+
+The weekly-gated search workflow uses repository Actions settings rather than
+deployment environment variables:
+
+- Secret `GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON`: the complete JSON for a
+  Google Cloud service account with Search Console API access. Add its
+  `client_email` as an owner or full user of the `ariful.io` Search Console
+  property.
+- Repository variable `GOOGLE_SEARCH_CONSOLE_SITE_URL`: use
+  `sc-domain:ariful.io` for the domain property; the workflow defaults to that
+  value when the variable is blank.
+- Secret `BING_WEBMASTER_API_KEY`: an API key from the verified Bing Webmaster
+  Tools account.
+
+After adding the secrets, enable scheduled Actions on the default branch. The
+workflow checks daily, but a successful submission can occur only when indexed
+content changed and at least seven days passed since the last successful run.
+Run it manually once after setup; with no prior state it submits the current
+sitemap. Later manual runs still obey the same change and seven-day gates.
+
 ## Pre-deployment
 
 ```bash

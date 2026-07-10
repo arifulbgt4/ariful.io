@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "content:check": "node scripts/check-content.mjs",
+    "search:check": "node scripts/submit-search-updates.mjs --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "next typegen && tsc --noEmit"

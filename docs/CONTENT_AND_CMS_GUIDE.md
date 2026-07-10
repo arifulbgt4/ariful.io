@@ -41,6 +41,9 @@ tags: [Next.js, SaaS, Architecture]
 8. Review the rendered article on mobile and desktop.
 9. Commit and deploy. The article index, homepage, sitemap, RSS, metadata, and
    Article JSON-LD update automatically.
+10. The daily search-submission workflow detects the content fingerprint after
+    publication. It submits the sitemap to Google and Bing when content changed,
+    subject to the rolling seven-day limit; otherwise it performs no submission.
 
 ## Engineering Journal workflow
 
@@ -99,6 +102,11 @@ URLs absolute and verify them before deployment.
 Rounded public profile metrics should be updated only when crossing the displayed
 threshold. Record the exact source and verification date in
 `docs/PROJECT_CONTEXT.md`.
+
+Changes to `content/site.ts` and published `content/blog/*.md` files are the
+indexing trigger. Documentation, styling, tests, and application-only changes do
+not trigger search-console submission. If multiple content changes happen in one
+week, they are consolidated into the next eligible sitemap submission.
 
 ## Topic selection
 

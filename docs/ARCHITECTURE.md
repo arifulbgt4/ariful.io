@@ -12,6 +12,9 @@ content/site.ts ───────────────┐
 content/blog/*.md -> lib/blog ─┘             │
                                              ├─> sitemap / RSS / JSON-LD
 contact form -> /api/contact -> validation ──┴─> Resend -> inbox
+
+content fingerprint -> daily scheduled check -> seven-day gate
+                                      └─> Google + Bing sitemap submission
 ```
 
 ## Runtime and dependencies
@@ -87,3 +90,16 @@ escaped before insertion.
 The recommended deployment is Vercel or another Node-compatible Next.js host.
 Static content is generated at build time. The contact endpoint needs a Node
 runtime and outbound HTTPS access to Resend.
+
+## Search submission boundary
+
+`scripts/submit-search-updates.mjs` fingerprints the public structured content
+and published Markdown articles. The scheduled GitHub Actions workflow restores
+the last successful fingerprint, does nothing when content is unchanged, and
+keeps a changed fingerprint pending when the previous successful submission was
+less than seven days ago. It records new state only after both Google Search
+Console and Bing Webmaster Tools accept the sitemap.
+
+This workflow submits the sitemap, not arbitrary pages through Google's
+Indexing API. Google limits that API to eligible job-posting and livestream
+pages, which this portfolio does not publish.

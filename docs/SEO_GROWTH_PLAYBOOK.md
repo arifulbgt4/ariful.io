@@ -99,6 +99,21 @@ not visible on the page.
 7. Test Open Graph output on LinkedIn's post inspector.
 8. Add privacy-respecting analytics and update `/privacy` before collection.
 
+## Automated search-console updates
+
+The scheduled `search-indexing.yml` workflow checks every day so a pending
+content change is handled at the first eligible run. It submits
+`https://ariful.io/sitemap.xml` only when the fingerprint of `content/site.ts`
+or a published blog article differs from the last successful submission. A
+rolling seven-day gate guarantees at most one successful Google/Bing submission
+per week, and unchanged content produces no submission.
+
+Google receives a sitemap submission through the Search Console API. Do not use
+Google's Indexing API for normal portfolio pages; it is restricted to eligible
+`JobPosting` and livestream `BroadcastEvent` pages. Bing receives the same
+sitemap through the Webmaster `SubmitFeed` API. Provider credentials remain in
+GitHub Actions secrets and never enter the application bundle.
+
 ## Content plan
 
 Publish one substantial article every two to four weeks. Recommended sequence:
@@ -155,5 +170,6 @@ fit.
   contact delivery.
 - After every route addition: confirm metadata, canonical, sitemap, internal
   linking, mobile layout, and schema.
-- After a major deployment: request indexing only for genuinely changed priority
-  pages, not every URL.
+- After a major deployment: let the weekly-gated workflow submit the sitemap
+  only when public content changed; use manual URL inspection only for an
+  exceptional priority-page diagnosis.
