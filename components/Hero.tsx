@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { siteConfig } from '@/content/site';
 
-const capabilities = ['SaaS products', 'AI commerce', 'Backend systems', 'Connected inventions'];
+const capabilities = ['SaaS products', 'Applied AI', 'Backend systems', 'Connected inventions'];
 
 export default function Hero() {
   return (
@@ -26,7 +26,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400 sm:text-xl">
-            I&apos;m Ariful Islam—a multidisciplinary software engineer, product builder, and inventor in Dhaka. I help founders and product teams build dependable SaaS, AI commerce, backend, automation, and connected-product systems.
+            I&apos;m Ariful Islam—a multidisciplinary software engineer, product builder, and inventor in Dhaka. I help founders and product teams build dependable SaaS, applied AI, backend, automation, and connected-product systems.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -74,7 +74,7 @@ export default function Hero() {
 
             <div className="rounded-xl border border-cyan-300/10 bg-cyan-300/[0.04] p-4">
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Current focus</p>
-              <p className="mt-2 text-sm leading-6 text-slate-300">AI commerce platforms, practical automation, and production product engineering with strong operating boundaries.</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">Applied AI, practical automation, and production product engineering with strong operating boundaries.</p>
             </div>
           </div>
           <div className="absolute -bottom-5 -left-5 -z-10 h-32 w-32 rounded-full border border-cyan-300/10" aria-hidden="true" />

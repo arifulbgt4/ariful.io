@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Ariful Islam — SaaS, AI Commerce, Backend, and Connected-Product Engineer';
+export const alt = 'Ariful Islam — Software Engineer and Multidisciplinary Product Builder';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -27,7 +27,7 @@ export default function OpenGraphImage() {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 980 }}>
-        <span style={{ fontSize: 62, lineHeight: 1.05, letterSpacing: '-0.045em', fontWeight: 900 }}>Building SaaS, AI commerce & connected systems.</span>
+        <span style={{ fontSize: 62, lineHeight: 1.05, letterSpacing: '-0.045em', fontWeight: 900 }}>Building SaaS, applied AI & connected systems.</span>
         <span style={{ marginTop: 28, fontSize: 24, color: '#A5B1C3' }}>Product engineering from architecture and prototypes to production delivery.</span>
       </div>
 

@@ -11,7 +11,12 @@ public-work review, professional connections, or repeat readership.
 ### Identity intent
 
 The homepage targets Ariful Islam, Engineer Arif, `arifulbgt4`, software engineer
-in Bangladesh, and the combined SaaS/AI/backend positioning.
+in Bangladesh, and the combined SaaS/applied-AI/backend positioning.
+
+Use `AI commerce` only for the AI Dropshipping Commerce Platform project, its
+application domain, the evidence-backed service derived from that work, and
+related articles. Do not present it as Ariful's technology stack or general
+professional title.
 
 ### Commercial intent
 
@@ -47,8 +52,9 @@ clusters should link to the matching service and relevant work.
 - RSS feed;
 - responsive semantic HTML and accessible navigation;
 - generated Open Graph image and icon;
-- Person, ProfessionalService, WebSite, Service, FAQPage, Blog, BlogPosting,
-  CreativeWork, and Breadcrumb structured data where appropriate;
+- Person, ProfilePage, ProfessionalService, WebSite, Service, FAQPage, ItemList,
+  Blog, BlogPosting, SoftwareApplication, CreativeWork, and Breadcrumb structured
+  data where appropriate;
 - server-rendered content with minimal client JavaScript;
 - internal links among home, services, work, articles, and contact;
 - custom 404 recovery; and
@@ -57,6 +63,29 @@ clusters should link to the matching service and relevant work.
 Structured data improves machine understanding but does not guarantee a rich
 result. Never add ratings, reviews, prices, or credentials that are not visibly
 supported on the page.
+
+## Answer-engine optimization
+
+AI search and answer engines need the same evidence discipline as traditional
+SEO, but they reward pages that are easy to quote, summarize, and trace back to
+sources. The site now supports this through:
+
+- a homepage quick-facts section with a concise profile summary;
+- a visible evidence table covering role, location, availability, services,
+  proof, and claim boundaries;
+- source links to GitHub, LinkedIn, selected work, engineering articles, and the
+  client-fit guide;
+- homepage profile FAQ content mirrored by FAQPage structured data;
+- visible author information on article pages;
+- GFM table support in Markdown articles; and
+- schema graph links between Person, ProfilePage, services, FAQs, source lists,
+  articles, and case studies.
+
+When adding or changing an indexable page, include a clear `h1`, descriptive
+`h2` sections, a short summary near the top, source links for claims that can be
+verified, and FAQ or table content only where it genuinely helps the reader.
+Do not create FAQ entries, source links, or schema properties for facts that are
+not visible on the page.
 
 ## Launch actions requiring owner access
 

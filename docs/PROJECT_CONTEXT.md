@@ -20,7 +20,7 @@ The site should answer five questions quickly:
 Primary positioning:
 
 > Multidisciplinary software engineer, product builder, and inventor building
-> SaaS, AI commerce, backend, automation, and connected-product systems.
+> SaaS, applied AI, backend, automation, and connected-product systems.
 
 The lead offer is production software engineering. The owner-provided broader
 context connects that core with applied AI, embedded electronics, sensors,
@@ -29,11 +29,13 @@ digital invention. These are presented at their evidenced maturity: delivered
 software, prototype capability, experiment, or active R&D—not as unsupported
 expertise in every discipline.
 
-The primary niche evidence is the AI Dropshipping Commerce Platform. It supports
-a dedicated commercial offer for teams that need supplier ingestion,
-international commerce, controlled AI, creative and campaign operations,
-checkout, or trustworthy analytics. It does not support claims of client
-revenue, production scale, or a live autonomous store.
+The primary niche evidence is the AI Dropshipping Commerce Platform. `AI
+commerce` describes this project's application domain; it is not a programming
+language, framework, technology stack, or general professional title. The
+project supports a dedicated commercial offer for teams that need supplier
+ingestion, international commerce, controlled AI, creative and campaign
+operations, checkout, or trustworthy analytics. It does not support claims of
+client revenue, production scale, or a live autonomous store.
 
 ## Verified public facts
 

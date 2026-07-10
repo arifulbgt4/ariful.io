@@ -28,3 +28,11 @@ tags: [Next.js, Architecture]
 
 Do not publish confidential client details, private repository names, secrets,
 unverified performance claims, or AI-generated text that has not been reviewed.
+
+## Answer-friendly structure
+
+- Use clear `##` section headings; the content check requires at least one.
+- Put the practical summary in the description and reinforce it in the opening.
+- Use GFM tables for comparisons, risk classes, checklists, or lifecycle states.
+- Link to public primary sources when a claim depends on an external fact.
+- Keep article claims aligned with visible evidence and the shared author block.

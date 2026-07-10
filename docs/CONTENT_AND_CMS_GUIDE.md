@@ -41,6 +41,21 @@ tags: [Next.js, SaaS, Architecture]
 9. Commit and deploy. The article index, homepage, sitemap, RSS, metadata, and
    Article JSON-LD update automatically.
 
+## Answer-friendly content checklist
+
+For articles, service pages, and case studies, make the page easy for a person
+or answer engine to understand without guessing:
+
+- start with a direct summary of the reader outcome or project evidence;
+- use specific `h2` headings that describe the decision, risk, or workflow;
+- use Markdown tables when comparison, lifecycle state, or tradeoff information
+  would otherwise become a long paragraph;
+- link to public primary sources when making claims that can change;
+- keep author and profile information visible through the shared article
+  template;
+- add FAQs only when they answer real buyer or implementation questions; and
+- keep schema aligned with visible content instead of adding hidden claims.
+
 ## Editorial voice
 
 - Direct, technically grounded, and useful to a working team.

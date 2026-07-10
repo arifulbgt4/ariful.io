@@ -4,7 +4,7 @@ import { services } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Software Engineering Services',
-  description: 'SaaS, AI commerce, workflow automation, backend API, and connected-product engineering services from Ariful Islam.',
+  description: 'SaaS, applied AI, workflow automation, backend API, and connected-product engineering services from Ariful Islam.',
   alternates: { canonical: '/services' },
 };
 

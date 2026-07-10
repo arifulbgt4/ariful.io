@@ -47,6 +47,10 @@ for (const filename of filenames) {
   if (content.trim().split(/\s+/).length < 500) {
     errors.push(`${filename}: article must contain at least 500 words.`);
   }
+
+  if (!/^##\s+\S+/m.test(content)) {
+    errors.push(`${filename}: article must include clear level-two headings for scanning and answer extraction.`);
+  }
 }
 
 if (filenames.length === 0) errors.push('No published blog posts found.');

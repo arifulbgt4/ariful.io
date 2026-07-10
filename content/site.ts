@@ -5,9 +5,9 @@ export const siteConfig = {
   email: 'arifulbgt4@gmail.com',
   location: 'Dhaka, Bangladesh',
   availability: 'Available for selected remote projects',
-  headline: 'Software engineer and product builder for SaaS, AI commerce, backend systems, and connected products',
+  headline: 'Software engineer and product builder for SaaS, applied AI, backend systems, and connected products',
   description:
-    'Ariful Islam is a multidisciplinary software engineer and product builder in Dhaka helping founders and teams ship SaaS, AI commerce, backend, automation, and connected-product systems.',
+    'Ariful Islam is a multidisciplinary software engineer and product builder in Dhaka helping founders and teams ship SaaS, applied AI, backend, automation, and connected-product systems.',
   social: {
     github: 'https://github.com/arifulbgt4',
     linkedin: 'https://www.linkedin.com/in/ariful25278',
@@ -17,6 +17,105 @@ export const siteConfig = {
     { value: '500+', label: 'GitHub followers' },
     { value: 'Since 2016', label: 'building in public' },
     { value: 'Worldwide', label: 'remote collaboration' },
+  ],
+} as const;
+
+export const profileSummary = {
+  title: 'Quick facts about Ariful Islam',
+  summary:
+    'Ariful Islam is a Dhaka-based software engineer, multidisciplinary product builder, and inventor focused on SaaS, applied AI, backend systems, workflow automation, and connected-product prototypes.',
+  facts: [
+    {
+      label: 'Primary role',
+      value: 'Software engineer, product builder, and inventor',
+    },
+    {
+      label: 'Location',
+      value: siteConfig.location,
+    },
+    {
+      label: 'Availability',
+      value: siteConfig.availability,
+    },
+    {
+      label: 'Core stack',
+      value: 'TypeScript, React, Next.js, Node.js, backend APIs, databases, and data systems',
+    },
+    {
+      label: 'Core services',
+      value: 'SaaS and web products, AI integration and workflow automation, backend APIs, and connected-product prototypes',
+    },
+    {
+      label: 'Flagship project',
+      value: 'AI Dropshipping Commerce Platform, presented as a project and commerce-domain case study',
+    },
+    {
+      label: 'Public evidence',
+      value: 'GitHub profile, selected case studies, public repositories, engineering articles, and service pages',
+    },
+    {
+      label: 'Evidence policy',
+      value: 'Concepts, experiments, active R&D, and in-development work are labelled instead of presented as finished production results',
+    },
+  ],
+  sourceLinks: [
+    {
+      label: 'GitHub profile',
+      description: 'Public repositories, profile README, contribution history, and engineering evidence.',
+      href: siteConfig.social.github,
+    },
+    {
+      label: 'LinkedIn profile',
+      description: 'Professional profile and direct business-network contact.',
+      href: siteConfig.social.linkedin,
+    },
+    {
+      label: 'Selected work',
+      description: 'Case studies with status labels, technology tags, source links, and honest project evidence.',
+      href: '/work',
+    },
+    {
+      label: 'Engineering insights',
+      description: 'Long-form technical articles with headings, tables where useful, and practical implementation guidance.',
+      href: '/blog',
+    },
+    {
+      label: 'Client-fit guide',
+      description: 'A concise guide to engagement options, fit signals, and the context needed before starting.',
+      href: '/hire',
+    },
+  ],
+  faqs: [
+    {
+      question: 'Who is Ariful Islam?',
+      answer:
+        'Ariful Islam is a software engineer, multidisciplinary product builder, and inventor based in Dhaka, Bangladesh. His portfolio focuses on software product engineering with applied AI, backend systems, automation, and connected-product prototyping.',
+    },
+    {
+      question: 'What work can Ariful help with?',
+      answer:
+        'He helps founders and teams with SaaS and web products, AI integration, backend APIs, realtime systems, workflow automation, and software-led connected-product prototypes.',
+    },
+    {
+      question: "Is AI commerce part of Ariful's technology stack?",
+      answer:
+        'No. AI commerce describes the domain of the AI Dropshipping Commerce Platform project. His core software stack includes TypeScript, React, Next.js, Node.js, backend APIs, databases, and related data systems.',
+    },
+    {
+      question: 'What public evidence can a prospect verify?',
+      answer:
+        'Prospects can review the public GitHub profile, selected case studies, linked repositories or demos where available, engineering articles, and the service pages on this site.',
+    },
+    {
+      question: 'Is the underwater monitoring work production-ready?',
+      answer:
+        'No. The aquaculture and underwater monitoring work is presented as active R&D and prototype exploration, not as a field-validated production product.',
+    },
+    {
+      question: 'How should a team start a project conversation?',
+      answer:
+        'The most useful first message includes the target user, current workflow or stack, desired outcome, main constraint, timeline, and budget range.',
+    },
   ],
 } as const;
 

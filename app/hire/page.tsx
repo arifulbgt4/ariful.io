@@ -4,20 +4,20 @@ import JsonLd from '@/components/JsonLd';
 import { engagementOptions, projects, services, siteConfig } from '@/content/site';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Hire Ariful Islam — SaaS, AI Commerce & Backend Engineer' },
+  title: { absolute: 'Hire Ariful Islam — Software Engineer & Product Builder' },
   description:
-    'Hire Ariful Islam for SaaS, AI commerce, backend, automation, or connected-product engineering—from architecture and prototypes to production delivery.',
+    'Hire Ariful Islam for SaaS, applied AI, backend, automation, or connected-product engineering—from architecture and prototypes to production delivery.',
   keywords: [
     'hire software engineer Bangladesh',
     'hire Next.js developer',
-    'AI commerce platform engineer',
+    'applied AI engineer',
     'AI dropshipping platform developer',
     'SaaS product engineer',
     'backend API engineer',
   ],
   alternates: { canonical: '/hire' },
   openGraph: {
-    title: 'Hire Ariful Islam — Product Engineering for SaaS, AI Commerce & Backend Systems',
+    title: 'Hire Ariful Islam — Product Engineering for SaaS, Applied AI & Backend Systems',
     description: 'A direct guide to service fit, engagement options, engineering evidence, and the next step.',
     url: '/hire',
   },
@@ -76,7 +76,7 @@ export default function HirePage() {
             Bring in an engineer who can connect the product decision to the working system.
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-400 sm:text-xl sm:leading-9">
-            I help founders and product teams scope and ship SaaS, AI commerce, backend, automation, and connected-product work. Engagements can begin with a bounded review, a focused prototype, or one complete production workflow.
+            I help founders and product teams scope and ship SaaS, applied AI, backend, automation, and connected-product work. Engagements can begin with a bounded review, a focused prototype, or one complete production workflow.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link href="/#contact" className="button-primary">Send a project brief ↗</Link>

@@ -14,7 +14,7 @@ export default function About() {
 
         <div className="space-y-6 text-base leading-8 text-slate-400">
           <p>
-            I work as a software engineer, product builder, and inventor, with software as the core of my delivery. My primary stack includes TypeScript, React, Next.js, Node.js, backend APIs, and data systems. My current AI work covers LLM integration, RAG, embeddings, tool-using workflows, MCP, local models, and review-gated commerce automation.
+            I work as a software engineer, product builder, and inventor, with software as the core of my delivery. My primary stack includes TypeScript, React, Next.js, Node.js, backend APIs, and data systems. My current AI work covers LLM integration, RAG, embeddings, tool-using workflows, MCP, local models, and review-gated automation. The AI Dropshipping Commerce Platform is one project where those capabilities are applied.
           </p>
           <p>
             I also explore physical-digital systems through ESP32, Raspberry Pi, sensors, cameras, automation, realtime interfaces, and mechanical or CAD concepts. My aquaculture-focused underwater monitoring work is active R&amp;D—not a field-validated product—but it reflects how I decompose uncertain real-world problems into testable systems.

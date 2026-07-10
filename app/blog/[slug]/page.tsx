@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import AuthorCard from '@/components/AuthorCard';
 import JsonLd from '@/components/JsonLd';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
-import { siteConfig } from '@/content/site';
+import { profileSummary, siteConfig } from '@/content/site';
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -55,9 +56,32 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       mainEntityOfPage: articleUrl,
       url: articleUrl,
       inLanguage: 'en-US',
-      author: { '@id': `${siteConfig.url}/#person` },
-      publisher: { '@id': `${siteConfig.url}/#person` },
+      author: {
+        '@type': 'Person',
+        '@id': `${siteConfig.url}/#person`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
+      },
+      publisher: {
+        '@type': 'Person',
+        '@id': `${siteConfig.url}/#person`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+      },
       keywords: post.tags.join(', '),
+      about: post.tags,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      '@id': `${siteConfig.url}/#person`,
+      name: siteConfig.name,
+      alternateName: siteConfig.brandName,
+      url: siteConfig.url,
+      jobTitle: 'Software Engineer and Product Builder',
+      description: profileSummary.summary,
+      sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
     },
     {
       '@context': 'https://schema.org',
@@ -81,11 +105,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="mt-7 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-500">
             <span>{post.category}</span>
             <span aria-hidden="true">·</span>
+            <span>
+              By <Link href="/#about" rel="author" className="font-semibold text-cyan-200 hover:text-white">{siteConfig.name}</Link>
+            </span>
+            <span aria-hidden="true">·</span>
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <span aria-hidden="true">·</span>
             <span>{post.readingTime}</span>
           </div>
         </header>
+
+        <AuthorCard />
 
         <div className="prose-portfolio mx-auto mt-10 max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
