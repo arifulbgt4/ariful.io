@@ -17,6 +17,8 @@ export default function Footer() {
             <Link href="/hire">Hire me</Link>
             <Link href="/#work">Selected work</Link>
             <Link href="/blog">Insights</Link>
+            <Link href="/journal">Engineering journal</Link>
+            <Link href="/resume">Resume</Link>
             <Link href="/#about">About</Link>
             <Link href="/#contact">Contact</Link>
           </div>
@@ -36,6 +38,7 @@ export default function Footer() {
           <a href={siteConfig.social.github} target="_blank" rel="noreferrer">GitHub</a>
           <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/site-map">Site map</Link>
           <Link href="/rss.xml">RSS</Link>
         </div>
       </div>

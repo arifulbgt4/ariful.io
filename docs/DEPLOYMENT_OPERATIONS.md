@@ -17,6 +17,7 @@ encrypted environment settings, never in Git.
 | `CONTACT_TO_EMAIL` | Recommended | Inbox receiving project briefs |
 | `CONTACT_FROM_EMAIL` | Recommended | Verified sender such as `Ariful.io <hello@ariful.io>` |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Temporary/optional | Search Console HTML verification token |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | Temporary/optional | Bing Webmaster Tools HTML verification token |
 
 Verify the `ariful.io` sender domain in Resend before using a custom From address.
 The default Resend onboarding sender is suitable only for initial account tests

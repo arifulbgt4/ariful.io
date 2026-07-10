@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
-import { projects, siteConfig } from '@/content/site';
+import { journalEntries, projects, siteConfig } from '@/content/site';
 
 type WorkPageProps = { params: Promise<{ slug: string }> };
 
@@ -28,6 +28,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
   if (!project) notFound();
 
   const url = `${siteConfig.url}/work/${project.slug}`;
+  const relatedJournal = journalEntries.filter((entry) => entry.projectSlug === project.slug);
 
   return (
     <main id="main-content" className="page-shell">
@@ -156,6 +157,20 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
               {project.relatedArticles.map((article) => (
                 <Link key={article.href} href={article.href} className="link-card">
                   <span className="font-semibold leading-6 text-white">{article.title}</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {relatedJournal.length ? (
+          <section className="mx-auto mt-12 max-w-5xl">
+            <p className="section-kicker">Related engineering journal</p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {relatedJournal.map((entry) => (
+                <Link key={entry.slug} href={`/journal/${entry.slug}`} className="link-card">
+                  <span><span className="font-semibold leading-6 text-white">{entry.title}</span><span className="mt-1 block text-xs text-slate-500">{entry.date}</span></span>
                   <span aria-hidden="true">→</span>
                 </Link>
               ))}

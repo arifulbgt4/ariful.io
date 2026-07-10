@@ -1,9 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/blog';
-import { projects, services, siteConfig } from '@/content/site';
+import { journalEntries, projects, services, siteConfig } from '@/content/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['', '/hire', '/services', '/work', '/blog', '/privacy'].map((route) => ({
+  const staticRoutes = ['', '/hire', '/resume', '/services', '/work', '/journal', '/blog', '/privacy', '/site-map'].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? ('weekly' as const) : ('monthly' as const),
@@ -31,5 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...workRoutes, ...blogRoutes];
+  const journalRoutes = journalEntries.map((entry) => ({
+    url: `${siteConfig.url}/journal/${entry.slug}`,
+    lastModified: new Date(entry.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...workRoutes, ...journalRoutes, ...blogRoutes];
 }

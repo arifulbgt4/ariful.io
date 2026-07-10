@@ -35,9 +35,13 @@ Node.js 20.9 or newer is required by the package manifest.
 | `/services/[slug]` | Static params | Search landing pages, deliverables, process, and FAQs |
 | `/work` | Static | Case-study index |
 | `/work/[slug]` | Static params | Honest project evidence and status |
+| `/journal` | Static | Dated engineering decision and experiment index |
+| `/journal/[slug]` | Static params | Typed journal entries with lifecycle transparency |
 | `/blog` | Static | Engineering article index |
 | `/blog/[slug]` | Static params | Markdown article with Article schema |
 | `/privacy` | Static | Contact-data disclosure |
+| `/resume` | Static | Recruiter-focused verified profile |
+| `/site-map` | Static | Visitor-facing content discovery |
 | `/api/contact` | Node Route Handler | Validates and emails project enquiries |
 | `/robots.txt` | Generated | Crawler policy |
 | `/sitemap.xml` | Generated | Indexable route discovery |

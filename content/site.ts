@@ -12,6 +12,7 @@ export const siteConfig = {
     github: 'https://github.com/arifulbgt4',
     linkedin: 'https://www.linkedin.com/in/ariful25278',
   },
+  timezone: 'Asia/Dhaka (UTC+6)',
   proof: [
     { value: '40+', label: 'public repositories' },
     { value: '500+', label: 'GitHub followers' },
@@ -571,8 +572,85 @@ export const projects: Project[] = [
       'An active research direction with documented system concepts and prototype questions. It is presented as R&D, not as a field-validated commercial system.',
     status: 'Active R&D',
     year: '2023–Present',
-    tags: ['ESP32', 'Raspberry Pi', 'Sensors', 'IoT', 'Robotics'],
-    highlights: ['Physical-digital architecture', 'Remote monitoring concepts', 'Explicit prototype-risk mapping'],
+    role: 'Research direction · System architecture · Software-led prototyping',
+    tags: ['ESP32', 'Raspberry Pi', 'Sensors', 'IoT', 'Computer vision', 'Robotics', 'Aquaculture'],
+    highlights: [
+      'Aquaculture monitoring problem and stakeholder needs researched',
+      'Camera, illumination, sensor, compute, tether, and control boundaries designed',
+      'Turbid-water visibility and enclosure integrity treated as test gates',
+      'Remote monitoring and AI-assisted analysis remain planned until reliable data exists',
+    ],
+    systemMap: [
+      { title: 'Observe', description: 'Camera, controlled illumination, and water-quality sensors capture evidence under difficult pond conditions.' },
+      { title: 'Control', description: 'Embedded controllers coordinate telemetry, movement concepts, safety states, and local device interfaces.' },
+      { title: 'Connect', description: 'A tethered or surface-relay path carries power, commands, video, and telemetry without assuming underwater radio reliability.' },
+      { title: 'Interpret', description: 'Web or mobile software presents operator evidence; computer vision follows only after representative data validation.' },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Research status',
+        title: 'Every subsystem is labelled by maturity.',
+        description: 'This initiative is active R&D. Architecture and risk mapping are more mature than the physical system, and no field-performance claim is made.',
+        items: [
+          'Researched: aquaculture monitoring needs, underwater communication constraints, turbid-water imaging, sensing, and maintenance risks.',
+          'Designed: software-led system boundaries for embedded control, cameras, sensors, tether or relay communication, and operator interfaces.',
+          'Prototyped: component-level experiments and software concepts may be evaluated independently; they do not establish an integrated field system.',
+          'Planned: sealed vehicle integration, repeatable pond trials, labelled vision data, AI-assisted monitoring, and productization evidence.',
+        ],
+      },
+      {
+        eyebrow: '02 / Imaging and sensing',
+        title: 'Reliable evidence comes before computer vision.',
+        description: 'Turbidity, backscatter, working distance, lighting angle, biofouling, and sensor calibration can invalidate a model before model selection matters.',
+        items: [
+          'Compare visible and infrared illumination experimentally instead of assuming infrared improves underwater visibility.',
+          'Record camera, lighting, distance, turbidity, and enclosure conditions alongside every useful sample.',
+          'Treat dissolved oxygen, temperature, pH, and other sensor choices as calibration and maintenance questions, not a feature checklist.',
+          'Introduce detection or behavioural analysis only after a representative, reviewable dataset exists.',
+        ],
+      },
+      {
+        eyebrow: '03 / Embedded and communication architecture',
+        title: 'Safety and recoverability shape the control system.',
+        description: 'The system must remain understandable when connectivity, power, a sensor, or a motor fails.',
+        items: [
+          'Separate deterministic low-level control from higher-level video, storage, dashboards, and future AI workloads.',
+          'Design explicit loss-of-command, low-power, leak-detection, and recovery states before autonomous behaviour.',
+          'Prefer testable tether or surface-relay communication paths over unsupported claims about underwater wireless range.',
+          'Log commands, acknowledgements, sensor quality, and faults so a trial can be diagnosed after recovery.',
+        ],
+      },
+      {
+        eyebrow: '04 / Mechanical and power risks',
+        title: 'The enclosure is a test programme, not a box around electronics.',
+        description: 'Pressure, sealing, heat, corrosion, buoyancy, cable penetrations, serviceability, and battery safety affect every software decision.',
+        items: [
+          'Validate dry mass, displacement, trim, centre of gravity, and recoverability before powered water trials.',
+          'Pressure-test seals and penetrations incrementally with non-critical payloads and documented inspection criteria.',
+          'Budget power across compute, lighting, sensors, communications, and propulsion with measurable margins.',
+          'Keep custom electronics and PCB work behind verified electrical, thermal, and enclosure requirements.',
+        ],
+      },
+      {
+        eyebrow: '05 / Validation roadmap',
+        title: 'Progress through evidence gates.',
+        description: 'Each stage should retire one expensive uncertainty before the next integrated build.',
+        items: [
+          'Bench: validate sensors, camera and lighting, telemetry, command acknowledgement, logging, and fault handling.',
+          'Tank: validate sealing, thermal behaviour, buoyancy, trim, visibility, controlled motion, and recovery.',
+          'Pond: validate maintainability and data quality in representative water under supervised operating limits.',
+          'Productization: define reliability targets, safety review, manufacturing partners, service procedures, and field acceptance criteria.',
+        ],
+      },
+    ],
+    clientApplications: [
+      'De-risk a connected-product idea through testable subsystem boundaries and evidence gates.',
+      'Connect embedded telemetry, cameras, sensors, and operator software without hiding physical constraints.',
+      'Design a monitoring dashboard and device protocol around explicit fault and recovery states.',
+      'Plan an AI or computer-vision workflow around representative data rather than speculative accuracy claims.',
+    ],
+    relatedService: { title: 'Connected Product Prototyping', href: '/services/connected-product-prototyping' },
+    relatedArticles: [{ title: 'From ESP32 Sensor to Realtime Dashboard: A Prototype Architecture', href: '/blog/connected-product-prototype-esp32-dashboard' }],
     featured: true,
   },
   {
@@ -758,6 +836,58 @@ export const engineeringDomains = [
   {
     title: 'Product invention',
     skills: ['Product architecture', 'Rapid prototyping', 'System integration', 'Experiment design', 'CAD concepts', 'Risk mapping'],
+  },
+];
+
+export type JournalEntry = {
+  slug: string;
+  date: string;
+  title: string;
+  project: string;
+  projectSlug: string;
+  problem: string;
+  context: string;
+  experiments: string[];
+  decisions: string[];
+  result: string;
+  limitation: string;
+  lessons: string[];
+  nextStep: string;
+  tags: string[];
+};
+
+export const journalEntries: JournalEntry[] = [
+  {
+    slug: 'underwater-imaging-before-computer-vision',
+    date: '2026-07-10',
+    title: 'Treat underwater imaging as a data-quality problem before computer vision',
+    project: 'Underwater Monitoring R&D',
+    projectSlug: 'underwater-monitoring-research',
+    problem: 'A vision model cannot recover useful evidence when turbidity, backscatter, lighting geometry, or working distance makes the subject unreadable.',
+    context: 'The aquaculture monitoring initiative needs an honest route from pond imagery to future software-assisted observation without claiming an operational vision system.',
+    experiments: ['Define a repeatable tank matrix for turbidity, camera distance, visible light angle, and infrared illumination.', 'Record environmental and camera settings with each sample so results remain comparable.', 'Score human-readable visibility before considering model accuracy.'],
+    decisions: ['Make image acquisition a standalone validation gate.', 'Do not select a production model or publish accuracy expectations before representative samples exist.', 'Preserve failed samples because they reveal operating limits.'],
+    result: 'A staged imaging protocol and evidence boundary are designed; an integrated field result has not yet been established.',
+    limitation: 'No verified pond dataset or controlled comparison result is published yet.',
+    lessons: ['Optics and illumination are part of the data pipeline.', 'A negative visibility result can prevent expensive premature AI work.'],
+    nextStep: 'Build the controlled tank test, capture labelled conditions, and publish only reproducible findings.',
+    tags: ['Underwater imaging', 'Computer vision', 'Aquaculture', 'Experiment design'],
+  },
+  {
+    slug: 'review-gates-for-ai-commerce-operations',
+    date: '2026-07-02',
+    title: 'Use review gates for consequential AI commerce operations',
+    project: 'AI Dropshipping Commerce Platform',
+    projectSlug: 'ai-dropshipping-commerce-platform',
+    problem: 'Generated prices, product claims, creatives, and campaigns can create commercial or compliance harm when publication is treated as a model side effect.',
+    context: 'The platform connects several AI-assisted workflows to deterministic commerce records and external providers.',
+    experiments: ['Model each output as a persisted draft with provenance.', 'Separate generation, validation, review, approval, and publication states.', 'Keep provider selection behind a task router rather than feature code.'],
+    decisions: ['Require approval for consequential output by default.', 'Store model, task, references, validation, and reviewer state.', 'Use idempotent jobs when approved work crosses an external API boundary.'],
+    result: 'The operational foundation and review-state architecture are implemented; live provider acceptance remains environment-dependent.',
+    limitation: 'Production quality and provider behaviour still require credentialed sandbox testing.',
+    lessons: ['Human review is an operating boundary, not a decorative confirmation dialog.', 'Deterministic commerce truth must remain separate from generated suggestions.'],
+    nextStep: 'Complete sandbox acceptance with representative inputs, failures, retries, and reviewer feedback.',
+    tags: ['AI systems', 'Commerce', 'Human review', 'Architecture'],
   },
 ];
 

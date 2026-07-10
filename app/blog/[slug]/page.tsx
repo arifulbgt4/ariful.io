@@ -45,6 +45,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   const articleUrl = `${siteConfig.url}/blog/${post.slug}`;
+  const posts = getAllPosts();
+  const postIndex = posts.findIndex((item) => item.slug === post.slug);
+  const relatedPosts = posts.filter((item) => item.slug !== post.slug && item.tags.some((tag) => post.tags.includes(tag))).slice(0, 2);
   const structuredData = [
     {
       '@context': 'https://schema.org',
@@ -120,6 +123,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="prose-portfolio mx-auto mt-10 max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
         </div>
+
+        {relatedPosts.length ? <aside className="mx-auto mt-12 max-w-3xl"><h2 className="text-xl font-bold text-white">Related engineering articles</h2><div className="mt-5 grid gap-4">{relatedPosts.map((item) => <Link key={item.slug} href={`/blog/${item.slug}`} className="link-card"><span>{item.title}</span><span>→</span></Link>)}</div></aside> : null}
+
+        <nav aria-label="Article navigation" className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+          {posts[postIndex - 1] ? <Link href={`/blog/${posts[postIndex - 1].slug}`} className="link-card">← Newer article</Link> : <span />}
+          {posts[postIndex + 1] ? <Link href={`/blog/${posts[postIndex + 1].slug}`} className="link-card sm:justify-end">Older article →</Link> : null}
+        </nav>
 
         <footer className="mx-auto mt-14 max-w-3xl rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.04] p-6 sm:p-8">
           <p className="section-kicker">Need this applied to your product?</p>

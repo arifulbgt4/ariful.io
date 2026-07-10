@@ -37,6 +37,9 @@ export default function Hero() {
             <Link href="/work/ai-dropshipping-commerce-platform" className="button-secondary">
               See the AI commerce build
             </Link>
+            <Link href="/resume" className="button-secondary">
+              View resume
+            </Link>
           </div>
 
           <p className="mt-5 text-sm text-slate-500">Clear scope · Reviewable milestones · Documented handover</p>

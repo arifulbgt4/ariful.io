@@ -5,6 +5,7 @@
 The site uses a Git-backed CMS:
 
 - structured portfolio content in `content/site.ts`;
+- structured Engineering Journal entries in `content/site.ts`;
 - Markdown articles in `content/blog/*.md`;
 - repository review as editorial approval; and
 - deployment as publication.
@@ -40,6 +41,15 @@ tags: [Next.js, SaaS, Architecture]
 8. Review the rendered article on mobile and desktop.
 9. Commit and deploy. The article index, homepage, sitemap, RSS, metadata, and
    Article JSON-LD update automatically.
+
+## Engineering Journal workflow
+
+Add a complete `JournalEntry` to `journalEntries` in `content/site.ts`. Use a
+stable slug and date, connect it to an existing project slug, and complete the
+problem, context, experiments, decisions, result, limitation, lessons, and next
+step fields. The journal index, detail route, project backlink, sitemap, RSS,
+metadata, and structured data update from the same record. Never describe a
+planned test as a completed experiment.
 
 ## Answer-friendly content checklist
 
