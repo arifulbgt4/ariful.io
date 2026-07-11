@@ -21,6 +21,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const post = getPostBySlug(slug);
   if (!post) return {};
 
+  const ogImage = post.image ? { url: `${siteConfig.url}${post.image}`, alt: post.imageAlt || post.title, width: 1200, height: 630, type: 'image/svg+xml' as const } : undefined;
+
   return {
     title: post.title,
     description: post.description,
@@ -35,6 +37,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       modifiedTime: post.updated || post.date,
       authors: [siteConfig.name],
       tags: post.tags,
+      ...(ogImage ? { images: [ogImage] } : {}),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      ...(post.image ? { images: [`${siteConfig.url}${post.image}`] } : {}),
     },
   };
 }
@@ -59,6 +68,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       mainEntityOfPage: articleUrl,
       url: articleUrl,
       inLanguage: 'en-US',
+      ...(post.image ? { image: `${siteConfig.url}${post.image}` } : {}),
+      articleSection: post.category,
       author: {
         '@type': 'Person',
         '@id': `${siteConfig.url}/#person`,
@@ -95,6 +106,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         { '@type': 'ListItem', position: 3, name: post.title, item: articleUrl },
       ],
     },
+    ...(post.faqs.length > 0
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: post.faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -119,6 +146,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         <AuthorCard />
+
+        {post.image && post.imageAlt ? (
+          <figure className="mx-auto mt-10 max-w-3xl">
+            <img
+              src={post.image}
+              alt={post.imageAlt}
+              width={1200}
+              height={630}
+              className="w-full rounded-2xl border border-white/[0.07]"
+            />
+          </figure>
+        ) : null}
 
         <div className="prose-portfolio mx-auto mt-10 max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>

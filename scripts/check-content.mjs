@@ -51,6 +51,48 @@ for (const filename of filenames) {
   if (!/^##\s+\S+/m.test(content)) {
     errors.push(`${filename}: article must include clear level-two headings for scanning and answer extraction.`);
   }
+
+  // Optional field validation: image, imageAlt, faqs
+  if (data.image !== undefined) {
+    if (typeof data.image !== 'string' || !data.image.startsWith('/')) {
+      errors.push(`${filename}: image must start with "/".`);
+    }
+    if (typeof data.imageAlt !== 'string' || data.imageAlt.trim() === '') {
+      errors.push(`${filename}: imageAlt must be a non-empty descriptive string when image is present.`);
+    }
+  }
+  if (data.imageAlt !== undefined && data.image === undefined) {
+    errors.push(`${filename}: imageAlt is present but image is missing.`);
+  }
+
+  if (data.faqs !== undefined) {
+    if (!Array.isArray(data.faqs)) {
+      errors.push(`${filename}: faqs must be an array.`);
+    } else {
+      const faqQuestions = [];
+      for (let i = 0; i < data.faqs.length; i++) {
+        const faq = data.faqs[i];
+        if (typeof faq !== 'object' || faq === null || typeof faq.question !== 'string' || faq.question.trim() === '' || typeof faq.answer !== 'string' || faq.answer.trim() === '') {
+          errors.push(`${filename}: FAQ entry ${i + 1} must contain a non-empty "question" and "answer".`);
+        } else {
+          faqQuestions.push(faq.question);
+          // Check that FAQ question appears as a Markdown heading in the article body
+          if (!content.includes(`## ${faq.question}`)) {
+            errors.push(`${filename}: FAQ question "${faq.question}" does not appear as a level-two heading in the article body.`);
+          }
+          // Check that FAQ answer appears verbatim in the article body
+          if (!content.includes(faq.answer)) {
+            errors.push(`${filename}: FAQ answer for "${faq.question}" does not appear verbatim in the article body.`);
+          }
+        }
+      }
+      // Check for unique FAQ questions
+      const uniqueQuestions = new Set(faqQuestions);
+      if (uniqueQuestions.size !== faqQuestions.length) {
+        errors.push(`${filename}: FAQ questions must be unique within the post.`);
+      }
+    }
+  }
 }
 
 if (filenames.length === 0) errors.push('No published blog posts found.');

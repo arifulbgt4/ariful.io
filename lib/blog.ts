@@ -6,6 +6,11 @@ import matter from 'gray-matter';
 
 const postsDirectory = path.join(process.cwd(), 'content', 'blog');
 
+export type BlogFaq = {
+  question: string;
+  answer: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -16,6 +21,9 @@ export type BlogPost = {
   tags: string[];
   readingTime: string;
   body: string;
+  image?: string;
+  imageAlt?: string;
+  faqs: BlogFaq[];
 };
 
 function calculateReadingTime(content: string) {
@@ -32,6 +40,23 @@ function readPost(filename: string): BlogPost {
     throw new Error(`Blog post "${filename}" is missing required frontmatter.`);
   }
 
+  const faqs = Array.isArray(data.faqs)
+    ? data.faqs
+        .filter(
+          (faq: unknown): faq is { question: string; answer: string } =>
+            typeof faq === 'object' &&
+            faq !== null &&
+            typeof (faq as Record<string, unknown>).question === 'string' &&
+            (faq as Record<string, unknown>).question !== '' &&
+            typeof (faq as Record<string, unknown>).answer === 'string' &&
+            (faq as Record<string, unknown>).answer !== '',
+        )
+        .map((faq) => ({ question: faq.question, answer: faq.answer }))
+    : [];
+
+  const image = typeof data.image === 'string' && data.image ? data.image : undefined;
+  const imageAlt = typeof data.imageAlt === 'string' && data.imageAlt ? data.imageAlt : undefined;
+
   return {
     slug,
     title: String(data.title),
@@ -42,6 +67,9 @@ function readPost(filename: string): BlogPost {
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     readingTime: calculateReadingTime(content),
     body: content,
+    image,
+    imageAlt,
+    faqs,
   };
 }
 
