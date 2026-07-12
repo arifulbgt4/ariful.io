@@ -6,6 +6,10 @@ Use Vercel with the GitHub repository connected to the production project. A
 Node-compatible Next.js host also works if it supports Route Handlers and image
 generation.
 
+The repository pins the intended deployment major in `package.json` and the
+exact local/CI patch in `.nvmrc`. Keep the Vercel project's Node.js runtime on
+the Node 20 line and let GitHub Actions verify the same build contract.
+
 ## Environment variables
 
 Copy `.env.example` locally. Production values belong in the hosting provider's
@@ -39,19 +43,22 @@ deployment environment variables:
   Tools account.
 
 After adding the secrets, enable scheduled Actions on the default branch. The
-workflow checks daily, but a successful submission can occur only when indexed
-content changed and at least seven days passed since the last successful run.
-Run it manually once after setup; with no prior state it submits the current
-sitemap. Later manual runs still obey the same change and seven-day gates.
+workflow checks daily and normally submits only when indexed content changed
+and at least seven days passed since the last successful run. Its prior state is
+stored in an evictable Actions cache, so the seven-day gate is best-effort. Run
+it manually once after setup; later manual runs use the same change and interval
+checks while that state remains available.
 
 ## Pre-deployment
 
 ```bash
 npm ci
 npm run content:check
+npm run seo:check
 npm run typecheck
 npm run lint
 npm run build
+npm run production:check
 ```
 
 Review the production diff, public URLs, environment target, and migration risk.
@@ -80,6 +87,17 @@ After deployment, verify:
 - canonical and Open Graph tags in rendered HTML;
 - structured data validation; and
 - no client or server console errors.
+
+The `production-watch.yml` workflow checks Vercel deployment-status failures,
+repeats the public endpoint check every six hours, and can be started manually.
+A failed deployment or smoke check creates a visible GitHub Actions failure;
+inspect the Vercel deployment commit and logs before patching, then rerun the
+full verification chain.
+
+If Vercel's dashboard shows `404` while the production origin still returns a
+healthy response, do not create a duplicate project. Sign in to the Vercel
+account/team that owns the GitHub-connected project and verify its deployment
+settings there.
 
 ## Monitoring
 

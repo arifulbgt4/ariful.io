@@ -103,6 +103,7 @@ For content-only changes:
 
 ```bash
 npm run content:check
+npm run seo:check
 npm run lint
 npm run build
 ```
@@ -111,6 +112,7 @@ For application changes:
 
 ```bash
 npm run content:check
+npm run seo:check
 npm run typecheck
 npm run lint
 npm run build

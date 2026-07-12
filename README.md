@@ -29,9 +29,11 @@ Open `http://localhost:3000`.
 
 ```bash
 npm run content:check
+npm run seo:check
 npm run typecheck
 npm run lint
 npm run build
+npm run production:check
 ```
 
 ## Content management

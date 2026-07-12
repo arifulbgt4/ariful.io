@@ -1,0 +1,45 @@
+name: Watch Vercel production
+
+on:
+  workflow_dispatch:
+  deployment_status:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-watch
+  cancel-in-progress: true
+
+jobs:
+  deployment-failure:
+    if: github.event_name == 'deployment_status' && (github.event.deployment_status.state == 'failure' || github.event.deployment_status.state == 'error')
+    name: Report failed Vercel deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fail with deployment context
+        run: |
+          echo "Vercel deployment failed: ${{ github.event.deployment_status.target_url || github.event.deployment_status.environment_url || 'unknown URL' }}"
+          echo "Commit: ${{ github.event.deployment.sha }}"
+          exit 1
+
+  smoke:
+    if: github.event_name != 'deployment_status' || github.event.deployment_status.state == 'success'
+    name: Check Vercel production endpoints
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19.0'
+
+      - name: Check production endpoints
+        run: npm run production:check

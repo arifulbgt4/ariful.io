@@ -12,7 +12,30 @@ require owner credentials, new evidence, or an explicit product decision.
 - Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` in production.
 - Verify end-to-end contact delivery and Reply-To.
 - Confirm canonical domain redirects and deploy.
-- Add the site to Google Search Console and Bing Webmaster Tools; submit sitemap.
+- Deploy the homepage and resume `ProfilePage.mainEntity` schema fixes, validate
+  both live URLs with Rich Results Test, and start Search Console's validation
+  flow.
+
+Google Search Console domain verification, Bing property import, and the initial
+shared sitemap submission were completed on July 10, 2026; current sitemap and
+enhancement status was rechecked on July 11. The dated operational snapshot is
+maintained in `SEO_GROWTH_PLAYBOOK.md`.
+
+## P1 — SEO and AEO operations
+
+- Replace the cache-only search-submission state with a durable mechanism so the
+  rolling seven-day contract survives cache eviction.
+- Confirm that the live deployment contains the changed indexable content before
+  saving its fingerprint as successfully submitted, and pin Node in the search
+  workflow.
+- Normalize route-specific Open Graph and Twitter metadata, including a reliable
+  social-image fallback for index, service, work, and image-free article pages.
+- Show evidence-backed last-reviewed dates on materially updated articles and use
+  those dates consistently in RSS and sitemap freshness signals.
+- Review Bing AI Performance monthly and expand older technical articles with
+  relevant primary sources and answer-focused sections where they help readers.
+- Keep the scheduled Vercel production watch green for the homepage, resume,
+  robots, sitemap, and RSS endpoints.
 
 ## P1 — Credibility upgrades
 

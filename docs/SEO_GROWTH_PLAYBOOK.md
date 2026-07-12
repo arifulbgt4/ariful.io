@@ -64,6 +64,12 @@ Structured data improves machine understanding but does not guarantee a rich
 result. Never add ratings, reviews, prices, or credentials that are not visibly
 supported on the page.
 
+For Google's `ProfilePage` feature, `mainEntity` must resolve explicitly to a
+`Person` or `Organization`. For this personal portfolio, keep every
+`ProfilePage.mainEntity` typed as `Person` and include the visible name in that
+object; an `@id`-only reference can be interpreted as an untyped object and
+trigger a critical Search Console error.
+
 ## Answer-engine optimization
 
 AI search and answer engines need the same evidence discipline as traditional
@@ -87,17 +93,43 @@ verified, and FAQ or table content only where it genuinely helps the reader.
 Do not create FAQ entries, source links, or schema properties for facts that are
 not visible on the page.
 
-## Launch actions requiring owner access
+## Search operations baseline
 
-1. Verify `https://ariful.io` in Google Search Console and Bing Webmaster Tools.
-2. Set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` during the verification window.
-3. Submit `https://ariful.io/sitemap.xml`.
-4. Inspect the homepage, service pages, and first three articles for indexing.
-5. Confirm the canonical host redirects: HTTP to HTTPS and `www` to the chosen
+The following account state was rechecked on July 11, 2026. It is an operational
+snapshot, not a permanent indexing guarantee:
+
+- the Google Search Console Domain property `sc-domain:ariful.io` was verified
+  through DNS;
+- `https://ariful.io/sitemap.xml` was submitted and read by Google on July 11,
+  with `Success` status and 27 discovered pages;
+- the verified Google property was imported into Bing Webmaster Tools;
+- Bing reported one known sitemap, last submitted and crawled on July 11, with
+  `Success` status, 27 discovered URLs, no warnings, and no errors;
+- on July 10, eight priority URLs were accepted through Bing URL Submission.
+
+Search Console's Profile page report showed one valid and one invalid item. The
+invalid item was `/resume`, last crawled on July 10, with validation not started;
+its critical issue was an invalid object type for `mainEntity`. Diagnosis also
+found the same `@id`-only pattern on the deployed homepage, although that URL was
+not listed in the invalid-item report. The repository fix makes both profile
+entities explicit `Person` objects with visible names. After deployment, validate
+both live URLs with Rich Results Test and then start Search Console's validation
+flow.
+
+Bing AI Performance reported zero citations and zero cited pages for the
+three-month window ending July 10. Bing also reported that site data was still
+being processed. Treat this as the initial AEO measurement baseline, not as a
+conclusion about content quality or future citation eligibility.
+
+## Owner-controlled search actions
+
+1. Inspect the homepage, service pages, and first three articles for indexing.
+2. Confirm the canonical host redirects: HTTP to HTTPS and `www` to the chosen
    apex domain, or the reverse if deployment policy changes.
-6. Test structured data with Google's Rich Results Test and Schema.org validator.
-7. Test Open Graph output on LinkedIn's post inspector.
-8. Add privacy-respecting analytics and update `/privacy` before collection.
+3. Test changed structured data with Google's Rich Results Test and Schema.org
+   validator before starting a Search Console validation request.
+4. Test Open Graph output on LinkedIn's post inspector.
+5. Add privacy-respecting analytics and update `/privacy` before collection.
 
 ## Automated search-console updates
 
@@ -105,8 +137,10 @@ The scheduled `search-indexing.yml` workflow checks every day so a pending
 content change is handled at the first eligible run. It submits
 `https://ariful.io/sitemap.xml` only when the fingerprint of `content/site.ts`
 or a published blog article differs from the last successful submission. A
-rolling seven-day gate guarantees at most one successful Google/Bing submission
-per week, and unchanged content produces no submission.
+rolling seven-day gate suppresses repeat submissions while the prior state is
+available, and unchanged content produces no submission. The state currently
+lives in an evictable GitHub Actions cache, so the gate is best-effort rather
+than a permanent rate-limit guarantee.
 
 Google receives a sitemap submission through the Search Console API. Do not use
 Google's Indexing API for normal portfolio pages; it is restricted to eligible
@@ -157,8 +191,10 @@ Review monthly:
 - service-to-contact click rate;
 - submitted briefs and lead quality;
 - public-work outbound clicks;
-- article engagement and assisted enquiries; and
-- Core Web Vitals by route template.
+- article engagement and assisted enquiries;
+- Core Web Vitals by route template; and
+- Bing AI Performance citations, cited pages, grounding queries, topics, and
+  citation share once processing produces enough data.
 
 Do not optimize around raw traffic. A lower-volume service query that produces a
 qualified project is more valuable than a broad tutorial query with no business
@@ -168,8 +204,13 @@ fit.
 
 - Quarterly: verify public URLs, project status, profile metrics, metadata, and
   contact delivery.
+- Weekly: review Search Console and Bing messages for crawl, indexing, security,
+  manual-action, and structured-data alerts; record only actionable site state.
 - After every route addition: confirm metadata, canonical, sitemap, internal
   linking, mobile layout, and schema.
+- After every schema change: validate the rendered production URL, not only the
+  TypeScript source, and resolve critical Search Console errors before adding
+  more schema features.
 - After a major deployment: let the weekly-gated workflow submit the sitemap
   only when public content changed; use manual URL inspection only for an
   exceptional priority-page diagnosis.

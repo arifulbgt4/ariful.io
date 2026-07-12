@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "content:check": "node scripts/check-content.mjs",
+    "seo:check": "node scripts/check-seo.mjs",
+    "production:check": "node scripts/check-production.mjs",
     "search:check": "node scripts/submit-search-updates.mjs --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -37,6 +39,6 @@
     "postcss": "$postcss"
   },
   "engines": {
-    "node": ">=20.9.0"
+    "node": "20.x"
   }
 }

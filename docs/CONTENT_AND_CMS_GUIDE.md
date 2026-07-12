@@ -37,13 +37,15 @@ tags: [Next.js, SaaS, Architecture]
 5. Link to relevant primary sources when making claims that can change.
 6. Add one useful next step or service connection; do not turn every paragraph
    into a sales pitch.
-7. Run `npm run content:check` and the full build.
+7. Run `npm run content:check`, `npm run seo:check`, `npm run lint`, and the full
+   build.
 8. Review the rendered article on mobile and desktop.
 9. Commit and deploy. The article index, homepage, sitemap, RSS, metadata, and
    Article JSON-LD update automatically.
 10. The daily search-submission workflow detects the content fingerprint after
     publication. It submits the sitemap to Google and Bing when content changed,
-    subject to the rolling seven-day limit; otherwise it performs no submission.
+    subject to the best-effort rolling seven-day state gate; otherwise it
+    performs no submission.
 
 ## Engineering Journal workflow
 

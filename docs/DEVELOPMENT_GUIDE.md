@@ -25,7 +25,8 @@ configuration error and the interface offers direct email until Resend is set.
 | --- | --- |
 | `npm run dev` | Start the development server |
 | `npm run dev:restart` | Stop the current port process and restart development |
-| `npm run content:check` | Validate profile records and blog frontmatter/content |
+| `npm run content:check` | Validate blog frontmatter, article structure, images, and optional FAQs |
+| `npm run seo:check` | Guard inline ProfilePage source objects against missing Google-required entity types and names |
 | `npm run search:check` | Check whether indexable content differs from the last successful search-console submission without contacting either provider |
 | `npm run typecheck` | Run TypeScript without emitting files |
 | `npm run lint` | Run Next.js and TypeScript ESLint rules |
@@ -39,7 +40,7 @@ configuration error and the interface offers direct email until Resend is set.
 2. Check `git status` and preserve unrelated work.
 3. Identify the source of truth before editing a component.
 4. Make the smallest coherent vertical change across content, UI, SEO, and docs.
-5. Run content validation, typecheck, lint, and build.
+5. Run content validation, SEO validation, typecheck, lint, and build.
 6. Test affected routes and interactions at desktop and mobile widths.
 7. Review `git diff --check` and the final diff.
 

@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Content, types, lint, and build
+    name: Content, SEO, types, lint, and build
     runs-on: ubuntu-latest
 
     env:
@@ -39,6 +39,9 @@ jobs:
 
       - name: Check content
         run: npm run content:check
+
+      - name: Guard ProfilePage structured data source
+        run: npm run seo:check
 
       - name: Typecheck
         run: npm run typecheck

@@ -51,7 +51,11 @@ export default function Home() {
       url: siteConfig.url,
       description: profileSummary.summary,
       inLanguage: 'en-US',
-      mainEntity: { '@id': `${siteConfig.url}/#person` },
+      mainEntity: {
+        '@id': `${siteConfig.url}/#person`,
+        '@type': 'Person',
+        name: siteConfig.name,
+      },
       about: { '@id': `${siteConfig.url}/#person` },
       publisher: { '@id': `${siteConfig.url}/#person` },
     },
