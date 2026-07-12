@@ -2,6 +2,7 @@
   "name": "ariful-io",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@10.8.2",
   "scripts": {
     "dev": "next dev",
     "dev:restart": "sh -c 'port=${PORT:-3000}; pids=$(lsof -ti tcp:$port); [ -z \"$pids\" ] || kill $pids; sleep 1; exec next dev -p $port'",
