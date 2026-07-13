@@ -1,6 +1,6 @@
 # Portfolio SEO Implementation
 
-Last audited: 2026-07-10
+Last audited: 2026-07-13
 
 ## Existing system and findings
 
@@ -10,13 +10,15 @@ The repository was already a strong static-first Next.js 16 App Router portfolio
 - Images and fonts: `next/image` handles the GitHub avatar; generated images use Next.js; system fonts avoid third-party loading cost.
 - Accessibility: skip link, semantic landmarks, focus styles, minimum control sizing, reduced-motion styles, labels, and keyboard-aware mobile navigation were present.
 - Performance: mostly server components and static content; navigation and contact are the intentional client boundaries.
-- Main gaps: no Engineering Journal, recruiter Resume page, visitor site map, detailed underwater R&D maturity model, Bing verification slot, or explicit security headers.
+- The earlier audit identified missing Journal, visitor site map, detailed underwater R&D maturity, Bing verification, and security-header coverage. Those foundation items now exist; the current client-acquisition architecture replaces the former recruiter-first Resume surface with a qualified project brief.
 - No confirmed duplicate route content was found. No test runner, Lighthouse runner, or broken-link package is configured; the available local gates are content validation, TypeScript, ESLint, build output, and route smoke tests.
 
 ## Implemented changes
 
 - Added `/journal` and static `/journal/[slug]` entries with date, project, problem, context, experiments, decisions, result, limitation, lessons, next step, tags, previous/next navigation, JSON-LD, canonical metadata, and project backlinks.
-- Added `/resume` as a recruiter brief with a credible hierarchy of primary expertise, supporting capabilities, and active R&D. No fake document was created.
+- Repositioned the public site around end-to-end Product Engineering for software, AI-enabled, and connected/IoT products, with one `/hire#project-brief` conversion path.
+- Retired the recruiter brief from discovery and changed legacy `/resume` requests to a permanent `308` redirect to `/hire`.
+- Split portfolio work into four equal-priority core products and two Lab items, with visible maturity, lifecycle, constraints, and evidence fields instead of a flagship hierarchy.
 - Added `/site-map` for visitor discovery.
 - Expanded underwater monitoring with explicit Researched, Designed, Prototyped, and Planned boundaries plus imaging, embedded, communication, mechanical, power, validation, and productization sections.
 - Added Journal entries to sitemap and the combined RSS feed; connected case studies and journal entries; added related/previous/next article links.
@@ -48,7 +50,7 @@ After deployment:
 3. Add Bing Webmaster Tools. Set `NEXT_PUBLIC_BING_SITE_VERIFICATION` for HTML meta verification, or import the verified Search Console property.
 4. Deploy, inspect rendered verification tags, and complete ownership verification.
 5. Submit `https://ariful.io/sitemap.xml` to both services.
-6. Request indexing for the homepage, Resume, Services, priority case studies, Journal, and strongest articles.
+6. Request indexing for the homepage, Hire, Services, core case studies, Journal, and strongest articles. Do not submit the redirected `/resume` URL.
 7. Review crawl, canonical, schema, Core Web Vitals, and indexing reports monthly.
 8. Yandex may use the same sitemap if relevant. Baidu is optional for a future China-market requirement.
 
@@ -59,6 +61,6 @@ IndexNow was not added: the current update volume does not justify a key endpoin
 - Configure domain redirects, Resend variables, and verified sender ownership.
 - Connect privacy-conscious analytics only after selecting a provider and updating `/privacy`; placeholder variables load no tracking.
 - Validate the deployed origin with Rich Results Test, Schema.org Validator, LinkedIn Post Inspector, and Lighthouse.
-- No verified employment timeline, education record, testimonial, client result, or downloadable resume existed, so none was invented.
+- No verified employment timeline, education record, testimonial, client result, or production metric was invented. The site is intentionally a client-acquisition portfolio rather than a recruiter resume.
 - Underwater R&D has no published field dataset, integrated prototype result, or accuracy metric.
 - Search Console, Bing, Resend, analytics, DNS, and production Lighthouse require owner-controlled accounts or a live origin.

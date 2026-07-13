@@ -798,7 +798,7 @@ Ask:
 
 For a proof of concept, development speed and board availability may dominate. For a production device, lifecycle, testability, security, certification, and supply-chain resilience become equally important.
 
-Review [selected engineering work](/work), read the [project-fit and engagement guide](/hire), or [discuss an embedded or connected-product prototype](/#contact).
+Review [selected engineering work](/work), read the [project-fit and engagement guide](/hire), or [discuss an embedded or connected-product prototype](/hire#project-brief).
 
 ## Primary technical sources
 

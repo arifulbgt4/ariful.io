@@ -19,23 +19,34 @@ The site should answer five questions quickly:
 
 Primary positioning:
 
-> Multidisciplinary software engineer, product builder, and inventor building
-> SaaS, applied AI, backend, automation, and connected-product systems.
+> End-to-End Product Engineer for Software, AI & Connected/IoT Products.
 
-The lead offer is production software engineering. The owner-provided broader
-context connects that core with applied AI, embedded electronics, sensors,
-automation, mechanical/CAD concepts, aquaculture technology, and physical-
-digital invention. These are presented at their evidenced maturity: delivered
-software, prototype capability, experiment, or active R&D—not as unsupported
-expertise in every discipline.
+The public promise is ownership from an uncertain idea to a working, reviewable
+release across three product lanes:
 
-The primary niche evidence is the AI Dropshipping Commerce Platform. `AI
-commerce` describes this project's application domain; it is not a programming
-language, framework, technology stack, or general professional title. The
-project supports a dedicated commercial offer for teams that need supplier
-ingestion, international commerce, controlled AI, creative and campaign
-operations, checkout, or trustworthy analytics. It does not support claims of
-client revenue, production scale, or a live autonomous store.
+1. Software Products;
+2. AI-Enabled Products; and
+3. Connected/IoT Products.
+
+That ownership follows one six-stage delivery lifecycle: Discover → Scope &
+Architecture → Design & Prototype → Build & Integrate → Verify & Launch →
+Handover & Iterate. Individual engagements may cover only the stages a client
+needs, but the site must explain how each stage connects to a maintainable
+product outcome.
+
+For connected products, Ariful can own discovery, product/system architecture,
+software, device/data integration, and validated prototyping. Specialist PCB
+design, regulatory certification, production engineering, and manufacturing
+are coordinated with qualified partners when required; the portfolio must not
+imply unsupported in-house manufacturing or certification capability.
+
+`AI commerce` describes the application domain of the AI Dropshipping Commerce
+Platform; it is not a programming language, framework, technology stack,
+general professional title, or site-wide identity. The project supports a
+dedicated commercial offer for teams that need supplier ingestion,
+international commerce, controlled AI, creative and campaign operations,
+checkout, or trustworthy analytics. It does not support claims of client
+revenue, production scale, or a live autonomous store.
 
 ## Verified public facts
 
@@ -85,12 +96,35 @@ No client logos, testimonials, revenue, conversion improvements, or production
 field results are currently verified. Do not add them without direct evidence
 and permission.
 
+### Portfolio tiers and current maturity
+
+The public work hierarchy has four equal-priority core products:
+
+- AI Dropshipping Commerce Platform — operational foundation built;
+  credentialed sandbox and production acceptance remain pending;
+- Otask — in development;
+- Underwater Monitoring R&D — active R&D; integrated pond validation remains
+  pending; and
+- Reusable B2C Marketplace Platform — architecture and product foundation
+  planned.
+
+GraphQL Todo Application is a public reference project and Local LLM Workflows
+is an experiment. These two records belong in `Lab & Experiments`; neither is
+presented as a core client product.
+
+Core products receive equal visual and editorial priority. There is no
+`flagship` product. Every case study must distinguish `Delivered`, `Validated`,
+`In progress`, and `Planned` work so a complete client-facing explanation never
+becomes a false completion claim. Use `SoftwareApplication` schema only when
+the visible evidence supports it; otherwise use `CreativeWork`.
+
 ## Audience segments
 
 ### Early-stage founder
 
-Needs a senior builder to narrow scope, make architecture decisions, and ship a
-credible first product without creating a disposable codebase.
+Needs one accountable product engineer to narrow scope, make architecture
+decisions, validate the riskiest assumption, and ship a credible first release
+without creating a disposable codebase.
 
 ### Product or engineering lead
 
@@ -100,21 +134,21 @@ or product slice while preserving team standards and handover quality.
 ### Research or connected-product team
 
 Needs a software-led prototype linking devices, data, dashboards, or remote
-control while making physical and operational risks explicit.
+control while making physical, certification, partner, and operational risks
+explicit.
 
 ## Conversion strategy
 
-Primary conversion: submit a qualified project brief.
+The sole on-site conversion path is `Start your product` →
+`/hire#project-brief`, where a prospect submits a qualified project brief.
+Service, work, article, navigation, and footer calls to action all converge on
+that destination. Public GitHub, LinkedIn, case studies, articles, Journal, and
+RSS remain evidence or discovery paths rather than competing conversion goals.
 
-Secondary conversions:
-
-- review the client-fit guide at `/hire`;
-- email directly;
-- connect on LinkedIn;
-- inspect public GitHub work;
-- read a case study;
-- read an engineering article; or
-- return through an RSS subscription or organic search.
+Direct email remains visible as the required fallback when the form is
+unavailable or a prospect cannot use it. The public site does not carry a
+recruiter-focused resume conversion; `/resume` permanently redirects to
+`/hire`.
 
 ## Commercial entry points
 
@@ -123,12 +157,22 @@ prototype sprint, a production product slice, or an ongoing engineering
 partnership. These are scope shapes rather than fixed-price packages; pricing
 follows enough discovery to understand risk and expected outcome.
 
+Every entry point maps to the same product lanes and lifecycle. The project
+brief captures the selected lane, current lifecycle stage, existing product
+state, desired outcome, budget, and timeline without preselecting a paid
+service.
+
 ## Product constraints
 
 - English is the public site language for international client reach.
+- Location is a secondary trust fact, not the primary positioning.
+- Technology stacks support a product story; they must not lead the homepage or
+  replace buyer outcomes, delivery stages, and evidence.
 - The repository is the CMS and operational source of truth.
 - The contact endpoint requires Resend configuration in deployment.
 - The direct-email fallback must always remain available.
+- `/hire#project-brief` is the canonical conversion target, and `/resume` must
+  remain a permanent redirect to `/hire`.
 - No public admin surface is shipped without authentication, authorization,
   audit logging, and a clear editorial need.
 

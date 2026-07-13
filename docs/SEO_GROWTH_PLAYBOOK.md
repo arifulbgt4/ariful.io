@@ -4,14 +4,20 @@
 
 Earn qualified discovery for Ariful Islam and the services he can credibly
 deliver. Search traffic is useful only when it produces relevant conversations,
-public-work review, professional connections, or repeat readership.
+public-work review, or repeat readership. The canonical entity narrative is
+`End-to-End Product Engineer for Software, AI & Connected/IoT Products`, aimed
+at international founders, product teams, and research teams.
 
 ## Search architecture
 
 ### Identity intent
 
-The homepage targets Ariful Islam, Engineer Arif, `arifulbgt4`, software engineer
-in Bangladesh, and the combined SaaS/applied-AI/backend positioning.
+The homepage targets Ariful Islam Product Engineer, end-to-end Product Engineer,
+Bangladesh/remote Product Engineer, Engineer Arif, and `arifulbgt4`. Dhaka,
+Bangladesh remains a secondary entity and trust fact rather than the main
+commercial phrase. `Person.jobTitle` is `End-to-End Product Engineer`; visible
+About and evidence content carries the broader Software Engineer,
+multidisciplinary product builder, and inventor context.
 
 Use `AI commerce` only for the AI Dropshipping Commerce Platform project, its
 application domain, the evidence-backed service derived from that work, and
@@ -20,15 +26,17 @@ professional title.
 
 ### Commercial intent
 
-The `/hire` route targets direct identity-plus-commercial intent such as hiring
-Ariful for product engineering. Each `/services/[slug]` route targets one
-service family:
+The `/hire` route targets direct identity-plus-commercial intent such as `hire a
+Product Engineer` and `product development from idea to launch`; its canonical
+conversion target is `/hire#project-brief`. `/services` targets software product
+engineering, AI product engineering, and IoT/connected product prototyping.
+Each `/services/[slug]` route targets one outcome-led service family:
 
-- SaaS and web product engineering;
+- software product engineering;
 - AI commerce and dropshipping platform engineering;
-- AI integration and workflow automation;
-- backend, API, and realtime systems; and
-- connected-product prototyping.
+- AI product integration and automation;
+- backend, API, and realtime product systems; and
+- connected/IoT product prototyping.
 
 Do not create thin city/technology pages with nearly identical text. Add a new
 landing page only when it serves a distinct audience and can carry useful,
@@ -36,8 +44,12 @@ specific content.
 
 ### Evidence intent
 
-`/work/[slug]` routes establish entity and capability evidence. Public source and
-live links are stronger than keyword repetition.
+`/work/[slug]` routes establish domain-specific entity and capability evidence.
+The four equal core products are AI Dropshipping Commerce Platform, Otask,
+Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. GraphQL Todo
+Application and Local LLM Workflows are separate Lab & Experiments records.
+Public source links, visible maturity, role, constraints, and lifecycle evidence
+are stronger than keyword repetition or a flagship badge.
 
 ### Informational intent
 
@@ -57,6 +69,8 @@ clusters should link to the matching service and relevant work.
   data where appropriate;
 - server-rendered content with minimal client JavaScript;
 - internal links among home, services, work, articles, and contact;
+- a permanent `/resume` → `/hire` redirect with the legacy route excluded from
+  navigation and sitemap discovery;
 - custom 404 recovery; and
 - honest project status to support trust and entity consistency.
 
@@ -74,13 +88,14 @@ trigger a critical Search Console error.
 
 AI search and answer engines need the same evidence discipline as traditional
 SEO, but they reward pages that are easy to quote, summarize, and trace back to
-sources. The site now supports this through:
+sources. The site supports this through:
 
-- a homepage quick-facts section with a concise profile summary;
-- a visible evidence table covering role, location, availability, services,
-  proof, and claim boundaries;
+- a homepage summary and FAQ with the three product lanes and six lifecycle
+  stages expressed in concise, quotable language;
+- a visible evidence table covering role, location, delivery ownership,
+  specialist-partner boundaries, proof, and claim boundaries;
 - source links to GitHub, LinkedIn, selected work, engineering articles, and the
-  client-fit guide;
+  project-brief guide;
 - homepage profile FAQ content mirrored by FAQPage structured data;
 - visible author information on article pages;
 - GFM table support in Markdown articles; and
@@ -92,6 +107,12 @@ When adding or changing an indexable page, include a clear `h1`, descriptive
 verified, and FAQ or table content only where it genuinely helps the reader.
 Do not create FAQ entries, source links, or schema properties for facts that are
 not visible on the page.
+
+The visible end-to-end boundary must say that Ariful owns discovery,
+architecture, software, integration, and validated connected-product
+prototyping, while specialist PCB, certification, production engineering, and
+manufacturing work is coordinated with qualified partners. Do not infer or
+encode unsupported in-house manufacturing capability in copy or schema.
 
 ## Search operations baseline
 
@@ -111,10 +132,12 @@ Search Console's Profile page report showed one valid and one invalid item. The
 invalid item was `/resume`, last crawled on July 10, with validation not started;
 its critical issue was an invalid object type for `mainEntity`. Diagnosis also
 found the same `@id`-only pattern on the deployed homepage, although that URL was
-not listed in the invalid-item report. The repository fix makes both profile
-entities explicit `Person` objects with visible names. After deployment, validate
-both live URLs with Rich Results Test and then start Search Console's validation
-flow.
+not listed in the invalid-item report. This is a dated historical finding: the
+client-first information architecture retires the resume page through a
+permanent redirect to `/hire`. After deployment, validate the homepage's
+rendered Person/ProfilePage graph, verify the `/resume` redirect and sitemap
+removal, then use Search Console validation or URL inspection to close the
+legacy report.
 
 Bing AI Performance reported zero citations and zero cited pages for the
 three-month window ending July 10. Bing also reported that site data was still
@@ -123,11 +146,13 @@ conclusion about content quality or future citation eligibility.
 
 ## Owner-controlled search actions
 
-1. Inspect the homepage, service pages, and first three articles for indexing.
+1. Inspect the homepage, `/hire`, service pages, four core case studies, and
+   priority articles for indexing.
 2. Confirm the canonical host redirects: HTTP to HTTPS and `www` to the chosen
    apex domain, or the reverse if deployment policy changes.
 3. Test changed structured data with Google's Rich Results Test and Schema.org
-   validator before starting a Search Console validation request.
+   validator before starting a Search Console validation request; also confirm
+   `/resume` returns a permanent redirect without indexable profile markup.
 4. Test Open Graph output on LinkedIn's post inspector.
 5. Add privacy-respecting analytics and update `/privacy` before collection.
 
@@ -141,6 +166,11 @@ rolling seven-day gate suppresses repeat submissions while the prior state is
 available, and unchanged content produces no submission. The state currently
 lives in an evictable GitHub Actions cache, so the gate is best-effort rather
 than a permanent rate-limit guarantee.
+
+The publishing contract remains: submit only after indexable content changes
+and no more than once in a rolling seven-day period. The cache limitation is an
+identified operational risk, not permission to submit unchanged content or
+intentionally bypass the interval.
 
 Google receives a sitemap submission through the Search Console API. Do not use
 Google's Indexing API for normal portfolio pages; it is restricted to eligible
@@ -162,8 +192,9 @@ Publish one substantial article every two to four weeks. Recommended sequence:
 8. designing review-gated AI workflows for an international dropshipping platform.
 
 The AI dropshipping architecture and human-approval articles are published and
-should be distributed as the first commercial topic cluster. Both link to the
-flagship case study and the dedicated AI commerce service page.
+can be distributed as the first commercial topic cluster. Both link to the AI
+commerce case study and dedicated service page without elevating that product
+above the other three core products in the portfolio hierarchy.
 
 Each article needs a specific query, unique point of view, technical examples,
 and an honest route to a service or project.
@@ -171,8 +202,9 @@ and an honest route to a service or project.
 ## Authority building
 
 - Keep GitHub profile, LinkedIn headline, and portfolio positioning consistent.
-- Use `/hire` as the broad direct-response link and use the AI commerce service,
-  case study, or article when outreach is based on a commerce-specific signal.
+- Use `/hire#project-brief` as the broad direct-response link and use the AI
+  commerce service, case study, or article when outreach is based on a
+  commerce-specific signal.
 - Add the portfolio and relevant article links to public repository descriptions.
 - Turn public project decisions into technical articles and short LinkedIn posts.
 - Contribute useful fixes or documentation to relevant open-source projects.
@@ -196,14 +228,21 @@ Review monthly:
 - Bing AI Performance citations, cited pages, grounding queries, topics, and
   citation share once processing produces enough data.
 
+For the repositioning rollout, record explicit checkpoints 28, 56, and 90 days
+after production deployment. Compare Google Search Console query clusters for
+identity, software products, AI-enabled products, and connected/IoT products;
+qualified project briefs and their lane/stage fit; and Bing AI Performance
+citations, cited pages, and grounding queries. Treat changes as directional
+evidence rather than attribution proof when sample sizes are small.
+
 Do not optimize around raw traffic. A lower-volume service query that produces a
 qualified project is more valuable than a broad tutorial query with no business
 fit.
 
 ## Maintenance
 
-- Quarterly: verify public URLs, project status, profile metrics, metadata, and
-  contact delivery.
+- Quarterly: verify public URLs, project maturity, profile metrics, metadata,
+  specialist-partner wording, and contact delivery.
 - Weekly: review Search Console and Bing messages for crawl, indexing, security,
   manual-action, and structured-data alerts; record only actionable site state.
 - After every route addition: confirm metadata, canonical, sitemap, internal

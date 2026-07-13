@@ -26,6 +26,7 @@ configuration error and the interface offers direct email until Resend is set.
 | `npm run dev` | Start the development server |
 | `npm run dev:restart` | Stop the current port process and restart development |
 | `npm run content:check` | Validate blog frontmatter, article structure, images, and optional FAQs |
+| `npm run portfolio:check` | Validate the four-core/two-lab portfolio contract, evidence fields, unique slugs, and retired flagship language |
 | `npm run seo:check` | Guard inline ProfilePage source objects against missing Google-required entity types and names |
 | `npm run search:check` | Check whether indexable content differs from the last successful search-console submission without contacting either provider |
 | `npm run typecheck` | Run TypeScript without emitting files |
@@ -40,7 +41,8 @@ configuration error and the interface offers direct email until Resend is set.
 2. Check `git status` and preserve unrelated work.
 3. Identify the source of truth before editing a component.
 4. Make the smallest coherent vertical change across content, UI, SEO, and docs.
-5. Run content validation, SEO validation, typecheck, lint, and build.
+5. Run content validation, portfolio validation, SEO validation, search dry-run,
+   typecheck, lint, and build.
 6. Test affected routes and interactions at desktop and mobile widths.
 7. Review `git diff --check` and the final diff.
 
@@ -63,19 +65,28 @@ configuration error and the interface offers direct email until Resend is set.
 
 1. Add a complete record to `services` in `content/site.ts`.
 2. Use a stable lowercase slug.
-3. Include specific ideal-fit text, deliverables, process, technologies, and
-   honest FAQs.
-4. The service index, homepage cards, dynamic route, footer, JSON-LD, and sitemap
+3. Include buyer problem, intended outcome, lifecycle coverage, deliverables,
+   public evidence, related products/articles, honest FAQs, and the canonical
+   `/hire#project-brief` next step.
+4. Treat technologies as supporting evidence on the detail page, not the
+   service card's primary message.
+5. The service index, homepage cards, dynamic route, footer, JSON-LD, and sitemap
    update from the shared record.
-5. Run the full verification chain.
+6. Run the full verification chain.
 
 ## Adding a case study
 
 1. Add a record to `projects` in `content/site.ts`.
-2. Separate challenge, approach, and outcome/status.
-3. Link only public evidence and check the URLs.
-4. Set `featured: true` only when it should appear on the homepage.
-5. Never turn a planned feature into a completed outcome.
+2. Assign `core` or `lab`, a stable display order, target users, buyer outcome,
+   maturity, lifecycle states, constraints, public evidence, and an explicit
+   schema type.
+3. Separate `Delivered`, `Validated`, `In progress`, and `Planned` work.
+4. Link only public evidence, check every URL, and use a verified ISO date only
+   when emitting `dateCreated`.
+5. Keep all four core products at equal presentation priority. Do not add a
+   flagship or use a generic commerce-specific template for unrelated work.
+6. Never turn a planned feature, experiment, prototype, or R&D activity into a
+   completed outcome.
 
 ## Contact testing
 
@@ -83,6 +94,8 @@ Without credentials, submit a valid brief and verify the direct-email fallback.
 With a test Resend key and verified sender, verify:
 
 - a valid message arrives and sets `reply_to` correctly;
+- each allowed product lane and lifecycle stage is accepted;
+- unknown lane/stage values and invalid product URLs return `400`;
 - invalid email and short messages return `400`;
 - the honeypot returns success without sending;
 - repeated requests eventually return `429`; and
@@ -98,8 +111,9 @@ Check:
 - navigation and mobile menu;
 - heading wraps and CTA visibility;
 - keyboard focus order;
-- service, work, and blog card heights;
+- equal core-product hierarchy plus service, work, and blog card heights;
 - article typography and code blocks;
-- form labels, errors, and touch targets;
+- `/hire#project-brief` form labels, neutral select placeholders, errors, and
+  touch targets;
 - reduced-motion behavior; and
 - missing route recovery.

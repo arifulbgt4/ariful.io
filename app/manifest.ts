@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Ariful Islam — Software Engineer',
+    name: 'Ariful Islam — End-to-End Product Engineer',
     short_name: 'Ariful Islam',
-    description: 'Software and product engineering for SaaS, applied AI, backend systems, automation, and connected products.',
+    description: 'End-to-end product engineering for software, AI-enabled, and connected/IoT products—from discovery through launch and handover.',
     start_url: '/',
     display: 'standalone',
     background_color: '#070A0F',

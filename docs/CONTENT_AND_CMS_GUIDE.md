@@ -14,6 +14,27 @@ This model is small, secure, versioned, portable, and sufficient for one owner.
 It deliberately avoids a public admin login, database, vendor lock-in, and an
 additional security boundary.
 
+## Canonical portfolio narrative
+
+The public identity is `End-to-End Product Engineer for Software, AI &
+Connected/IoT Products`. Write for international founders, product teams, and
+research teams in English. Dhaka, Bangladesh is a secondary trust fact; it is
+not the headline. Technologies support the product narrative and must not
+replace the buyer problem, outcome, lifecycle ownership, or evidence.
+
+Use these three product lanes consistently:
+
+- Software Products;
+- AI-Enabled Products; and
+- Connected/IoT Products.
+
+Use these six lifecycle stages consistently: Discover; Scope & Architecture;
+Design & Prototype; Build & Integrate; Verify & Launch; Handover & Iterate.
+Connected-product copy may promise ownership of discovery, architecture,
+software, integration, and validated prototyping. Qualify PCB design,
+certification, production engineering, and manufacturing as specialist-partner
+work unless new verified capability evidence is approved.
+
 ## Blog publishing workflow
 
 1. Copy an existing Markdown post in `content/blog/`.
@@ -70,6 +91,8 @@ or answer engine to understand without guessing:
   template;
 - add FAQs only when they answer real buyer or implementation questions; and
 - keep schema aligned with visible content instead of adding hidden claims.
+- end the relevant buyer journey at `/hire#project-brief` rather than inventing
+  a second contact or resume conversion.
 
 ## Editorial voice
 
@@ -101,6 +124,36 @@ Edit `content/site.ts` for profile, service, work, social, skills, and proof
 updates. Dynamic pages and navigation surfaces use those records. Keep public
 URLs absolute and verify them before deployment.
 
+The portfolio has four equal core products: AI Dropshipping Commerce Platform,
+Otask, Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. GraphQL Todo
+Application and Local LLM Workflows belong in `Lab & Experiments`. Do not use a
+flagship label or allow one core project to receive an oversized editorial or
+visual treatment.
+
+Every project record and case study must state target users, buyer outcome,
+Ariful's role and owned scope, constraints, public evidence, client relevance,
+and current maturity. Use the same lifecycle vocabulary and separate
+`Delivered`, `Validated`, `In progress`, and `Planned`. A complete case-study
+page is not proof that the underlying product is complete.
+
+The current public maturity boundary is:
+
+- AI Dropshipping Commerce Platform: operational foundation built;
+  credentialed sandbox and production acceptance pending;
+- Otask: in development;
+- Underwater Monitoring R&D: active R&D; integrated pond validation pending;
+- Reusable B2C Marketplace Platform: architecture and product foundation
+  planned;
+- GraphQL Todo Application: public reference project; and
+- Local LLM Workflows: experiment.
+
+Use an explicit evidence-supported schema type. Do not emit `dateCreated`
+without a verified ISO date. Verify each public source or live URL before
+publication; remove a broken link when no correct public destination can be
+confirmed. When verified screenshots do not exist, use truthful architecture
+maps, lifecycle tables, and evidence blocks instead of generated or fabricated
+product UI.
+
 Rounded public profile metrics should be updated only when crossing the displayed
 threshold. Record the exact source and verification date in
 `docs/PROJECT_CONTEXT.md`.
@@ -109,6 +162,12 @@ Changes to `content/site.ts` and published `content/blog/*.md` files are the
 indexing trigger. Documentation, styling, tests, and application-only changes do
 not trigger search-console submission. If multiple content changes happen in one
 week, they are consolidated into the next eligible sitemap submission.
+
+All service, work, article, navigation, and footer conversion copy should use
+`Start your product` or a context-specific equivalent linked to
+`/hire#project-brief`. Direct email remains the fallback. `/resume` is a legacy
+URL that permanently redirects to `/hire`; do not restore resume navigation,
+metadata, sitemap, schema, or recruiter-first copy.
 
 ## Topic selection
 

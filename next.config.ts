@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
     ],
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/resume',
+        destination: '/hire',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [{
       source: '/(.*)',

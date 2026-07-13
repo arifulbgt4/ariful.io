@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog';
 import { journalEntries, projects, services, siteConfig } from '@/content/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['', '/hire', '/resume', '/services', '/work', '/journal', '/blog', '/privacy', '/site-map'].map((route) => ({
+  const staticRoutes = ['', '/hire', '/services', '/work', '/journal', '/blog', '/privacy', '/site-map'].map((route) => ({
     url: `${siteConfig.url}${route}`,
     changeFrequency: route === '' ? ('weekly' as const) : ('monthly' as const),
     priority: route === '' ? 1 : route === '/hire' ? 0.9 : route === '/privacy' ? 0.2 : 0.8,

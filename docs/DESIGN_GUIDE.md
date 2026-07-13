@@ -2,9 +2,11 @@
 
 ## Design objective
 
-The interface should feel like an experienced engineer's working portfolio:
-precise, calm, technically literate, and easy to evaluate. It should not resemble
-a generic neon developer template or hide weak evidence behind animation.
+The interface should feel like an experienced end-to-end product engineer's
+working portfolio: precise, calm, technically literate, and easy for an
+international client to evaluate. It should not resemble a generic neon
+developer template, lead with a technology inventory, or hide weak evidence
+behind animation.
 
 ## Principles
 
@@ -18,6 +20,12 @@ a generic neon developer template or hide weak evidence behind animation.
    content must remain visible without JavaScript or animation.
 5. **Accessible by default.** Keyboard, contrast, reduced motion, labels, and
    semantic structure are release requirements.
+6. **Products before stacks.** Buyer outcomes, lifecycle ownership, maturity,
+   and evidence lead; frameworks and tools appear only where they explain a
+   delivery decision.
+7. **Equal core evidence.** The four core products use the same card scale,
+   hierarchy, status prominence, and call to action. No flagship treatment or
+   oversized promotional card is allowed.
 
 ## Visual tokens
 
@@ -35,6 +43,8 @@ a generic neon developer template or hide weak evidence behind animation.
 | Secondary accents | `blue-400`, `emerald-300` | Controlled gradients and status |
 
 Accent colors must not carry meaning alone. Add a text label for every status.
+Keep the dark canvas and cyan accent, but limit glow, gradients, repeated pills,
+and ornamental borders so evidence remains the strongest visual signal.
 
 ### Typography
 
@@ -75,24 +85,42 @@ Shared CSS classes live in `app/globals.css`:
 Reuse these before introducing a one-off variant. If a pattern appears three
 times, consider a typed React component.
 
+`.skill-pill` is for compact supporting context on service and case-study detail
+pages. Do not use a large technology-pill wall on the homepage or service index.
+
 ## Page composition
 
 ### Homepage
 
-Positioning hero → public proof → services → selected work → process → about →
-capabilities → insights → qualified enquiry.
+Positioning hero → delivery ownership → four equal core products → lifecycle
+and services → evidence and working style → compact profile summary/FAQ → Hire
+CTA.
 
 This order moves from relevance to evidence, then reduces engagement risk before
-asking for contact.
+asking the prospect to start at `/hire#project-brief`. The homepage does not
+embed the full form, a resume CTA, a flagship project, or a full technology
+grid.
 
 ### Service page
 
-Specific outcome → ideal fit → deliverables → working process → FAQ → enquiry.
+Buyer problem and specific outcome → ideal fit → lifecycle coverage →
+deliverables → evidence and related work/content → FAQ → project-brief CTA.
 
 ### Case study
 
-Status and evidence → challenge → approach → honest outcome → highlights →
-related-project CTA.
+Buyer problem and target users → role and owned scope → maturity matrix →
+architecture/system map → decisions and constraints → public evidence → client
+relevance → related service/content → project-brief CTA.
+
+Use architecture maps, lifecycle tables, and evidence blocks when verified
+screenshots do not exist. Never fabricate product UI to make an unfinished
+project look complete.
+
+### Hire page
+
+Offer → fit criteria → four-product proof → engagement options → inline
+`#project-brief` form → direct-email fallback. Keep this route focused and
+shorter than a general profile page; it is the site's sole conversion surface.
 
 ### Article
 
@@ -103,6 +131,8 @@ service CTA.
 
 - Design from 320px upward; primary QA begins at 390px.
 - Convert two-column hero and contact layouts to one column below large screens.
+- Keep the project-brief form single-column where two-column controls would
+  reduce label clarity or touch accuracy.
 - Never require horizontal scrolling for tabs, code, or navigation. Code blocks
   may scroll internally.
 - Use text wrapping instead of reducing type below legible sizes.
@@ -126,3 +156,8 @@ Use plain, specific English. Prefer “build a subscription workflow with Stripe
 webhooks” over “create innovative digital transformation.” Avoid “expert,”
 “world-class,” “cutting-edge,” and unsupported superlatives. Name constraints
 and status directly; that is part of the brand.
+
+Use `End-to-End Product Engineer for Software, AI & Connected/IoT Products` as
+the canonical identity. Explain connected-product delivery as Ariful-owned
+discovery, architecture, software, integration, and validated prototype work,
+with specialist PCB, certification, and manufacturing partners where required.

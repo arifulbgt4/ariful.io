@@ -1,8 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { siteConfig } from '@/content/site';
-
-const capabilities = ['SaaS products', 'Applied AI', 'Backend systems', 'Connected inventions'];
+import { deliveryLifecycle, productLanes, siteConfig } from '@/content/site';
 
 export default function Hero() {
   return (
@@ -21,63 +18,45 @@ export default function Hero() {
           </div>
 
           <h1 className="max-w-4xl text-balance text-4xl font-black leading-[1.03] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
-            I turn ambitious product ideas into{' '}
-            <span className="text-gradient">systems that can ship.</span>
+            End-to-end product engineering—from idea to a{' '}
+            <span className="text-gradient">working release.</span>
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-400 sm:text-xl">
-            I&apos;m Ariful Islam—a multidisciplinary software engineer, product builder, and inventor in Dhaka. I help founders and product teams build dependable SaaS, applied AI, backend, automation, and connected-product systems.
+            I&apos;m Ariful Islam, an end-to-end Product Engineer. I help founders and teams discover, scope, prototype, build, integrate, verify, launch, and hand over software, AI-enabled, and connected/IoT products.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/#contact" className="button-primary">
-              Tell me about your project
+            <Link href="/hire#project-brief" className="button-primary">
+              Start your product
               <span aria-hidden="true">↗</span>
             </Link>
-            <Link href="/work/ai-dropshipping-commerce-platform" className="button-secondary">
-              See the AI commerce build
-            </Link>
-            <Link href="/resume" className="button-secondary">
-              View resume
+            <Link href="/work" className="button-secondary">
+              See product work
             </Link>
           </div>
 
-          <p className="mt-5 text-sm text-slate-500">Clear scope · Reviewable milestones · Documented handover</p>
+          <p className="mt-5 text-sm text-slate-500">Direct ownership · Reviewable milestones · Evidence-led delivery · Documented handover</p>
         </div>
 
         <div className="relative mx-auto w-full max-w-lg lg:mx-0">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B1018]/90 p-5 shadow-2xl shadow-cyan-950/20 sm:p-7">
-            <div className="flex items-center gap-4 border-b border-white/10 pb-6">
-              <Image
-                src="https://avatars.githubusercontent.com/u/22605783?v=4"
-                alt="Ariful Islam"
-                width={84}
-                height={84}
-                priority
-                className="h-20 w-20 rounded-2xl border border-white/10 object-cover grayscale transition duration-500 hover:grayscale-0"
-              />
-              <div>
-                <p className="font-bold text-white">Ariful Islam</p>
-                <p className="mt-1 text-sm text-slate-400">Software Engineer · Product Builder</p>
-                <p className="mt-2 flex items-center gap-2 text-xs text-cyan-200">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                  Dhaka · Working worldwide
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 py-6">
-              {capabilities.map((capability, index) => (
-                <div key={capability} className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
-                  <span className="font-mono text-[0.65rem] text-cyan-300/60">0{index + 1}</span>
-                  <p className="mt-2 text-sm font-semibold text-slate-200">{capability}</p>
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B1018]/90 p-6 shadow-2xl shadow-cyan-950/20 sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">One product owner across the system</p>
+            <div className="mt-5 grid gap-3">
+              {productLanes.map((lane) => (
+                <div key={lane.id} className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan-300/60">{lane.eyebrow}</p>
+                  <p className="mt-2 text-sm font-semibold text-slate-100">{lane.title}</p>
                 </div>
               ))}
             </div>
 
-            <div className="rounded-xl border border-cyan-300/10 bg-cyan-300/[0.04] p-4">
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Current focus</p>
-              <p className="mt-2 text-sm leading-6 text-slate-300">Applied AI, practical automation, and production product engineering with strong operating boundaries.</p>
+            <div className="mt-5 rounded-xl border border-cyan-300/10 bg-cyan-300/[0.04] p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Delivery coverage</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                {deliveryLifecycle.map((stage) => stage.title).join(' → ')}
+              </p>
+              <p className="mt-3 text-xs leading-5 text-slate-500">Specialist PCB, certification, and manufacturing partners join when the physical-product scope requires them.</p>
             </div>
           </div>
           <div className="absolute -bottom-5 -left-5 -z-10 h-32 w-32 rounded-full border border-cyan-300/10" aria-hidden="true" />

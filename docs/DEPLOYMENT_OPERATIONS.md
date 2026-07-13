@@ -54,7 +54,9 @@ checks while that state remains available.
 ```bash
 npm ci
 npm run content:check
+npm run portfolio:check
 npm run seo:check
+npm run search:check
 npm run typecheck
 npm run lint
 npm run build
@@ -71,13 +73,16 @@ This repository currently has no database migration.
 - Redirect `www.ariful.io` to `ariful.io` unless the canonical policy is changed
   everywhere.
 - Preserve old indexed paths with permanent redirects when renaming a route.
+- Keep `/resume` as a permanent `308` redirect to `/hire`; do not restore it to
+  the sitemap or navigation.
 - Do not change blog slugs after publication without a redirect.
 
 ## Launch smoke test
 
 After deployment, verify:
 
-- `/`, `/services`, one service, `/work`, one case study, `/blog`, and one article;
+- `/`, `/hire`, `/services`, one service, `/work`, all four core case studies,
+  one Lab case study, `/blog`, and one article;
 - mobile menu and keyboard navigation;
 - public repository, demo, LinkedIn, and email links;
 - valid contact delivery and Reply-To behavior;
@@ -85,7 +90,8 @@ After deployment, verify:
 - `/robots.txt`, `/sitemap.xml`, `/rss.xml`, `/manifest.webmanifest`, `/icon`, and
   `/opengraph-image`;
 - canonical and Open Graph tags in rendered HTML;
-- structured data validation; and
+- structured data validation;
+- `/resume` permanent redirect plus absence from `/sitemap.xml`; and
 - no client or server console errors.
 
 The `production-watch.yml` workflow checks Vercel deployment-status failures,

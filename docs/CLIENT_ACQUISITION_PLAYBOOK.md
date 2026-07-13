@@ -9,7 +9,7 @@ Targeted outreach / GitHub / LinkedIn / search / referral
                          ↓
           public proof + process + fit criteria
                          ↓
-             qualified project brief or email
+         `/hire#project-brief` (email fallback)
                          ↓
            discovery -> paid scope -> delivery
 ```
@@ -17,19 +17,26 @@ Targeted outreach / GitHub / LinkedIn / search / referral
 The site now supports the funnel. Consistent distribution and follow-up are still
 owner-operated work; the portfolio cannot create qualified demand by itself.
 
+Lead with `End-to-End Product Engineer for Software, AI & Connected/IoT
+Products`. The sole on-site conversion path is `/hire#project-brief`; direct
+email is a resilience fallback, while GitHub, LinkedIn, services, work, Journal,
+and articles supply discovery and evidence rather than competing forms.
+
 ## Link selection
 
 Send the narrowest useful page instead of always sending the homepage:
 
-- `/hire` for a referral, general hiring enquiry, or broad founder fit;
+- `/hire#project-brief` for a referral, general product enquiry, or broad
+  founder fit;
 - `/services/ai-commerce-platform-engineering` for a commerce operator actively
   evaluating a build or modernization partner;
 - `/work/ai-dropshipping-commerce-platform` when the prospect needs technical
   evidence before discussing scope;
 - either AI dropshipping article when outreach begins with a specific
   architecture, review, pricing, campaign, or automation risk; and
-- another service page when the observed problem is clearly SaaS, general AI,
-  backend, or connected-product work.
+- another service page when the observed problem is clearly software,
+  AI-enabled, backend/realtime, or connected/IoT product work; every conversion
+  CTA on those pages still ends at `/hire#project-brief`.
 
 ## Ideal client profile
 
@@ -41,6 +48,11 @@ Prioritize:
 - a team with backend, API, realtime, or integration delivery risk; or
 - a research team needing a software-led connected prototype.
 
+The connected/IoT boundary is discovery, architecture, software, integration,
+and validated prototyping owned by Ariful, with specialist partners used for PCB
+design, certification, production engineering, or manufacturing. Qualify or
+refer leads that require unsupported in-house physical production capability.
+
 Deprioritize vague “build the next X” requests with no user, budget, decision
 owner, or willingness to narrow scope.
 
@@ -48,6 +60,10 @@ owner, or willingness to narrow scope.
 
 Capture in the project brief or first reply:
 
+- product lane: Software, AI-enabled, Connected/IoT, or Cross-domain/Not sure;
+- current lifecycle stage: Discovery, Scope/Architecture,
+  Prototype/Validation, Build/Integration, Verify/Launch, Improve/Extend, or
+  Not sure;
 - target user and painful workflow;
 - desired business or research outcome;
 - what exists now;
@@ -90,10 +106,11 @@ repeated real objections rather than generic conversion advice.
 ### Founder or product lead
 
 > Hi [Name] — I looked at [specific product/workflow]. The [specific observation]
-> suggests [concrete risk or opportunity]. I build SaaS and backend product
-> systems, and I wrote/built [relevant link] around a similar engineering
-> decision. If [outcome] is on your roadmap, I can outline a small first scope
-> and the main technical risks. Is that useful?
+> suggests [concrete risk or opportunity]. I provide end-to-end product
+> engineering for software, AI-enabled, and connected products, and I
+> wrote/built [relevant link] around a similar delivery decision. If [outcome]
+> is on your roadmap, I can outline a small first scope and the main technical
+> risks. Is that useful?
 
 ### Applied AI opportunity
 
@@ -147,11 +164,16 @@ whether a paid discovery, audit, prototype, or implementation scope is next.
 Price only after enough scope is known. Do not publish invented starting prices
 until Ariful chooses a commercial model and validates it against actual projects.
 
+Map each entry point to the six-stage lifecycle: Discover → Scope & Architecture
+→ Design & Prototype → Build & Integrate → Verify & Launch → Handover & Iterate.
+The engagement may start or stop at a defined stage, but handoff and the next
+decision must remain explicit.
+
 ## CRM fields
 
-Company, contact, role, source, product URL, fit reason, service, observed signal,
-message date, reply, next follow-up, budget, timeline, stage, objection, outcome,
-and relevant portfolio link.
+Company, contact, role, source, product URL, fit reason, product lane, lifecycle
+stage, service, observed signal, message date, reply, next follow-up, budget,
+timeline, objection, outcome, and relevant portfolio link.
 
 For AI commerce leads, also record the current supplier source, target markets,
 storefront stack, AI workflows already in use, advertising channels, and the

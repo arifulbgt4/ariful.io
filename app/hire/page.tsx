@@ -1,42 +1,51 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
-import { engagementOptions, projects, services, siteConfig } from '@/content/site';
+import ProjectBriefForm from '@/components/ProjectBriefForm';
+import {
+  engagementOptions,
+  productLanes,
+  projects,
+  siteConfig,
+} from '@/content/site';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Hire Ariful Islam — Software Engineer & Product Builder' },
+  title: { absolute: 'Hire Ariful Islam — End-to-End Product Engineer' },
   description:
-    'Hire Ariful Islam for SaaS, applied AI, backend, automation, or connected-product engineering—from architecture and prototypes to production delivery.',
+    'Start a software, AI-enabled, or connected/IoT product with Ariful Islam—from discovery and architecture through build, launch, and handover.',
   keywords: [
-    'hire software engineer Bangladesh',
-    'hire Next.js developer',
-    'applied AI engineer',
-    'AI dropshipping platform developer',
-    'SaaS product engineer',
-    'backend API engineer',
+    'hire product engineer',
+    'end-to-end product development',
+    'software product engineer',
+    'AI product engineer',
+    'IoT product prototyping',
+    'remote product engineer',
   ],
   alternates: { canonical: '/hire' },
   openGraph: {
-    title: 'Hire Ariful Islam — Product Engineering for SaaS, Applied AI & Backend Systems',
-    description: 'A direct guide to service fit, engagement options, engineering evidence, and the next step.',
+    title: 'Hire Ariful Islam — End-to-End Product Engineer',
+    description:
+      'Product engineering for software, AI-enabled, and connected/IoT products—from idea to a working release.',
     url: '/hire',
   },
 };
 
-const flagshipProject = projects.find((project) => project.flagship)!;
+const coreProjects = projects
+  .filter((project) => project.tier === 'core')
+  .sort((first, second) => first.displayOrder - second.displayOrder);
 
 const fitSignals = [
-  'You have a real user, workflow, or operating problem—not only a feature list.',
-  'A founder, product lead, or engineering owner can make timely scope decisions.',
-  'You value explicit tradeoffs, reviewable milestones, verification, and documentation.',
-  'You need one engineer to connect product, interface, backend, data, AI, and integration boundaries.',
+  'You have a real user, workflow, operating problem, or research question—not only a feature list.',
+  'A founder, product lead, engineering owner, or research lead can make timely scope decisions.',
+  'You value explicit tradeoffs, reviewable milestones, verification, and documented handover.',
+  'You need product, interface, backend, data, AI, or device boundaries connected into one accountable delivery path.',
 ];
 
 const poorFitSignals = [
   'Unverified claims, deceptive automation, spam systems, or hidden data use are part of the plan.',
   'The expectation is an undefined product, fixed deadline, and fixed budget without discovery.',
-  'AI output must silently control prices, customers, advertising spend, or other consequential actions.',
-  'The work needs certified production hardware, manufacturing, or specialist compliance ownership.',
+  'AI output must silently control consequential prices, customer communication, or advertising spend.',
+  'Ariful alone must provide certified PCB design, compliance, or manufacturing without appropriate specialist partners.',
 ];
 
 export default function HirePage() {
@@ -44,25 +53,38 @@ export default function HirePage() {
     {
       '@context': 'https://schema.org',
       '@type': 'ProfilePage',
-      name: `Hire ${siteConfig.name}`,
+      name: `Hire ${siteConfig.name} for product engineering`,
       url: `${siteConfig.url}/hire`,
       mainEntity: {
         '@type': 'Person',
         '@id': `${siteConfig.url}/#person`,
         name: siteConfig.name,
         url: siteConfig.url,
-        jobTitle: 'Software Engineer and Product Builder',
+        jobTitle: 'End-to-End Product Engineer',
         sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
       },
     },
     {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
-      name: 'Ariful Islam Product Engineering Services',
+      name: 'Ariful Islam End-to-End Product Engineering',
+      description: siteConfig.description,
       url: `${siteConfig.url}/hire`,
       provider: { '@id': `${siteConfig.url}/#person` },
       areaServed: 'Worldwide',
-      serviceType: services.map((service) => service.title),
+      serviceType: productLanes.map((lane) => lane.title),
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Product engineering engagement options',
+        itemListElement: engagementOptions.map((option) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: option.title,
+            description: option.summary,
+          },
+        })),
+      },
     },
   ];
 
@@ -71,39 +93,93 @@ export default function HirePage() {
       <JsonLd data={structuredData} />
       <div className="site-container">
         <header className="max-w-5xl">
-          <p className="section-kicker">Hire Ariful / Remote worldwide</p>
+          <p className="section-kicker">Start a product / Remote worldwide</p>
           <h1 className="mt-5 max-w-5xl text-balance text-4xl font-black tracking-[-0.04em] text-white sm:text-6xl">
-            Bring in an engineer who can connect the product decision to the working system.
+            Turn an idea, difficult workflow, or uncertain prototype into a working release.
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-400 sm:text-xl sm:leading-9">
-            I help founders and product teams scope and ship SaaS, applied AI, backend, automation, and connected-product work. Engagements can begin with a bounded review, a focused prototype, or one complete production workflow.
+            I help founders, product teams, and research teams move software, AI-enabled, and connected/IoT products from discovery and architecture through prototyping, build, verification, launch, and handover.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/#contact" className="button-primary">Send a project brief ↗</Link>
-            <Link href="/work/ai-dropshipping-commerce-platform" className="button-secondary">Review flagship evidence</Link>
+            <Link href="/hire#project-brief" className="button-primary">
+              Send a product brief <span aria-hidden="true">↗</span>
+            </Link>
+            <Link href="/work" className="button-secondary">
+              Review product evidence
+            </Link>
           </div>
-          <p className="mt-5 text-sm text-slate-500">Based in Dhaka · Remote collaboration · Clear scope · Documented handover</p>
+          <p className="mt-5 text-sm leading-6 text-slate-500">
+            Based in Dhaka · Remote collaboration · Reviewable milestones · Documented handover
+          </p>
         </header>
 
-        <section className="mt-20">
-          <p className="section-kicker">Problems I can own</p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {services.map((service) => (
-              <article key={service.slug} className="surface-card flex flex-col p-6 sm:p-7">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-cyan-300/60">{service.eyebrow}</p>
-                <h2 className="mt-4 text-2xl font-black text-white">{service.title}</h2>
-                <p className="mt-4 flex-1 leading-7 text-slate-400">{service.summary}</p>
-                <Link href={`/services/${service.slug}`} className="mt-6 font-semibold text-cyan-200 hover:text-white">Evaluate service fit →</Link>
+        <section className="mt-20 sm:mt-24" aria-labelledby="product-lanes-heading">
+          <p className="section-kicker">Three product lanes</p>
+          <h2 id="product-lanes-heading" className="mt-4 max-w-3xl text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+            One delivery model, adapted to the product you need.
+          </h2>
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {productLanes.map((lane) => (
+              <article key={lane.id} className="surface-card flex h-full flex-col p-6 sm:p-7">
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-cyan-300/60">
+                  {lane.eyebrow}
+                </p>
+                <h3 className="mt-4 text-2xl font-black text-white">{lane.title}</h3>
+                <p className="mt-4 flex-1 leading-7 text-slate-400">{lane.summary}</p>
+                <ul className="mt-6 space-y-3 border-t border-white/[0.07] pt-5">
+                  {lane.outcomes.map((outcome) => (
+                    <li key={outcome} className="flex gap-3 text-sm leading-6 text-slate-300">
+                      <span className="text-cyan-300" aria-hidden="true">✓</span>
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="mt-20 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+        <section className="mt-20 sm:mt-24" aria-labelledby="product-proof-heading">
+          <div className="max-w-3xl">
+            <p className="section-kicker">Four core products / Equal evidence</p>
+            <h2 id="product-proof-heading" className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Review the product boundary, maturity, and evidence before discussing scope.
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            {coreProjects.map((project) => (
+              <article key={project.slug} className="surface-card flex h-full flex-col p-6 sm:p-8">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-slate-500">
+                    {project.category}
+                  </p>
+                  <span className="rounded-lg border border-cyan-300/15 bg-cyan-300/[0.05] px-3 py-1.5 text-xs font-semibold text-cyan-100">
+                    {project.maturity.label}
+                  </span>
+                </div>
+                <h3 className="mt-5 text-2xl font-black text-white sm:text-3xl">{project.title}</h3>
+                <p className="mt-4 leading-7 text-slate-400">{project.summary}</p>
+                <p className="mt-5 flex-1 border-t border-white/[0.07] pt-5 text-sm leading-7 text-slate-300">
+                  <span className="font-semibold text-white">Client relevance:</span>{' '}
+                  {project.buyerOutcome}
+                </p>
+                <Link href={`/work/${project.slug}`} className="mt-6 font-semibold text-cyan-200 hover:text-white">
+                  Review this case study →
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-20 grid gap-8 sm:mt-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14" aria-labelledby="engagement-heading">
           <div>
             <p className="section-kicker">Ways to start</p>
-            <h2 className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">Choose the smallest engagement that can reduce real uncertainty.</h2>
-            <p className="mt-5 leading-7 text-slate-400">The final scope depends on the current system, desired outcome, risk, timeline, and who will operate the result. Pricing follows discovery rather than an invented one-size-fits-all package.</p>
+            <h2 id="engagement-heading" className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Choose the smallest engagement that can reduce real uncertainty.
+            </h2>
+            <p className="mt-5 leading-7 text-slate-400">
+              Scope and pricing follow the current state, desired outcome, risk, timeline, and people who will operate the result—not a one-size-fits-all package.
+            </p>
           </div>
           <ol className="grid gap-4 sm:grid-cols-2">
             {engagementOptions.map((option, index) => (
@@ -111,61 +187,82 @@ export default function HirePage() {
                 <span className="font-mono text-xs text-cyan-300/60">0{index + 1}</span>
                 <h3 className="mt-5 text-xl font-bold text-white">{option.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-400">{option.summary}</p>
-                <p className="mt-4 border-t border-white/[0.07] pt-4 text-sm leading-6 text-slate-300"><span className="font-semibold text-white">Outcome:</span> {option.outcome}</p>
+                <p className="mt-4 border-t border-white/[0.07] pt-4 text-sm leading-6 text-slate-300">
+                  <span className="font-semibold text-white">Outcome:</span> {option.outcome}
+                </p>
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="mt-20 overflow-hidden rounded-[2rem] border border-cyan-300/10 bg-gradient-to-br from-cyan-300/[0.06] via-[#0B1018] to-blue-500/[0.05] p-7 sm:p-10">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-            <div>
-              <p className="section-kicker">Flagship engineering evidence</p>
-              <h2 className="mt-4 text-balance text-3xl font-black text-white sm:text-4xl">{flagshipProject.title}</h2>
-              <p className="mt-5 text-lg leading-8 text-slate-300">{flagshipProject.summary}</p>
-              <p className="mt-5 text-sm leading-7 text-slate-400">{flagshipProject.outcome}</p>
-              <Link href={`/work/${flagshipProject.slug}`} className="button-primary mt-7">Read the full case study ↗</Link>
-            </div>
-            <ul className="grid gap-3">
-              {flagshipProject.highlights.slice(0, 6).map((highlight) => (
-                <li key={highlight} className="flex gap-3 rounded-xl border border-white/[0.07] bg-black/10 p-4 text-sm leading-6 text-slate-300">
-                  <span className="text-cyan-300">✓</span>{highlight}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="mt-20 grid gap-5 lg:grid-cols-2">
+        <section className="mt-20 grid gap-5 sm:mt-24 lg:grid-cols-2" aria-label="Engagement fit">
           <FitPanel title="A strong fit usually looks like" items={fitSignals} tone="positive" />
           <FitPanel title="Probably not a fit when" items={poorFitSignals} tone="caution" />
         </section>
 
-        <section className="mt-20 rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.04] p-7 sm:flex sm:items-center sm:justify-between sm:gap-10 sm:p-10">
-          <div className="max-w-2xl">
-            <p className="section-kicker">Start with useful context</p>
-            <h2 className="mt-3 text-3xl font-black text-white">What are you trying to ship or improve?</h2>
-            <p className="mt-3 leading-7 text-slate-400">Send the target user, current workflow or stack, desired outcome, main constraint, timeline, and budget range. I will use that to confirm fit and suggest a concrete next step.</p>
+        <section
+          id="project-brief"
+          className="mt-20 scroll-mt-28 overflow-hidden rounded-[2rem] border border-cyan-300/10 bg-cyan-300/[0.035] sm:mt-24"
+          aria-labelledby="project-brief-heading"
+        >
+          <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
+            <div className="border-b border-white/[0.08] p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+              <p className="section-kicker">Project brief</p>
+              <h2 id="project-brief-heading" className="mt-5 text-balance text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl">
+                What are you trying to ship, validate, or improve?
+              </h2>
+              <p className="mt-5 leading-7 text-slate-400">
+                Share enough context to identify the product stage, the expensive uncertainty, and a useful first step. No service is preselected.
+              </p>
+
+              <div className="mt-9 space-y-5 text-sm">
+                <div>
+                  <p className="text-slate-500">Direct email fallback</p>
+                  <a href={`mailto:${siteConfig.email}`} className="mt-1 block font-semibold text-white hover:text-cyan-200">
+                    {siteConfig.email}
+                  </a>
+                </div>
+                <div>
+                  <p className="text-slate-500">Physical-product boundary</p>
+                  <p className="mt-1 leading-6 text-slate-300">
+                    I can own discovery, architecture, software, integration, and validated prototyping. PCB, certification, production engineering, and manufacturing use qualified specialist partners when required.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-7 sm:p-10 lg:p-12">
+              <ProjectBriefForm />
+            </div>
           </div>
-          <Link href="/#contact" className="button-primary mt-6 shrink-0 sm:mt-0">Send a project brief ↗</Link>
         </section>
       </div>
     </main>
   );
 }
 
-function FitPanel({ title, items, tone }: { title: string; items: string[]; tone: 'positive' | 'caution' }) {
+function FitPanel({
+  title,
+  items,
+  tone,
+}: {
+  title: string;
+  items: string[];
+  tone: 'positive' | 'caution';
+}) {
   return (
-    <section className="surface-card p-6 sm:p-8">
+    <article className="surface-card p-6 sm:p-8">
       <h2 className="text-2xl font-black text-white">{title}</h2>
       <ul className="mt-6 space-y-4">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-sm leading-7 text-slate-400">
-            <span className={tone === 'positive' ? 'text-cyan-300' : 'text-amber-200'}>{tone === 'positive' ? '✓' : '—'}</span>
+            <span className={tone === 'positive' ? 'text-cyan-300' : 'text-amber-200'} aria-hidden="true">
+              {tone === 'positive' ? '✓' : '—'}
+            </span>
             {item}
           </li>
         ))}
       </ul>
-    </section>
+    </article>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
@@ -93,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: siteConfig.name,
       alternateName: siteConfig.brandName,
       url: siteConfig.url,
-      jobTitle: 'Software Engineer and Product Builder',
+      jobTitle: 'Product Engineer',
       description: profileSummary.summary,
       sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
     },
@@ -149,11 +150,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {post.image && post.imageAlt ? (
           <figure className="mx-auto mt-10 max-w-3xl">
-            <img
+            <Image
               src={post.image}
               alt={post.imageAlt}
               width={1200}
               height={630}
+              sizes="(min-width: 768px) 768px, calc(100vw - 2rem)"
               className="w-full rounded-2xl border border-white/[0.07]"
             />
           </figure>
@@ -174,7 +176,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="section-kicker">Need this applied to your product?</p>
           <h2 className="mt-3 text-2xl font-black text-white">Turn the architecture into a working release.</h2>
           <p className="mt-3 leading-7 text-slate-400">Share the current system and the outcome you need. I will reply with fit, missing context, and a practical next step.</p>
-          <Link href="/#contact" className="button-primary mt-6">Discuss your project ↗</Link>
+          <Link href="/hire#project-brief" className="button-primary mt-6">Discuss your product ↗</Link>
         </footer>
       </article>
     </main>

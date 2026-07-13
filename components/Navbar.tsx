@@ -4,11 +4,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const navLinks = [
-  { label: 'Services', href: '/#services' },
-  { label: 'Work', href: '/#work' },
-  { label: 'Journal', href: '/journal' },
+  { label: 'Services', href: '/services' },
+  { label: 'Work', href: '/work' },
   { label: 'Insights', href: '/blog' },
-  { label: 'Hire me', href: '/hire' },
+  { label: 'About', href: '/#about' },
 ];
 
 export default function Navbar() {
@@ -48,13 +47,13 @@ export default function Navbar() {
       }`}
     >
       <nav className="site-container flex h-[4.75rem] items-center justify-between" aria-label="Primary navigation">
-        <Link href="/" aria-label="Ariful Islam — home" className="group flex items-center gap-3">
+        <Link href="/" aria-label="Ariful Islam — home" className="group flex min-h-11 items-center gap-3">
           <span className="grid h-10 w-10 place-items-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 font-mono text-sm font-black text-cyan-200 transition group-hover:border-cyan-300/50">
             AI
           </span>
           <span>
             <span className="block text-sm font-bold tracking-wide text-white">Ariful Islam</span>
-            <span className="block text-[0.65rem] uppercase tracking-[0.2em] text-slate-500">Software engineer</span>
+            <span className="block text-[0.65rem] uppercase tracking-[0.2em] text-slate-500">Product Engineer</span>
           </span>
         </Link>
 
@@ -64,8 +63,8 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/#contact" className="button-primary ml-3 px-5 py-2.5 text-sm">
-            Send project brief
+          <Link href="/hire#project-brief" className="button-primary ml-3 px-5 py-2.5 text-sm">
+            Start a project
           </Link>
         </div>
 
@@ -104,8 +103,8 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/#contact" onClick={() => setMobileOpen(false)} className="button-primary mt-3 text-center">
-            Send project brief
+          <Link href="/hire#project-brief" onClick={() => setMobileOpen(false)} className="button-primary mt-3 text-center">
+            Start a project
           </Link>
         </div>
       </div>

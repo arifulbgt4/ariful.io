@@ -11,7 +11,7 @@ content/site.ts ───────────────┐
                               ├─> server-rendered pages ─> HTML + metadata
 content/blog/*.md -> lib/blog ─┘             │
                                              ├─> sitemap / RSS / JSON-LD
-contact form -> /api/contact -> validation ──┴─> Resend -> inbox
+/hire project brief -> /api/contact -> validation ─> Resend -> inbox
 
 content fingerprint -> daily scheduled check -> seven-day gate
                                       └─> Google + Bing sitemap submission
@@ -32,18 +32,18 @@ Node.js 20.9 or newer is required by the package manifest.
 
 | Route | Rendering | Purpose |
 | --- | --- | --- |
-| `/` | Static | Primary portfolio and conversion page |
-| `/hire` | Static | Shareable client-fit, engagement, and evidence landing page |
-| `/services` | Static | Service index |
+| `/` | Static | Product-engineering positioning, delivery model, and evidence entry page |
+| `/hire` | Static | Sole on-site conversion page with fit, proof, engagement options, and `#project-brief` form |
+| `/services` | Static | End-to-End Product Engineering Services hub |
 | `/services/[slug]` | Static params | Search landing pages, deliverables, process, and FAQs |
-| `/work` | Static | Case-study index |
-| `/work/[slug]` | Static params | Honest project evidence and status |
+| `/work` | Static | Four equal core products plus separate Lab & Experiments index |
+| `/work/[slug]` | Static params | Honest product evidence, lifecycle state, and client relevance |
 | `/journal` | Static | Dated engineering decision and experiment index |
 | `/journal/[slug]` | Static params | Typed journal entries with lifecycle transparency |
 | `/blog` | Static | Engineering article index |
 | `/blog/[slug]` | Static params | Markdown article with Article schema |
 | `/privacy` | Static | Contact-data disclosure |
-| `/resume` | Static | Recruiter-focused verified profile |
+| `/resume` | Permanent redirect | Legacy URL redirected with `308` to `/hire` |
 | `/site-map` | Static | Visitor-facing content discovery |
 | `/api/contact` | Node Route Handler | Validates and emails project enquiries |
 | `/robots.txt` | Generated | Crawler policy |
@@ -59,17 +59,27 @@ Node.js 20.9 or newer is required by the package manifest.
 public serializable data only. Never place credentials, private repository
 details, unpublished client names, or internal notes in that file.
 
+It is also the canonical source for the shared positioning, three product lanes,
+six delivery stages, service records, and project evidence. Project records
+declare `core` or `lab` tier, target users, buyer outcome, maturity, lifecycle
+states, constraints, public evidence, display order, and an evidence-supported
+schema type. Pages must not reconstruct these facts inside JSX.
+
 `lib/blog.ts` is server-only because it reads files through Node's filesystem.
 Blog pages and RSS/sitemap generation call that loader during build.
 
 ## Contact boundary
 
-The browser sends JSON to `/api/contact`. The server:
+The browser sends the project brief from `/hire#project-brief` as JSON to
+`/api/contact`. The payload includes name, work email, company/product,
+optional product URL, product lane, current lifecycle stage, budget, timeline,
+desired outcome/current-state brief, and a honeypot. The server:
 
 1. applies an in-memory IP-based request limit;
 2. accepts the honeypot silently;
-3. normalizes and bounds every string;
-4. validates the email and minimum brief length;
+3. normalizes and bounds every string and URL;
+4. validates the email, minimum brief length, and known product-lane and
+   lifecycle-stage values against allowlists;
 5. keeps the Resend API key on the server;
 6. escapes all user content before HTML-email generation; and
 7. returns a generic delivery failure without exposing provider details.
@@ -84,6 +94,13 @@ Global defaults live in `app/layout.tsx`. Every indexable route must provide a
 unique title, description, and canonical. Dynamic content pages generate route
 metadata. Structured data is rendered through `components/JsonLd.tsx` with `<`
 escaped before insertion.
+
+The homepage, `/hire`, `/services`, and `/work` share the canonical
+“End-to-End Product Engineer for Software, AI & Connected/IoT Products” entity
+narrative. `Person.jobTitle` uses `End-to-End Product Engineer`; visible content
+retains the broader Software Engineer, multidisciplinary product builder, and
+inventor context. The legacy `/resume` redirect is not indexable and must not
+appear in the sitemap or site-navigation discovery surfaces.
 
 ## Deployment model
 

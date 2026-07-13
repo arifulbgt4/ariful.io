@@ -7,20 +7,20 @@ export default function About() {
     <section id="about" className="section-shell">
       <div className="site-container grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <SectionHeading
-          eyebrow="About / Engineering perspective"
-          title="A multidisciplinary builder working across software, AI, and physical systems."
-          description="My strongest work sits where product decisions, system design, experimentation, and implementation meet. I make the tradeoffs visible and leave the next engineer with a system they can understand."
+          eyebrow="About / Product ownership"
+          title="A Product Engineer who connects decisions to the working system."
+          description="My strongest work sits where user needs, product scope, system design, experimentation, delivery, and operations meet. I make the tradeoffs visible and leave a product another team can understand."
         />
 
         <div className="space-y-6 text-base leading-8 text-slate-400">
           <p>
-            I work as a software engineer, product builder, and inventor, with software as the core of my delivery. My primary stack includes TypeScript, React, Next.js, Node.js, backend APIs, and data systems. My current AI work covers LLM integration, RAG, embeddings, tool-using workflows, MCP, local models, and review-gated automation. The AI Dropshipping Commerce Platform is one project where those capabilities are applied.
+            I work as an end-to-end Product Engineer, with a broader background as a Software Engineer, multidisciplinary product builder, and inventor. I can own the path from discovery and architecture through a software release, an AI-enabled workflow, or a connected-product prototype.
           </p>
           <p>
-            I also explore physical-digital systems through ESP32, Raspberry Pi, sensors, cameras, automation, realtime interfaces, and mechanical or CAD concepts. My aquaculture-focused underwater monitoring work is active R&amp;D—not a field-validated product—but it reflects how I decompose uncertain real-world problems into testable systems.
+            Connected products require honest boundaries. I can connect software, data, AI, telemetry, sensors, operator interfaces, and staged prototype evidence. Production PCB work, certification, compliance, pressure-rated mechanical engineering, and manufacturing involve appropriately qualified specialist partners.
           </p>
           <p>
-            I build publicly on GitHub, write down architecture decisions, and present research as research. I do not turn unfinished prototypes into inflated production claims.
+            I build publicly where possible, write down important decisions, and present research as research. A polished case study does not turn an unfinished prototype into a production claim; it shows exactly what exists, what was learned, and what the next evidence gate is.
           </p>
 
           <div className="grid gap-4 pt-3 sm:grid-cols-2">
@@ -40,9 +40,14 @@ export default function About() {
             </a>
           </div>
 
-          <Link href="/blog" className="inline-flex items-center gap-2 font-semibold text-cyan-200 hover:text-white">
-            Read engineering insights <span aria-hidden="true">→</span>
-          </Link>
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            <Link href="/blog" className="inline-flex items-center gap-2 font-semibold text-cyan-200 hover:text-white">
+              Read engineering insights <span aria-hidden="true">→</span>
+            </Link>
+            <Link href="/hire#project-brief" className="inline-flex items-center gap-2 font-semibold text-cyan-200 hover:text-white">
+              Start a product conversation <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

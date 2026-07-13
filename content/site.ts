@@ -4,51 +4,105 @@ export const siteConfig = {
   url: 'https://ariful.io',
   email: 'arifulbgt4@gmail.com',
   location: 'Dhaka, Bangladesh',
-  availability: 'Available for selected remote projects',
-  headline: 'Software engineer and product builder for SaaS, applied AI, backend systems, and connected products',
+  availability: 'Available for selected product engagements',
+  headline: 'End-to-End Product Engineer for Software, AI & Connected/IoT Products',
   description:
-    'Ariful Islam is a multidisciplinary software engineer and product builder in Dhaka helping founders and teams ship SaaS, applied AI, backend, automation, and connected-product systems.',
+    'Ariful Islam helps founders and teams take software, AI-enabled, and connected/IoT products from discovery and architecture through prototyping, build, launch, and handover.',
   social: {
     github: 'https://github.com/arifulbgt4',
     linkedin: 'https://www.linkedin.com/in/ariful25278',
   },
   timezone: 'Asia/Dhaka (UTC+6)',
   proof: [
-    { value: '40+', label: 'public repositories' },
-    { value: '500+', label: 'GitHub followers' },
-    { value: 'Since 2016', label: 'building in public' },
+    { value: 'Idea → release', label: 'end-to-end ownership' },
+    { value: 'Software · AI · IoT', label: 'product lanes' },
+    { value: 'Reviewable', label: 'milestones and evidence' },
     { value: 'Worldwide', label: 'remote collaboration' },
   ],
 } as const;
 
+export type ProductLaneId = 'software' | 'ai-enabled' | 'connected-iot';
+
+export const productLanes: {
+  id: ProductLaneId;
+  eyebrow: string;
+  title: string;
+  summary: string;
+  outcomes: string[];
+}[] = [
+  {
+    id: 'software',
+    eyebrow: '01 / Software products',
+    title: 'Software products that support real operations',
+    summary: 'Customer-facing and internal products spanning interfaces, backend systems, data, integrations, billing, and deployment.',
+    outcomes: ['SaaS and web platforms', 'Marketplaces and commerce systems', 'APIs, dashboards, and realtime workflows'],
+  },
+  {
+    id: 'ai-enabled',
+    eyebrow: '02 / AI-enabled products',
+    title: 'AI that fits a measurable product workflow',
+    summary: 'AI features, retrieval, agents, and automation designed around evaluation, permissions, human review, cost, and operational fallback.',
+    outcomes: ['AI-assisted product workflows', 'RAG, search, and knowledge tools', 'Review-gated automation and local-model options'],
+  },
+  {
+    id: 'connected-iot',
+    eyebrow: '03 / Connected products',
+    title: 'Connected and IoT products that join device and software evidence',
+    summary: 'Software-led prototypes linking sensors, embedded controllers, telemetry, dashboards, remote control, and staged physical validation.',
+    outcomes: ['Sensor and device prototypes', 'Realtime monitoring and control', 'Evidence-led productization roadmaps'],
+  },
+];
+
+export type DeliveryStageId =
+  | 'discover'
+  | 'scope-architecture'
+  | 'design-prototype'
+  | 'build-integrate'
+  | 'verify-launch'
+  | 'handover-iterate';
+
+export const deliveryLifecycle: {
+  id: DeliveryStageId;
+  number: string;
+  title: string;
+  description: string;
+}[] = [
+  { id: 'discover', number: '01', title: 'Discover', description: 'Clarify the user, painful workflow, desired change, evidence, constraints, and decision owner.' },
+  { id: 'scope-architecture', number: '02', title: 'Scope & architecture', description: 'Define the smallest valuable release, system boundaries, risks, milestones, and acceptance evidence.' },
+  { id: 'design-prototype', number: '03', title: 'Design & prototype', description: 'Make the critical experience and uncertain assumptions testable before committing to the full build.' },
+  { id: 'build-integrate', number: '04', title: 'Build & integrate', description: 'Deliver the interface, backend, data, AI or device connections in reviewable product slices.' },
+  { id: 'verify-launch', number: '05', title: 'Verify & launch', description: 'Test the important paths, deployment, failure states, security boundaries, and operating readiness.' },
+  { id: 'handover-iterate', number: '06', title: 'Handover & iterate', description: 'Document decisions and operations, transfer ownership, measure the result, and plan the next release.' },
+];
+
 export const profileSummary = {
-  title: 'Quick facts about Ariful Islam',
+  title: 'Product engineering at a glance',
   summary:
-    'Ariful Islam is a Dhaka-based software engineer, multidisciplinary product builder, and inventor focused on SaaS, applied AI, backend systems, workflow automation, and connected-product prototypes.',
+    'Ariful Islam is an end-to-end product engineer who helps founders and teams shape, prototype, build, verify, launch, and hand over software, AI-enabled, and connected/IoT products.',
   facts: [
     {
       label: 'Primary role',
-      value: 'Software engineer, product builder, and inventor',
+      value: 'End-to-End Product Engineer',
     },
     {
-      label: 'Location',
-      value: siteConfig.location,
+      label: 'Product lanes',
+      value: 'Software products, AI-enabled products, and connected/IoT products',
     },
     {
-      label: 'Availability',
-      value: siteConfig.availability,
+      label: 'Delivery coverage',
+      value: 'Discovery, architecture, prototyping, implementation, integration, verification, launch, and handover',
     },
     {
-      label: 'Core stack',
-      value: 'TypeScript, React, Next.js, Node.js, backend APIs, databases, and data systems',
+      label: 'Working model',
+      value: 'Direct ownership, reviewable milestones, explicit tradeoffs, evidence, and documented handover',
     },
     {
-      label: 'Core services',
-      value: 'SaaS and web products, AI integration and workflow automation, backend APIs, and connected-product prototypes',
+      label: 'Location and reach',
+      value: `${siteConfig.location}; remote collaboration worldwide`,
     },
     {
-      label: 'Flagship project',
-      value: 'AI Dropshipping Commerce Platform, presented as a project and commerce-domain case study',
+      label: 'Broader background',
+      value: 'Software Engineer, multidisciplinary product builder, and inventor',
     },
     {
       label: 'Public evidence',
@@ -57,6 +111,10 @@ export const profileSummary = {
     {
       label: 'Evidence policy',
       value: 'Concepts, experiments, active R&D, and in-development work are labelled instead of presented as finished production results',
+    },
+    {
+      label: 'Physical-product boundary',
+      value: 'Software, integration, and validated prototypes can be owned directly; PCB, certification, and manufacturing use appropriate specialist partners',
     },
   ],
   sourceLinks: [
@@ -90,32 +148,32 @@ export const profileSummary = {
     {
       question: 'Who is Ariful Islam?',
       answer:
-        'Ariful Islam is a software engineer, multidisciplinary product builder, and inventor based in Dhaka, Bangladesh. His portfolio focuses on software product engineering with applied AI, backend systems, automation, and connected-product prototyping.',
+        'Ariful Islam is an end-to-end product engineer, Software Engineer, multidisciplinary product builder, and inventor based in Dhaka, Bangladesh and working remotely with clients worldwide.',
     },
     {
-      question: 'What work can Ariful help with?',
+      question: 'What does end-to-end product engineering mean here?',
       answer:
-        'He helps founders and teams with SaaS and web products, AI integration, backend APIs, realtime systems, workflow automation, and software-led connected-product prototypes.',
+        'It means connecting discovery, scope, architecture, product experience, backend and data, AI or device integration, verification, launch, and handover instead of treating each layer as an unrelated task.',
     },
     {
-      question: "Is AI commerce part of Ariful's technology stack?",
+      question: 'What kinds of products can Ariful help build?',
       answer:
-        'No. AI commerce describes the domain of the AI Dropshipping Commerce Platform project. His core software stack includes TypeScript, React, Next.js, Node.js, backend APIs, databases, and related data systems.',
+        'He works on software products such as SaaS, marketplaces, APIs, dashboards and operations tools; AI-enabled product workflows; and software-led connected or IoT prototypes.',
     },
     {
-      question: 'What public evidence can a prospect verify?',
+      question: 'Can Ariful take on both software and connected-product work?',
       answer:
-        'Prospects can review the public GitHub profile, selected case studies, linked repositories or demos where available, engineering articles, and the service pages on this site.',
+        'Yes, when the engagement is structured around explicit subsystem boundaries and staged evidence. Software, data, AI, telemetry and operator interfaces can be delivered directly while specialist hardware work is coordinated where required.',
     },
     {
-      question: 'Is the underwater monitoring work production-ready?',
+      question: 'Does Ariful provide production hardware manufacturing?',
       answer:
-        'No. The aquaculture and underwater monitoring work is presented as active R&D and prototype exploration, not as a field-validated production product.',
+        'Not as a solo manufacturing service. Production PCB design, certification, compliance, tooling and manufacturing require appropriately qualified specialist partners and verified acceptance criteria.',
     },
     {
-      question: 'How should a team start a project conversation?',
+      question: 'At what stage can a client hire Ariful?',
       answer:
-        'The most useful first message includes the target user, current workflow or stack, desired outcome, main constraint, timeline, and budget range.',
+        'A client can start at discovery, architecture, prototype validation, active implementation, launch readiness, or improvement of an existing product. The project brief should explain the current stage, desired outcome, main constraint, timeline, and budget range.',
     },
   ],
 } as const;
@@ -127,6 +185,8 @@ export type Service = {
   shortTitle: string;
   summary: string;
   idealFor: string;
+  productLanes: ProductLaneId[];
+  lifecycle: DeliveryStageId[];
   deliverables: string[];
   technologies: string[];
   process: string[];
@@ -138,12 +198,14 @@ export const services: Service[] = [
   {
     slug: 'saas-product-engineering',
     eyebrow: '01 / Product engineering',
-    title: 'SaaS & Web Product Engineering',
-    shortTitle: 'SaaS products',
+    title: 'Software Product Engineering',
+    shortTitle: 'Software products',
     summary:
-      'From a focused MVP to a production platform: product architecture, polished interfaces, secure authentication, billing, dashboards, and deployment.',
+      'Turn a validated problem into a dependable software product spanning experience, backend, data, integrations, deployment, and handover.',
     idealFor:
       'Founders and product teams that need an experienced engineering partner to turn a validated idea or an underperforming product into dependable software.',
+    productLanes: ['software'],
+    lifecycle: ['discover', 'scope-architecture', 'design-prototype', 'build-integrate', 'verify-launch', 'handover-iterate'],
     deliverables: [
       'Technical discovery and delivery roadmap',
       'Responsive Next.js or React product interface',
@@ -175,16 +237,38 @@ export const services: Service[] = [
           'Yes. Architecture decisions, environment setup, deployment steps, and operational notes are part of the handover.',
       },
     ],
+    evidence: [
+      {
+        title: 'Reusable B2C Marketplace Platform',
+        description: 'A product architecture case study covering buyer, catalog, checkout, order, fulfillment, and customization boundaries.',
+        href: '/work/reusable-b2c-marketplace-platform',
+        label: 'Read the marketplace case study',
+      },
+      {
+        title: 'Otask developer collaboration product',
+        description: 'An in-development SaaS case study focused on GitHub-connected issue, contributor, notification, and delivery workflows.',
+        href: '/work/otask-developer-platform',
+        label: 'Read the Otask case study',
+      },
+      {
+        title: 'Production-ready Next.js SaaS architecture',
+        description: 'A practical guide to turning a web interface into an operable software product.',
+        href: '/blog/production-ready-nextjs-saas-architecture',
+        label: 'Read the architecture guide',
+      },
+    ],
   },
   {
     slug: 'ai-commerce-platform-engineering',
     eyebrow: '02 / AI commerce systems',
-    title: 'AI Commerce & Dropshipping Platform Engineering',
+    title: 'AI Commerce Platform Engineering',
     shortTitle: 'AI commerce',
     summary:
       'Design and build controlled commerce platforms spanning supplier ingestion, international offers, AI-assisted operations, checkout, campaigns, and trustworthy analytics.',
     idealFor:
       'Commerce founders and product teams replacing disconnected dropshipping tools, introducing AI into an existing operation, or building a multi-market platform that needs explicit review, data, and deployment boundaries.',
+    productLanes: ['software', 'ai-enabled'],
+    lifecycle: ['discover', 'scope-architecture', 'design-prototype', 'build-integrate', 'verify-launch', 'handover-iterate'],
     deliverables: [
       'Commerce workflow discovery and platform architecture',
       'Supplier ingestion, normalization, review, and synchronization',
@@ -225,7 +309,7 @@ export const services: Service[] = [
     evidence: [
       {
         title: 'AI Dropshipping Commerce Platform',
-        description: 'Flagship case study covering the implemented supplier, market, AI-control, campaign, checkout, and analytics foundation.',
+        description: 'Core case study covering the implemented supplier, market, AI-control, campaign, checkout, and analytics foundation.',
         href: '/work/ai-dropshipping-commerce-platform',
         label: 'Read the case study',
       },
@@ -246,12 +330,14 @@ export const services: Service[] = [
   {
     slug: 'ai-integration-automation',
     eyebrow: '03 / Applied AI',
-    title: 'AI Integration & Workflow Automation',
+    title: 'AI-Enabled Product Engineering & Automation',
     shortTitle: 'AI & automation',
     summary:
       'Practical AI features built around real workflows: LLM integration, RAG, semantic search, tool-using agents, and human-reviewed automation.',
     idealFor:
       'Teams that have a specific knowledge, support, operations, or content workflow and need AI to improve it without creating an unreliable black box.',
+    productLanes: ['ai-enabled', 'software'],
+    lifecycle: ['discover', 'scope-architecture', 'design-prototype', 'build-integrate', 'verify-launch', 'handover-iterate'],
     deliverables: [
       'AI use-case and data-readiness assessment',
       'Provider-agnostic LLM integration',
@@ -283,16 +369,38 @@ export const services: Service[] = [
           'The design combines scoped context, retrieval, structured outputs, validation, explicit uncertainty, evaluation datasets, and human review for consequential actions.',
       },
     ],
+    evidence: [
+      {
+        title: 'Local LLM Workflows',
+        description: 'A public experiment exploring local inference, privacy, latency, hardware, and OpenAI-compatible integration tradeoffs.',
+        href: '/work/local-llm-workflows',
+        label: 'Review the local-model experiment',
+      },
+      {
+        title: 'Reliable AI features need evaluation and review',
+        description: 'A practical guide to retrieval, agents, evaluation, fallbacks, and human approval in product workflows.',
+        href: '/blog/reliable-ai-features-rag-agents-human-review',
+        label: 'Read the AI reliability guide',
+      },
+      {
+        title: 'Review-gated AI commerce operations',
+        description: 'Product evidence for configurable model routing, persisted drafts, approval boundaries, and auditable outputs.',
+        href: '/work/ai-dropshipping-commerce-platform',
+        label: 'Read the applied AI case study',
+      },
+    ],
   },
   {
     slug: 'backend-api-engineering',
     eyebrow: '04 / Systems engineering',
-    title: 'Backend, API & Realtime Systems',
+    title: 'Backend, API & Realtime Product Systems',
     shortTitle: 'Backend systems',
     summary:
       'Maintainable APIs and data systems for products that need secure access, realtime updates, third-party integrations, and room to grow.',
     idealFor:
       'Product teams facing fragile integrations, slow feature delivery, unclear data boundaries, or a backend that no longer matches how the business works.',
+    productLanes: ['software', 'ai-enabled', 'connected-iot'],
+    lifecycle: ['scope-architecture', 'design-prototype', 'build-integrate', 'verify-launch', 'handover-iterate'],
     deliverables: [
       'Domain and data-model design',
       'REST, GraphQL, webhook, and WebSocket APIs',
@@ -324,16 +432,32 @@ export const services: Service[] = [
           'Yes. I prefer measured extraction and replacement with observability and rollback paths over a high-risk all-at-once rewrite.',
       },
     ],
+    evidence: [
+      {
+        title: 'GraphQL Todo Application',
+        description: 'A compact public reference for schema-driven TypeScript client and server integration.',
+        href: '/work/graphql-todo-application',
+        label: 'Review the GraphQL reference',
+      },
+      {
+        title: 'AI commerce operating foundation',
+        description: 'A larger systems case study spanning supplier records, APIs, data, jobs, checkout, analytics, and external-provider boundaries.',
+        href: '/work/ai-dropshipping-commerce-platform',
+        label: 'Read the systems case study',
+      },
+    ],
   },
   {
     slug: 'connected-product-prototyping',
     eyebrow: '05 / Physical + digital',
-    title: 'Connected Product Prototyping',
+    title: 'Connected/IoT Product Prototyping',
     shortTitle: 'Connected products',
     summary:
       'Software-led prototypes connecting sensors, embedded controllers, realtime dashboards, and remote-control experiences.',
     idealFor:
       'Research teams and founders validating an IoT, monitoring, robotics, or hardware-enabled product before committing to manufacturing.',
+    productLanes: ['connected-iot'],
+    lifecycle: ['discover', 'scope-architecture', 'design-prototype', 'build-integrate', 'verify-launch', 'handover-iterate'],
     deliverables: [
       'Prototype architecture and component plan',
       'ESP32 or Raspberry Pi integration',
@@ -365,23 +489,71 @@ export const services: Service[] = [
           'The underwater monitoring work shown here is active R&D, not a production product. That distinction is intentional and important for responsible engineering.',
       },
     ],
+    evidence: [
+      {
+        title: 'Underwater Monitoring R&D',
+        description: 'An active R&D case study covering sensing, imaging, embedded control, communication, physical risk, and staged validation.',
+        href: '/work/underwater-monitoring-research',
+        label: 'Read the connected-product case study',
+      },
+      {
+        title: 'From ESP32 sensor to realtime dashboard',
+        description: 'A prototype architecture for device telemetry, command acknowledgement, dashboards, and failure handling.',
+        href: '/blog/connected-product-prototype-esp32-dashboard',
+        label: 'Read the prototype guide',
+      },
+    ],
   },
 ];
+
+export type ProjectTier = 'core' | 'lab';
+export type MaturityStage =
+  | 'foundation-built'
+  | 'in-development'
+  | 'active-rnd'
+  | 'architecture-planned'
+  | 'public-reference'
+  | 'experiment';
+export type LifecycleState = 'complete' | 'in-progress' | 'planned';
+
+export type ProjectEvidence = {
+  label: string;
+  detail: string;
+  href?: string;
+  verifiedOn?: string;
+};
 
 export type Project = {
   slug: string;
   title: string;
   category: string;
+  tier: ProjectTier;
+  displayOrder: number;
+  schemaType: 'SoftwareApplication' | 'CreativeWork';
   summary: string;
+  targetUsers: string;
+  buyerOutcome: string;
   challenge: string;
   approach: string;
   outcome: string;
   status: string;
+  maturity: {
+    stage: MaturityStage;
+    label: string;
+    summary: string;
+    verifiedOn?: string;
+  };
+  lifecycle: {
+    stage: string;
+    status: LifecycleState;
+    summary: string;
+  }[];
+  constraints: string[];
+  evidence: ProjectEvidence[];
   year: string;
   tags: string[];
   highlights: string[];
   role?: string;
-  flagship?: boolean;
   systemMap?: { title: string; description: string }[];
   caseStudySections?: {
     eyebrow: string;
@@ -394,7 +566,6 @@ export type Project = {
   relatedArticles?: { title: string; href: string }[];
   repository?: string;
   liveUrl?: string;
-  featured?: boolean;
 };
 
 export const projects: Project[] = [
@@ -402,8 +573,13 @@ export const projects: Project[] = [
     slug: 'ai-dropshipping-commerce-platform',
     title: 'AI Dropshipping Commerce Platform',
     category: 'AI commerce · Dropshipping operations',
+    tier: 'core',
+    displayOrder: 1,
+    schemaType: 'SoftwareApplication',
     summary:
       'An end-to-end commerce operating system that connects supplier ingestion, international storefronts, AI-assisted pricing and content, creative and campaign workflows, analytics, and controlled automation.',
+    targetUsers: 'Commerce founders, operators, and product teams replacing disconnected supplier, storefront, AI, campaign, checkout, and analytics workflows.',
+    buyerOutcome: 'A controlled supplier-to-order product foundation with explicit market, AI-review, campaign, checkout, analytics, and operating boundaries.',
     challenge:
       'Dropshipping operations fragment product data, supplier risk, market localization, pricing, creative production, advertising, checkout, and analytics across disconnected tools. Adding AI without controls can make that fragmentation more dangerous by publishing invented claims, unsafe prices, or unreviewed campaigns.',
     approach:
@@ -411,9 +587,32 @@ export const projects: Project[] = [
     outcome:
       'The operational foundation is implemented and verified across Prisma, focused workflow tests, TypeScript, ESLint, and production builds for both admin and customer modes. Live supplier, AI media, storage, and advertising connections remain in credentialed sandbox acceptance before production launch.',
     status: 'Operational foundation built',
+    maturity: {
+      stage: 'foundation-built',
+      label: 'Operational foundation built',
+      summary: 'Core product, market, AI-control, campaign, checkout, analytics, and two-mode deployment foundations are implemented; credentialed external-provider acceptance is still pending.',
+      verifiedOn: '2026-07-02',
+    },
+    lifecycle: [
+      { stage: 'Discovery', status: 'complete', summary: 'Supplier-to-order workflows, markets, operator roles, integrations, and costly failure modes were mapped.' },
+      { stage: 'Scope & architecture', status: 'complete', summary: 'Modular commerce, provider, market, AI-control, review, checkout, and analytics boundaries were defined.' },
+      { stage: 'Design & prototype', status: 'complete', summary: 'Admin/customer modes and review-gated vertical workflows were implemented as testable product slices.' },
+      { stage: 'Build & integrate', status: 'complete', summary: 'The operational foundation, database model, routes, workflows, tests, and both production builds are in place.' },
+      { stage: 'Verify & launch', status: 'in-progress', summary: 'Credentialed supplier, AI media, storage, and advertising sandbox acceptance remains before production launch.' },
+      { stage: 'Handover & iterate', status: 'planned', summary: 'Operational monitoring, live acceptance evidence, and launch iteration follow successful provider validation.' },
+    ],
+    constraints: [
+      'The implementation repository is private and no credentials, customer data, supplier tokens, or internal infrastructure may be exposed.',
+      'External supplier, AI media, storage, and advertising providers still require credentialed sandbox acceptance.',
+      'No live-store revenue, production scale, autonomous operation, or client-result claim is made.',
+    ],
+    evidence: [
+      { label: 'Engineering verification', detail: 'Prisma checks, focused workflow tests, TypeScript, ESLint, diff validation, and admin/customer production builds passed at the recorded foundation checkpoint.', verifiedOn: '2026-07-02' },
+      { label: 'Architecture guide', detail: 'Public explanation of platform boundaries, review states, international commerce, and launch acceptance.', href: '/blog/how-to-architect-ai-dropshipping-platform' },
+      { label: 'AI control guide', detail: 'Public explanation of draft, review, approval, audit, and safe publishing boundaries.', href: '/blog/why-ai-dropshipping-automation-needs-human-approval' },
+    ],
     year: '2026–Present',
     role: 'Product architecture · Full-stack engineering · AI systems design',
-    flagship: true,
     tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'AI routing', 'International commerce', 'Analytics', 'Meta Ads'],
     highlights: [
       'Separate admin and customer deployment modes with route and SEO isolation',
@@ -525,7 +724,7 @@ export const projects: Project[] = [
       'Audit an existing AI commerce stack and turn fragmented tools into a staged, testable delivery roadmap.',
     ],
     relatedService: {
-      title: 'AI Commerce & Dropshipping Platform Engineering',
+      title: 'AI Commerce Platform Engineering',
       href: '/services/ai-commerce-platform-engineering',
     },
     relatedArticles: [
@@ -538,14 +737,18 @@ export const projects: Project[] = [
         href: '/blog/why-ai-dropshipping-automation-needs-human-approval',
       },
     ],
-    featured: true,
   },
   {
     slug: 'otask-developer-platform',
     title: 'Otask',
     category: 'SaaS product engineering',
+    tier: 'core',
+    displayOrder: 2,
+    schemaType: 'CreativeWork',
     summary:
       'A developer collaboration platform concept for publishing repository issues, coordinating solutions, and supporting paid or open-source workflows.',
+    targetUsers: 'Repository maintainers, developers, contributors, and teams coordinating issue-based paid or open-source collaboration.',
+    buyerOutcome: 'A structured product direction for connecting repository work, contributors, communication, notifications, and optional payment boundaries.',
     challenge:
       'Repository issues, contributors, communication, and optional payments often live across disconnected tools, making collaboration difficult to coordinate.',
     approach:
@@ -553,17 +756,111 @@ export const projects: Project[] = [
     outcome:
       'The product remains in development. The current work demonstrates product decomposition, integration planning, and full-stack SaaS architecture rather than claiming a completed launch.',
     status: 'In development',
+    maturity: {
+      stage: 'in-development',
+      label: 'In development',
+      summary: 'Product flows and system boundaries are defined and implementation work is active; no completed public launch or operating-scale result is claimed.',
+    },
+    lifecycle: [
+      { stage: 'Discovery', status: 'complete', summary: 'The repository issue, contributor coordination, communication, and optional payment problem was decomposed.' },
+      { stage: 'Scope & architecture', status: 'complete', summary: 'GitHub connection, issue lifecycle, participant, notification, collaboration, and payment seams were designed.' },
+      { stage: 'Design & prototype', status: 'in-progress', summary: 'Key journeys and reviewable product slices are still being refined through implementation.' },
+      { stage: 'Build & integrate', status: 'in-progress', summary: 'Full-stack product development is active and has not reached a launch-ready evidence gate.' },
+      { stage: 'Verify & launch', status: 'planned', summary: 'Public deployment, acceptance coverage, abuse controls, and payment validation remain future gates.' },
+      { stage: 'Handover & iterate', status: 'planned', summary: 'Operating evidence and iteration decisions follow a verified release.' },
+    ],
+    constraints: [
+      'GitHub permissions, repository data, notifications, contributor trust, and payment flows require explicit security and abuse boundaries.',
+      'No completed public launch, active marketplace, payment volume, user count, or client outcome is claimed.',
+      'Current evidence supports product architecture and in-development implementation, not production maturity.',
+    ],
+    evidence: [
+      { label: 'Product decomposition', detail: 'The current work defines repository import, issue lifecycle, contributor collaboration, notification, and optional payment boundaries.' },
+      { label: 'Public positioning boundary', detail: 'The case study explicitly identifies the product as in development and separates architecture evidence from future launch validation.' },
+      { label: 'Related delivery guide', detail: 'The SaaS architecture article documents the operating boundaries expected before a software product is treated as production-ready.', href: '/blog/production-ready-nextjs-saas-architecture' },
+    ],
     year: '2024–Present',
+    role: 'Product architecture · Full-stack product engineering · Integration planning',
     tags: ['Next.js', 'GitHub API', 'SaaS', 'Stripe', 'Realtime'],
-    highlights: ['GitHub-connected workflow', 'Issue lifecycle design', 'Paid and open-source collaboration paths'],
-    featured: true,
+    highlights: [
+      'GitHub-connected repository and issue workflow direction',
+      'Explicit issue lifecycle and contributor collaboration boundaries',
+      'Notification and realtime coordination concepts',
+      'Paid and open-source paths kept behind deliberate trust and payment rules',
+      'Architecture and implementation status separated from future launch claims',
+    ],
+    systemMap: [
+      { title: 'Connect repositories', description: 'Import approved repository context and preserve clear authorization boundaries around issues and participants.' },
+      { title: 'Structure work', description: 'Represent issue lifecycle, scope, ownership, solution progress, review, and completion as explicit product states.' },
+      { title: 'Coordinate people', description: 'Connect maintainers and contributors through focused collaboration, notifications, and realtime updates.' },
+      { title: 'Support outcomes', description: 'Keep open-source contribution and optional paid work behind deliberate approval, trust, dispute, and payment seams.' },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Product problem',
+        title: 'Repository issues need more than another list view.',
+        description: 'The product direction treats an issue as a collaboration lifecycle with actors, decisions, evidence, review, and an outcome.',
+        items: [
+          'Repository context and permission boundaries must be explicit before external collaboration begins.',
+          'Issue states need to communicate scope, ownership, progress, review, acceptance, and closure.',
+          'Contributors and maintainers need focused updates without duplicating every GitHub surface.',
+          'Paid paths introduce trust, payment, dispute, and completion conditions that open-source contribution does not require.',
+        ],
+      },
+      {
+        eyebrow: '02 / System boundaries',
+        title: 'GitHub remains the source; the product coordinates the workflow around it.',
+        description: 'The architecture avoids treating imported repository data as unrestricted application-owned content.',
+        items: [
+          'A GitHub integration layer owns authentication, repository selection, permission checks, synchronization, and provider failures.',
+          'Product records add collaboration state without silently rewriting upstream repository truth.',
+          'Notifications and realtime events derive from auditable state transitions rather than arbitrary messages.',
+          'Optional payments remain a separate boundary with explicit acceptance and failure handling.',
+        ],
+      },
+      {
+        eyebrow: '03 / Delivery status',
+        title: 'The product remains in development.',
+        description: 'Current evidence supports architecture, decomposition, and active implementation—not a completed public marketplace.',
+        items: [
+          'Core journeys are being refined as reviewable vertical slices.',
+          'Launch readiness still requires public deployment evidence, acceptance coverage, security review, and operating tests.',
+          'Payment and dispute flows must not be described as live before provider and policy acceptance exists.',
+          'Future status upgrades require reproducible repository, test, deployment, and user-acceptance evidence.',
+        ],
+      },
+      {
+        eyebrow: '04 / Client value',
+        title: 'The same product reasoning applies to integration-heavy SaaS.',
+        description: 'The work demonstrates how to turn a third-party platform dependency into a maintainable product workflow.',
+        items: [
+          'Define ownership between the product database and the upstream provider.',
+          'Model reviewable states before adding notifications, payments, or automation.',
+          'Design failure and permission boundaries before promising a seamless integration.',
+          'Ship narrow workflows that another team can inspect, operate, and extend.',
+        ],
+      },
+    ],
+    clientApplications: [
+      'Design a SaaS product around a complex third-party API without losing authorization and ownership clarity.',
+      'Turn an informal collaboration process into explicit states, roles, notifications, and acceptance evidence.',
+      'Introduce optional payments only after the underlying delivery and trust workflow is understandable.',
+      'Create an implementation roadmap that separates product direction, active build work, launch gates, and future scale.',
+    ],
+    relatedService: { title: 'Software Product Engineering', href: '/services/saas-product-engineering' },
+    relatedArticles: [{ title: 'Production-Ready Next.js SaaS Architecture', href: '/blog/production-ready-nextjs-saas-architecture' }],
   },
   {
     slug: 'underwater-monitoring-research',
     title: 'Underwater Monitoring R&D',
     category: 'Connected-product research',
+    tier: 'core',
+    displayOrder: 3,
+    schemaType: 'CreativeWork',
     summary:
       'Long-term research into an underwater monitoring system for shrimp farming using video, water-quality sensing, remote control, and software-assisted analysis.',
+    targetUsers: 'Aquaculture operators, research teams, and connected-product teams investigating underwater observation, sensing, telemetry, and controlled field validation.',
+    buyerOutcome: 'A staged prototype and validation programme that connects physical risk, embedded control, data quality, operator software, and future AI without unsupported field claims.',
     challenge:
       'Aquaculture monitoring combines difficult physical constraints—waterproofing, visibility, power, communication, placement, and maintenance—with the need for understandable live data.',
     approach:
@@ -571,6 +868,30 @@ export const projects: Project[] = [
     outcome:
       'An active research direction with documented system concepts and prototype questions. It is presented as R&D, not as a field-validated commercial system.',
     status: 'Active R&D',
+    maturity: {
+      stage: 'active-rnd',
+      label: 'Active R&D',
+      summary: 'Problem research, system architecture, and risk mapping are documented; an integrated, field-validated underwater product does not yet exist.',
+      verifiedOn: '2026-07-10',
+    },
+    lifecycle: [
+      { stage: 'Discovery', status: 'complete', summary: 'Aquaculture monitoring needs, imaging, sensing, communication, enclosure, power, and maintenance risks were researched.' },
+      { stage: 'Scope & architecture', status: 'complete', summary: 'Software-led subsystem, control, telemetry, communication, safety, and validation boundaries were designed.' },
+      { stage: 'Design & prototype', status: 'in-progress', summary: 'Imaging, sensors, telemetry, control, enclosure, and component questions require staged bench and tank evidence.' },
+      { stage: 'Build & integrate', status: 'planned', summary: 'A sealed integrated vehicle and representative operator system follow successful subsystem evidence gates.' },
+      { stage: 'Verify & launch', status: 'planned', summary: 'Repeatable tank and supervised pond trials are required before any field-performance or product-readiness claim.' },
+      { stage: 'Handover & iterate', status: 'planned', summary: 'Productization requires reliability targets, safety review, specialist partners, service procedures, and field acceptance criteria.' },
+    ],
+    constraints: [
+      'Turbidity, backscatter, lighting, working distance, calibration, biofouling, and enclosure integrity can invalidate software assumptions.',
+      'Underwater wireless range, computer-vision accuracy, field reliability, and commercial readiness are not claimed without representative evidence.',
+      'Production electronics, certification, pressure-rated mechanical design, and manufacturing require appropriately qualified specialist partners.',
+    ],
+    evidence: [
+      { label: 'Research case study', detail: 'Visible maturity boundaries separate researched, designed, component-level prototype questions, and planned integrated validation.' },
+      { label: 'Imaging decision journal', detail: 'A documented decision treats image acquisition and human readability as validation gates before computer vision.', href: '/journal/underwater-imaging-before-computer-vision', verifiedOn: '2026-07-10' },
+      { label: 'Connected prototype guide', detail: 'A public architecture guide connects ESP32 telemetry, command acknowledgement, realtime dashboards, and failure handling.', href: '/blog/connected-product-prototype-esp32-dashboard' },
+    ],
     year: '2023–Present',
     role: 'Research direction · System architecture · Software-led prototyping',
     tags: ['ESP32', 'Raspberry Pi', 'Sensors', 'IoT', 'Computer vision', 'Robotics', 'Aquaculture'],
@@ -649,16 +970,20 @@ export const projects: Project[] = [
       'Design a monitoring dashboard and device protocol around explicit fault and recovery states.',
       'Plan an AI or computer-vision workflow around representative data rather than speculative accuracy claims.',
     ],
-    relatedService: { title: 'Connected Product Prototyping', href: '/services/connected-product-prototyping' },
+    relatedService: { title: 'Connected/IoT Product Prototyping', href: '/services/connected-product-prototyping' },
     relatedArticles: [{ title: 'From ESP32 Sensor to Realtime Dashboard: A Prototype Architecture', href: '/blog/connected-product-prototype-esp32-dashboard' }],
-    featured: true,
   },
   {
     slug: 'reusable-b2c-marketplace-platform',
     title: 'Reusable B2C Marketplace Platform',
     category: 'Marketplace engineering · Commerce systems',
+    tier: 'core',
+    displayOrder: 4,
+    schemaType: 'CreativeWork',
     summary:
       'A reusable B2C marketplace foundation for businesses that need buyer-facing product discovery, controlled catalog operations, checkout, cash-on-delivery workflows, and admin-managed order fulfillment.',
+    targetUsers: 'Local and international product businesses that need buyer discovery, controlled catalog operations, checkout, order handling, fulfillment, and adaptable branding or business rules.',
+    buyerOutcome: 'A reusable marketplace architecture that separates stable commerce workflows from client-specific design, catalog, payment, and fulfillment decisions.',
     challenge:
       'Many marketplace projects begin as visual storefronts, then become difficult to adapt when business rules, product categories, seller operations, payment methods, fulfillment steps, or admin controls change. The engineering problem is to keep the core marketplace model stable while allowing each client business to customize the experience.',
     approach:
@@ -666,6 +991,29 @@ export const projects: Project[] = [
     outcome:
       'The current portfolio entry documents the architecture, use cases, and delivery plan for a reusable marketplace foundation. It is presented as a product-engineering case study and implementation direction, not as a launched client marketplace with verified revenue or user metrics.',
     status: 'Architecture and product foundation planned',
+    maturity: {
+      stage: 'architecture-planned',
+      label: 'Architecture and product foundation planned',
+      summary: 'The product model, major workflows, customization boundary, and delivery direction are documented; a verified launch-ready marketplace is not claimed.',
+    },
+    lifecycle: [
+      { stage: 'Discovery', status: 'complete', summary: 'Buyer, catalog, admin, checkout, cash-on-delivery, order, fulfillment, and customization needs were decomposed.' },
+      { stage: 'Scope & architecture', status: 'complete', summary: 'Reusable commerce boundaries and client-specific extension points were planned.' },
+      { stage: 'Design & prototype', status: 'planned', summary: 'A reviewable catalog-to-order vertical slice is the first required implementation evidence.' },
+      { stage: 'Build & integrate', status: 'planned', summary: 'Catalog, buyer flow, checkout, admin orders, and fulfillment states must be built and verified incrementally.' },
+      { stage: 'Verify & launch', status: 'planned', summary: 'Repository evidence, test coverage, deployment, business acceptance, and operational checks remain required.' },
+      { stage: 'Handover & iterate', status: 'planned', summary: 'Payments, seller modules, shipping, analytics, and niche extensions follow a verified core release.' },
+    ],
+    constraints: [
+      'The current evidence is an architecture and delivery direction, not a verified public deployment.',
+      'No client, user, transaction, revenue, inventory, fulfillment, or production-scale result is claimed.',
+      'Payment, seller, shipping, and niche business rules remain optional extensions behind a stable core boundary.',
+    ],
+    evidence: [
+      { label: 'Architecture case study', detail: 'The current record documents buyer, catalog, checkout, order, fulfillment, admin, and customization boundaries.' },
+      { label: 'Delivery sequence', detail: 'The plan advances through catalog, buyer flow, checkout, admin orders, and fulfillment states before optional extensions.' },
+      { label: 'Related service', detail: 'The software product engineering offer describes the discovery, architecture, implementation, verification, and handover contract for this kind of build.', href: '/services/saas-product-engineering' },
+    ],
     year: '2026–Present',
     role: 'Product architecture · Full-stack engineering · Commerce workflow design',
     tags: ['Next.js', 'TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Prisma', 'Marketplace', 'Commerce', 'Payments', 'Admin Dashboard'],
@@ -765,35 +1113,61 @@ export const projects: Project[] = [
       'Adapt the marketplace for niche industries without rebuilding the whole system.',
     ],
     relatedService: {
-      title: 'SaaS & Web Product Engineering',
+      title: 'Software Product Engineering',
       href: '/services/saas-product-engineering',
     },
-    featured: true,
   },
   {
     slug: 'graphql-todo-application',
     title: 'GraphQL Todo Application',
     category: 'API engineering',
+    tier: 'lab',
+    displayOrder: 1,
+    schemaType: 'CreativeWork',
     summary:
       'A TypeScript application exploring GraphQL-based client and server data flows through a compact product domain.',
+    targetUsers: 'Developers and product teams evaluating schema-driven client/server integration patterns.',
+    buyerOutcome: 'A compact reference for discussing GraphQL schema, typed integration, and client-state boundaries before using the pattern in a larger product.',
     challenge:
       'GraphQL systems need a clear schema, predictable client state, and boundaries that keep a simple query layer from becoming accidental complexity.',
     approach:
       'Used a small task-management domain to exercise schema-driven development and typed product integration.',
     outcome:
-      'A public reference implementation focused on GraphQL and TypeScript application structure.',
-    status: 'Public project',
+      'A compact reference project focused on GraphQL and TypeScript application structure. It is presented as a Lab item, not as a production product.',
+    status: 'Reference project',
+    maturity: {
+      stage: 'public-reference',
+      label: 'Reference project',
+      summary: 'The compact application exercise is complete as a technical reference; it does not represent a production product or client outcome.',
+    },
+    lifecycle: [
+      { stage: 'Technical question', status: 'complete', summary: 'The exercise focused on schema-driven client and server data flow.' },
+      { stage: 'Reference implementation', status: 'complete', summary: 'A compact task domain was used to explore typed GraphQL integration.' },
+      { stage: 'Production validation', status: 'planned', summary: 'Scale, security, observability, and product operations were outside this Lab scope.' },
+    ],
+    constraints: [
+      'The previously configured repository URL was unavailable during the latest portfolio audit and is not published until corrected.',
+      'The project demonstrates an application pattern, not production scale, client delivery, or business impact.',
+    ],
+    evidence: [
+      { label: 'Technical reference', detail: 'The portfolio record documents the schema-driven workflow and typed integration focus.' },
+      { label: 'Link boundary', detail: 'No source link is shown while the previously recorded public URL remains unavailable.', verifiedOn: '2026-07-13' },
+    ],
     year: '2025',
     tags: ['GraphQL', 'TypeScript', 'API', 'Application architecture'],
-    highlights: ['Schema-driven workflow', 'Typed integration', 'Public source'],
-    repository: 'https://github.com/arifulbgt4/graphql-todo-app',
+    highlights: ['Schema-driven workflow', 'Typed integration', 'Reference scope'],
   },
   {
     slug: 'local-llm-workflows',
     title: 'Local LLM Workflows',
     category: 'AI engineering experiments',
+    tier: 'lab',
+    displayOrder: 2,
+    schemaType: 'CreativeWork',
     summary:
       'Experiments in running and integrating local models for private, developer-controlled AI workflows.',
+    targetUsers: 'Product and engineering teams evaluating private, local, or OpenAI-compatible model workflows.',
+    buyerOutcome: 'A public experiment that makes privacy, latency, hardware, quality, and compatibility tradeoffs easier to discuss before product integration.',
     challenge:
       'Local inference changes the constraints around privacy, model quality, latency, hardware capacity, and provider compatibility.',
     approach:
@@ -801,6 +1175,24 @@ export const projects: Project[] = [
     outcome:
       'A public experimentation repository used to develop practical understanding of local-model integration tradeoffs.',
     status: 'Experiment',
+    maturity: {
+      stage: 'experiment',
+      label: 'Experiment',
+      summary: 'The public repository supports local-model integration learning; it is not presented as a production AI platform.',
+    },
+    lifecycle: [
+      { stage: 'Question', status: 'complete', summary: 'Local inference constraints around privacy, quality, latency, hardware, and compatibility were identified.' },
+      { stage: 'Experiment', status: 'complete', summary: 'TypeScript and Ollama/OpenAI-compatible workflow concepts were explored publicly.' },
+      { stage: 'Product acceptance', status: 'planned', summary: 'Any client use still requires task-specific evaluation, safety, cost, and operating evidence.' },
+    ],
+    constraints: [
+      'Model quality and latency depend on the selected model, hardware, context, and task.',
+      'The repository is an experiment and does not establish production reliability, privacy compliance, or product acceptance.',
+    ],
+    evidence: [
+      { label: 'Public experiment', detail: 'The linked repository records developer-controlled local-model workflow exploration.', href: 'https://github.com/arifulbgt4/ollama-model-run' },
+      { label: 'Client boundary', detail: 'Production use remains contingent on representative evaluation, monitoring, fallback, and approval design.' },
+    ],
     year: '2025',
     tags: ['Ollama', 'LLM', 'TypeScript', 'Local AI'],
     highlights: ['Local-first exploration', 'Provider-compatible concepts', 'Developer tooling focus'],
@@ -913,26 +1305,3 @@ export const engagementOptions = [
     outcome: 'Incremental releases, visible tradeoffs, maintained documentation, and reduced delivery risk.',
   },
 ] as const;
-
-export const engagementSteps = [
-  {
-    number: '01',
-    title: 'Fit & discovery',
-    description: 'We clarify the problem, users, constraints, current system, and what a successful engagement must change.',
-  },
-  {
-    number: '02',
-    title: 'Scope & architecture',
-    description: 'You receive an explicit scope, milestones, risks, technical direction, and the decisions needed before delivery.',
-  },
-  {
-    number: '03',
-    title: 'Build & review',
-    description: 'Work ships in small, demonstrable increments with visible tradeoffs, code review, and regular product feedback.',
-  },
-  {
-    number: '04',
-    title: 'Launch & handover',
-    description: 'The release includes verification, deployment, operating notes, documentation, and a practical next-step roadmap.',
-  },
-];

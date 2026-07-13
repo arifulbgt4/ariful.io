@@ -1,6 +1,5 @@
 import About from '@/components/About';
 import Contact from '@/components/Contact';
-import Domains from '@/components/Domains';
 import Hero from '@/components/Hero';
 import Insights from '@/components/Insights';
 import JsonLd from '@/components/JsonLd';
@@ -9,7 +8,7 @@ import ProfileSummary from '@/components/ProfileSummary';
 import Projects from '@/components/Projects';
 import ProofBar from '@/components/ProofBar';
 import Services from '@/components/Services';
-import { engineeringDomains, profileSummary, services, siteConfig } from '@/content/site';
+import { productLanes, profileSummary, services, siteConfig } from '@/content/site';
 
 function absoluteUrl(href: string) {
   return href.startsWith('http') ? href : `${siteConfig.url}${href}`;
@@ -25,7 +24,7 @@ export default function Home() {
       alternateName: siteConfig.brandName,
       url: siteConfig.url,
       image: 'https://avatars.githubusercontent.com/u/22605783?v=4',
-      jobTitle: 'Software Engineer and Product Builder',
+      jobTitle: 'Product Engineer',
       description: siteConfig.description,
       email: `mailto:${siteConfig.email}`,
       mainEntityOfPage: { '@id': `${siteConfig.url}/#profile-page` },
@@ -35,7 +34,13 @@ export default function Home() {
         addressCountry: 'BD',
       },
       sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
-      knowsAbout: engineeringDomains.flatMap((domain) => domain.skills),
+      knowsAbout: [
+        ...productLanes.map((lane) => lane.title),
+        'End-to-end product development',
+        'Software products',
+        'AI-enabled products',
+        'Connected and IoT product prototypes',
+      ],
       subjectOf: profileSummary.sourceLinks.map((source) => ({
         '@type': 'WebPage',
         name: source.label,
@@ -63,7 +68,7 @@ export default function Home() {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
       '@id': `${siteConfig.url}/#service`,
-      name: 'Ariful Islam Software Engineering',
+      name: 'Ariful Islam Product Engineering',
       url: siteConfig.url,
       description: siteConfig.description,
       founder: { '@id': `${siteConfig.url}/#person` },
@@ -71,7 +76,7 @@ export default function Home() {
       serviceType: services.map((service) => service.title),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Software engineering services',
+        name: 'End-to-end product engineering engagements',
         itemListElement: services.map((service) => ({
           '@type': 'Offer',
           itemOffered: {
@@ -124,12 +129,11 @@ export default function Home() {
       <JsonLd data={structuredData} />
       <Hero />
       <ProofBar />
-      <ProfileSummary />
       <Services />
       <Projects />
       <Process />
       <About />
-      <Domains />
+      <ProfileSummary />
       <Insights />
       <Contact />
     </main>

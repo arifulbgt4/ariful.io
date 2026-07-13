@@ -1,10 +1,12 @@
 # Roadmap
 
-The foundational portfolio, hire page, five service pages, case studies,
-Markdown CMS, contact API, SEO outputs, and operating documentation are
-implemented. The AI commerce case study, dedicated service page, and two-article
-topic cluster form the primary client-hunting proof funnel. These next items
-require owner credentials, new evidence, or an explicit product decision.
+The foundational portfolio, five service pages, case studies, Markdown CMS,
+contact API, SEO outputs, and operating documentation are implemented around
+the `End-to-End Product Engineer for Software, AI & Connected/IoT Products`
+positioning. The three product lanes, six-stage lifecycle, four equal core
+products, separate Lab & Experiments tier, and `/hire#project-brief` conversion
+path form the client-acquisition system. These next items require owner
+credentials, production rollout, new evidence, or an explicit product decision.
 
 ## P0 — Launch configuration
 
@@ -12,9 +14,11 @@ require owner credentials, new evidence, or an explicit product decision.
 - Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` in production.
 - Verify end-to-end contact delivery and Reply-To.
 - Confirm canonical domain redirects and deploy.
-- Deploy the homepage and resume `ProfilePage.mainEntity` schema fixes, validate
-  both live URLs with Rich Results Test, and start Search Console's validation
-  flow.
+- Verify the permanent `/resume` → `/hire` redirect, sitemap removal, and all
+  navigation/service/work/article CTAs ending at `/hire#project-brief`.
+- Validate the live homepage Person/ProfilePage graph with Rich Results Test and
+  close the legacy `/resume` Search Console issue through validation or URL
+  inspection.
 
 Google Search Console domain verification, Bing property import, and the initial
 shared sitemap submission were completed on July 10, 2026; current sitemap and
@@ -34,8 +38,11 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
   those dates consistently in RSS and sitemap freshness signals.
 - Review Bing AI Performance monthly and expand older technical articles with
   relevant primary sources and answer-focused sections where they help readers.
-- Keep the scheduled Vercel production watch green for the homepage, resume,
-  robots, sitemap, and RSS endpoints.
+- Record 28-, 56-, and 90-day repositioning reviews across Search Console query
+  clusters, qualified briefs by product lane/lifecycle stage, and Bing AI
+  Performance citations, cited pages, and grounding queries.
+- Keep the scheduled Vercel production watch green for the homepage, `/hire`,
+  permanent `/resume` redirect, robots, sitemap, and RSS endpoints.
 
 ## P1 — Credibility upgrades
 
@@ -44,6 +51,10 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
 - Add two specific testimonials with the client's name, role, company, and
   publication permission.
 - Add current screenshots or short demos for public projects after visual review.
+- Complete credentialed sandbox/production acceptance evidence for the AI
+  Commerce foundation, Otask delivery milestones, integrated pond validation
+  for Underwater Monitoring R&D, and implementation evidence for the Reusable
+  B2C Marketplace Platform before advancing any public maturity label.
 - Decide whether to publish commercial starting ranges or a paid discovery offer.
 
 ## P1 — Measurement
