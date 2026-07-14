@@ -12,6 +12,13 @@ export const siteConfig = {
     github: 'https://github.com/arifulbgt4',
     linkedin: 'https://www.linkedin.com/in/ariful25278',
   },
+  consultation: {
+    provider: 'Calendly',
+    eventUrl: 'https://calendly.com/arifulbgt4/free-product-consultation',
+    durationMinutes: 30,
+    location: 'Google Meet',
+    label: 'Free 30-minute product consultation',
+  },
   timezone: 'Asia/Dhaka (UTC+6)',
   proof: [
     { value: 'Idea → release', label: 'end-to-end ownership' },
@@ -245,10 +252,10 @@ export const services: Service[] = [
         label: 'Read the marketplace case study',
       },
       {
-        title: 'Otask developer collaboration product',
-        description: 'An in-development SaaS case study focused on GitHub-connected issue, contributor, notification, and delivery workflows.',
+        title: 'OTask local-first orchestration platform',
+        description: 'An in-development systems case study spanning trusted desktop execution, cross-device control, versioned contracts, and policy boundaries.',
         href: '/work/otask-developer-platform',
-        label: 'Read the Otask case study',
+        label: 'Read the OTask case study',
       },
       {
         title: 'Production-ready Next.js SaaS architecture',
@@ -434,10 +441,10 @@ export const services: Service[] = [
     ],
     evidence: [
       {
-        title: 'GraphQL Todo Application',
-        description: 'A compact public reference for schema-driven TypeScript client and server integration.',
-        href: '/work/graphql-todo-application',
-        label: 'Review the GraphQL reference',
+        title: 'OTask orchestration platform',
+        description: 'Cross-platform systems evidence spanning authenticated desktop IPC, policy-controlled execution, realtime coordination, and local-first storage.',
+        href: '/work/otask-developer-platform',
+        label: 'Review the OTask systems case study',
       },
       {
         title: 'AI commerce operating foundation',
@@ -509,6 +516,7 @@ export const services: Service[] = [
 export type ProjectTier = 'core' | 'lab';
 export type MaturityStage =
   | 'foundation-built'
+  | 'documentation-foundation'
   | 'in-development'
   | 'active-rnd'
   | 'architecture-planned'
@@ -529,6 +537,7 @@ export type Project = {
   category: string;
   tier: ProjectTier;
   displayOrder: number;
+  highlighted?: boolean;
   schemaType: 'SoftwareApplication' | 'CreativeWork';
   summary: string;
   targetUsers: string;
@@ -569,6 +578,215 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: 'eee-simulator',
+    title: 'EEE Simulator',
+    category: 'Electronics · Computer architecture · Simulation R&D',
+    tier: 'lab',
+    displayOrder: 1,
+    highlighted: true,
+    schemaType: 'CreativeWork',
+    summary:
+      'An open, browser-based electronics and computer simulation platform planned around explicit fidelity—from realistic component and circuit behavior to logic, processors, and educational computers.',
+    targetUsers:
+      'Electronics learners and educators, circuit and embedded engineers, component-model authors, and researchers exploring logic, processors, memory, and computer architecture.',
+    buyerOutcome:
+      'A decision-complete product and architecture foundation for a local-first virtual electronics laboratory that can grow from component-level evidence to educational computer systems without making infeasible full-transistor claims.',
+    challenge:
+      'Electronics tools usually specialize in one layer: circuit solving, interactive education, digital logic, RTL, or architecture. Connecting those layers in one browser product requires explicit fidelity, deterministic co-simulation, bounded computation, validated models, and a staged release path that does not pretend a modern processor can run transistor-by-transistor in one tab.',
+    approach:
+      'Defined a hierarchical multi-fidelity product, a realistic-electronics-first roadmap, a Next.js and TypeScript browser shell, a Rust/WebAssembly simulation core, Worker-isolated execution, a versioned .eesim format, local/cloud workload boundaries, and traceable component, validation, security, accessibility, and licensing contracts.',
+    outcome:
+      'The public repository has a complete documentation baseline and an implementation-ready task system. It does not yet contain application code, runtime configuration, a deployed simulator, or numerical validation evidence; the first Ready task establishes the repository layout before editor and solver work begins.',
+    status: 'Documentation foundation complete',
+    maturity: {
+      stage: 'documentation-foundation',
+      label: 'Documentation foundation complete',
+      summary:
+        'Product scope, architecture, 38 requirements, 10 accepted ADRs, a 162-family and 502-variant component baseline, release gates, validation strategy, and 3,090 atomic tasks are documented; runtime implementation has not started.',
+      verifiedOn: '2026-07-14',
+    },
+    lifecycle: [
+      {
+        stage: 'Discovery',
+        status: 'complete',
+        summary:
+          'The audience, cross-layer simulation problem, feasibility limits, fidelity model, and realistic-electronics-first product sequence were researched and documented.',
+      },
+      {
+        stage: 'Scope & architecture',
+        status: 'complete',
+        summary:
+          'Normative requirements, ADRs, system boundaries, file and worker contracts, component taxonomy, release gates, risks, and validation strategy are defined.',
+      },
+      {
+        stage: 'Design & prototype',
+        status: 'planned',
+        summary:
+          'The accessible schematic editor, physical component views, project format, local persistence, and first linear-circuit prototypes follow the repository-foundation task.',
+      },
+      {
+        stage: 'Build & integrate',
+        status: 'planned',
+        summary:
+          'The React editor, Rust/WASM solver, deterministic digital scheduler, multi-fidelity adapters, instruments, and isolated cloud workers remain roadmap work.',
+      },
+      {
+        stage: 'Verify & launch',
+        status: 'planned',
+        summary:
+          'Numerical, deterministic, thermal, failure, performance, accessibility, browser, security, and golden-circuit evidence must pass staged release gates before launch.',
+      },
+      {
+        stage: 'Handover & iterate',
+        status: 'planned',
+        summary:
+          'Open-source contribution, hosted collaboration, educational CPU, RTL, architecture, and GPU research expand only after prerequisite gates pass.',
+      },
+    ],
+    constraints: [
+      'The repository currently contains documentation only; there is no application code, runtime configuration, migration, deployment, or working simulator to present as delivered.',
+      'No numerical accuracy, circuit result, solver convergence, performance, accessibility, browser compatibility, or security claim has current runtime evidence.',
+      'CPU, GPU, full-computer, cloud collaboration, and advanced research capabilities are intentionally gated behind the Realistic Electronics MVP.',
+      'The 162-family and 502-variant catalog is a versioned family/preset baseline, not every manufacturer SKU or a claim that models are already released.',
+    ],
+    evidence: [
+      {
+        label: 'Public source repository',
+        detail:
+          'The Apache-2.0 repository exposes the product charter, requirements, accepted decisions, architecture, catalog contracts, roadmap, task system, validation strategy, and explicit current-status boundary.',
+        href: 'https://github.com/arifulbgt4/EEE_Simulator',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Normative product and architecture baseline',
+        detail:
+          'The repository records 38 stable product requirements and 10 accepted architecture decisions covering fidelity, browser and Worker boundaries, storage, co-simulation, rendering, isolation, collaboration, and licensing.',
+        href: 'https://github.com/arifulbgt4/EEE_Simulator/blob/dev/docs/START_HERE.md',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Catalog and delivery traceability',
+        detail:
+          'The documented baseline tracks 162 component families, 502 meaningful variants or presets, 38 reusable package templates, 54 golden validation tasks, and 3,090 atomic implementation tasks.',
+        href: 'https://github.com/arifulbgt4/EEE_Simulator/blob/dev/docs/tasks/TASK_INDEX.md',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Honest implementation boundary',
+        detail:
+          'The repository README states that the documentation foundation is complete while application code, runtime configuration, migrations, and deployment assets are not yet present.',
+        href: 'https://github.com/arifulbgt4/EEE_Simulator#project-status',
+        verifiedOn: '2026-07-14',
+      },
+    ],
+    year: '2026–Present',
+    role: 'Product research · Systems architecture · Simulation platform planning · Open-source delivery design',
+    tags: [
+      'Electronics simulation',
+      'Computer architecture',
+      'Next.js',
+      'TypeScript',
+      'Rust',
+      'WebAssembly',
+      'Local-first',
+      'Open source',
+    ],
+    highlights: [
+      'Hierarchical F0–F5 fidelity model spanning connectivity, equations, digital timing, compact models, electrothermal behavior, and physical research',
+      'Realistic Electronics MVP gated before educational CPU, RTL, full-computer, cloud, architecture, and GPU expansion',
+      'Local-first Next.js and TypeScript product with a Rust/WASM core and off-main-thread simulation workers',
+      'Deterministic timestamped coordination across analog, digital, thermal, RTL, and external simulation engines',
+      'Versioned .eesim project format, Git-friendly representation, offline persistence, and explicit migration contracts',
+      'Frozen documentation baseline of 162 component families and 502 meaningful variants or presets',
+      'Original schematic and physical representation contracts with reusable IC package definitions and pin-map validation',
+      'Traceable requirements, risks, release gates, golden circuits, validation tasks, and atomic implementation backlog',
+    ],
+    systemMap: [
+      {
+        title: 'Browser laboratory',
+        description:
+          'Next.js, React, TypeScript, Canvas/WebGL rendering, accessible controls, local project editing, instruments, and explanatory visualization.',
+      },
+      {
+        title: 'Simulation core',
+        description:
+          'A Rust/WebAssembly analog core and deterministic digital engine run outside the main UI thread with bounded waveform processing.',
+      },
+      {
+        title: 'Fidelity scheduler',
+        description:
+          'Timestamped adapters coordinate circuit, logic, thermal, RTL, architecture, and external engines without silently lowering fidelity.',
+      },
+      {
+        title: 'Cloud and evidence',
+        description:
+          'Heavy or untrusted jobs use isolated workers, immutable inputs, streamed progress, reproducible results, and traceable validation evidence.',
+      },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Feasibility boundary',
+        title: 'One project can connect simulation layers without treating every scale as the same physics problem.',
+        description:
+          'The central product decision is to expose the right fidelity for the question and make substitutions, assumptions, provenance, and limits visible.',
+        items: [
+          'F0 through F5 distinguish schematic connectivity, ideal equations, behavioral timing, compact models, electrothermal behavior, and physical-device research.',
+          'Detailed electrical models serve small circuits and selected blocks; event, RTL, architecture, and ISA models serve larger systems.',
+          'A global integer-time scheduler coordinates analog steps, digital events, thermal updates, and external-engine boundaries deterministically.',
+          'The product explicitly rejects full-transistor simulation of modern CPUs, GPUs, or gigabyte-scale memory in a browser.',
+        ],
+      },
+      {
+        eyebrow: '02 / First production gate',
+        title: 'Realistic electronics must work before the roadmap advances to computers.',
+        description:
+          'The first production target connects a visual editor, non-ideal circuit behavior, measurement, waveforms, thermal and failure evidence, logic, and Worker execution.',
+        items: [
+          'Canonical demonstrations cover LED and RC circuits, transistor switching, CMOS, oscillation, logic gates, latches, memory, and adders.',
+          'Models must declare tolerance, leakage, parasitics, ratings, thermal behavior, failures, supported analyses, provenance, and limitations.',
+          'Golden circuits, differential references, deterministic seeds, and explicit error envelopes replace visually plausible but unverified results.',
+          'CPU and GPU features remain gated until this evidence-backed electronics foundation passes.',
+        ],
+      },
+      {
+        eyebrow: '03 / Product architecture',
+        title: 'Local interaction, isolated heavy computation, and immutable evidence have separate responsibilities.',
+        description:
+          'The architecture keeps eligible small simulations responsive in the browser while moving oversized or untrusted work through controlled server boundaries.',
+        items: [
+          'The browser owns interaction and local drafts; numerical solvers and waveform processing run in Workers rather than on the UI thread.',
+          'The engine-neutral project model generates private netlists and execution plans for the selected simulation engines.',
+          'Heavy jobs use validated requests, immutable inputs, bounded workers, checkpoints, cancellation, streamed progress, and checksum-verified results.',
+          'External engines retain license and process-isolation boundaries instead of becoming unsafe linked dependencies of the open core.',
+        ],
+      },
+      {
+        eyebrow: '04 / Delivery evidence',
+        title: 'A large vision is decomposed into reviewable gates and atomic work.',
+        description:
+          'The documentation foundation turns the platform into a staged program with stable identifiers, dependencies, allowed files, tests, and completion evidence.',
+        items: [
+          'Thirty-eight requirements trace into accepted decisions, release gates, epics, atomic tasks, validation work, and acceptance checklists.',
+          'The task index contains 400 platform tasks, 2,636 component/package tasks, and 54 golden validation tasks.',
+          'Only one initial task is Ready: establish repository layout and ownership boundaries before editor or solver implementation.',
+          'A component cannot be called Released until its symbols, connectivity, models, validation, provenance, documentation, and synchronized records pass.',
+        ],
+      },
+    ],
+    clientApplications: [
+      'Decompose a technically ambitious engineering product into feasible fidelity levels, release gates, and verifiable vertical slices.',
+      'Design a browser product that combines responsive interaction with Rust/WebAssembly and isolated computational workers.',
+      'Define simulation, digital-twin, scientific, or hardware-tooling contracts around deterministic data, provenance, limits, and validation evidence.',
+      'Plan a component or model catalog with stable identifiers, lifecycle states, import boundaries, package mappings, and quality traceability.',
+      'Turn research requirements into an open-source architecture, dependency-aware backlog, release evidence, and contribution workflow.',
+    ],
+    relatedService: {
+      title: 'Connected & IoT Product Prototyping',
+      href: '/services/connected-product-prototyping',
+    },
+    repository: 'https://github.com/arifulbgt4/EEE_Simulator',
+  },
   {
     slug: 'ai-dropshipping-commerce-platform',
     title: 'AI Dropshipping Commerce Platform',
@@ -740,115 +958,183 @@ export const projects: Project[] = [
   },
   {
     slug: 'otask-developer-platform',
-    title: 'Otask',
-    category: 'SaaS product engineering',
+    title: 'OTask',
+    category: 'Local-first automation · Cross-device control',
     tier: 'core',
     displayOrder: 2,
     schemaType: 'CreativeWork',
     summary:
-      'A developer collaboration platform concept for publishing repository issues, coordinating solutions, and supporting paid or open-source workflows.',
-    targetUsers: 'Repository maintainers, developers, contributors, and teams coordinating issue-based paid or open-source collaboration.',
-    buyerOutcome: 'A structured product direction for connecting repository work, contributors, communication, notifications, and optional payment boundaries.',
+      'A GUI-first, local-first orchestration platform designed to let trusted desktop devices execute deterministic, policy-approved workflows while mobile and web clients schedule, approve, monitor, cancel, and review work.',
+    targetUsers:
+      'Developers and technical users who need repeatable workspace automation on trusted desktops with controlled cross-device oversight.',
+    buyerOutcome:
+      'A safety-first foundation for running approved local workflows without giving the cloud or an AI model unrestricted command execution, with explicit approvals, lifecycle state, and evidence boundaries.',
     challenge:
-      'Repository issues, contributors, communication, and optional payments often live across disconnected tools, making collaboration difficult to coordinate.',
+      'Remote task control can become unsafe when cloud services, untrusted AI output, broad shell access, device credentials, and execution evidence are not separated.',
     approach:
-      'Designed a GitHub-connected product flow covering repository import, issue lifecycle, contributor collaboration, notifications, and payment concepts.',
+      'Defined a GUI-only architecture with a Tauri 2 and React desktop, Rust trusted service, versioned TaskPlan contracts, Supabase control plane, Flutter mobile shell, planned Next.js portal, short-lived grants, local credential and key boundaries, and deterministic execution and evidence gates.',
     outcome:
-      'The product remains in development. The current work demonstrates product decomposition, integration planning, and full-stack SaaS architecture rather than claiming a completed launch.',
-    status: 'In development',
+      'Governance, contracts and design system, the Supabase identity and control-plane backend, and the first five desktop-foundation tasks are CI-validated. The desktop has a functional shell plus secure settings, PKCE authentication, device-key and registration boundaries, and authenticated Rust IPC; SQLite repositories are active local work. Workflow execution, scheduling and sync, evidence, full mobile and web clients, interactive terminal, local Gemma runtime, and production release remain future phases.',
+    status: 'Desktop and control-plane foundation in development',
     maturity: {
       stage: 'in-development',
-      label: 'In development',
-      summary: 'Product flows and system boundaries are defined and implementation work is active; no completed public launch or operating-scale result is claimed.',
+      label: 'Foundation in development',
+      summary:
+        'P00–P02 and P03-001 through P03-005 are complete with recorded six-job CI evidence. P03-006 SQLite persistence is active local work and is not yet committed or remotely validated.',
+      verifiedOn: '2026-07-14',
     },
     lifecycle: [
-      { stage: 'Discovery', status: 'complete', summary: 'The repository issue, contributor coordination, communication, and optional payment problem was decomposed.' },
-      { stage: 'Scope & architecture', status: 'complete', summary: 'GitHub connection, issue lifecycle, participant, notification, collaboration, and payment seams were designed.' },
-      { stage: 'Design & prototype', status: 'in-progress', summary: 'Key journeys and reviewable product slices are still being refined through implementation.' },
-      { stage: 'Build & integrate', status: 'in-progress', summary: 'Full-stack product development is active and has not reached a launch-ready evidence gate.' },
-      { stage: 'Verify & launch', status: 'planned', summary: 'Public deployment, acceptance coverage, abuse controls, and payment validation remain future gates.' },
-      { stage: 'Handover & iterate', status: 'planned', summary: 'Operating evidence and iteration decisions follow a verified release.' },
+      {
+        stage: 'Discovery',
+        status: 'complete',
+        summary: 'The authoritative product boundary, safety model, user roles, and first end-to-end orchestration scenario are documented.',
+      },
+      {
+        stage: 'Scope & architecture',
+        status: 'complete',
+        summary: 'Ten ADRs, 14 versioned schemas, 27 fixtures, TypeScript/Rust/Dart mappings, and 22 GUI route-state contracts define the system.',
+      },
+      {
+        stage: 'Design & prototype',
+        status: 'in-progress',
+        summary: 'The desktop shell is built; dashboard data remains demonstrative and the remaining desktop views use explicit empty-state placeholders.',
+      },
+      {
+        stage: 'Build & integrate',
+        status: 'in-progress',
+        summary: 'The Supabase control plane and P03-001 through P03-005 are complete; P03-006 SQLite repositories are active local work.',
+      },
+      {
+        stage: 'Verify & launch',
+        status: 'planned',
+        summary: 'The executor, sync and evidence path, complete clients, hardening, signing, cross-device beta, and deployment are future gates.',
+      },
+      {
+        stage: 'Handover & iterate',
+        status: 'planned',
+        summary: 'Stable-channel releases, rollback, support operations, and iteration follow the P11 product-acceptance gate.',
+      },
     ],
     constraints: [
-      'GitHub permissions, repository data, notifications, contributor trust, and payment flows require explicit security and abuse boundaries.',
-      'No completed public launch, active marketplace, payment volume, user count, or client outcome is claimed.',
-      'Current evidence supports product architecture and in-development implementation, not production maturity.',
+      'There is no live app, production deployment, signed installer, user or usage outcome, or operating-scale result to claim.',
+      'Desktop dashboard metrics and activity are static demonstration data; non-dashboard screens are currently explicit placeholders.',
+      'Web and VS Code packages are logic-free bootstrap surfaces, while mobile is a Flutter shell with authentication tests rather than a complete client.',
+      'P04 through P11, including actual workflow execution, scheduling, terminal, evidence, local AI, and end-to-end remote control, remain planned.',
+      'The cloud is control-plane-only and must never execute shell commands; planned Gemma output remains an untrusted TaskPlanDraft until validation and approval.',
+      'Current SQLite repository work passes local checks but has no commit or remote CI evidence yet; the public default branch remains at the earlier bootstrap state.',
     ],
     evidence: [
-      { label: 'Product decomposition', detail: 'The current work defines repository import, issue lifecycle, contributor collaboration, notification, and optional payment boundaries.' },
-      { label: 'Public positioning boundary', detail: 'The case study explicitly identifies the product as in development and separates architecture evidence from future launch validation.' },
-      { label: 'Related delivery guide', detail: 'The SaaS architecture article documents the operating boundaries expected before a software product is treated as production-ready.', href: '/blog/production-ready-nextjs-saas-architecture' },
+      {
+        label: 'Public source repository',
+        detail: 'The public MIT-licensed repository exposes the desktop, mobile, web, Rust service, contracts, Supabase, documentation, and delivery evidence.',
+        href: 'https://github.com/arifulbgt4/Otask_Desktop',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Authoritative product and safety boundary',
+        detail: 'The master specification defines trusted local execution, GUI-only control, cloud limits, approvals, grants, TaskPlan contracts, and the planned local-model boundary.',
+        href: 'https://github.com/arifulbgt4/Otask_Desktop/blob/task/P03-005-service-ipc/docs/MASTER_SPEC.md',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Authenticated desktop service evidence',
+        detail: 'P03-005 records authenticated Tauri-to-Rust IPC, lifecycle handling, regression coverage, build artifacts, and six successful CI jobs.',
+        href: 'https://github.com/arifulbgt4/Otask_Desktop/blob/task/P03-005-service-ipc/docs/evidence/P03-005.md',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Contracts and design-system phase evidence',
+        detail: 'The P01 exit record covers versioned schemas and fixtures, cross-language mappings, design tokens, and route-state contracts.',
+        href: 'https://github.com/arifulbgt4/Otask_Desktop/blob/task/P03-005-service-ipc/docs/evidence/P01-PHASE-EXIT.md',
+        verifiedOn: '2026-07-14',
+      },
+      {
+        label: 'Published delivery boundary',
+        detail: 'The ordered backlog separates completed foundations from executor, cross-device control, terminal, local AI, hardening, beta, and release work.',
+        href: 'https://github.com/arifulbgt4/Otask_Desktop/blob/task/P03-005-service-ipc/docs/agent/backlog.md',
+        verifiedOn: '2026-07-14',
+      },
     ],
-    year: '2024–Present',
-    role: 'Product architecture · Full-stack product engineering · Integration planning',
-    tags: ['Next.js', 'GitHub API', 'SaaS', 'Stripe', 'Realtime'],
+    year: '2026–Present',
+    role: 'Product research · Systems architecture · Desktop/backend engineering · Security and delivery design',
+    tags: ['Tauri 2', 'React', 'TypeScript', 'Rust', 'SQLite', 'Flutter', 'Supabase', 'Local-first', 'Deterministic workflows'],
     highlights: [
-      'GitHub-connected repository and issue workflow direction',
-      'Explicit issue lifecycle and contributor collaboration boundaries',
-      'Notification and realtime coordination concepts',
-      'Paid and open-source paths kept behind deliberate trust and payment rules',
-      'Architecture and implementation status separated from future launch claims',
+      'Trusted desktops are the only intended command-execution surface; cloud services coordinate but never run the shell',
+      'Versioned TaskPlan, schema, fixture, risk, approval, grant, cancellation, and evidence contracts',
+      'Tauri 2 and React desktop backed by an authenticated Rust service boundary',
+      'Supabase identity and control plane with RLS, device pairing, key rotation, signed grants, terminal signaling, and release metadata',
+      'Cross-language TypeScript, Rust, and Dart contract mappings for desktop, service, mobile, and planned web clients',
+      'Planned local Gemma runtime produces untrusted drafts rather than executable commands',
     ],
     systemMap: [
-      { title: 'Connect repositories', description: 'Import approved repository context and preserve clear authorization boundaries around issues and participants.' },
-      { title: 'Structure work', description: 'Represent issue lifecycle, scope, ownership, solution progress, review, and completion as explicit product states.' },
-      { title: 'Coordinate people', description: 'Connect maintainers and contributors through focused collaboration, notifications, and realtime updates.' },
-      { title: 'Support outcomes', description: 'Keep open-source contribution and optional paid work behind deliberate approval, trust, dispute, and payment seams.' },
+      { title: 'Plan safely', description: 'Strict versioned TaskPlan contracts, validation, risk classification, approval requirements, and immutable plan identity bound what can run.' },
+      { title: 'Execute locally', description: 'The trusted desktop and authenticated Rust service form the only intended command-execution boundary.' },
+      { title: 'Control across devices', description: 'Supabase-backed mobile and web surfaces coordinate identity, devices, schedules, approvals, grants, and state while the cloud never executes commands.' },
+      { title: 'Prove outcomes', description: 'The planned run lifecycle captures redacted logs, verification checks, artifacts, and finalized evidence before controlled synchronization.' },
     ],
     caseStudySections: [
       {
-        eyebrow: '01 / Product problem',
-        title: 'Repository issues need more than another list view.',
-        description: 'The product direction treats an issue as a collaboration lifecycle with actors, decisions, evidence, review, and an outcome.',
+        eyebrow: '01 / Trust boundary',
+        title: 'Remote control must not turn the cloud or an AI model into an unrestricted shell.',
+        description:
+          'The core architecture separates planning, approval, credentials, execution, observation, and evidence so that convenient cross-device control does not erase local ownership.',
         items: [
-          'Repository context and permission boundaries must be explicit before external collaboration begins.',
-          'Issue states need to communicate scope, ownership, progress, review, acceptance, and closure.',
-          'Contributors and maintainers need focused updates without duplicating every GitHub surface.',
-          'Paid paths introduce trust, payment, dispute, and completion conditions that open-source contribution does not require.',
+          'Only an enrolled trusted desktop is intended to execute a validated immutable TaskPlan.',
+          'The Supabase layer coordinates identity, devices, scheduling, approvals, grants, signaling, and state but never executes shell commands.',
+          'Device credentials and signing keys remain behind local secure-storage and authenticated service boundaries.',
+          'Planned local-model output is an untrusted draft that cannot bypass schema, policy, risk, approval, or plan-identity checks.',
         ],
       },
       {
-        eyebrow: '02 / System boundaries',
-        title: 'GitHub remains the source; the product coordinates the workflow around it.',
-        description: 'The architecture avoids treating imported repository data as unrestricted application-owned content.',
+        eyebrow: '02 / Cross-platform contract',
+        title: 'Desktop, mobile, web, and cloud coordinate through one versioned workflow language.',
+        description:
+          'Shared schemas and state machines reduce interpretation drift across the React/Tauri desktop, Rust service, Flutter client, planned Next.js portal, and Supabase control plane.',
         items: [
-          'A GitHub integration layer owns authentication, repository selection, permission checks, synchronization, and provider failures.',
-          'Product records add collaboration state without silently rewriting upstream repository truth.',
-          'Notifications and realtime events derive from auditable state transitions rather than arbitrary messages.',
-          'Optional payments remain a separate boundary with explicit acceptance and failure handling.',
+          'Fourteen versioned schemas and 27 fixtures have TypeScript, Rust, and Dart compatibility mappings.',
+          'Twenty-two GUI route-state contracts define loading, empty, error, blocked, and ready behavior before feature logic arrives.',
+          'Signed short-lived grants and explicit cancellation semantics constrain remote actions and terminal sessions.',
+          'Run, step, log, artifact, verification, and evidence states are designed for deterministic replay and review.',
         ],
       },
       {
-        eyebrow: '03 / Delivery status',
-        title: 'The product remains in development.',
-        description: 'Current evidence supports architecture, decomposition, and active implementation—not a completed public marketplace.',
+        eyebrow: '03 / Implemented foundation',
+        title: 'The control plane and first desktop layers have evidence; the executor does not yet.',
+        description:
+          'The current status distinguishes remotely CI-validated milestones, active local persistence work, demonstrative UI, and future end-to-end functionality.',
         items: [
-          'Core journeys are being refined as reviewable vertical slices.',
-          'Launch readiness still requires public deployment evidence, acceptance coverage, security review, and operating tests.',
-          'Payment and dispute flows must not be described as live before provider and policy acceptance exists.',
-          'Future status upgrades require reproducible repository, test, deployment, and user-acceptance evidence.',
+          'P00 governance, P01 contracts and design foundation, and P02 Supabase identity/control-plane work are complete.',
+          'P03-001 through P03-005 deliver the shell, secure settings, PKCE authentication, device identity and registration, and authenticated Rust IPC.',
+          'P03-006 SQLite migrations and repositories are active uncommitted work and are not presented as remotely validated.',
+          'Actual workflow execution, synchronization, complete clients, interactive terminal, Gemma runtime, hardening, beta, and release remain planned.',
         ],
       },
       {
         eyebrow: '04 / Client value',
-        title: 'The same product reasoning applies to integration-heavy SaaS.',
-        description: 'The work demonstrates how to turn a third-party platform dependency into a maintainable product workflow.',
+        title: 'The same boundaries apply to any product that turns intent into consequential automation.',
+        description:
+          'The project demonstrates how to combine cross-platform UX, local authority, cloud coordination, AI assistance, and auditable execution without treating convenience as permission.',
         items: [
-          'Define ownership between the product database and the upstream provider.',
-          'Model reviewable states before adding notifications, payments, or automation.',
-          'Design failure and permission boundaries before promising a seamless integration.',
-          'Ship narrow workflows that another team can inspect, operate, and extend.',
+          'Keep execution close to the trusted resource while exposing controlled remote oversight.',
+          'Turn model suggestions into typed, reviewable plans rather than direct side effects.',
+          'Model approvals, cancellation, idempotency, grants, logs, artifacts, and evidence as product states.',
+          'Advance through narrow, CI-backed milestones with explicit blockers and claim boundaries.',
         ],
       },
     ],
     clientApplications: [
-      'Design a SaaS product around a complex third-party API without losing authorization and ownership clarity.',
-      'Turn an informal collaboration process into explicit states, roles, notifications, and acceptance evidence.',
-      'Introduce optional payments only after the underlying delivery and trust workflow is understandable.',
-      'Create an implementation roadmap that separates product direction, active build work, launch gates, and future scale.',
+      'Design a local-first desktop product with a secure service boundary and controlled cloud coordination.',
+      'Build cross-device approval, scheduling, monitoring, cancellation, and evidence workflows around trusted execution.',
+      'Introduce AI assistance through typed drafts, deterministic validation, policy checks, and human approval.',
+      'Create shared cross-language contracts for desktop, service, mobile, web, and backend clients.',
+      'Decompose a security-sensitive product into traceable, CI-backed delivery gates without overstating incomplete capability.',
     ],
-    relatedService: { title: 'Software Product Engineering', href: '/services/saas-product-engineering' },
-    relatedArticles: [{ title: 'Production-Ready Next.js SaaS Architecture', href: '/blog/production-ready-nextjs-saas-architecture' }],
+    relatedService: { title: 'AI-Enabled Product Engineering', href: '/services/ai-integration-automation' },
+    relatedArticles: [
+      { title: 'Production-Ready Next.js SaaS Architecture', href: '/blog/production-ready-nextjs-saas-architecture' },
+      { title: 'Reliable AI Features Need Evaluation and Human Review', href: '/blog/reliable-ai-features-rag-agents-human-review' },
+    ],
+    repository: 'https://github.com/arifulbgt4/Otask_Desktop/tree/task/P03-005-service-ipc',
   },
   {
     slug: 'underwater-monitoring-research',
@@ -1116,46 +1402,6 @@ export const projects: Project[] = [
       title: 'Software Product Engineering',
       href: '/services/saas-product-engineering',
     },
-  },
-  {
-    slug: 'graphql-todo-application',
-    title: 'GraphQL Todo Application',
-    category: 'API engineering',
-    tier: 'lab',
-    displayOrder: 1,
-    schemaType: 'CreativeWork',
-    summary:
-      'A TypeScript application exploring GraphQL-based client and server data flows through a compact product domain.',
-    targetUsers: 'Developers and product teams evaluating schema-driven client/server integration patterns.',
-    buyerOutcome: 'A compact reference for discussing GraphQL schema, typed integration, and client-state boundaries before using the pattern in a larger product.',
-    challenge:
-      'GraphQL systems need a clear schema, predictable client state, and boundaries that keep a simple query layer from becoming accidental complexity.',
-    approach:
-      'Used a small task-management domain to exercise schema-driven development and typed product integration.',
-    outcome:
-      'A compact reference project focused on GraphQL and TypeScript application structure. It is presented as a Lab item, not as a production product.',
-    status: 'Reference project',
-    maturity: {
-      stage: 'public-reference',
-      label: 'Reference project',
-      summary: 'The compact application exercise is complete as a technical reference; it does not represent a production product or client outcome.',
-    },
-    lifecycle: [
-      { stage: 'Technical question', status: 'complete', summary: 'The exercise focused on schema-driven client and server data flow.' },
-      { stage: 'Reference implementation', status: 'complete', summary: 'A compact task domain was used to explore typed GraphQL integration.' },
-      { stage: 'Production validation', status: 'planned', summary: 'Scale, security, observability, and product operations were outside this Lab scope.' },
-    ],
-    constraints: [
-      'The previously configured repository URL was unavailable during the latest portfolio audit and is not published until corrected.',
-      'The project demonstrates an application pattern, not production scale, client delivery, or business impact.',
-    ],
-    evidence: [
-      { label: 'Technical reference', detail: 'The portfolio record documents the schema-driven workflow and typed integration focus.' },
-      { label: 'Link boundary', detail: 'No source link is shown while the previously recorded public URL remains unavailable.', verifiedOn: '2026-07-13' },
-    ],
-    year: '2025',
-    tags: ['GraphQL', 'TypeScript', 'API', 'Application architecture'],
-    highlights: ['Schema-driven workflow', 'Typed integration', 'Reference scope'],
   },
   {
     slug: 'local-llm-workflows',

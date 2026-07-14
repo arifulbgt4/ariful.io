@@ -63,7 +63,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/hire#project-brief" className="button-primary ml-3 px-5 py-2.5 text-sm">
+          <Link href="/hire#consultation" className="button-primary ml-3 px-5 py-2.5 text-sm">
             Start a project
           </Link>
         </div>
@@ -103,7 +103,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/hire#project-brief" onClick={() => setMobileOpen(false)} className="button-primary mt-3 text-center">
+          <Link href="/hire#consultation" onClick={() => setMobileOpen(false)} className="button-primary mt-3 text-center">
             Start a project
           </Link>
         </div>

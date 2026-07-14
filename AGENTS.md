@@ -55,6 +55,7 @@ Use `docs/README.md` as the full documentation index.
 - Route-level SEO: each route's `metadata` or `generateMetadata`
 - Search discovery: `app/sitemap.ts`, `app/robots.ts`, `app/rss.xml/route.ts`
 - Contact delivery: `app/api/contact/route.ts` and `.env.example`
+- Public consultation provider, duration, URL, and copy: `content/site.ts`
 - Visual tokens and shared CSS classes: `app/globals.css` and
   `tailwind.config.js`
 
@@ -88,6 +89,13 @@ Do not duplicate business facts in a component when they can be imported from
   intentionally Git-backed.
 - A contact-form change must preserve server validation, the honeypot, rate
   limiting, safe HTML escaping, and the direct-email fallback.
+- A consultation change must preserve the 30-minute free fit-call boundary,
+  explicit click-to-load Calendly iframe, provider cookie banner, external
+  Calendly fallback, project brief, and direct email. Do not add a Calendly API
+  token, OAuth flow, webhook, npm dependency, or hidden client credential for
+  the public booking link. Keep the event on Google Meet, request only name and
+  email, require 4 hours' notice, use no buffer, allow at most 4 consultations
+  per day, and expose no more than the next 30 days of availability.
 - New indexable pages need unique metadata, canonical URLs, and sitemap entries.
 - New blog posts are included automatically through the content loader.
 - Search-console submission is content-driven: keep the scheduled workflow in
@@ -121,7 +129,8 @@ npm run build
 For visual or interaction changes, also test the production or development site
 at desktop and mobile widths. Check the homepage, one service page, one work
 page, the blog index, one article, the mobile menu, the contact form's success
-or fallback state, `/robots.txt`, `/sitemap.xml`, and `/rss.xml`.
+or fallback state, the `/hire#consultation` load and external fallback paths,
+`/robots.txt`, `/sitemap.xml`, and `/rss.xml`.
 
 ## Definition of done
 

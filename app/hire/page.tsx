@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import CalendlyBooking from '@/components/CalendlyBooking';
 import JsonLd from '@/components/JsonLd';
 import ProjectBriefForm from '@/components/ProjectBriefForm';
 import {
@@ -101,11 +102,11 @@ export default function HirePage() {
             I help founders, product teams, and research teams move software, AI-enabled, and connected/IoT products from discovery and architecture through prototyping, build, verification, launch, and handover.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/hire#project-brief" className="button-primary">
-              Send a product brief <span aria-hidden="true">↗</span>
+            <Link href="/hire#consultation" className="button-primary">
+              Book a free consultation <span aria-hidden="true">↗</span>
             </Link>
-            <Link href="/work" className="button-secondary">
-              Review product evidence
+            <Link href="/hire#project-brief" className="button-secondary">
+              Send a project brief
             </Link>
           </div>
           <p className="mt-5 text-sm leading-6 text-slate-500">
@@ -198,6 +199,72 @@ export default function HirePage() {
         <section className="mt-20 grid gap-5 sm:mt-24 lg:grid-cols-2" aria-label="Engagement fit">
           <FitPanel title="A strong fit usually looks like" items={fitSignals} tone="positive" />
           <FitPanel title="Probably not a fit when" items={poorFitSignals} tone="caution" />
+        </section>
+
+        <section
+          id="consultation"
+          className="mt-20 scroll-mt-28 overflow-hidden rounded-[2rem] border border-cyan-300/10 bg-cyan-300/[0.035] sm:mt-24"
+          aria-labelledby="consultation-heading"
+        >
+          <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
+            <div className="border-b border-white/[0.08] p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+              <p className="section-kicker">{siteConfig.consultation.label}</p>
+              <h2
+                id="consultation-heading"
+                className="mt-5 text-balance text-3xl font-black tracking-[-0.035em] text-white sm:text-4xl"
+              >
+                Confirm fit before you decide whether to hire me.
+              </h2>
+              <p className="mt-5 leading-7 text-slate-400">
+                This no-obligation {siteConfig.consultation.location} conversation is a practical way to discuss your product goal, current state, constraints, and the next useful step.
+              </p>
+
+              <div className="mt-8 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
+                <h3 className="text-base font-bold text-white">What this call covers</h3>
+                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                  <li className="flex gap-3">
+                    <span className="text-cyan-300" aria-hidden="true">✓</span>
+                    Clarify the outcome you need and the current product stage.
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-cyan-300" aria-hidden="true">✓</span>
+                    Surface the main delivery, technical, or operational constraint.
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-cyan-300" aria-hidden="true">✓</span>
+                    Check whether my delivery model fits your team and identify a sensible next step.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-6 border-l-2 border-amber-200/50 pl-4">
+                <h3 className="text-sm font-bold text-white">A clear boundary</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">
+                  The call is not a free full product audit, detailed architecture engagement, or complete solution design. If deeper analysis or a deliverable is needed, we can scope paid discovery after confirming fit.
+                </p>
+              </div>
+
+              <p className="mt-7 text-sm leading-6 text-slate-400">
+                Prefer not to use {siteConfig.consultation.provider}?{' '}
+                <a href={`mailto:${siteConfig.email}`} className="font-semibold text-cyan-200 hover:text-white">
+                  Email me directly
+                </a>{' '}
+                or{' '}
+                <Link href="/hire#project-brief" className="font-semibold text-cyan-200 hover:text-white">
+                  send a project brief
+                </Link>
+                .
+              </p>
+            </div>
+
+            <div className="p-3 sm:p-10 lg:p-12">
+              <CalendlyBooking
+                eventUrl={siteConfig.consultation.eventUrl}
+                buttonLabel={`Load available ${siteConfig.consultation.durationMinutes}-minute times`}
+                iframeTitle={`${siteConfig.consultation.label} booking calendar`}
+              />
+            </div>
+          </div>
         </section>
 
         <section

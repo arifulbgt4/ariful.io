@@ -91,8 +91,10 @@ or answer engine to understand without guessing:
   template;
 - add FAQs only when they answer real buyer or implementation questions; and
 - keep schema aligned with visible content instead of adding hidden claims.
-- end the relevant buyer journey at `/hire#project-brief` rather than inventing
-  a second contact or resume conversion.
+- end the relevant buyer journey on the shared `/hire` conversion surface:
+  `/hire#consultation` for a prospect who needs a fit conversation or
+  `/hire#project-brief` for a prospect ready to provide qualified context;
+  never invent a separate contact or resume conversion surface.
 
 ## Editorial voice
 
@@ -125,10 +127,12 @@ updates. Dynamic pages and navigation surfaces use those records. Keep public
 URLs absolute and verify them before deployment.
 
 The portfolio has four equal core products: AI Dropshipping Commerce Platform,
-Otask, Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. GraphQL Todo
-Application and Local LLM Workflows belong in `Lab & Experiments`. Do not use a
-flagship label or allow one core project to receive an oversized editorial or
-visual treatment.
+OTask, Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. EEE
+Simulator and Local LLM Workflows belong in `Lab & Experiments`. EEE Simulator
+is the one highlighted Lab record; that visual discovery treatment must not
+promote it to core, imply working software, or reduce the equal presentation of
+the four core products. Do not use a flagship label or allow one core project
+to receive an oversized editorial or visual treatment.
 
 Every project record and case study must state target users, buyer outcome,
 Ariful's role and owned scope, constraints, public evidence, client relevance,
@@ -140,11 +144,16 @@ The current public maturity boundary is:
 
 - AI Dropshipping Commerce Platform: operational foundation built;
   credentialed sandbox and production acceptance pending;
-- Otask: in development;
+- OTask: GUI-first, local-first orchestration foundation in development; P00–P02
+  and P03-001 through P03-005 have recorded six-job CI evidence, while P03-006
+  SQLite persistence is active local, uncommitted work and is not yet remotely
+  validated;
 - Underwater Monitoring R&D: active R&D; integrated pond validation pending;
 - Reusable B2C Marketplace Platform: architecture and product foundation
   planned;
-- GraphQL Todo Application: public reference project; and
+- EEE Simulator: highlighted Lab documentation foundation only, with no
+  application code, runtime, deployment, working simulator, or numerical
+  validation evidence; and
 - Local LLM Workflows: experiment.
 
 Use an explicit evidence-supported schema type. Do not emit `dateCreated`
@@ -163,11 +172,18 @@ indexing trigger. Documentation, styling, tests, and application-only changes do
 not trigger search-console submission. If multiple content changes happen in one
 week, they are consolidated into the next eligible sitemap submission.
 
-All service, work, article, navigation, and footer conversion copy should use
-`Start your product` or a context-specific equivalent linked to
-`/hire#project-brief`. Direct email remains the fallback. `/resume` is a legacy
-URL that permanently redirects to `/hire`; do not restore resume navigation,
-metadata, sitemap, schema, or recruiter-first copy.
+All service, work, article, navigation, and footer conversion copy must keep the
+buyer on `/hire`. Use `/hire#consultation` when the promise is a free 30-minute
+fit conversation and `/hire#project-brief` when asking for project details.
+Direct email remains the fallback. `/resume` is a legacy URL that permanently
+redirects to `/hire`; do not restore resume navigation, metadata, sitemap,
+schema, or recruiter-first copy.
+
+The public Calendly event URL, provider name, 30-minute duration, and
+consultation wording belong in `content/site.ts` so UI, validation, and docs do
+not drift. Do not put a Calendly token, calendar credential, invitee data, or
+private availability note in public content. The event asks only for name and
+email; deeper project context belongs in the project brief or the conversation.
 
 ## Topic selection
 

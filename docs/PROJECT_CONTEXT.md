@@ -102,15 +102,36 @@ The public work hierarchy has four equal-priority core products:
 
 - AI Dropshipping Commerce Platform — operational foundation built;
   credentialed sandbox and production acceptance remain pending;
-- Otask — in development;
+- OTask — desktop and control-plane foundation in development. P00–P02 and
+  P03-001 through P03-005 have recorded six-job CI evidence; P03-006 SQLite
+  persistence is active local, uncommitted work and is not yet remotely
+  validated;
 - Underwater Monitoring R&D — active R&D; integrated pond validation remains
   pending; and
 - Reusable B2C Marketplace Platform — architecture and product foundation
   planned.
 
-GraphQL Todo Application is a public reference project and Local LLM Workflows
-is an experiment. These two records belong in `Lab & Experiments`; neither is
-presented as a core client product.
+EEE Simulator is the highlighted Lab research foundation and Local LLM
+Workflows is a focused experiment. EEE Simulator currently provides a public,
+traceable documentation baseline for a browser-based, hierarchical,
+multi-fidelity electronics and computer simulation platform; it has no
+application code, runtime configuration, deployment, working simulator, or
+numerical validation evidence. These two records belong in `Lab & Experiments`;
+neither is presented as a core client product. Highlighting EEE Simulator makes
+the unusually detailed research foundation easier to find without changing the
+equal priority of the four core products.
+
+OTask is a GUI-first, local-first task orchestration and cross-device control
+platform. Trusted desktop devices are the intended execution nodes; mobile and
+web surfaces are intended to create, schedule, approve, cancel, monitor,
+download, and review work. Its Tauri/React desktop, Rust trusted service,
+Supabase control plane, versioned contracts, authentication, device identity,
+grants, and authenticated IPC foundation are the current evidence boundary.
+Workflow execution, scheduling and sync, evidence capture, the complete mobile
+and web clients, interactive terminal, embedded local Gemma 4 E4B runtime,
+installers, and production release remain planned. The cloud must not execute
+user shell work, and model output remains untrusted until deterministic
+validation, policy, and approval gates pass.
 
 Core products receive equal visual and editorial priority. There is no
 `flagship` product. Every case study must distinguish `Delivered`, `Validated`,
@@ -139,16 +160,25 @@ explicit.
 
 ## Conversion strategy
 
-The sole on-site conversion path is `Start your product` →
-`/hire#project-brief`, where a prospect submits a qualified project brief.
-Service, work, article, navigation, and footer calls to action all converge on
-that destination. Public GitHub, LinkedIn, case studies, articles, Journal, and
-RSS remain evidence or discovery paths rather than competing conversion goals.
+The sole on-site conversion surface is `/hire`, with two optional starting
+paths matched to prospect readiness:
 
-Direct email remains visible as the required fallback when the form is
-unavailable or a prospect cannot use it. The public site does not carry a
-recruiter-focused resume conversion; `/resume` permanently redirects to
-`/hire`.
+- `/hire#consultation` lets a prospect book a free 30-minute product
+  consultation through Calendly before deciding whether to hire Ariful; and
+- `/hire#project-brief` lets a ready prospect submit a qualified project brief.
+
+The consultation is a fit conversation about the product goal, current state,
+constraints, and a useful next step. It is not free complete solution design,
+architecture, or implementation. Service, work, article, navigation, and footer
+calls to action may select the most relevant of these two anchors while keeping
+the buyer journey on `/hire`. Public GitHub, LinkedIn, case studies, articles,
+Journal, and RSS remain evidence or discovery paths rather than competing
+conversion surfaces.
+
+Direct email remains visible as the required fallback when Calendly or the form
+is unavailable or a prospect cannot use either option. The public site does not
+carry a recruiter-focused resume conversion; `/resume` permanently redirects
+to `/hire`.
 
 ## Commercial entry points
 
@@ -156,6 +186,11 @@ Prospects can begin with an architecture or AI-readiness review, a focused
 prototype sprint, a production product slice, or an ongoing engineering
 partnership. These are scope shapes rather than fixed-price packages; pricing
 follows enough discovery to understand risk and expected outcome.
+
+A free product consultation may precede any engagement when a prospect needs to
+confirm fit or clarify the most useful next decision. It does not replace paid
+discovery when the work requires analysis, research, architecture, or a
+deliverable.
 
 Every entry point maps to the same product lanes and lifecycle. The project
 brief captures the selected lane, current lifecycle stage, existing product
@@ -171,8 +206,11 @@ service.
 - The repository is the CMS and operational source of truth.
 - The contact endpoint requires Resend configuration in deployment.
 - The direct-email fallback must always remain available.
-- `/hire#project-brief` is the canonical conversion target, and `/resume` must
-  remain a permanent redirect to `/hire`.
+- `/hire` is the canonical conversion surface. Preserve both
+  `/hire#consultation` and `/hire#project-brief`, keep direct email visible, and
+  keep `/resume` as a permanent redirect to `/hire`.
+- The consultation uses a public Calendly event link. It must not require a
+  Calendly API token, OAuth application, webhook, or client-side secret.
 - No public admin surface is shipped without authentication, authorization,
   audit logging, and a clear editorial need.
 
@@ -181,6 +219,8 @@ service.
 Track these after privacy-respecting analytics are configured:
 
 - qualified enquiry submissions;
+- free consultation bookings, attendance, and qualified next steps;
+- consultation-to-project-brief or consultation-to-paid-scope progression;
 - clicks to email, LinkedIn, GitHub, public demos, and repositories;
 - service-page to contact conversion;
 - organic impressions and qualified search queries;

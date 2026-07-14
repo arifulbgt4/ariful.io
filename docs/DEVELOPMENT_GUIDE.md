@@ -55,6 +55,9 @@ configuration error and the interface offers direct email until Resend is set.
 - Use `next/link` for internal navigation and normal anchors for external links.
 - External links opening a new tab need `rel="noreferrer"` or
   `rel="noopener noreferrer"`.
+- Keep the Calendly event URL in the typed public content configuration. Do not
+  paste provider embed HTML through `dangerouslySetInnerHTML` or add a client
+  token, OAuth flow, webhook, or SDK for the consultation link.
 - Use semantic elements and one clear `h1` per route.
 - Bound all untrusted input on the server. Client validation is usability, not a
   security control.
@@ -85,7 +88,10 @@ configuration error and the interface offers direct email until Resend is set.
    when emitting `dateCreated`.
 5. Keep all four core products at equal presentation priority. Do not add a
    flagship or use a generic commerce-specific template for unrelated work.
-6. Never turn a planned feature, experiment, prototype, or R&D activity into a
+6. Use `highlighted: true` only for a Lab record that needs an explicit
+   discovery treatment. Keep exactly one highlighted Lab, never use the field
+   to alter core ordering, and keep its maturity boundary visible.
+7. Never turn a planned feature, experiment, prototype, or R&D activity into a
    completed outcome.
 
 ## Contact testing
@@ -101,6 +107,28 @@ With a test Resend key and verified sender, verify:
 - repeated requests eventually return `429`; and
 - provider failures do not expose API response bodies.
 
+## Consultation testing
+
+Use the published 30-minute Calendly event and verify:
+
+- the `/hire#consultation` call to action reaches the consultation section;
+- no Calendly iframe or third-party request is created before the visitor
+  chooses to load available times;
+- the inline scheduler loads after that action and the external Calendly link
+  remains available;
+- only name and email are requested in addition to the selected date and time;
+- the invitee sees times in their local timezone and the host calendar records
+  the equivalent Asia/Dhaka time;
+- a test booking creates the Google Meet event and sends confirmations to host
+  and invitee;
+- reschedule and cancellation update both calendars and notifications;
+- the 4-hour minimum notice, no-buffer behavior, maximum four consultations per
+  day, and 30-day booking horizon are enforced; and
+- a blocked or unavailable Calendly frame does not block the project brief or
+  direct-email fallback.
+
+Cancel the production test booking after verifying the complete lifecycle.
+
 ## Visual verification matrix
 
 Minimum widths: 390px, 768px, 1280px, and 1440px.
@@ -115,5 +143,7 @@ Check:
 - article typography and code blocks;
 - `/hire#project-brief` form labels, neutral select placeholders, errors, and
   touch targets;
+- `/hire#consultation` load control, iframe title, keyboard order, cookie
+  banner, external fallback, and a usable scheduler without page overflow;
 - reduced-motion behavior; and
 - missing route recovery.

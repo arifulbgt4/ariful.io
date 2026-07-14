@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="section-kicker">Need this applied to your product?</p>
           <h2 className="mt-3 text-2xl font-black text-white">Turn the architecture into a working release.</h2>
           <p className="mt-3 leading-7 text-slate-400">Share the current system and the outcome you need. I will reply with fit, missing context, and a practical next step.</p>
-          <Link href="/hire#project-brief" className="button-primary mt-6">Discuss your product ↗</Link>
+          <Link href="/hire#consultation" className="button-primary mt-6">Book a free consultation ↗</Link>
         </footer>
       </article>
     </main>

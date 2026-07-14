@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
         destination: '/hire',
         permanent: true,
       },
+      {
+        source: '/work/graphql-todo-application',
+        destination: '/work',
+        permanent: true,
+      },
     ];
   },
   async headers() {

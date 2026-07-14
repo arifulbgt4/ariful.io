@@ -92,14 +92,19 @@ pages. Do not use a large technology-pill wall on the homepage or service index.
 
 ### Homepage
 
-Positioning hero → delivery ownership → four equal core products → lifecycle
-and services → evidence and working style → compact profile summary/FAQ → Hire
-CTA.
+Positioning hero → delivery ownership → four equal core products → highlighted
+EEE Simulator Lab foundation → lifecycle and services → evidence and working
+style → compact profile summary/FAQ → Hire CTA.
 
 This order moves from relevance to evidence, then reduces engagement risk before
-asking the prospect to start at `/hire#project-brief`. The homepage does not
-embed the full form, a resume CTA, a flagship project, or a full technology
-grid.
+asking the prospect to use the appropriate `/hire` starting path. A prospect
+who needs to confirm fit may use `/hire#consultation`; a prospect with enough
+context may use `/hire#project-brief`. The homepage does not embed the full
+scheduler or form, a resume CTA, a flagship project, or a full technology grid.
+The highlighted Lab block may be wider than a normal Lab card because it is a
+separate research-discovery surface after the equal core grid. Its label and
+maturity copy must keep EEE Simulator in the Lab tier and state that the current
+evidence is documentation, not a working or validated simulator.
 
 ### Service page
 
@@ -118,9 +123,16 @@ project look complete.
 
 ### Hire page
 
-Offer → fit criteria → four-product proof → engagement options → inline
-`#project-brief` form → direct-email fallback. Keep this route focused and
-shorter than a general profile page; it is the site's sole conversion surface.
+Offer → fit criteria → four-product proof → engagement options → free
+`#consultation` option → inline `#project-brief` form → direct-email fallback.
+Keep this route focused and shorter than a general profile page; it is the
+site's sole conversion surface.
+
+The consultation section must explain that the free 30-minute call covers fit,
+goals, current constraints, and a useful next step rather than complete solution
+design. Show the Calendly scheduler only after an explicit load action, retain
+the provider cookie banner, and keep a normal external Calendly link visible if
+the inline frame fails or is difficult to use.
 
 ### Article
 
@@ -133,6 +145,9 @@ service CTA.
 - Convert two-column hero and contact layouts to one column below large screens.
 - Keep the project-brief form single-column where two-column controls would
   reduce label clarity or touch accuracy.
+- Keep the consultation frame at least 320px wide within its container, avoid
+  page-level horizontal overflow, and allow the provider surface enough height
+  to remain usable at mobile and desktop widths.
 - Never require horizontal scrolling for tabs, code, or navigation. Code blocks
   may scroll internally.
 - Use text wrapping instead of reducing type below legible sizes.
@@ -144,6 +159,8 @@ service CTA.
 - A skip link targets `#main-content`.
 - Visible `:focus-visible` treatment uses cyan with offset.
 - Inputs have persistent labels, useful autocomplete, and server validation.
+- The consultation iframe has a descriptive title, follows its visible heading
+  in keyboard order, and has an equivalent external-link fallback.
 - Touch targets are at least 44px; primary controls are 48px.
 - Color contrast meets WCAG AA for body text and interactive states.
 - Decorative elements use `aria-hidden`.
@@ -161,3 +178,9 @@ Use `End-to-End Product Engineer for Software, AI & Connected/IoT Products` as
 the canonical identity. Explain connected-product delivery as Ariful-owned
 discovery, architecture, software, integration, and validated prototype work,
 with specialist PCB, certification, and manufacturing partners where required.
+
+Use `Free product consultation` for the booking offer. Explain the 30-minute
+boundary directly: it is a no-obligation fit conversation about goals,
+constraints, and next steps, not a promise to design the complete solution for
+free. Do not claim that the consultation guarantees a project, outcome, or
+conversion improvement.

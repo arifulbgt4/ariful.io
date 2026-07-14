@@ -9,7 +9,8 @@ Targeted outreach / GitHub / LinkedIn / search / referral
                          ↓
           public proof + process + fit criteria
                          ↓
-         `/hire#project-brief` (email fallback)
+       `/hire#consultation` or `/hire#project-brief`
+                    (email fallback)
                          ↓
            discovery -> paid scope -> delivery
 ```
@@ -18,16 +19,20 @@ The site now supports the funnel. Consistent distribution and follow-up are stil
 owner-operated work; the portfolio cannot create qualified demand by itself.
 
 Lead with `End-to-End Product Engineer for Software, AI & Connected/IoT
-Products`. The sole on-site conversion path is `/hire#project-brief`; direct
-email is a resilience fallback, while GitHub, LinkedIn, services, work, Journal,
-and articles supply discovery and evidence rather than competing forms.
+Products`. `/hire` is the sole on-site conversion surface. A prospect may book
+a free 30-minute product consultation at `/hire#consultation` or send a
+qualified brief at `/hire#project-brief`; direct email is a resilience fallback.
+GitHub, LinkedIn, services, work, Journal, and articles supply discovery and
+evidence rather than competing forms.
 
 ## Link selection
 
 Send the narrowest useful page instead of always sending the homepage:
 
-- `/hire#project-brief` for a referral, general product enquiry, or broad
-  founder fit;
+- `/hire#consultation` when a referral or prospect needs a short fit
+  conversation before deciding whether to hire;
+- `/hire#project-brief` when a general product enquiry already has enough
+  context for qualification and a written reply;
 - `/services/ai-commerce-platform-engineering` for a commerce operator actively
   evaluating a build or modernization partner;
 - `/work/ai-dropshipping-commerce-platform` when the prospect needs technical
@@ -35,8 +40,8 @@ Send the narrowest useful page instead of always sending the homepage:
 - either AI dropshipping article when outreach begins with a specific
   architecture, review, pricing, campaign, or automation risk; and
 - another service page when the observed problem is clearly software,
-  AI-enabled, backend/realtime, or connected/IoT product work; every conversion
-  CTA on those pages still ends at `/hire#project-brief`.
+  AI-enabled, backend/realtime, or connected/IoT product work; its next step
+  should use the relevant anchor on `/hire`.
 
 ## Ideal client profile
 
@@ -141,7 +146,10 @@ clear opt-out protect reputation and produce better conversations.
 
 ## Discovery call structure
 
-Use 30 minutes:
+The Calendly event is named `Free product consultation` and uses Google Meet.
+Its configured event form requests only name and email; Calendly also processes
+scheduling and technical metadata. Qualification happens in the conversation or
+through a separate project brief. Use the 30 minutes as follows:
 
 1. 5 minutes: context, user, and desired change;
 2. 10 minutes: current workflow, system, and evidence;
@@ -149,8 +157,10 @@ Use 30 minutes:
 4. 5 minutes: risks and possible first engagement; and
 5. 5 minutes: decision, owner, and next action.
 
-Do not design the complete solution for free. The call should establish fit and
-whether a paid discovery, audit, prototype, or implementation scope is next.
+Do not design the complete solution for free. The call should establish fit,
+clarify goals and constraints, and decide whether a project brief, paid
+discovery, audit, prototype, implementation scope, referral, or no next step is
+appropriate.
 
 ## Engagement entry points
 
@@ -186,6 +196,8 @@ Track weekly:
 - researched messages sent;
 - positive reply rate;
 - discovery calls;
+- consultations booked, attended, cancelled, and missed;
+- consultation-to-qualified-opportunity and consultation-to-paid-scope rates;
 - qualified opportunities;
 - proposals or paid scopes;
 - close rate;

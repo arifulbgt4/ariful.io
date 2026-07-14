@@ -8,13 +8,22 @@ const checks = [
   },
   {
     path: '/hire',
-    expected: ['<title>', 'End-to-End Product Engineer', 'rel="canonical"', 'application/ld+json'],
+    expected: ['<title>', 'End-to-End Product Engineer', 'Free 30-minute product consultation', 'Open Calendly in a new tab', 'rel="canonical"', 'application/ld+json'],
+    forbidden: ['<iframe'],
+  },
+  {
+    path: '/work/eee-simulator',
+    expected: ['<title>', 'EEE Simulator', 'Highlighted Lab', 'Documentation foundation complete', 'rel="canonical"', 'application/ld+json'],
+  },
+  {
+    path: '/work/otask-developer-platform',
+    expected: ['<title>', 'OTask', 'Foundation in development', 'authenticated Rust service', 'rel="canonical"', 'application/ld+json'],
   },
   { path: '/robots.txt', expected: ['Sitemap:'] },
   {
     path: '/sitemap.xml',
-    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>'],
-    forbidden: ['<loc>https://ariful.io/resume</loc>'],
+    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>'],
+    forbidden: ['<loc>https://ariful.io/resume</loc>', '<loc>https://ariful.io/work/graphql-todo-application</loc>'],
   },
   { path: '/rss.xml', expected: ['<rss'] },
   {
@@ -84,23 +93,30 @@ for (const check of checks) {
   }
 }
 
-try {
-  const resumeUrl = `${baseUrl}/resume`;
-  const response = await fetchWithTimeout(resumeUrl, { redirect: 'manual' });
-  const location = response.headers.get('location');
-  const redirectTarget = location ? new URL(location, resumeUrl) : undefined;
+const redirectChecks = [
+  { path: '/resume', destination: '/hire' },
+  { path: '/work/graphql-todo-application', destination: '/work' },
+];
 
-  if (response.status !== 308) {
-    errors.push(`/resume: expected permanent HTTP 308, received ${response.status}`);
+for (const redirectCheck of redirectChecks) {
+  try {
+    const redirectUrl = `${baseUrl}${redirectCheck.path}`;
+    const response = await fetchWithTimeout(redirectUrl, { redirect: 'manual' });
+    const location = response.headers.get('location');
+    const redirectTarget = location ? new URL(location, redirectUrl) : undefined;
+
+    if (response.status !== 308) {
+      errors.push(`${redirectCheck.path}: expected permanent HTTP 308, received ${response.status}`);
+    }
+
+    if (redirectTarget?.pathname !== redirectCheck.destination) {
+      errors.push(`${redirectCheck.path}: expected redirect to ${redirectCheck.destination}, received ${location || 'no location header'}`);
+    }
+
+    console.log(`${redirectCheck.path}: ${response.status} ${location || 'no location header'}`);
+  } catch (error) {
+    errors.push(`${redirectCheck.path}: ${error instanceof Error ? error.message : String(error)}`);
   }
-
-  if (redirectTarget?.pathname !== '/hire') {
-    errors.push(`/resume: expected redirect to /hire, received ${location || 'no location header'}`);
-  }
-
-  console.log(`/resume: ${response.status} ${location || 'no location header'}`);
-} catch (error) {
-  errors.push(`/resume: ${error instanceof Error ? error.message : String(error)}`);
 }
 
 if (errors.length > 0) {
@@ -108,4 +124,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Production watch passed for ${checks.length} public endpoints and the /resume redirect at ${baseUrl}.`);
+console.log(`Production watch passed for ${checks.length} public endpoints and ${redirectChecks.length} permanent redirects at ${baseUrl}.`);

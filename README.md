@@ -4,8 +4,9 @@ Ariful Islam's evidence-based client-acquisition portfolio for SaaS product
 engineering, AI integration, backend systems, and connected-product prototyping.
 
 The repository contains the public website, typed portfolio content, a Git-backed
-Markdown blog CMS, qualified lead form, technical SEO outputs, and complete
-operating documentation for human and AI contributors.
+Markdown blog CMS, a free Calendly consultation option, a qualified lead form,
+technical SEO outputs, and complete operating documentation for human and AI
+contributors.
 
 ## Stack
 
@@ -13,6 +14,7 @@ operating documentation for human and AI contributors.
 - React 19 and TypeScript
 - Tailwind CSS
 - Markdown with `gray-matter`, `react-markdown`, and GFM
+- Calendly direct iframe for optional 30-minute consultation booking
 - Resend REST API for contact delivery
 
 ## Start locally
@@ -29,6 +31,7 @@ Open `http://localhost:3000`.
 
 ```bash
 npm run content:check
+npm run portfolio:check
 npm run seo:check
 npm run typecheck
 npm run lint
@@ -58,6 +61,19 @@ CONTACT_FROM_EMAIL="Ariful.io <hello@ariful.io>"
 Without a key, the website remains buildable and provides a direct-email fallback.
 See `docs/DEPLOYMENT_OPERATIONS.md` for sender verification and testing.
 
+## Free product consultation
+
+`/hire#consultation` offers an optional 30-minute Calendly call for prospects
+who want to discuss fit, goals, constraints, and the next useful step before
+deciding whether to hire Ariful. The scheduler loads only after an explicit
+visitor action and retains a direct Calendly fallback. It uses the public event
+URL in `content/site.ts` and needs no Calendly API token, OAuth application,
+webhook, npm dependency, or environment variable.
+
+The call does not include complete solution design. Ready prospects can instead
+send a qualified brief at `/hire#project-brief`, and direct email remains
+available when either provider path is unsuitable.
+
 ## Documentation
 
 Every AI agent must start with [`AGENTS.md`](AGENTS.md). Humans can use the
@@ -67,6 +83,7 @@ development, design, CMS, SEO, client acquisition, deployment, and roadmap.
 ## Public routes
 
 - `/` — portfolio and lead funnel
+- `/hire` — free consultation, client fit, engagement options, and project brief
 - `/services` and `/services/[slug]` — commercial landing pages
 - `/work` and `/work/[slug]` — project evidence
 - `/blog` and `/blog/[slug]` — engineering articles

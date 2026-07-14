@@ -14,7 +14,8 @@ export default function Footer() {
         <div>
           <p className="footer-heading">Explore</p>
           <div className="mt-4 flex flex-col gap-3 text-sm text-slate-400">
-            <Link href="/hire#project-brief">Start a project</Link>
+            <Link href="/hire#consultation">Book a free consultation</Link>
+            <Link href="/hire#project-brief">Send a project brief</Link>
             <Link href="/work">Product work</Link>
             <Link href="/blog">Insights</Link>
             <Link href="/journal">Engineering journal</Link>

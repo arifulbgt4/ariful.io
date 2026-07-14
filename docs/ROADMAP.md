@@ -5,7 +5,9 @@ contact API, SEO outputs, and operating documentation are implemented around
 the `End-to-End Product Engineer for Software, AI & Connected/IoT Products`
 positioning. The three product lanes, six-stage lifecycle, four equal core
 products, separate Lab & Experiments tier, and `/hire#project-brief` conversion
-path form the client-acquisition system. These next items require owner
+path form the client-acquisition system. `/hire#consultation` adds an optional
+free 30-minute Calendly fit call on the same conversion surface. These next
+items require owner
 credentials, production rollout, new evidence, or an explicit product decision.
 
 ## P0 — Launch configuration
@@ -15,7 +17,11 @@ credentials, production rollout, new evidence, or an explicit product decision.
 - Verify end-to-end contact delivery and Reply-To.
 - Confirm canonical domain redirects and deploy.
 - Verify the permanent `/resume` → `/hire` redirect, sitemap removal, and all
-  navigation/service/work/article CTAs ending at `/hire#project-brief`.
+  navigation/service/work/article CTAs ending at the appropriate
+  `/hire#consultation` or `/hire#project-brief` anchor.
+- Configure and verify the live `Free product consultation` Calendly event,
+  Google Meet creation, booking limits, cookie banner, external fallback,
+  reschedule, and cancellation lifecycle.
 - Validate the live homepage Person/ProfilePage graph with Rich Results Test and
   close the legacy `/resume` Search Console issue through validation or URL
   inspection.
@@ -52,9 +58,14 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
   publication permission.
 - Add current screenshots or short demos for public projects after visual review.
 - Complete credentialed sandbox/production acceptance evidence for the AI
-  Commerce foundation, Otask delivery milestones, integrated pond validation
-  for Underwater Monitoring R&D, and implementation evidence for the Reusable
+  Commerce foundation; advance OTask beyond the CI-validated P00–P02 and
+  P03-001 through P03-005 foundation; complete integrated pond validation for
+  Underwater Monitoring R&D; and add implementation evidence for the Reusable
   B2C Marketplace Platform before advancing any public maturity label.
+- Keep EEE Simulator in the highlighted Lab tier at `Documentation foundation`
+  until executable editor, solver, validation, and deployment evidence exists;
+  do not interpret its detailed requirements, ADRs, catalog, or task plan as a
+  working simulator.
 - Decide whether to publish commercial starting ranges or a paid discovery offer.
 
 ## P1 — Measurement
@@ -63,6 +74,9 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
 - Update the privacy page before enabling it.
 - Track contact submissions, email/LinkedIn/GitHub clicks, service CTA clicks,
   public-work clicks, and article-assisted enquiries.
+- Track consultation bookings, attendance, qualified next steps, and progression
+  to a project brief or paid scope without sending invitee personal data to web
+  analytics.
 - Add uptime and contact-delivery monitoring.
 
 ## P2 — Distribution
@@ -73,9 +87,6 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
 - Operate the targeted outreach cadence in `CLIENT_ACQUISITION_PLAYBOOK.md`.
 
 ## P2 — Optional product features
-
-- Add a booking link only after Ariful chooses a scheduling provider and defines
-  available meeting boundaries.
 - Add downloadable capability material only when it stays synchronized with the
   site source of truth.
 - Add a hosted CMS only when another editor needs it frequently enough to justify

@@ -84,8 +84,8 @@ export default function ServicesPage() {
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-400 sm:text-xl sm:leading-9">
             Start with the product outcome and current stage. The engagement can connect discovery, architecture, experience, software, AI, device integration, verification, launch, and handover without forcing every project into the same shape.
           </p>
-          <Link href="/hire#project-brief" className="button-primary mt-8">
-            Start your product ↗
+          <Link href="/hire#consultation" className="button-primary mt-8">
+            Book a free consultation ↗
           </Link>
         </header>
 

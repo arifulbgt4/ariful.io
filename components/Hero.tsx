@@ -27,8 +27,8 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/hire#project-brief" className="button-primary">
-              Start your product
+            <Link href="/hire#consultation" className="button-primary">
+              Book a free consultation
               <span aria-hidden="true">↗</span>
             </Link>
             <Link href="/work" className="button-secondary">

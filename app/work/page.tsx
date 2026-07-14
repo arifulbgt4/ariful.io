@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/work' },
   openGraph: {
     title: 'Product Engineering Case Studies — Ariful Islam',
-    description: 'Four core products and supporting Lab work, each presented at its verified maturity.',
+    description: 'Four core products plus a highlighted EEE Simulator Lab and supporting experiments, each presented at its verified maturity.',
     url: '/work',
   },
 };
@@ -75,14 +75,16 @@ export default function WorkPage() {
           <div className="max-w-3xl">
             <p className="section-kicker">Lab / References and experiments</p>
             <h2 id="lab-heading" className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
-              Focused technical work that supports product decisions.
+              Research foundations, references, and focused experiments.
             </h2>
             <p className="mt-4 leading-7 text-slate-400">
-              Lab items demonstrate a pattern or tradeoff. They are intentionally separated from end-to-end product case studies.
+              Lab work can document an ambitious engineering direction or test a focused tradeoff. It remains intentionally separated from end-to-end product case studies and carries its real maturity boundary.
             </p>
           </div>
-          <div className="mt-9 grid gap-5 md:grid-cols-2">
-            {labProjects.map((project) => <ProjectCard key={project.slug} project={project} compact />)}
+          <div className="mt-9 grid gap-5 lg:grid-cols-2">
+            {labProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} compact={!project.highlighted} />
+            ))}
           </div>
         </section>
 
@@ -91,7 +93,7 @@ export default function WorkPage() {
             <p className="section-kicker">Have a product problem?</p>
             <h2 className="mt-3 text-2xl font-black text-white">Start with the outcome and current stage.</h2>
           </div>
-          <Link href="/hire#project-brief" className="button-primary mt-6 shrink-0 sm:mt-0">Start your product ↗</Link>
+          <Link href="/hire#consultation" className="button-primary mt-6 shrink-0 sm:mt-0">Book a free consultation ↗</Link>
         </section>
       </div>
     </main>
@@ -100,9 +102,22 @@ export default function WorkPage() {
 
 function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
   return (
-    <article className="surface-card flex min-h-full flex-col p-6 sm:p-8">
+    <article
+      className={`surface-card flex min-h-full flex-col p-6 sm:p-8 ${
+        project.highlighted
+          ? 'border-cyan-300/20 bg-[radial-gradient(circle_at_top_right,rgba(103,232,249,0.09),transparent_42%)] lg:col-span-2'
+          : ''
+      }`}
+    >
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-        <span className="uppercase tracking-[0.14em] text-cyan-300/60">{project.category}</span>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="uppercase tracking-[0.14em] text-cyan-300/60">{project.category}</span>
+          {project.highlighted ? (
+            <span className="rounded-full border border-cyan-300/25 bg-cyan-300/[0.07] px-3 py-1 font-semibold uppercase tracking-[0.12em] text-cyan-200">
+              Highlighted Lab
+            </span>
+          ) : null}
+        </div>
         <span className="rounded-full border border-white/10 px-3 py-1 text-slate-400">{project.maturity.label}</span>
       </div>
       <h3 className="mt-5 text-2xl font-black text-white">{project.title}</h3>
@@ -112,6 +127,16 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Client outcome</p>
           <p className="mt-2 text-sm leading-6 text-slate-300">{project.buyerOutcome}</p>
         </div>
+      ) : null}
+      {project.highlighted ? (
+        <ul className="mt-6 grid gap-3 md:grid-cols-2">
+          {project.highlights.slice(0, 4).map((highlight) => (
+            <li key={highlight} className="flex gap-3 text-sm leading-6 text-slate-400">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+              {highlight}
+            </li>
+          ))}
+        </ul>
       ) : null}
       <div className="mt-6 flex flex-wrap gap-2">
         {project.tags.slice(0, compact ? 4 : 3).map((tag) => <span key={tag} className="skill-pill">{tag}</span>)}

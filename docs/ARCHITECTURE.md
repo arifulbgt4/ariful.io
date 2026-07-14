@@ -12,6 +12,7 @@ content/site.ts ───────────────┐
 content/blog/*.md -> lib/blog ─┘             │
                                              ├─> sitemap / RSS / JSON-LD
 /hire project brief -> /api/contact -> validation ─> Resend -> inbox
+/hire consultation -> explicit visitor action -> Calendly iframe / external link
 
 content fingerprint -> daily scheduled check -> seven-day gate
                                       └─> Google + Bing sitemap submission
@@ -33,10 +34,10 @@ Node.js 20.9 or newer is required by the package manifest.
 | Route | Rendering | Purpose |
 | --- | --- | --- |
 | `/` | Static | Product-engineering positioning, delivery model, and evidence entry page |
-| `/hire` | Static | Sole on-site conversion page with fit, proof, engagement options, and `#project-brief` form |
+| `/hire` | Static | Sole on-site conversion surface with fit, proof, a Calendly `#consultation`, and the `#project-brief` form |
 | `/services` | Static | End-to-End Product Engineering Services hub |
 | `/services/[slug]` | Static params | Search landing pages, deliverables, process, and FAQs |
-| `/work` | Static | Four equal core products plus separate Lab & Experiments index |
+| `/work` | Static | Four equal core products plus a highlighted EEE Simulator research foundation and separate Lab experiments |
 | `/work/[slug]` | Static params | Honest product evidence, lifecycle state, and client relevance |
 | `/journal` | Static | Dated engineering decision and experiment index |
 | `/journal/[slug]` | Static params | Typed journal entries with lifecycle transparency |
@@ -63,7 +64,9 @@ It is also the canonical source for the shared positioning, three product lanes,
 six delivery stages, service records, and project evidence. Project records
 declare `core` or `lab` tier, target users, buyer outcome, maturity, lifecycle
 states, constraints, public evidence, display order, and an evidence-supported
-schema type. Pages must not reconstruct these facts inside JSX.
+schema type. The optional `highlighted` treatment is reserved for a Lab record
+and must not change the four-core hierarchy or imply a higher maturity stage.
+Pages must not reconstruct these facts inside JSX.
 
 `lib/blog.ts` is server-only because it reads files through Node's filesystem.
 Blog pages and RSS/sitemap generation call that loader during build.
@@ -88,6 +91,30 @@ The in-memory rate limit is a low-cost abuse control, not a distributed security
 boundary. A multi-instance, high-traffic deployment should use a shared store or
 edge rate-limiting service.
 
+## Consultation boundary
+
+The free product consultation is a public 30-minute Calendly event rendered on
+`/hire#consultation`. Calendly is loaded only after an explicit visitor action,
+using a direct inline iframe; a normal external Calendly link remains visible as
+the failure and accessibility fallback. The Calendly cookie banner remains
+enabled.
+
+The integration uses only the public event URL recorded in `content/site.ts`.
+It does not call the Calendly API, register OAuth, receive webhooks, add an npm
+SDK, or expose a token. The application does not prefill or transfer project
+brief data into Calendly. The configured event form requests only the invitee
+name and email. Calendly also processes the selected time, timezone, cookie,
+device, network, and other scheduling or security metadata needed to provide
+the third-party service.
+
+The iframe is a third-party processing and availability boundary. If it cannot
+load, the project brief and direct email remain usable. The existing
+`X-Frame-Options: DENY` response header protects Ariful.io from being framed by
+other sites; it does not prevent Ariful.io from displaying the Calendly iframe.
+No Content Security Policy is currently shipped. A future CSP must validate the
+live embed in report-only mode and allow the exact required Calendly frame
+origin before enforcement.
+
 ## SEO boundary
 
 Global defaults live in `app/layout.tsx`. Every indexable route must provide a
@@ -106,7 +133,9 @@ appear in the sitemap or site-navigation discovery surfaces.
 
 The recommended deployment is Vercel or another Node-compatible Next.js host.
 Static content is generated at build time. The contact endpoint needs a Node
-runtime and outbound HTTPS access to Resend.
+runtime and outbound HTTPS access to Resend. Consultation booking depends on
+the public Calendly event, the connected Google calendar, and Google Meet, but
+adds no application server runtime or credential.
 
 ## Search submission boundary
 

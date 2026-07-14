@@ -119,8 +119,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-500">
             Product lanes: {serviceLanes.map((lane) => lane.title).join(' · ')}
           </p>
-          <Link href="/hire#project-brief" className="button-primary mt-8">
-            Discuss your product ↗
+          <Link href="/hire#consultation" className="button-primary mt-8">
+            Book a free consultation ↗
           </Link>
         </header>
 
@@ -164,8 +164,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <p className="section-kicker">Best fit</p>
             <h2 className="mt-4 text-2xl font-black text-white">A useful starting context</h2>
             <p className="mt-4 leading-7 text-slate-300">{service.idealFor}</p>
-            <Link href="/hire#project-brief" className="mt-6 inline-flex font-semibold text-cyan-200 hover:text-white">
-              Check your project fit →
+            <Link href="/hire#consultation" className="mt-6 inline-flex font-semibold text-cyan-200 hover:text-white">
+              Confirm fit in a free call →
             </Link>
           </aside>
 

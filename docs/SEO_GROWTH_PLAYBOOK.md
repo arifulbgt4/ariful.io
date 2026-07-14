@@ -27,9 +27,11 @@ professional title.
 ### Commercial intent
 
 The `/hire` route targets direct identity-plus-commercial intent such as `hire a
-Product Engineer` and `product development from idea to launch`; its canonical
-conversion target is `/hire#project-brief`. `/services` targets software product
-engineering, AI product engineering, and IoT/connected product prototyping.
+Product Engineer` and `product development from idea to launch`. It remains the
+canonical conversion surface, with `/hire#consultation` for a free 30-minute fit
+conversation and `/hire#project-brief` for a qualified written enquiry.
+`/services` targets software product engineering, AI product engineering, and
+IoT/connected product prototyping.
 Each `/services/[slug]` route targets one outcome-led service family:
 
 - software product engineering;
@@ -45,11 +47,14 @@ specific content.
 ### Evidence intent
 
 `/work/[slug]` routes establish domain-specific entity and capability evidence.
-The four equal core products are AI Dropshipping Commerce Platform, Otask,
-Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. GraphQL Todo
-Application and Local LLM Workflows are separate Lab & Experiments records.
-Public source links, visible maturity, role, constraints, and lifecycle evidence
-are stronger than keyword repetition or a flagship badge.
+The four equal core products are AI Dropshipping Commerce Platform, OTask,
+Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. The
+documentation-only EEE Simulator foundation and Local LLM Workflows are
+separate Lab & Experiments records. EEE Simulator may receive a visible
+`Highlighted Lab` treatment for discovery, but that label is not a core,
+flagship, finished-runtime, or validated-simulator claim. Public source links,
+visible maturity, role, constraints, and lifecycle evidence are stronger than
+keyword repetition or a flagship badge.
 
 ### Informational intent
 
@@ -95,7 +100,7 @@ sources. The site supports this through:
 - a visible evidence table covering role, location, delivery ownership,
   specialist-partner boundaries, proof, and claim boundaries;
 - source links to GitHub, LinkedIn, selected work, engineering articles, and the
-  project-brief guide;
+  client-fit guide on `/hire`;
 - homepage profile FAQ content mirrored by FAQPage structured data;
 - visible author information on article pages;
 - GFM table support in Markdown articles; and
@@ -154,7 +159,9 @@ conclusion about content quality or future citation eligibility.
    validator before starting a Search Console validation request; also confirm
    `/resume` returns a permanent redirect without indexable profile markup.
 4. Test Open Graph output on LinkedIn's post inspector.
-5. Add privacy-respecting analytics and update `/privacy` before collection.
+5. Verify the consultation CTA, Calendly fallback, and project brief without
+   adding a second indexable booking route.
+6. Add privacy-respecting analytics and update `/privacy` before collection.
 
 ## Automated search-console updates
 
@@ -202,9 +209,11 @@ and an honest route to a service or project.
 ## Authority building
 
 - Keep GitHub profile, LinkedIn headline, and portfolio positioning consistent.
-- Use `/hire#project-brief` as the broad direct-response link and use the AI
-  commerce service, case study, or article when outreach is based on a
-  commerce-specific signal.
+- Use the relevant `/hire` anchor as the broad direct-response link:
+  `/hire#consultation` when a fit conversation is the next step and
+  `/hire#project-brief` when enough context is available for a written enquiry.
+  Use the AI commerce service, case study, or article when outreach is based on
+  a commerce-specific signal.
 - Add the portfolio and relevant article links to public repository descriptions.
 - Turn public project decisions into technical articles and short LinkedIn posts.
 - Contribute useful fixes or documentation to relevant open-source projects.
@@ -222,6 +231,8 @@ Review monthly:
 - qualified landing-page sessions;
 - service-to-contact click rate;
 - submitted briefs and lead quality;
+- free consultation bookings, attendance, and qualified next actions;
+- consultation-to-brief and consultation-to-paid-scope progression;
 - public-work outbound clicks;
 - article engagement and assisted enquiries;
 - Core Web Vitals by route template; and

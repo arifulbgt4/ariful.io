@@ -44,8 +44,8 @@ export default function About() {
             <Link href="/blog" className="inline-flex items-center gap-2 font-semibold text-cyan-200 hover:text-white">
               Read engineering insights <span aria-hidden="true">→</span>
             </Link>
-            <Link href="/hire#project-brief" className="inline-flex items-center gap-2 font-semibold text-cyan-200 hover:text-white">
-              Start a product conversation <span aria-hidden="true">→</span>
+            <Link href="/hire#consultation" className="inline-flex items-center gap-2 font-semibold text-cyan-200 hover:text-white">
+              Book a free consultation <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>

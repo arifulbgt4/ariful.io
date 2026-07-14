@@ -106,6 +106,20 @@ function staticStringValue(sourceFile, property, fieldName, projectLabel) {
   return value.text;
 }
 
+function staticBooleanValue(sourceFile, property, fieldName, projectLabel) {
+  if (!property || !ts.isPropertyAssignment(property)) {
+    errors.push(`${relativePath(sourceFile.fileName)} ${projectLabel} must declare "${fieldName}" as a static boolean.`);
+    return undefined;
+  }
+
+  const value = unwrapExpression(property.initializer);
+  if (value.kind === ts.SyntaxKind.TrueKeyword) return true;
+  if (value.kind === ts.SyntaxKind.FalseKeyword) return false;
+
+  addNodeError(sourceFile, property, `${projectLabel} must declare "${fieldName}" as a static boolean.`);
+  return undefined;
+}
+
 function findProjectsDeclaration(sourceFile) {
   let projectsDeclaration;
 
@@ -176,6 +190,7 @@ function validateProjects() {
   }
 
   const slugs = new Map();
+  const highlightedProjects = [];
   let coreCount = 0;
   let labCount = 0;
 
@@ -192,6 +207,10 @@ function validateProjects() {
     const slug = staticStringValue(sourceFile, fields.get('slug'), 'slug', fallbackLabel);
     const projectLabel = slug ? `Project "${slug}"` : fallbackLabel;
     const tier = staticStringValue(sourceFile, fields.get('tier'), 'tier', projectLabel);
+    const highlightedProperty = fields.get('highlighted');
+    const highlighted = highlightedProperty
+      ? staticBooleanValue(sourceFile, highlightedProperty, 'highlighted', projectLabel)
+      : false;
 
     if (slug !== undefined && slug.trim() === '') {
       addNodeError(sourceFile, fields.get('slug'), `${fallbackLabel} must use a non-empty slug.`);
@@ -215,6 +234,15 @@ function validateProjects() {
       } else {
         slugs.set(slug, fields.get('slug'));
       }
+
+      if (slug === 'graphql-todo-application') {
+        addNodeError(sourceFile, fields.get('slug'), `${projectLabel} is retired and must not return to the public portfolio.`);
+      }
+    }
+
+
+    if (highlighted) {
+      highlightedProjects.push({ slug, tier, node: highlightedProperty });
     }
 
     if (tier === 'core') {
@@ -242,6 +270,18 @@ function validateProjects() {
   }
   if (initializer.elements.length !== 6) {
     errors.push(`content/site.ts must expose exactly 6 project records; found ${initializer.elements.length}.`);
+  }
+  if (highlightedProjects.length !== 1) {
+    errors.push(`content/site.ts must expose exactly 1 highlighted project; found ${highlightedProjects.length}.`);
+  } else {
+    const [highlightedProject] = highlightedProjects;
+    if (highlightedProject.slug !== 'eee-simulator' || highlightedProject.tier !== 'lab') {
+      addNodeError(
+        sourceFile,
+        highlightedProject.node,
+        'The highlighted project must remain the "eee-simulator" Lab record.',
+      );
+    }
   }
 
   return { coreCount, labCount, projectCount: initializer.elements.length };

@@ -37,7 +37,11 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
   const project = projects.find((item) => item.slug === slug);
   if (!project) return {};
 
-  const pageLabel = project.tier === 'core' ? 'Product Case Study' : 'Lab & Experiment';
+  const pageLabel = project.highlighted
+    ? 'Highlighted Lab'
+    : project.tier === 'core'
+      ? 'Product Case Study'
+      : 'Lab & Experiment';
 
   return {
     title: `${project.title} — ${pageLabel}`,
@@ -118,6 +122,11 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             <span className="rounded-full border border-cyan-300/20 bg-cyan-300/[0.05] px-3 py-1 text-cyan-200">
               {tierLabel}
             </span>
+            {project.highlighted ? (
+              <span className="rounded-full border border-cyan-300/25 bg-cyan-300/[0.07] px-3 py-1 font-semibold uppercase tracking-[0.12em] text-cyan-200">
+                Highlighted Lab
+              </span>
+            ) : null}
             <span className="rounded-full border border-white/10 px-3 py-1 text-slate-400">{project.category}</span>
             <span className="rounded-full border border-white/10 px-3 py-1 text-slate-400">{project.maturity.label}</span>
             <span className="rounded-full border border-white/10 px-3 py-1 text-slate-400">{project.year}</span>
@@ -367,9 +376,14 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             <p className="section-kicker">Have a related product problem?</p>
             <h2 className="mt-3 text-2xl font-black text-white">Define the smallest useful next step.</h2>
           </div>
-          <Link href="/hire#project-brief" className="button-primary mt-6 shrink-0 sm:mt-0">
-            Start your product ↗
-          </Link>
+          <div className="mt-6 flex shrink-0 flex-wrap gap-3 sm:mt-0">
+            <Link href="/hire#consultation" className="button-primary">
+              Book a free consultation ↗
+            </Link>
+            <Link href="/hire#project-brief" className="button-secondary">
+              Send a project brief
+            </Link>
+          </div>
         </div>
       </article>
     </main>
