@@ -263,6 +263,12 @@ export const services: Service[] = [
         href: '/blog/production-ready-nextjs-saas-architecture',
         label: 'Read the architecture guide',
       },
+      {
+        title: 'Retry-safe Stripe webhooks in Next.js',
+        description: 'A production reliability guide covering durable receipt, ordering, idempotent effects, queues, reconciliation, and failure testing.',
+        href: '/blog/retry-safe-stripe-webhooks-nextjs',
+        label: 'Read the Stripe webhook guide',
+      },
     ],
   },
   {

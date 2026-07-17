@@ -187,16 +187,17 @@ GitHub Actions secrets and never enter the application bundle.
 
 ## Content plan
 
-Publish one substantial article every two to four weeks. Recommended sequence:
+Publish one substantial article every two to four weeks. The Stripe webhook
+reliability article is published as the first item in this sequence. Continue
+with:
 
-1. Stripe webhook idempotency in Next.js SaaS products;
-2. multi-tenant authorization with PostgreSQL and Prisma;
-3. an evaluation plan for RAG before production;
-4. when an AI agent is worse than a deterministic workflow;
-5. WebSocket command acknowledgement for IoT dashboards;
-6. modernizing a Node.js backend without a rewrite;
-7. architecture and delivery documentation for a founder handover; and
-8. designing review-gated AI workflows for an international dropshipping platform.
+1. multi-tenant authorization with PostgreSQL and Prisma;
+2. an evaluation plan for RAG before production;
+3. when an AI agent is worse than a deterministic workflow;
+4. WebSocket command acknowledgement for IoT dashboards;
+5. modernizing a Node.js backend without a rewrite;
+6. architecture and delivery documentation for a founder handover; and
+7. designing review-gated AI workflows for an international dropshipping platform.
 
 The AI dropshipping architecture and human-approval articles are published and
 can be distributed as the first commercial topic cluster. Both link to the AI
