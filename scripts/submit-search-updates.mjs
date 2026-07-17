@@ -7,7 +7,7 @@ const stateDirectory = path.join(root, '.search-submission-state');
 const stateFile = path.join(stateDirectory, 'state.json');
 const siteUrl = process.env.SEARCH_SITE_URL || 'https://ariful.io';
 const sitemapUrl = process.env.SEARCH_SITEMAP_URL || `${siteUrl}/sitemap.xml`;
-const submissionIntervalMs = 7 * 24 * 60 * 60 * 1000;
+const submissionIntervalMs = 24 * 60 * 60 * 1000;
 
 function getContentFiles() {
   const files = [path.join(root, 'content', 'site.ts')];
@@ -158,7 +158,7 @@ async function main() {
 
   const lastSubmission = Date.parse(previousState?.submittedAt || '');
   if (Number.isFinite(lastSubmission) && Date.now() - lastSubmission < submissionIntervalMs) {
-    console.log('A successful submission occurred within the last seven days; the content change remains pending.');
+    console.log('A successful submission occurred within the last 24 hours; the content change remains pending.');
     return;
   }
 

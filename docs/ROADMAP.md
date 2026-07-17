@@ -34,7 +34,7 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
 ## P1 — SEO and AEO operations
 
 - Replace the cache-only search-submission state with a durable mechanism so the
-  rolling seven-day contract survives cache eviction.
+  rolling 24-hour contract survives cache eviction.
 - Confirm that the live deployment contains the changed indexable content before
   saving its fingerprint as successfully submitted, and pin Node in the search
   workflow.

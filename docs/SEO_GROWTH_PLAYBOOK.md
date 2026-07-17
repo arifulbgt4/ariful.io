@@ -169,13 +169,13 @@ The scheduled `search-indexing.yml` workflow checks every day so a pending
 content change is handled at the first eligible run. It submits
 `https://ariful.io/sitemap.xml` only when the fingerprint of `content/site.ts`
 or a published blog article differs from the last successful submission. A
-rolling seven-day gate suppresses repeat submissions while the prior state is
+rolling 24-hour gate suppresses repeat submissions while the prior state is
 available, and unchanged content produces no submission. The state currently
 lives in an evictable GitHub Actions cache, so the gate is best-effort rather
 than a permanent rate-limit guarantee.
 
 The publishing contract remains: submit only after indexable content changes
-and no more than once in a rolling seven-day period. The cache limitation is an
+and no more than once in a rolling 24-hour period. The cache limitation is an
 identified operational risk, not permission to submit unchanged content or
 intentionally bypass the interval.
 
@@ -262,6 +262,6 @@ fit.
 - After every schema change: validate the rendered production URL, not only the
   TypeScript source, and resolve critical Search Console errors before adding
   more schema features.
-- After a major deployment: let the weekly-gated workflow submit the sitemap
+- After a major deployment: let the 24-hour-gated workflow submit the sitemap
   only when public content changed; use manual URL inspection only for an
   exceptional priority-page diagnosis.

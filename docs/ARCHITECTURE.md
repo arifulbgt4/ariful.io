@@ -14,7 +14,7 @@ content/blog/*.md -> lib/blog ─┘             │
 /hire project brief -> /api/contact -> validation ─> Resend -> inbox
 /hire consultation -> explicit visitor action -> Calendly iframe / external link
 
-content fingerprint -> daily scheduled check -> seven-day gate
+content fingerprint -> daily scheduled check -> 24-hour gate
                                       └─> Google + Bing sitemap submission
 ```
 
@@ -143,7 +143,7 @@ adds no application server runtime or credential.
 and published Markdown articles. The scheduled GitHub Actions workflow restores
 the last successful fingerprint, does nothing when content is unchanged, and
 keeps a changed fingerprint pending when the previous successful submission was
-less than seven days ago. It records new state only after both Google Search
+less than 24 hours ago. It records new state only after both Google Search
 Console and Bing Webmaster Tools accept the sitemap.
 
 This workflow submits the sitemap, not arbitrary pages through Google's

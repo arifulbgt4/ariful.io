@@ -65,7 +65,7 @@ tags: [Next.js, SaaS, Architecture]
    Article JSON-LD update automatically.
 10. The daily search-submission workflow detects the content fingerprint after
     publication. It submits the sitemap to Google and Bing when content changed,
-    subject to the best-effort rolling seven-day state gate; otherwise it
+    subject to the best-effort rolling 24-hour state gate; otherwise it
     performs no submission.
 
 ## Engineering Journal workflow
@@ -169,8 +169,8 @@ threshold. Record the exact source and verification date in
 
 Changes to `content/site.ts` and published `content/blog/*.md` files are the
 indexing trigger. Documentation, styling, tests, and application-only changes do
-not trigger search-console submission. If multiple content changes happen in one
-week, they are consolidated into the next eligible sitemap submission.
+not trigger search-console submission. If multiple content changes happen within
+24 hours, they are consolidated into the next eligible sitemap submission.
 
 All service, work, article, navigation, and footer conversion copy must keep the
 buyer on `/hire`. Use `/hire#consultation` when the promise is a free 30-minute

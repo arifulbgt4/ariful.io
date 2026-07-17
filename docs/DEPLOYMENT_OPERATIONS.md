@@ -64,7 +64,7 @@ the live fallbacks until that provider-side check passes.
 
 ### GitHub Actions search credentials
 
-The weekly-gated search workflow uses repository Actions settings rather than
+The 24-hour-gated search workflow uses repository Actions settings rather than
 deployment environment variables:
 
 - Secret `GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON`: the complete JSON for a
@@ -79,8 +79,8 @@ deployment environment variables:
 
 After adding the secrets, enable scheduled Actions on the default branch. The
 workflow checks daily and normally submits only when indexed content changed
-and at least seven days passed since the last successful run. Its prior state is
-stored in an evictable Actions cache, so the seven-day gate is best-effort. Run
+and at least 24 hours passed since the last successful run. Its prior state is
+stored in an evictable Actions cache, so the 24-hour gate is best-effort. Run
 it manually once after setup; later manual runs use the same change and interval
 checks while that state remains available.
 

@@ -102,7 +102,7 @@ Do not duplicate business facts in a component when they can be imported from
   `.github/workflows/search-indexing.yml` enabled. It must submit the sitemap to
   Google Search Console and Bing Webmaster Tools only after `content/site.ts` or
   a published `content/blog/*.md` article changes, and never more than once in
-  any rolling seven-day period. Do not submit when the indexed content is
+  any rolling 24-hour period. Do not submit when the indexed content is
   unchanged.
 
 ## Required verification
