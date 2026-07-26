@@ -133,18 +133,28 @@ Cancel the production test booking after verifying the complete lifecycle.
 
 Vercel Web Analytics and Speed Insights are mounted once in `app/layout.tsx`.
 Local development may load the components without sending production data.
-Both production project features were verified enabled on July 27, 2026. After
-deploying the root-layout integration:
+Both production project features and the deployed root-layout integrations were
+verified on July 27, 2026. For production acceptance:
 
-- load a public page and use an internal link for one client-side transition;
-- confirm a successful Fetch/XHR request to `/<unique-path>/view`;
+- disable content blockers, hard-load a public page, wait for it to settle,
+  interact once, and use an internal link or background/exit the page;
+- confirm both build-generated `/<unique-path>/script.js` requests succeed;
+- confirm a successful request to the Analytics `/<unique-path>/view` intake
+  and a successful `POST` to the Speed Insights `/<unique-path>/vitals` intake;
 - confirm the visited routes appear in the Web Analytics dashboard after
   processing;
-- background or close the page and confirm a real-user Web Vital appears in
-  Speed Insights; and
+- confirm an individual Web Vital appears in Speed Insights, then check RES
+  after FCP, LCP, INP, and CLS data are available; and
 - verify that URLs, query parameters, and any future custom events contain no
   names, email addresses, project-brief content, meeting details, credentials,
   or private identifiers.
+
+Version 2 can randomize the script and intake paths for each deployment. Inspect
+the injected element or Network panel instead of hard-coding a previous path.
+Speed Insights flushes some measurements when the page is backgrounded or
+exited, and dashboard processing is not immediate. The RES-only “No data
+available” package warning may therefore appear while individual metric cards
+already contain data; it is not, by itself, evidence that the package is stale.
 
 Automatic page views are route evidence only. They do not prove a successful
 contact delivery, Calendly booking, consultation attendance, or paid scope.

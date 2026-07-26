@@ -83,9 +83,10 @@ examples.
 
 ## P1 — Measurement
 
-- Deploy the installed root-layout Web Analytics integration and verify intake
-  plus dashboard data. Web Analytics and Speed Insights were confirmed enabled,
-  and the code and privacy disclosure were completed on July 27, 2026.
+- Verify Web Analytics production intake plus dashboard data. The root-layout
+  integrations are deployed, both project features were confirmed enabled, and
+  Speed Insights production intake plus dashboard data were accepted on July
+  27, 2026.
 - Track contact submissions, email/LinkedIn/GitHub clicks, service CTA clicks,
   public-work clicks, and article-assisted enquiries.
 - Track consultation bookings, attendance, qualified next steps, and progression

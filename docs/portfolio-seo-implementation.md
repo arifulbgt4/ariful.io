@@ -28,9 +28,10 @@ The repository was already a strong static-first Next.js 16 App Router portfolio
 - Added Bing verification configuration, conservative response security headers, and navigation/internal-link improvements.
 - Added Vercel Web Analytics beside the existing Speed Insights integration in
   the root layout and updated `/privacy` with the anonymous measurement
-  boundary. Both production dashboard features were confirmed enabled;
-  Web Analytics collection still requires a new deployment containing the
-  integration.
+  boundary. Both production dashboard features were confirmed enabled and the
+  root-layout integration was deployed. Speed Insights production intake and
+  dashboard data were accepted on July 27, 2026; Web Analytics intake and
+  dashboard visibility remain a separate manual release check.
 
 ## Architectural decisions
 
@@ -79,9 +80,10 @@ IndexNow was not added: the current update volume does not justify a key endpoin
   limit, 30-day horizon, name/email-only form, disabled guest collection, and
   provider cookie banner; repeat the complete booking, reschedule, and
   cancellation lifecycle after material provider changes.
-- Deploy the root-layout Web Analytics integration and confirm automatic intake
-  plus dashboard data. Web Analytics and Speed Insights are already enabled,
-  and no application analytics environment variable is required.
+- Monitor the deployed measurement integrations. Speed Insights production
+  intake and dashboard data are accepted; confirm Web Analytics automatic
+  intake plus dashboard visibility as a separate release check. Neither
+  integration requires an application analytics environment variable.
 - Validate the deployed origin with Rich Results Test, Schema.org Validator, LinkedIn Post Inspector, and Lighthouse.
 - No verified employment timeline, education record, testimonial, client result, or production metric was invented. The site is intentionally a client-acquisition portfolio rather than a recruiter resume.
 - Underwater R&D has no published field dataset, integrated prototype result, or accuracy metric.

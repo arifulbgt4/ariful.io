@@ -16,6 +16,7 @@ contributors.
 - Markdown with `gray-matter`, `react-markdown`, and GFM
 - Calendly direct iframe for optional 30-minute consultation booking
 - Resend REST API for contact delivery
+- Vercel Web Analytics and Speed Insights for anonymous production measurement
 
 ## Start locally
 
@@ -87,7 +88,7 @@ development, design, CMS, SEO, client acquisition, deployment, and roadmap.
 - `/services` and `/services/[slug]` — commercial landing pages
 - `/work` and `/work/[slug]` — project evidence
 - `/blog` and `/blog/[slug]` — engineering articles
-- `/privacy` — enquiry-data policy
+- `/privacy` — enquiry, consultation, and anonymous site-measurement policy
 - `/sitemap.xml`, `/robots.txt`, and `/rss.xml` — discovery feeds
 
 ## Deployment

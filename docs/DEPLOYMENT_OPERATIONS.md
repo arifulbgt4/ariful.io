@@ -85,13 +85,27 @@ For the production Vercel project:
 
 1. confirm **Analytics** and **Speed Insights** remain enabled for `ariful-io`
    (both were verified enabled on July 27, 2026);
-2. deploy the root-layout integration so Vercel can serve the first-party
-   analytics and performance intake routes;
-3. visit `/`, then use an internal link to `/hire` or `/blog`;
-4. confirm a successful Fetch/XHR request to `/<unique-path>/view` and verify
-   the corresponding route data appears in the Analytics dashboard; and
-5. confirm a real-user Web Vital appears in Speed Insights after the page is
-   backgrounded or closed.
+2. confirm the deployment contains the root-layout integrations and that each
+   injected `/<unique-path>/script.js` request succeeds; version 2 may generate
+   a different randomized path for each deployment, so do not hard-code it;
+3. with content blockers disabled, hard-load `/`, wait for the page to settle,
+   interact once, then navigate away, background the tab, or close it;
+4. confirm a successful request to the Analytics `/<unique-path>/view` intake
+   and a successful `POST` to the Speed Insights `/<unique-path>/vitals`
+   intake; and
+5. use the correct Vercel project, environment, device, and time range, then
+   verify the processed measurements in both dashboards.
+
+Current production acceptance on July 27, 2026: both project features were
+enabled, the deployed `@vercel/speed-insights@2.0.0` matched npm's `latest`
+tag, and Vercel served the build-generated script and vitals routes. After a
+real production hard navigation and page exit, **Production / Desktop / Last 7
+Days** showed a **Real Experience Score of 100 (Great)** based on 10 data
+points. Before that exit event was processed, the RES panel showed Vercel's
+generic “No data available” package warning while FCP, LCP, INP, and FID cards
+already contained measurements. That warning alone is therefore not proof of a
+missing or outdated SDK. RES depends on FCP, LCP, INP, and CLS inputs; inspect
+the individual metrics and intake request before changing code.
 
 The privacy page already discloses both services. Keep personal or confidential
 data out of URLs, query parameters, and future custom events. Automatic page
@@ -199,8 +213,9 @@ After deployment, verify:
 - structured data validation;
 - Vercel Web Analytics automatic page-view intake after a page load and a
   client-side route transition, plus dashboard visibility after processing;
-- a Speed Insights real-user Web Vital without sending personal enquiry or
-  booking data;
+- a Speed Insights script load and `POST` to the build-generated vitals route
+  after the page is backgrounded or exited, plus an individual Web Vital and
+  RES dashboard check without sending personal enquiry or booking data;
 - `/resume`, `/projects`, `/lab`, and the retired GraphQL project route
   permanent redirects plus their absence from `/sitemap.xml`; and
 - no client or server console errors.
@@ -211,10 +226,23 @@ A failed deployment or smoke check creates a visible GitHub Actions failure;
 inspect the Vercel deployment commit and logs before patching, then rerun the
 full verification chain.
 
+`npm run production:check` validates public HTTP outputs and redirects. It
+cannot execute the client-side measurement SDKs, trigger their exit-time
+intake, or inspect authenticated Vercel dashboards; those remain manual
+production release gates.
+
 If Vercel's dashboard shows `404` while the production origin still returns a
 healthy response, do not create a duplicate project. Sign in to the Vercel
 account/team that owns the GitHub-connected project and verify its deployment
 settings there.
+
+If Speed Insights shows no data, first inspect an individual metric rather than
+only RES. Then hard-reload with content blockers disabled, trigger a page exit
+or tab background, and confirm the generated script and `vitals` POST in the
+browser Network panel. Allow for ingestion processing and recheck the project,
+environment, device, and date filters. If a reverse proxy is introduced later,
+it must forward both randomized measurement paths and the `/_vercel/*`
+fallback routes to Vercel.
 
 ## Monitoring
 

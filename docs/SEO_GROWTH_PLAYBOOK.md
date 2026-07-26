@@ -197,10 +197,12 @@ conclusion about content quality or future citation eligibility.
 4. Test Open Graph output on LinkedIn's post inspector.
 5. Verify the consultation CTA, Calendly fallback, and project brief without
    adding a second indexable booking route.
-6. Deploy the integrated root layout and verify Vercel Web Analytics
-   first-party intake plus dashboard data; both Web Analytics and Speed Insights
-   were confirmed enabled on July 27. Keep `/privacy` synchronized and keep
-   personal enquiry or booking data out of URLs and analytics events.
+6. Monitor the deployed Vercel Web Analytics and Speed Insights integrations.
+   Both features were confirmed enabled on July 27, 2026, and Speed Insights
+   production intake plus dashboard data were accepted that day. Verify Web
+   Analytics intake and dashboard data as a separate release gate. Keep
+   `/privacy` synchronized and keep personal enquiry or booking data out of URLs
+   and analytics events.
 
 ## Automated search-console updates
 
