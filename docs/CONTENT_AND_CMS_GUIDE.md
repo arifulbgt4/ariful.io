@@ -182,8 +182,10 @@ schema, or recruiter-first copy.
 The public Calendly event URL, provider name, 30-minute duration, and
 consultation wording belong in `content/site.ts` so UI, validation, and docs do
 not drift. Do not put a Calendly token, calendar credential, invitee data, or
-private availability note in public content. The event asks only for name and
-email; deeper project context belongs in the project brief or the conversation.
+private availability note in public content. The intended event form asks only
+for name and email; deeper project context belongs in the project brief or the
+conversation. Keep custom invitee questions and invitee-added guests disabled
+so the provider form stays inside that boundary.
 
 ## Topic selection
 

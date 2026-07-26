@@ -41,7 +41,8 @@ Configure the Calendly event as follows:
 - event name: `Free product consultation`;
 - one-to-one duration: 30 minutes;
 - location: Google Meet through the connected calendar;
-- invitee fields: Calendly's required name and email only;
+- invitee fields: Calendly's required name and email only, with custom
+  questions and invitee-added guests disabled;
 - minimum scheduling notice: 4 hours;
 - buffer: none;
 - meeting limit: no more than 4 consultations per day;
@@ -55,12 +56,47 @@ provider notifications. The 30-minute call is for fit, goals, constraints, and
 the next useful decision; do not configure its copy as free complete solution
 design.
 
-Current external acceptance status (verified 2026-07-14): the public URL
-responds, and the click-to-load iframe and cookie banner render, but Calendly
-reports `This calendar is currently unavailable.` Enable or republish the event,
-add future availability, and complete a real booking test before treating the
-consultation path as operational. The project brief and direct-email paths remain
-the live fallbacks until that provider-side check passes.
+Current external acceptance status (verified 2026-07-27): the public event is
+active and exposes 30-minute times in `Asia/Dhaka`. A controlled future booking
+completed, generated host and invitee confirmations with a Google Meet location,
+and was then cancelled successfully. The public scheduler retained its cookie
+controls, and adjacent 30-minute slots showed no provider buffer. The
+authenticated event editor confirmed Google Meet, a 4-hour minimum notice, no
+buffer, and a host-wide limit of 4 meetings per day.
+
+The same acceptance pass corrected the booking horizon from 60 to 30 calendar
+days, removed the optional preparation question, and disabled invitee-added
+guests. A fresh public check then exposed bookable dates only through August 25;
+August 26–31 were unavailable, and the final booking form contained exactly the
+required name and email fields.
+
+The site-side click-to-load flow, external Calendly link, project brief, and
+direct email are operational and remain required fallbacks. Recheck the
+provider settings and complete booking lifecycle after material Calendly or
+calendar changes; rescheduling was not repeated during this acceptance pass.
+
+## Vercel Web Analytics and Speed Insights
+
+The shared root layout loads `@vercel/analytics` and
+`@vercel/speed-insights`. Neither integration uses an application analytics ID
+or repository environment variable.
+
+For the production Vercel project:
+
+1. confirm **Analytics** and **Speed Insights** remain enabled for `ariful-io`
+   (both were verified enabled on July 27, 2026);
+2. deploy the root-layout integration so Vercel can serve the first-party
+   analytics and performance intake routes;
+3. visit `/`, then use an internal link to `/hire` or `/blog`;
+4. confirm a successful Fetch/XHR request to `/<unique-path>/view` and verify
+   the corresponding route data appears in the Analytics dashboard; and
+5. confirm a real-user Web Vital appears in Speed Insights after the page is
+   backgrounded or closed.
+
+The privacy page already discloses both services. Keep personal or confidential
+data out of URLs, query parameters, and future custom events. Automatic page
+views do not prove that an enquiry was delivered or a Calendly booking was
+completed.
 
 ### GitHub Actions search credentials
 
@@ -83,6 +119,28 @@ and at least 24 hours passed since the last successful run. Its prior state is
 stored in an evictable Actions cache, so the 24-hour gate is best-effort. Run
 it manually once after setup; later manual runs use the same change and interval
 checks while that state remains available.
+
+Current search-submission evidence (verified 2026-07-27): workflow run `#9`
+successfully submitted the sitemap to Google Search Console and Bing on July
+17. The latest reviewed run, `#19` on July 26, restored the previous state and
+correctly skipped submission because no indexable content changed. The public
+sitemap currently contains 28 canonical URLs.
+
+The authenticated Search Console review on July 27 showed the sitemap as
+`Success`, submitted July 17, last read July 21, with 28 discovered pages. URL
+Inspection reported both `/` and `/hire` as indexed, HTTPS, and carrying one
+valid Profile page item. The Page indexing snapshot, last updated July 10,
+reported 23 indexed and 10 not indexed URLs: two expected canonical-host
+redirects, five discovered but not yet indexed pages, the generated
+`/opengraph-image`, and two retired collection URLs (`/projects` and `/lab`)
+returning 404. Those retired URLs now have permanent `/work` redirects in the
+repository and require deployment before validation.
+
+The stale Profile page issue for `/resume` remained in Google's stored index,
+but a fresh live test followed the current destination and detected a valid
+Profile page item. **Validate fix** was started on July 27. No duplicate sitemap
+submission or indexing request was made because the sitemap is healthy and the
+indexed content fingerprint did not change.
 
 ## Pre-deployment
 
@@ -113,6 +171,9 @@ This repository currently has no database migration.
 - Keep the retired `/work/graphql-todo-application` route as a permanent `308`
   redirect to `/work`; do not restore the project to content, navigation, or the
   sitemap.
+- Keep the retired `/projects` and `/lab` collection routes as permanent `308`
+  redirects to `/work`; after deployment, start validation for the two stale
+  404 examples in Search Console.
 - Do not change blog slugs after publication without a redirect.
 
 ## Launch smoke test
@@ -136,8 +197,12 @@ After deployment, verify:
   `/opengraph-image`;
 - canonical and Open Graph tags in rendered HTML;
 - structured data validation;
-- `/resume` and the retired GraphQL project route permanent redirects plus their
-  absence from `/sitemap.xml`; and
+- Vercel Web Analytics automatic page-view intake after a page load and a
+  client-side route transition, plus dashboard visibility after processing;
+- a Speed Insights real-user Web Vital without sending personal enquiry or
+  booking data;
+- `/resume`, `/projects`, `/lab`, and the retired GraphQL project route
+  permanent redirects plus their absence from `/sitemap.xml`; and
 - no client or server console errors.
 
 The `production-watch.yml` workflow checks Vercel deployment-status failures,
@@ -158,7 +223,8 @@ At minimum configure:
 - deployment failure notifications;
 - uptime checks for homepage and contact endpoint availability;
 - Resend delivery/bounce monitoring;
-- privacy-respecting web analytics after updating `/privacy`; and
+- Vercel Web Analytics route/referrer/device trends and Speed Insights Core Web
+  Vitals, with `/privacy` kept synchronized;
 - Calendly event availability, failed-booking reports, and consultation
   attendance as an external service health and lead-quality signal;
 - Search Console coverage and Core Web Vitals.

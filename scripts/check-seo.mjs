@@ -96,9 +96,24 @@ for (const filename of ['app/sitemap.ts', 'app/site-map/page.tsx']) {
 }
 
 const nextConfigSource = fs.readFileSync(path.join(process.cwd(), 'next.config.ts'), 'utf8');
-for (const marker of ["source: '/resume'", "destination: '/hire'", 'permanent: true']) {
-  if (!nextConfigSource.includes(marker)) {
-    errors.push(`next.config.ts: missing legacy route contract ${marker}.`);
+const requiredRedirects = [
+  ['/resume', '/hire'],
+  ['/work/graphql-todo-application', '/work'],
+  ['/projects', '/work'],
+  ['/lab', '/work'],
+];
+
+for (const [source, destination] of requiredRedirects) {
+  const sourceMarker = `source: '${source}'`;
+  const sourceIndex = nextConfigSource.indexOf(sourceMarker);
+  const redirectBlock = sourceIndex >= 0 ? nextConfigSource.slice(sourceIndex, sourceIndex + 180) : '';
+
+  if (
+    sourceIndex < 0
+    || !redirectBlock.includes(`destination: '${destination}'`)
+    || !redirectBlock.includes('permanent: true')
+  ) {
+    errors.push(`next.config.ts: missing permanent ${source} -> ${destination} redirect contract.`);
   }
 }
 
@@ -115,5 +130,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `SEO source guard passed for ${profilePageCount} inline ProfilePage documents, the product-engineer identity, and the /resume redirect contract.`,
+  `SEO source guard passed for ${profilePageCount} inline ProfilePage documents, the product-engineer identity, and ${requiredRedirects.length} legacy redirect contracts.`,
 );

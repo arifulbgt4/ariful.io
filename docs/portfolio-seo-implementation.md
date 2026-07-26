@@ -1,6 +1,6 @@
 # Portfolio SEO Implementation
 
-Last audited: 2026-07-13
+Last audited: 2026-07-27
 
 ## Existing system and findings
 
@@ -26,6 +26,11 @@ The repository was already a strong static-first Next.js 16 App Router portfolio
 - Expanded underwater monitoring with explicit Researched, Designed, Prototyped, and Planned boundaries plus imaging, embedded, communication, mechanical, power, validation, and productization sections.
 - Added Journal entries to sitemap and the combined RSS feed; connected case studies and journal entries; added related/previous/next article links.
 - Added Bing verification configuration, conservative response security headers, and navigation/internal-link improvements.
+- Added Vercel Web Analytics beside the existing Speed Insights integration in
+  the root layout and updated `/privacy` with the anonymous measurement
+  boundary. Both production dashboard features were confirmed enabled;
+  Web Analytics collection still requires a new deployment containing the
+  integration.
 
 ## Architectural decisions
 
@@ -69,11 +74,14 @@ IndexNow was not added: the current update volume does not justify a key endpoin
 ## Manual setup and limitations
 
 - Configure domain redirects, Resend variables, and verified sender ownership.
-- Configure the public 30-minute Calendly event, connected Google calendar and
-  Meet location, 4-hour minimum notice, no buffer, four-per-day limit, 30-day
-  horizon, required name/email fields, and provider cookie banner; then test the
-  complete booking, reschedule, and cancellation lifecycle.
-- Connect privacy-conscious analytics only after selecting a provider and updating `/privacy`; placeholder variables load no tracking.
+- Maintain the accepted public 30-minute Calendly event, connected Google
+  calendar and Meet location, 4-hour minimum notice, no buffer, four-per-day
+  limit, 30-day horizon, name/email-only form, disabled guest collection, and
+  provider cookie banner; repeat the complete booking, reschedule, and
+  cancellation lifecycle after material provider changes.
+- Deploy the root-layout Web Analytics integration and confirm automatic intake
+  plus dashboard data. Web Analytics and Speed Insights are already enabled,
+  and no application analytics environment variable is required.
 - Validate the deployed origin with Rich Results Test, Schema.org Validator, LinkedIn Post Inspector, and Lighthouse.
 - No verified employment timeline, education record, testimonial, client result, or production metric was invented. The site is intentionally a client-acquisition portfolio rather than a recruiter resume.
 - Underwater R&D has no published field dataset, integrated prototype result, or accuracy metric.

@@ -19,9 +19,12 @@ credentials, production rollout, new evidence, or an explicit product decision.
 - Verify the permanent `/resume` → `/hire` redirect, sitemap removal, and all
   navigation/service/work/article CTAs ending at the appropriate
   `/hire#consultation` or `/hire#project-brief` anchor.
-- Configure and verify the live `Free product consultation` Calendly event,
-  Google Meet creation, booking limits, cookie banner, external fallback,
-  reschedule, and cancellation lifecycle.
+- Maintain the accepted `Free product consultation` contract. A controlled
+  booking, Google Meet confirmation, cancellation, 30-day public boundary,
+  name/email-only form, disabled guest collection, 4-hour notice, no buffer,
+  four-per-day limit, cookie controls, and site fallback flow passed on July 27,
+  2026. Repeat reschedule and full lifecycle checks after material provider or
+  connected-calendar changes.
 - Validate the live homepage Person/ProfilePage graph with Rich Results Test and
   close the legacy `/resume` Search Console issue through validation or URL
   inspection.
@@ -30,6 +33,16 @@ Google Search Console domain verification, Bing property import, and the initial
 shared sitemap submission were completed on July 10, 2026; current sitemap and
 enhancement status was rechecked on July 11. The dated operational snapshot is
 maintained in `SEO_GROWTH_PLAYBOOK.md`.
+
+The live crawl surface and workflow history were rechecked on July 27: the
+public sitemap has 28 canonical URLs, `/resume` redirects permanently to
+`/hire`, the rendered ProfilePage entities are valid, July 17 Google/Bing
+submission succeeded, and the July 26 unchanged-content run skipped correctly.
+The authenticated Search Console review confirmed 28 discovered sitemap pages,
+23 indexed URLs, indexed and valid ProfilePage results for `/` and `/hire`, and
+started validation of the stale `/resume` Profile page item. Deploy the new
+`/projects` and `/lab` redirects before validating their two historical 404
+examples.
 
 ## P1 — SEO and AEO operations
 
@@ -70,13 +83,17 @@ maintained in `SEO_GROWTH_PLAYBOOK.md`.
 
 ## P1 — Measurement
 
-- Choose a privacy-respecting analytics provider.
-- Update the privacy page before enabling it.
+- Deploy the installed root-layout Web Analytics integration and verify intake
+  plus dashboard data. Web Analytics and Speed Insights were confirmed enabled,
+  and the code and privacy disclosure were completed on July 27, 2026.
 - Track contact submissions, email/LinkedIn/GitHub clicks, service CTA clicks,
   public-work clicks, and article-assisted enquiries.
 - Track consultation bookings, attendance, qualified next steps, and progression
   to a project brief or paid scope without sending invitee personal data to web
   analytics.
+- Decide whether non-personal custom conversion events are justified and
+  supported by the Vercel plan; automatic page views must not be interpreted as
+  completed form or booking events.
 - Add uptime and contact-delivery monitoring.
 
 ## P2 — Distribution

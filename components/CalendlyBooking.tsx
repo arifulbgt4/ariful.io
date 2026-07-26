@@ -53,7 +53,7 @@ export default function CalendlyBooking({
               ? 'The Calendly booking frame has loaded. Availability is provided by Calendly; use the external link below if the event does not display.'
               : 'Loading the Calendly booking calendar…'}
           </p>
-          <div className="overflow-x-auto rounded-2xl border border-white/[0.07] bg-white">
+          <div className="-mx-5 overflow-x-auto border-y border-white/[0.07] bg-white sm:mx-0 sm:rounded-2xl sm:border">
             <iframe
               src={eventUrl}
               title={iframeTitle}

@@ -203,7 +203,7 @@ export default function HirePage() {
 
         <section
           id="consultation"
-          className="mt-20 scroll-mt-28 overflow-hidden rounded-[2rem] border border-cyan-300/10 bg-cyan-300/[0.035] sm:mt-24"
+          className="-mx-5 mt-20 scroll-mt-28 overflow-hidden border-y border-cyan-300/10 bg-cyan-300/[0.035] sm:mx-0 sm:mt-24 sm:rounded-[2rem] sm:border"
           aria-labelledby="consultation-heading"
         >
           <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
@@ -257,7 +257,7 @@ export default function HirePage() {
               </p>
             </div>
 
-            <div className="p-3 sm:p-10 lg:p-12">
+            <div className="px-5 py-3 sm:p-10 lg:p-12">
               <CalendlyBooking
                 eventUrl={siteConfig.consultation.eventUrl}
                 buttonLabel={`Load available ${siteConfig.consultation.durationMinutes}-minute times`}

@@ -144,6 +144,42 @@ rendered Person/ProfilePage graph, verify the `/resume` redirect and sitemap
 removal, then use Search Console validation or URL inspection to close the
 legacy report.
 
+The public crawl and submission surface was rechecked on July 27, 2026:
+
+- `/` and `/hire` return indexable `200` responses with exact self-canonicals;
+- `/resume` returns a permanent `308` to `/hire` and is absent from the
+  28-URL sitemap;
+- `robots.txt` allows public routes, blocks `/api/`, and advertises the sitemap;
+- the rendered homepage and `/hire` ProfilePage objects both contain an explicit
+  `Person` `mainEntity` with `name`;
+- search workflow run `#9` successfully submitted the sitemap to Google and
+  Bing on July 17; and
+- run `#19` on July 26 restored the prior fingerprint and correctly skipped an
+  unchanged-content submission.
+
+The authenticated Search Console review on July 27 added current dashboard
+evidence:
+
+- the sitemap status is `Success`, with 28 discovered pages and a July 21 last
+  read date;
+- URL Inspection reports `/` and `/hire` as indexed, HTTPS, and each carrying
+  one valid Profile page item;
+- the Page indexing snapshot reports 23 indexed and 10 not indexed URLs, but
+  that report was last updated July 10;
+- five current routes are discovered but not yet indexed;
+- `/opengraph-image` is the only crawled-but-not-indexed example and already has
+  validation in progress;
+- the two canonical-host redirects are expected; and
+- the stale `/resume` Profile page validation was started after a live test
+  detected a valid item at the current redirect destination.
+
+Search Console also listed `/projects` and `/lab` as historical 404 examples.
+Both now have permanent `/work` redirects in the repository; deploy them before
+starting 404 validation. No duplicate sitemap submission or indexing request
+was made because the sitemap is healthy and no qualifying indexed-content
+fingerprint changed. Keep the historical 27-discovered-page snapshot above
+dated rather than replacing it silently.
+
 Bing AI Performance reported zero citations and zero cited pages for the
 three-month window ending July 10. Bing also reported that site data was still
 being processed. Treat this as the initial AEO measurement baseline, not as a
@@ -161,7 +197,10 @@ conclusion about content quality or future citation eligibility.
 4. Test Open Graph output on LinkedIn's post inspector.
 5. Verify the consultation CTA, Calendly fallback, and project brief without
    adding a second indexable booking route.
-6. Add privacy-respecting analytics and update `/privacy` before collection.
+6. Deploy the integrated root layout and verify Vercel Web Analytics
+   first-party intake plus dashboard data; both Web Analytics and Speed Insights
+   were confirmed enabled on July 27. Keep `/privacy` synchronized and keep
+   personal enquiry or booking data out of URLs and analytics events.
 
 ## Automated search-console updates
 

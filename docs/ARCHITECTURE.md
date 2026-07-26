@@ -13,6 +13,7 @@ content/blog/*.md -> lib/blog ─┘             │
                                              ├─> sitemap / RSS / JSON-LD
 /hire project brief -> /api/contact -> validation ─> Resend -> inbox
 /hire consultation -> explicit visitor action -> Calendly iframe / external link
+public route visit -> Vercel Web Analytics + Speed Insights -> aggregated dashboards
 
 content fingerprint -> daily scheduled check -> 24-hour gate
                                       └─> Google + Bing sitemap submission
@@ -26,6 +27,8 @@ content fingerprint -> daily scheduled check -> 24-hour gate
 - Tailwind CSS 3 plus shared component classes in `app/globals.css`
 - `gray-matter` for Markdown frontmatter
 - `react-markdown` and `remark-gfm` for safe React-based Markdown rendering
+- `@vercel/analytics` for automatic public-route page views
+- `@vercel/speed-insights` for anonymous real-user performance measurements
 
 Node.js 20.9 or newer is required by the package manifest.
 
@@ -45,6 +48,7 @@ Node.js 20.9 or newer is required by the package manifest.
 | `/blog/[slug]` | Static params | Markdown article with Article schema |
 | `/privacy` | Static | Contact-data disclosure |
 | `/resume` | Permanent redirect | Legacy URL redirected with `308` to `/hire` |
+| `/projects`, `/lab` | Permanent redirects | Retired collection URLs redirected with `308` to `/work` |
 | `/site-map` | Static | Visitor-facing content discovery |
 | `/api/contact` | Node Route Handler | Validates and emails project enquiries |
 | `/robots.txt` | Generated | Crawler policy |
@@ -102,10 +106,10 @@ enabled.
 The integration uses only the public event URL recorded in `content/site.ts`.
 It does not call the Calendly API, register OAuth, receive webhooks, add an npm
 SDK, or expose a token. The application does not prefill or transfer project
-brief data into Calendly. The configured event form requests only the invitee
-name and email. Calendly also processes the selected time, timezone, cookie,
-device, network, and other scheduling or security metadata needed to provide
-the third-party service.
+brief data into Calendly. The provider form requests only the invitee name and
+email; custom questions and invitee-added guests are disabled. Calendly also
+processes the selected time, timezone, cookie, device, network, and other
+scheduling or security metadata needed to provide the third-party service.
 
 The iframe is a third-party processing and availability boundary. If it cannot
 load, the project brief and direct email remain usable. The existing
@@ -128,6 +132,23 @@ narrative. `Person.jobTitle` uses `End-to-End Product Engineer`; visible content
 retains the broader Software Engineer, multidisciplinary product builder, and
 inventor context. The legacy `/resume` redirect is not indexable and must not
 appear in the sitemap or site-navigation discovery surfaces.
+
+## Measurement boundary
+
+`app/layout.tsx` loads Vercel Web Analytics and Speed Insights once for the
+shared application shell. Web Analytics records automatic page loads and
+client-side route transitions; Speed Insights records anonymous Web Vitals and
+supporting route, device, network, browser, operating-system, and country
+context. Both integrations depend on the corresponding Vercel project features
+being enabled and on a deployment made after enablement. They require no public
+analytics ID or application environment variable.
+
+Only public route and performance measurements are in scope. Do not send names,
+email addresses, project-brief content, consultation or meeting details,
+credentials, private identifiers, or confidential data through URLs, query
+parameters, custom events, or analytics configuration. The current integration
+does not emit custom conversion events and cannot prove a contact submission,
+booking, attendance, or paid engagement.
 
 ## Deployment model
 

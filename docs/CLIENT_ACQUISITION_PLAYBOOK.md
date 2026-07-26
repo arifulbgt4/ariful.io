@@ -147,9 +147,10 @@ clear opt-out protect reputation and produce better conversations.
 ## Discovery call structure
 
 The Calendly event is named `Free product consultation` and uses Google Meet.
-Its configured event form requests only name and email; Calendly also processes
-scheduling and technical metadata. Qualification happens in the conversation or
-through a separate project brief. Use the 30 minutes as follows:
+Its provider form requests only name and email; custom questions and
+invitee-added guests are disabled. Calendly also processes scheduling and
+technical metadata. Qualification happens in the conversation or through a
+separate project brief. Use the 30 minutes as follows:
 
 1. 5 minutes: context, user, and desired change;
 2. 10 minutes: current workflow, system, and evidence;

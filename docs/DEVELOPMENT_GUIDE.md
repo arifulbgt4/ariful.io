@@ -129,6 +129,26 @@ Use the published 30-minute Calendly event and verify:
 
 Cancel the production test booking after verifying the complete lifecycle.
 
+## Measurement testing
+
+Vercel Web Analytics and Speed Insights are mounted once in `app/layout.tsx`.
+Local development may load the components without sending production data.
+Both production project features were verified enabled on July 27, 2026. After
+deploying the root-layout integration:
+
+- load a public page and use an internal link for one client-side transition;
+- confirm a successful Fetch/XHR request to `/<unique-path>/view`;
+- confirm the visited routes appear in the Web Analytics dashboard after
+  processing;
+- background or close the page and confirm a real-user Web Vital appears in
+  Speed Insights; and
+- verify that URLs, query parameters, and any future custom events contain no
+  names, email addresses, project-brief content, meeting details, credentials,
+  or private identifiers.
+
+Automatic page views are route evidence only. They do not prove a successful
+contact delivery, Calendly booking, consultation attendance, or paid scope.
+
 ## Visual verification matrix
 
 Minimum widths: 390px, 768px, 1280px, and 1440px.

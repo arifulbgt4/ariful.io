@@ -216,7 +216,15 @@ service.
 
 ## Success signals
 
-Track these after privacy-respecting analytics are configured:
+Vercel Web Analytics and Speed Insights provide anonymous public-page,
+referrer, device, location, and performance trends after the Vercel project
+features are enabled and the integration is deployed. They do not automatically
+prove that a contact form was delivered, a Calendly booking was completed, a
+consultation was attended, or an engagement was won. Reconcile those outcomes
+from the relevant first-party inbox and provider records without sending
+personal booking or enquiry data to site analytics.
+
+Track:
 
 - qualified enquiry submissions;
 - free consultation bookings, attendance, and qualified next steps;

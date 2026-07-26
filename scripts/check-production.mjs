@@ -23,7 +23,12 @@ const checks = [
   {
     path: '/sitemap.xml',
     expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>'],
-    forbidden: ['<loc>https://ariful.io/resume</loc>', '<loc>https://ariful.io/work/graphql-todo-application</loc>'],
+    forbidden: [
+      '<loc>https://ariful.io/resume</loc>',
+      '<loc>https://ariful.io/projects</loc>',
+      '<loc>https://ariful.io/lab</loc>',
+      '<loc>https://ariful.io/work/graphql-todo-application</loc>',
+    ],
   },
   { path: '/rss.xml', expected: ['<rss'] },
   {
@@ -95,6 +100,8 @@ for (const check of checks) {
 
 const redirectChecks = [
   { path: '/resume', destination: '/hire' },
+  { path: '/projects', destination: '/work' },
+  { path: '/lab', destination: '/work' },
   { path: '/work/graphql-todo-application', destination: '/work' },
 ];
 
