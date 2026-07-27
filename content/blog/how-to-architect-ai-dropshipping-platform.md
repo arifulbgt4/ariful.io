@@ -1,8 +1,15 @@
 ---
 title: How to Architect an AI Dropshipping Platform That Can Actually Operate
 description: A practical architecture for supplier ingestion, multi-market commerce, controlled AI workflows, campaign operations, and trustworthy analytics.
+summary: "An operable AI dropshipping platform keeps products, suppliers, markets, prices, orders, and analytics deterministic while AI proposes bounded changes. It needs explicit supplier normalization, market profiles, review states, provider controls, currency snapshots, and sandbox acceptance. Build a controlled supplier-to-order slice first, then expand automation only when its failure modes are understood."
+takeaways:
+  - "Treat supplier, product, market, checkout, and analytics records as deterministic business truth."
+  - "Keep AI outputs editable, attributable, validated, and approval-gated before publication."
+  - "Store market and currency context through checkout so reporting preserves historical truth."
+  - "Verify external providers in controlled sandboxes before making a production claim."
+audience: "Commerce founders and product teams designing a multi-market dropshipping or AI-assisted commerce operation."
 date: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-27
 category: AI Commerce
 tags: [AI Dropshipping, Commerce Platform, SaaS, Next.js, Architecture]
 ---

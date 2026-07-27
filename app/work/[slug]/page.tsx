@@ -42,14 +42,17 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
     : project.tier === 'core'
       ? 'Product Case Study'
       : 'Lab & Experiment';
+  const pageTitle = project.seo?.title ?? `${project.title} — ${pageLabel}`;
+  const pageDescription = project.seo?.description ?? project.buyerOutcome;
 
   return {
-    title: `${project.title} — ${pageLabel}`,
-    description: project.buyerOutcome,
+    title: pageTitle,
+    description: pageDescription,
+    keywords: project.seo ? [project.seo.primaryKeyword, ...project.tags] : project.tags,
     alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
-      title: `${project.title} — ${pageLabel}`,
-      description: project.buyerOutcome,
+      title: pageTitle,
+      description: pageDescription,
       url: `/work/${project.slug}`,
     },
   };
@@ -85,7 +88,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
         '@type': 'Audience',
         audienceType: project.targetUsers,
       },
-      keywords: project.tags.join(', '),
+      keywords: [project.seo?.primaryKeyword, ...project.tags].filter(Boolean).join(', '),
       ...(project.schemaType === 'SoftwareApplication'
         ? { applicationCategory: 'BusinessApplication', operatingSystem: 'Web' }
         : {}),

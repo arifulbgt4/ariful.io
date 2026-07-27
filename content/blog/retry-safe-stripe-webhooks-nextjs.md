@@ -1,8 +1,15 @@
 ---
 title: Designing Retry-Safe Stripe Webhooks in Next.js
 description: Learn how to build retry-safe Stripe webhooks in Next.js with signature verification, durable event storage, ordering guards, queues, and reconciliation.
+summary: "A reliable Next.js Stripe webhook authenticates the event, stores a durable receipt, queues slow work, and returns a quick success response. It assumes duplicate and out-of-order delivery, so event receipts, business-operation keys, idempotent side effects, reconciliation, and visible repair paths are all required. Do not build billing state from request arrival order."
+takeaways:
+  - "Acknowledge a Stripe event only after authentication and durable receipt, not after every business effect completes."
+  - "Use event-level, business-operation, and downstream idempotency boundaries together."
+  - "Recover current provider state or use guarded transitions when events arrive out of order."
+  - "Test crashes, retries, queue failures, and reconciliation alongside checkout success."
+audience: "Teams building subscriptions, payments, refunds, or account provisioning with Stripe and Next.js."
 date: 2026-07-17
-updated: 2026-07-17
+updated: 2026-07-27
 category: Product Engineering
 tags: [Stripe, Next.js, Webhooks, SaaS, Payments, Reliability]
 faqs:

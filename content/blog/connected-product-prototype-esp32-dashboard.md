@@ -1,8 +1,15 @@
 ---
 title: "From ESP32 Sensor to Realtime Dashboard: A Prototype Architecture"
 description: How to structure a connected-product prototype across device firmware, communication, ingestion, dashboards, control, and field testing.
+summary: "A connected-product prototype should make the riskiest device, transport, data, dashboard, and control assumptions observable before a team invests in production hardware. Separate those responsibilities, send messages with identity and health context, acknowledge consequential commands, and record field evidence. The goal is a decision-ready system, not a polished demonstration."
+takeaways:
+  - "Choose one or two high-risk prototype questions before selecting hardware or dashboard features."
+  - "Keep device, transport, ingestion, application, and interface responsibilities explicit."
+  - "Treat command acknowledgement, uncertainty, and failure recovery as product behavior."
+  - "Record test conditions and failures so the next engineering decision has evidence."
+audience: "Founders and research teams planning an IoT, monitoring, robotics, or hardware-enabled product prototype."
 date: 2026-06-12
-updated: 2026-07-02
+updated: 2026-07-27
 category: Connected Products
 tags: [ESP32, IoT, WebSocket, Sensors, Prototyping]
 ---

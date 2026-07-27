@@ -228,25 +228,23 @@ GitHub Actions secrets and never enter the application bundle.
 
 ## Content plan
 
-Publish one substantial article every two to four weeks. The Stripe webhook
-reliability article is published as the first item in this sequence. Continue
-with:
+The canonical query-ownership map, 130 strategic seed phrases, Tier-1 focus,
+twelve-month article sequence, quality contract, linking model, and 28/56/90
+day execution checkpoints live in
+[SEO_CONTENT_ROADMAP.md](SEO_CONTENT_ROADMAP.md).
 
-1. multi-tenant authorization with PostgreSQL and Prisma;
-2. an evaluation plan for RAG before production;
-3. when an AI agent is worse than a deterministic workflow;
-4. WebSocket command acknowledgement for IoT dashboards;
-5. modernizing a Node.js backend without a rewrite;
-6. architecture and delivery documentation for a founder handover; and
-7. designing review-gated AI workflows for an international dropshipping platform.
+Publish two substantial, technically reviewed articles each month, not a batch
+of thin search pages. The first two roadmap articles are ready for publication
+in this change:
+“What an End-to-End Product Engineer Actually Owns” and “From Product Idea to
+Launch: A Founder's Engineering Roadmap.” The AI dropshipping
+architecture and human-approval articles remain the first commercial topic
+cluster and must continue to link to the AI commerce case study and dedicated
+service without elevating that product above the other three core products.
 
-The AI dropshipping architecture and human-approval articles are published and
-can be distributed as the first commercial topic cluster. Both link to the AI
-commerce case study and dedicated service page without elevating that product
-above the other three core products in the portfolio hierarchy.
-
-Each article needs a specific query, unique point of view, technical examples,
-and an honest route to a service or project.
+Each article needs a specific query, an original evidence-backed point of view,
+technical examples, honest maturity language, and a natural route to the
+relevant service, case study, and /hire path.
 
 ## Authority building
 

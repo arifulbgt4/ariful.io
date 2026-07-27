@@ -22,16 +22,17 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const laneTitles = productLanes
     .filter((lane) => service.productLanes.includes(lane.id))
     .map((lane) => lane.title);
+  const seo = service.seo;
 
   return {
-    title: service.title,
-    description: service.summary,
-    keywords: [service.title, ...laneTitles, 'end-to-end product engineering'],
+    title: seo.title,
+    description: seo.description,
+    keywords: [seo.primaryKeyword, service.title, ...laneTitles, 'end-to-end product engineering'],
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       type: 'website',
-      title: service.title,
-      description: service.summary,
+      title: seo.title,
+      description: seo.description,
       url: `/services/${service.slug}`,
     },
   };

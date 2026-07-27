@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: siteConfig.name,
       alternateName: siteConfig.brandName,
       url: siteConfig.url,
-      jobTitle: 'Product Engineer',
+      jobTitle: 'End-to-End Product Engineer',
       description: profileSummary.summary,
       sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
     },
@@ -140,11 +140,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               By <Link href="/#about" rel="author" className="font-semibold text-cyan-200 hover:text-white">{siteConfig.name}</Link>
             </span>
             <span aria-hidden="true">·</span>
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <span>Published <time dateTime={post.date}>{formatDate(post.date)}</time></span>
+            <span aria-hidden="true">·</span>
+            <span>Last reviewed <time dateTime={post.updated || post.date}>{formatDate(post.updated || post.date)}</time></span>
             <span aria-hidden="true">·</span>
             <span>{post.readingTime}</span>
           </div>
         </header>
+
+        <section className="mx-auto mt-10 max-w-3xl rounded-2xl border border-cyan-300/10 bg-cyan-300/[0.04] p-6 sm:p-8" aria-labelledby="article-quick-answer">
+          <p className="section-kicker">Quick answer</p>
+          <h2 id="article-quick-answer" className="mt-3 text-2xl font-black text-white">The decision in brief</h2>
+          <p className="mt-4 text-lg leading-8 text-slate-300">{post.summary}</p>
+          <div className="mt-7 grid gap-7 border-t border-white/[0.08] pt-6 sm:grid-cols-2">
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-cyan-200">Key takeaways</h3>
+              <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                {post.takeaways.map((takeaway) => <li key={takeaway} className="flex gap-3"><span aria-hidden="true" className="text-cyan-300">✓</span><span>{takeaway}</span></li>)}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-cyan-200">Who this is for</h3>
+              <p className="mt-4 text-sm leading-7 text-slate-300">{post.audience}</p>
+            </div>
+          </div>
+        </section>
 
         <AuthorCard />
 

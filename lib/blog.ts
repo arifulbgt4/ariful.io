@@ -15,6 +15,9 @@ export type BlogPost = {
   slug: string;
   title: string;
   description: string;
+  summary: string;
+  takeaways: string[];
+  audience: string;
   date: string;
   updated?: string;
   category: string;
@@ -56,11 +59,19 @@ function readPost(filename: string): BlogPost {
 
   const image = typeof data.image === 'string' && data.image ? data.image : undefined;
   const imageAlt = typeof data.imageAlt === 'string' && data.imageAlt ? data.imageAlt : undefined;
+  const summary = typeof data.summary === 'string' && data.summary.trim() ? data.summary : String(data.description);
+  const takeaways = Array.isArray(data.takeaways)
+    ? data.takeaways.filter((takeaway: unknown): takeaway is string => typeof takeaway === 'string' && takeaway.trim() !== '')
+    : [];
+  const audience = typeof data.audience === 'string' ? data.audience : '';
 
   return {
     slug,
     title: String(data.title),
     description: String(data.description),
+    summary,
+    takeaways,
+    audience,
     date: normalizeDate(data.date),
     updated: data.updated ? normalizeDate(data.updated) : undefined,
     category: String(data.category),

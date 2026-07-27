@@ -1,8 +1,15 @@
 ---
 title: A Practical Architecture for a Production-Ready Next.js SaaS
 description: A decision-focused guide to structuring authentication, data, billing, background work, and operations in a maintainable Next.js SaaS.
+summary: "A production-ready Next.js SaaS has explicit business boundaries, server-side authorization, durable data rules, reliable billing and background work, operational visibility, and a documented deployment path. Start with a modular monolith that a small team can understand and operate, then introduce more infrastructure only when measured constraints require it."
+takeaways:
+  - "Organize code around business capabilities and the data, roles, events, and failures each capability owns."
+  - "Keep database access, authorization, provider credentials, and consequential work on server-controlled boundaries."
+  - "Treat billing, jobs, webhooks, and observability as operating systems, not isolated integrations."
+  - "Choose the simplest deployable architecture that another engineer can understand and support."
+audience: "Founders and product teams moving a Next.js prototype or early SaaS toward an operable first release."
 date: 2026-07-02
-updated: 2026-07-02
+updated: 2026-07-27
 category: Product Engineering
 tags: [Next.js, SaaS, TypeScript, Architecture]
 ---

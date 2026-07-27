@@ -99,7 +99,9 @@ examples.
 
 ## P2 — Distribution
 
-- Publish one evidence-rich article every two to four weeks.
+- Execute the evidence-rich editorial sequence in SEO_CONTENT_ROADMAP.md;
+  publish two substantial, technically reviewed articles per month rather than
+  thin daily content.
 - Repurpose each article into one LinkedIn post and one GitHub/profile update.
 - Add relevant portfolio links to public repository descriptions and READMEs.
 - Operate the targeted outreach cadence in `CLIENT_ACQUISITION_PLAYBOOK.md`.

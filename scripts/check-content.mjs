@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 
 const postsDirectory = path.join(process.cwd(), 'content', 'blog');
 const filenames = fs.readdirSync(postsDirectory).filter((filename) => filename.endsWith('.md') && filename !== 'README.md');
-const requiredFields = ['title', 'description', 'date', 'category', 'tags'];
+const requiredFields = ['title', 'description', 'date', 'updated', 'category', 'tags', 'summary', 'takeaways', 'audience'];
 const seenTitles = new Set();
 const errors = [];
 
@@ -42,6 +42,27 @@ for (const filename of filenames) {
   const normalizedDate = data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date);
   if (data.date && !/^\d{4}-\d{2}-\d{2}$/.test(normalizedDate)) {
     errors.push(`${filename}: date must use YYYY-MM-DD.`);
+  }
+  const normalizedUpdated = data.updated instanceof Date ? data.updated.toISOString().slice(0, 10) : String(data.updated);
+  if (data.updated && !/^\d{4}-\d{2}-\d{2}$/.test(normalizedUpdated)) {
+    errors.push(`${filename}: updated must use YYYY-MM-DD.`);
+  }
+
+  if (typeof data.summary !== 'string') {
+    errors.push(`${filename}: summary must be a 40 to 60 word direct answer.`);
+  } else {
+    const summaryWords = data.summary.trim().split(/\s+/).filter(Boolean).length;
+    if (summaryWords < 40 || summaryWords > 60) {
+      errors.push(`${filename}: summary must contain 40 to 60 words; found ${summaryWords}.`);
+    }
+  }
+
+  if (!Array.isArray(data.takeaways) || data.takeaways.length < 3 || data.takeaways.length > 5 || data.takeaways.some((item) => typeof item !== 'string' || item.trim() === '')) {
+    errors.push(`${filename}: takeaways must contain 3 to 5 non-empty strings.`);
+  }
+
+  if (typeof data.audience !== 'string' || data.audience.trim() === '') {
+    errors.push(`${filename}: audience must be a non-empty string.`);
   }
 
   if (content.trim().split(/\s+/).length < 500) {

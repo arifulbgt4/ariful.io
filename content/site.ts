@@ -190,6 +190,11 @@ export type Service = {
   eyebrow: string;
   title: string;
   shortTitle: string;
+  seo: {
+    primaryKeyword: string;
+    title: string;
+    description: string;
+  };
   summary: string;
   idealFor: string;
   productLanes: ProductLaneId[];
@@ -207,6 +212,12 @@ export const services: Service[] = [
     eyebrow: '01 / Product engineering',
     title: 'Software Product Engineering',
     shortTitle: 'Software products',
+    seo: {
+      primaryKeyword: 'SaaS product engineering',
+      title: 'SaaS Product Engineering Services',
+      description:
+        'SaaS product engineering for founders and teams who need a dependable software product from discovery and architecture through launch and handover.',
+    },
     summary:
       'Turn a validated problem into a dependable software product spanning experience, backend, data, integrations, deployment, and handover.',
     idealFor:
@@ -269,6 +280,18 @@ export const services: Service[] = [
         href: '/blog/retry-safe-stripe-webhooks-nextjs',
         label: 'Read the Stripe webhook guide',
       },
+      {
+        title: 'What an end-to-end product engineer owns',
+        description: 'A practical guide to the product, technical, verification, and handover decisions that stay connected during delivery.',
+        href: '/blog/what-an-end-to-end-product-engineer-actually-owns',
+        label: 'Read the ownership guide',
+      },
+      {
+        title: 'A founder’s product idea-to-launch roadmap',
+        description: 'A stage-by-stage framework for reducing uncertainty before and during a software product release.',
+        href: '/blog/from-product-idea-to-launch-founders-engineering-roadmap',
+        label: 'Read the founder roadmap',
+      },
     ],
   },
   {
@@ -276,6 +299,12 @@ export const services: Service[] = [
     eyebrow: '02 / AI commerce systems',
     title: 'AI Commerce Platform Engineering',
     shortTitle: 'AI commerce',
+    seo: {
+      primaryKeyword: 'AI commerce platform engineering',
+      title: 'AI Commerce Platform Engineering',
+      description:
+        'AI commerce platform engineering for controlled supplier ingestion, multi-market offers, approval-gated AI workflows, checkout, campaigns, and analytics.',
+    },
     summary:
       'Design and build controlled commerce platforms spanning supplier ingestion, international offers, AI-assisted operations, checkout, campaigns, and trustworthy analytics.',
     idealFor:
@@ -345,6 +374,12 @@ export const services: Service[] = [
     eyebrow: '03 / Applied AI',
     title: 'AI-Enabled Product Engineering & Automation',
     shortTitle: 'AI & automation',
+    seo: {
+      primaryKeyword: 'AI product engineering and automation',
+      title: 'AI Product Engineering & Automation',
+      description:
+        'AI product engineering and automation for teams that need evaluated RAG, LLM integration, controlled agents, and human-reviewed product workflows.',
+    },
     summary:
       'Practical AI features built around real workflows: LLM integration, RAG, semantic search, tool-using agents, and human-reviewed automation.',
     idealFor:
@@ -408,6 +443,12 @@ export const services: Service[] = [
     eyebrow: '04 / Systems engineering',
     title: 'Backend, API & Realtime Product Systems',
     shortTitle: 'Backend systems',
+    seo: {
+      primaryKeyword: 'backend API engineering',
+      title: 'Backend API Engineering & Realtime Systems',
+      description:
+        'Backend API engineering for secure product data, realtime workflows, integrations, authorization, and maintainable system boundaries.',
+    },
     summary:
       'Maintainable APIs and data systems for products that need secure access, realtime updates, third-party integrations, and room to grow.',
     idealFor:
@@ -465,6 +506,12 @@ export const services: Service[] = [
     eyebrow: '05 / Physical + digital',
     title: 'Connected/IoT Product Prototyping',
     shortTitle: 'Connected products',
+    seo: {
+      primaryKeyword: 'connected product prototyping',
+      title: 'Connected Product Prototyping',
+      description:
+        'Connected product prototyping that joins sensors, embedded controllers, telemetry, realtime dashboards, remote control, and evidence-led validation.',
+    },
     summary:
       'Software-led prototypes connecting sensors, embedded controllers, realtime dashboards, and remote-control experiences.',
     idealFor:
@@ -540,6 +587,11 @@ export type ProjectEvidence = {
 export type Project = {
   slug: string;
   title: string;
+  seo?: {
+    primaryKeyword: string;
+    title: string;
+    description: string;
+  };
   category: string;
   tier: ProjectTier;
   displayOrder: number;
@@ -587,6 +639,12 @@ export const projects: Project[] = [
   {
     slug: 'eee-simulator',
     title: 'EEE Simulator',
+    seo: {
+      primaryKeyword: 'electronics simulation platform architecture',
+      title: 'Electronics Simulation Platform Architecture — EEE Simulator',
+      description:
+        'EEE Simulator is a documentation-first architecture for a browser-based electronics and computer simulation platform with explicit fidelity and validation boundaries.',
+    },
     category: 'Electronics · Computer architecture · Simulation R&D',
     tier: 'lab',
     displayOrder: 1,
@@ -796,6 +854,12 @@ export const projects: Project[] = [
   {
     slug: 'ai-dropshipping-commerce-platform',
     title: 'AI Dropshipping Commerce Platform',
+    seo: {
+      primaryKeyword: 'AI dropshipping platform architecture',
+      title: 'AI Dropshipping Platform Architecture',
+      description:
+        'An evidence-based AI dropshipping platform architecture for supplier ingestion, multi-market commerce, approval-gated AI operations, checkout, and analytics.',
+    },
     category: 'AI commerce · Dropshipping operations',
     tier: 'core',
     displayOrder: 1,
@@ -965,6 +1029,12 @@ export const projects: Project[] = [
   {
     slug: 'otask-developer-platform',
     title: 'OTask',
+    seo: {
+      primaryKeyword: 'local-first automation platform',
+      title: 'Local-First Automation Platform Architecture — OTask',
+      description:
+        'OTask is an in-development local-first automation platform for trusted desktop execution, cross-device coordination, policy boundaries, and reviewable work.',
+    },
     category: 'Local-first automation · Cross-device control',
     tier: 'core',
     displayOrder: 2,
@@ -1145,6 +1215,12 @@ export const projects: Project[] = [
   {
     slug: 'underwater-monitoring-research',
     title: 'Underwater Monitoring R&D',
+    seo: {
+      primaryKeyword: 'underwater monitoring system',
+      title: 'Underwater Monitoring System R&D',
+      description:
+        'An active R&D architecture for an underwater monitoring system combining imaging, sensing, embedded control, telemetry, and staged aquaculture validation.',
+    },
     category: 'Connected-product research',
     tier: 'core',
     displayOrder: 3,
@@ -1268,6 +1344,12 @@ export const projects: Project[] = [
   {
     slug: 'reusable-b2c-marketplace-platform',
     title: 'Reusable B2C Marketplace Platform',
+    seo: {
+      primaryKeyword: 'B2C marketplace architecture',
+      title: 'B2C Marketplace Architecture — Reusable Product Foundation',
+      description:
+        'A reusable B2C marketplace architecture for buyer discovery, catalog operations, checkout, cash-on-delivery workflows, and controlled fulfillment.',
+    },
     category: 'Marketplace engineering · Commerce systems',
     tier: 'core',
     displayOrder: 4,
@@ -1408,6 +1490,16 @@ export const projects: Project[] = [
       title: 'Software Product Engineering',
       href: '/services/saas-product-engineering',
     },
+    relatedArticles: [
+      {
+        title: 'From Product Idea to Launch: A Founder’s Engineering Roadmap',
+        href: '/blog/from-product-idea-to-launch-founders-engineering-roadmap',
+      },
+      {
+        title: 'What an End-to-End Product Engineer Actually Owns',
+        href: '/blog/what-an-end-to-end-product-engineer-actually-owns',
+      },
+    ],
   },
   {
     slug: 'local-llm-workflows',

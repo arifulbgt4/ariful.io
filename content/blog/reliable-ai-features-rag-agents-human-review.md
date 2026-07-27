@@ -1,8 +1,15 @@
 ---
 title: Building Reliable AI Features with RAG, Tools, and Human Review
 description: A practical framework for deciding when to use RAG or agents and how to add evaluation, permission boundaries, and human review.
+summary: "Reliable AI features begin with a narrow product job, trusted context, constrained tools, measurable evaluation, clear fallback behavior, and human review where mistakes matter. Use the least complex pattern that solves the workflow, then prove quality on representative cases before expanding autonomy, permissions, cost, or provider choices."
+takeaways:
+  - "Choose structured generation, retrieval, or tool use based on the job rather than the novelty of an agent."
+  - "Evaluate retrieval, generation, permissions, latency, and cost as separate system boundaries."
+  - "Expose source context, uncertainty, and review decisions for consequential outputs."
+  - "Keep trusted application code responsible for validation, authorization, and state changes."
+audience: "Product and engineering teams adding RAG, LLM, tool-use, or approval-gated automation to an existing workflow."
 date: 2026-06-24
-updated: 2026-07-02
+updated: 2026-07-27
 category: AI Engineering
 tags: [AI, RAG, Agents, LLM, Product Engineering]
 ---

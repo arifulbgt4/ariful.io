@@ -10,6 +10,7 @@ This directory contains the operating context for humans and AI agents.
 | [`DESIGN_GUIDE.md`](DESIGN_GUIDE.md) | Visual system, layout, components, responsive behavior, and accessibility |
 | [`CONTENT_AND_CMS_GUIDE.md`](CONTENT_AND_CMS_GUIDE.md) | Git-backed CMS workflow, voice, evidence rules, and publishing checklist |
 | [`SEO_GROWTH_PLAYBOOK.md`](SEO_GROWTH_PLAYBOOK.md) | Technical SEO, topic strategy, measurement, and optimization cadence |
+| [`SEO_CONTENT_ROADMAP.md`](SEO_CONTENT_ROADMAP.md) | Canonical keyword ownership, editorial sequence, linking model, and SEO execution checkpoints |
 | [`portfolio-seo-implementation.md`](portfolio-seo-implementation.md) | Repository audit, implemented search architecture, maintenance, and manual setup |
 | [`CLIENT_ACQUISITION_PLAYBOOK.md`](CLIENT_ACQUISITION_PLAYBOOK.md) | Lead funnel, qualification, outreach, follow-up, and weekly operating rhythm |
 | [`DEPLOYMENT_OPERATIONS.md`](DEPLOYMENT_OPERATIONS.md) | Environment variables, deployment, monitoring, recovery, and launch checklist |
