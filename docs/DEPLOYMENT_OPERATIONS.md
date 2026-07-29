@@ -141,6 +141,11 @@ valid state uploads it again to refresh artifact retention. Invalid JSON,
 fingerprints, timestamps, versions, or sitemap ownership fail closed instead of
 being treated as missing state.
 
+Changes to the workflow, its search scripts, Node pin, or package manifests also
+run the same guarded job on `dev`, so action/runtime changes and artifact
+migration are checked immediately. This trigger does not bypass the content
+fingerprint or rolling 24-hour rules.
+
 An eligible run installs dependencies, creates the production build, and
 compares the exact URL set in `.next/server/app/sitemap.xml.body` with the live
 production sitemap. Missing, duplicate, or unexpected URLs stop the run before
@@ -149,9 +154,9 @@ Console and Bing accept the sitemap. `npm run search:check` validates this
 contract locally without making a provider or sitemap network request.
 
 Current search-submission evidence (rechecked 2026-07-29): workflow run `#20`
-successfully submitted the sitemap to both Google Search Console and Bing; run
-`#21` restored prior state and correctly skipped unchanged content. The public
-sitemap contains 30 canonical URLs.
+successfully submitted the sitemap to both Google Search Console and Bing; the
+latest reviewed run, `#22`, restored prior state and correctly skipped
+unchanged content. The public sitemap contains 30 canonical URLs.
 
 The authenticated Search Console review through July 29 showed the sitemap as
 `Success`, submitted and last read July 27, with 30 discovered pages. URL

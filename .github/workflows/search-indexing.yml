@@ -2,6 +2,16 @@ name: Submit changed content to search consoles
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - dev
+    paths:
+      - '.github/workflows/search-indexing.yml'
+      - 'scripts/submit-search-updates.mjs'
+      - 'scripts/check-search-indexing.mjs'
+      - '.nvmrc'
+      - 'package.json'
+      - 'package-lock.json'
   schedule:
     - cron: '17 2 * * *'
 

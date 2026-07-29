@@ -154,7 +154,7 @@ The public crawl and submission surface was rechecked through July 29, 2026:
   `Person` `mainEntity` with `name`;
 - search workflow run `#20` successfully submitted the sitemap to Google and
   Bing; and
-- run `#21` restored the prior fingerprint and correctly skipped an
+- the latest reviewed run, `#22`, restored the prior fingerprint and skipped an
   unchanged-content submission.
 
 The authenticated Search Console review through July 29 added current dashboard
@@ -214,6 +214,10 @@ rolling 24-hour gate suppresses repeat submissions, and unchanged content
 produces no submission. The newest unexpired branch-scoped artifact restores
 validated state across runs; the former cache is only a migration fallback, and
 valid state is re-uploaded on every run to refresh retention.
+
+Pushes that change the workflow, search scripts, Node pin, or package manifests
+run the same guarded job on `dev` for immediate implementation acceptance; they
+do not bypass content-change or interval decisions.
 
 Node is pinned from `.nvmrc`. Before a provider call, an eligible run builds the
 current application and requires exact URL-set parity between the built sitemap

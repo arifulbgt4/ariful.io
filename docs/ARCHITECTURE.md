@@ -172,7 +172,9 @@ URL-set parity between the build-generated sitemap and the deployed production
 sitemap. Missing, duplicate, or unexpected URLs stop submission. The workflow
 records a new fingerprint only after both Google Search Console and Bing
 Webmaster Tools accept the sitemap, and re-uploads valid state on every run so
-artifact retention remains continuous.
+artifact retention remains continuous. Relevant workflow/runtime source changes
+also trigger this guarded job on `dev` so the operational path is accepted
+without weakening the content or interval gates.
 
 This workflow submits the sitemap, not arbitrary pages through Google's
 Indexing API. Google limits that API to eligible job-posting and livestream

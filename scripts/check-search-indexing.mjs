@@ -135,6 +135,7 @@ for (const requiredContract of [
   'actions/upload-artifact@v7',
   'SEARCH_LOCAL_SITEMAP_FILE',
   'node-version-file: .nvmrc',
+  "      - 'scripts/submit-search-updates.mjs'",
 ]) {
   assert.match(workflow, new RegExp(requiredContract.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 }
