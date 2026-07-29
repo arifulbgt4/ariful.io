@@ -132,6 +132,7 @@ for (const requiredContract of [
   'actions/setup-node@v7',
   'actions/github-script@v9',
   'actions/download-artifact@v8',
+  'actions/cache/restore@v6',
   'actions/upload-artifact@v7',
   'SEARCH_LOCAL_SITEMAP_FILE',
   'node-version-file: .nvmrc',
