@@ -1,6 +1,6 @@
 # Portfolio SEO Implementation
 
-Last audited: 2026-07-27
+Last audited: 2026-07-29
 
 ## Existing system and findings
 
@@ -28,10 +28,11 @@ The repository was already a strong static-first Next.js 16 App Router portfolio
 - Added Bing verification configuration, conservative response security headers, and navigation/internal-link improvements.
 - Added Vercel Web Analytics beside the existing Speed Insights integration in
   the root layout and updated `/privacy` with the anonymous measurement
-  boundary. Both production dashboard features were confirmed enabled and the
-  root-layout integration was deployed. Speed Insights production intake and
-  dashboard data were accepted on July 27, 2026; Web Analytics intake and
-  dashboard visibility remain a separate manual release check.
+  boundary. Both production dashboard features, root-layout integrations,
+  intake paths, and processed dashboard evidence are accepted. The July 29 Web
+  Analytics snapshot showed 6 visitors, 12 page views, and route data for `/`,
+  `/hire`, and `/work`; Speed Insights acceptance on July 27 showed a Real
+  Experience Score of 100 after exit-triggered processing.
 
 ## Architectural decisions
 
@@ -80,10 +81,9 @@ IndexNow was not added: the current update volume does not justify a key endpoin
   limit, 30-day horizon, name/email-only form, disabled guest collection, and
   provider cookie banner; repeat the complete booking, reschedule, and
   cancellation lifecycle after material provider changes.
-- Monitor the deployed measurement integrations. Speed Insights production
-  intake and dashboard data are accepted; confirm Web Analytics automatic
-  intake plus dashboard visibility as a separate release check. Neither
-  integration requires an application analytics environment variable.
+- Monitor the accepted Web Analytics and Speed Insights baselines for
+  regressions. Both integrations have production intake and dashboard evidence,
+  and neither requires an application analytics environment variable.
 - Validate the deployed origin with Rich Results Test, Schema.org Validator, LinkedIn Post Inspector, and Lighthouse.
 - No verified employment timeline, education record, testimonial, client result, or production metric was invented. The site is intentionally a client-acquisition portfolio rather than a recruiter resume.
 - Underwater R&D has no published field dataset, integrated prototype result, or accuracy metric.

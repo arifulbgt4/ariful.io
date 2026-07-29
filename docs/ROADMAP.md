@@ -25,32 +25,34 @@ credentials, production rollout, new evidence, or an explicit product decision.
   four-per-day limit, cookie controls, and site fallback flow passed on July 27,
   2026. Repeat reschedule and full lifecycle checks after material provider or
   connected-calendar changes.
-- Validate the live homepage Person/ProfilePage graph with Rich Results Test and
-  close the legacy `/resume` Search Console issue through validation or URL
-  inspection.
+- Monitor the legacy `/resume` Profile page validation until Google's stored
+  result refreshes. The July 28 live test followed the redirect, selected
+  `/hire` as canonical, and found one valid Profile item; do not request
+  indexing for the retired `/resume` URL.
 
 Google Search Console domain verification, Bing property import, and the initial
 shared sitemap submission were completed on July 10, 2026; current sitemap and
 enhancement status was rechecked on July 11. The dated operational snapshot is
 maintained in `SEO_GROWTH_PLAYBOOK.md`.
 
-The live crawl surface and workflow history were rechecked on July 27: the
-public sitemap has 28 canonical URLs, `/resume` redirects permanently to
-`/hire`, the rendered ProfilePage entities are valid, July 17 Google/Bing
-submission succeeded, and the July 26 unchanged-content run skipped correctly.
-The authenticated Search Console review confirmed 28 discovered sitemap pages,
-23 indexed URLs, indexed and valid ProfilePage results for `/` and `/hire`, and
-started validation of the stale `/resume` Profile page item. Deploy the new
-`/projects` and `/lab` redirects before validating their two historical 404
-examples.
+The live crawl surface and provider dashboards were rechecked through July 29.
+The public sitemap has 30 canonical URLs and Search Console reports it as
+`Success`, submitted and last read on July 27. The July 24 indexing snapshot
+contains 23 indexed and five excluded URLs: two expected canonical-host
+redirects, two retired 404 records whose validation started July 28, and the
+expected generated `/opengraph-image` exclusion. `/hire` is indexed, HTTPS, and
+has one valid Profile item. Both newly published roadmap articles passed live
+URL inspection and were added to Google's priority crawl queue on July 29;
+submission is not an indexing guarantee.
+
+Search workflow reliability hardening is implemented: Node is pinned from
+`.nvmrc`, the rolling 24-hour state is restored from a durable branch-scoped
+artifact with a one-time legacy-cache fallback, malformed state fails closed,
+and the deployed sitemap must exactly match the current production build before
+Google/Bing submission state can be saved.
 
 ## P1 — SEO and AEO operations
 
-- Replace the cache-only search-submission state with a durable mechanism so the
-  rolling 24-hour contract survives cache eviction.
-- Confirm that the live deployment contains the changed indexable content before
-  saving its fingerprint as successfully submitted, and pin Node in the search
-  workflow.
 - Normalize route-specific Open Graph and Twitter metadata, including a reliable
   social-image fallback for index, service, work, and image-free article pages.
 - Show evidence-backed last-reviewed dates on materially updated articles and use
@@ -83,10 +85,10 @@ examples.
 
 ## P1 — Measurement
 
-- Verify Web Analytics production intake plus dashboard data. The root-layout
-  integrations are deployed, both project features were confirmed enabled, and
-  Speed Insights production intake plus dashboard data were accepted on July
-  27, 2026.
+- Use the accepted Vercel measurement baseline for trend review. Web Analytics
+  production intake and dashboard visibility were accepted on July 29 with 6
+  visitors, 12 page views, and route data for `/`, `/hire`, and `/work`;
+  Speed Insights intake and processed Web Vitals were accepted on July 27.
 - Track contact submissions, email/LinkedIn/GitHub clicks, service CTA clicks,
   public-work clicks, and article-assisted enquiries.
 - Track consultation bookings, attendance, qualified next steps, and progression

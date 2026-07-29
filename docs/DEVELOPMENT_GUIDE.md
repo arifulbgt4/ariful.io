@@ -28,7 +28,7 @@ configuration error and the interface offers direct email until Resend is set.
 | `npm run content:check` | Validate blog frontmatter, article structure, images, and optional FAQs |
 | `npm run portfolio:check` | Validate the four-core/two-lab portfolio contract, evidence fields, unique slugs, and retired flagship language |
 | `npm run seo:check` | Guard inline ProfilePage source objects against missing Google-required entity types and names |
-| `npm run search:check` | Check whether indexable content differs from the last successful search-console submission without contacting either provider |
+| `npm run search:check` | Test the durable state, sitemap-parity, and workflow contract, then check pending content without contacting either provider |
 | `npm run typecheck` | Run TypeScript without emitting files |
 | `npm run lint` | Run Next.js and TypeScript ESLint rules |
 | `npm run lint:fix` | Apply safe lint fixes |
@@ -158,6 +158,12 @@ already contain data; it is not, by itself, evidence that the package is stale.
 
 Automatic page views are route evidence only. They do not prove a successful
 contact delivery, Calendly booking, consultation attendance, or paid scope.
+
+Accepted production baseline: on July 29, 2026, Web Analytics showed 6
+visitors, 12 page views, and processed route data for `/`, `/hire`, and `/work`.
+Speed Insights acceptance on July 27 showed RES 100 after a real page-exit
+flush. Recheck these dated snapshots after measurement configuration or provider
+changes.
 
 ## Visual verification matrix
 

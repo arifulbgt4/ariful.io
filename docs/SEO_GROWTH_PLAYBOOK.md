@@ -139,46 +139,46 @@ its critical issue was an invalid object type for `mainEntity`. Diagnosis also
 found the same `@id`-only pattern on the deployed homepage, although that URL was
 not listed in the invalid-item report. This is a dated historical finding: the
 client-first information architecture retires the resume page through a
-permanent redirect to `/hire`. After deployment, validate the homepage's
-rendered Person/ProfilePage graph, verify the `/resume` redirect and sitemap
-removal, then use Search Console validation or URL inspection to close the
-legacy report.
+permanent redirect to `/hire`. The live redirect, sitemap removal, structured
+data, and validation outcome are recorded in the current snapshot below; keep
+the stored legacy report under validation instead of requesting indexing for
+the retired URL.
 
-The public crawl and submission surface was rechecked on July 27, 2026:
+The public crawl and submission surface was rechecked through July 29, 2026:
 
 - `/` and `/hire` return indexable `200` responses with exact self-canonicals;
 - `/resume` returns a permanent `308` to `/hire` and is absent from the
-  28-URL sitemap;
+  30-URL sitemap;
 - `robots.txt` allows public routes, blocks `/api/`, and advertises the sitemap;
 - the rendered homepage and `/hire` ProfilePage objects both contain an explicit
   `Person` `mainEntity` with `name`;
-- search workflow run `#9` successfully submitted the sitemap to Google and
-  Bing on July 17; and
-- run `#19` on July 26 restored the prior fingerprint and correctly skipped an
+- search workflow run `#20` successfully submitted the sitemap to Google and
+  Bing; and
+- run `#21` restored the prior fingerprint and correctly skipped an
   unchanged-content submission.
 
-The authenticated Search Console review on July 27 added current dashboard
+The authenticated Search Console review through July 29 added current dashboard
 evidence:
 
-- the sitemap status is `Success`, with 28 discovered pages and a July 21 last
-  read date;
-- URL Inspection reports `/` and `/hire` as indexed, HTTPS, and each carrying
-  one valid Profile page item;
-- the Page indexing snapshot reports 23 indexed and 10 not indexed URLs, but
-  that report was last updated July 10;
-- five current routes are discovered but not yet indexed;
-- `/opengraph-image` is the only crawled-but-not-indexed example and already has
-  validation in progress;
+- the sitemap status is `Success`, with 30 discovered pages and July 27
+  submitted and last-read dates;
+- URL Inspection reports `/hire` as indexed, HTTPS, and carrying one valid
+  Profile item;
+- the July 24 Page indexing snapshot reports 23 indexed and five excluded URLs;
+- `/opengraph-image` is the expected generated-image
+  crawled-but-not-indexed example and its validation started July 25;
 - the two canonical-host redirects are expected; and
-- the stale `/resume` Profile page validation was started after a live test
-  detected a valid item at the current redirect destination.
+- `/projects` and `/lab` are historical 404 examples that now redirect
+  permanently to `/work`; their validation started July 28.
 
-Search Console also listed `/projects` and `/lab` as historical 404 examples.
-Both now have permanent `/work` redirects in the repository; deploy them before
-starting 404 validation. No duplicate sitemap submission or indexing request
-was made because the sitemap is healthy and no qualifying indexed-content
-fingerprint changed. Keep the historical 27-discovered-page snapshot above
-dated rather than replacing it silently.
+The stale `/resume` Profile page validation started July 27. Google's stored
+result still shows the legacy issue, but a July 28 live test followed the
+redirect, selected `/hire` as canonical, and found one valid Profile item. Do
+not request indexing for `/resume`. The two newly published roadmap articles
+both passed live URL inspection and received **Indexing requested**
+confirmations by July 29. A crawl-queue request is not an indexing guarantee.
+Keep the historical 27-discovered-page snapshot above dated rather than
+replacing it silently.
 
 Bing AI Performance reported zero citations and zero cited pages for the
 three-month window ending July 10. Bing also reported that site data was still
@@ -198,11 +198,11 @@ conclusion about content quality or future citation eligibility.
 5. Verify the consultation CTA, Calendly fallback, and project brief without
    adding a second indexable booking route.
 6. Monitor the deployed Vercel Web Analytics and Speed Insights integrations.
-   Both features were confirmed enabled on July 27, 2026, and Speed Insights
-   production intake plus dashboard data were accepted that day. Verify Web
-   Analytics intake and dashboard data as a separate release gate. Keep
-   `/privacy` synchronized and keep personal enquiry or booking data out of URLs
-   and analytics events.
+   Both features, production intake paths, and dashboards are accepted. The
+   July 29 Web Analytics snapshot showed 6 visitors, 12 page views, and route
+   data for `/`, `/hire`, and `/work`; Speed Insights acceptance on July 27
+   showed RES 100 after exit-triggered processing. Keep `/privacy` synchronized
+   and personal enquiry or booking data out of URLs and analytics events.
 
 ## Automated search-console updates
 
@@ -210,15 +210,17 @@ The scheduled `search-indexing.yml` workflow checks every day so a pending
 content change is handled at the first eligible run. It submits
 `https://ariful.io/sitemap.xml` only when the fingerprint of `content/site.ts`
 or a published blog article differs from the last successful submission. A
-rolling 24-hour gate suppresses repeat submissions while the prior state is
-available, and unchanged content produces no submission. The state currently
-lives in an evictable GitHub Actions cache, so the gate is best-effort rather
-than a permanent rate-limit guarantee.
+rolling 24-hour gate suppresses repeat submissions, and unchanged content
+produces no submission. The newest unexpired branch-scoped artifact restores
+validated state across runs; the former cache is only a migration fallback, and
+valid state is re-uploaded on every run to refresh retention.
 
-The publishing contract remains: submit only after indexable content changes
-and no more than once in a rolling 24-hour period. The cache limitation is an
-identified operational risk, not permission to submit unchanged content or
-intentionally bypass the interval.
+Node is pinned from `.nvmrc`. Before a provider call, an eligible run builds the
+current application and requires exact URL-set parity between the built sitemap
+and production. Missing, duplicate, or unexpected URLs fail the run, malformed
+state fails closed, and a new fingerprint is saved only after both providers
+accept the sitemap. The publishing contract remains: submit only after
+indexable content changes and no more than once in a rolling 24-hour period.
 
 Google receives a sitemap submission through the Search Console API. Do not use
 Google's Indexing API for normal portfolio pages; it is restricted to eligible
@@ -234,8 +236,8 @@ day execution checkpoints live in
 [SEO_CONTENT_ROADMAP.md](SEO_CONTENT_ROADMAP.md).
 
 Publish two substantial, technically reviewed articles each month, not a batch
-of thin search pages. The first two roadmap articles are ready for publication
-in this change:
+of thin search pages. The first two roadmap articles are published and their
+July 29 indexing requests are tracked separately from sitemap submission:
 “What an End-to-End Product Engineer Actually Owns” and “From Product Idea to
 Launch: A Founder's Engineering Roadmap.” The AI dropshipping
 architecture and human-approval articles remain the first commercial topic

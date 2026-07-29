@@ -18,16 +18,18 @@ clear authorship, expertise, and original value over content made primarily to
 manipulate rankings. A sitemap helps discovery but does not guarantee crawling
 or indexing; internal linking and evidence remain necessary.
 
-Implementation snapshot, 2026-07-27:
+Implementation snapshot, 2026-07-29:
 
-- 28 canonical URLs are in the public sitemap;
-- the recorded Search Console snapshot has 23 indexed URLs and five current
-  routes discovered but not yet indexed;
+- 30 canonical URLs are in the public sitemap;
+- the July 24 Search Console snapshot has 23 indexed and five excluded URLs:
+  two expected canonical-host redirects, two historical 404 records under
+  validation, and the expected generated `/opengraph-image` exclusion;
 - the content-gated Google and Bing sitemap workflow is healthy and must not
   submit when indexable content has not changed;
-- this change adds the first two roadmap articles, ready for publication, and
-  a reusable direct-answer, takeaways, audience, and last-reviewed article
-  contract; and
+- the first two roadmap articles are published, passed live URL inspection, and
+  received indexing-request confirmations by July 29; the reusable
+  direct-answer, takeaways, audience, and last-reviewed article contract is
+  active; and
 - service and primary case-study metadata now draw their target phrase from the
   typed content source of truth.
 
@@ -119,8 +121,8 @@ permission to publish unreviewed content in bulk.
 
 | Month | Article | Primary query | Status |
 | --- | --- | --- | --- |
-| 1 | What an End-to-End Product Engineer Actually Owns | end-to-end product engineer | Ready for publication |
-| 1 | From Product Idea to Launch: A Founder's Engineering Roadmap | product development from idea to launch | Ready for publication |
+| 1 | What an End-to-End Product Engineer Actually Owns | end-to-end product engineer | Published; indexing requested |
+| 1 | From Product Idea to Launch: A Founder's Engineering Roadmap | product development from idea to launch | Published; indexing requested |
 | 2 | How to Scope a Production-Ready SaaS MVP Without Overbuilding | SaaS MVP development | Planned |
 | 2 | Multi-Tenant Authorization with PostgreSQL and Prisma | multi-tenant authorization PostgreSQL | Planned |
 | 3 | How to Evaluate RAG Before Shipping It to Production | RAG evaluation framework | Planned |
@@ -226,8 +228,8 @@ publication permission.
 
 - Recheck production positioning, title, description, canonical, and structured
   data consistency.
-- Deploy the first two articles and connect them to the SaaS service and
-  marketplace case study.
+- Monitor indexing for the first two published articles and maintain their
+  service and case-study links.
 - Review the four core case studies for summary, current maturity, and internal
   links.
 - Export the Search Console query and indexing baseline.

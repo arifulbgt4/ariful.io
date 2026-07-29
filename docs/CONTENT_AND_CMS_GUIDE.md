@@ -64,9 +64,10 @@ tags: [Next.js, SaaS, Architecture]
 9. Commit and deploy. The article index, homepage, sitemap, RSS, metadata, and
    Article JSON-LD update automatically.
 10. The daily search-submission workflow detects the content fingerprint after
-    publication. It submits the sitemap to Google and Bing when content changed,
-    subject to the best-effort rolling 24-hour state gate; otherwise it
-    performs no submission.
+    publication. It submits the sitemap to Google and Bing only when content
+    changed, the durable rolling 24-hour gate permits submission, and the live
+    sitemap exactly matches the current production build; otherwise it performs
+    no submission.
 
 ## Engineering Journal workflow
 

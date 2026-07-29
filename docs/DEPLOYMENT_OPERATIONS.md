@@ -107,6 +107,11 @@ already contained measurements. That warning alone is therefore not proof of a
 missing or outdated SDK. RES depends on FCP, LCP, INP, and CLS inputs; inspect
 the individual metrics and intake request before changing code.
 
+Web Analytics acceptance was rechecked on July 29. **Production / Last 7
+Days** showed 6 visitors, 12 page views, and route-level data for `/`, `/hire`,
+and `/work`; the dashboard no longer showed a no-data state. Treat these as a
+dated processing snapshot rather than a permanent traffic claim.
+
 The privacy page already discloses both services. Keep personal or confidential
 data out of URLs, query parameters, and future custom events. Automatic page
 views do not prove that an enquiry was delivered or a Calendly booking was
@@ -129,32 +134,41 @@ deployment environment variables:
 
 After adding the secrets, enable scheduled Actions on the default branch. The
 workflow checks daily and normally submits only when indexed content changed
-and at least 24 hours passed since the last successful run. Its prior state is
-stored in an evictable Actions cache, so the 24-hour gate is best-effort. Run
-it manually once after setup; later manual runs use the same change and interval
-checks while that state remains available.
+and at least 24 hours passed since the last successful run. It pins Node from
+`.nvmrc`, restores the newest unexpired branch-scoped state artifact, and uses
+the old Actions cache only as a one-time migration fallback. Every run that has
+valid state uploads it again to refresh artifact retention. Invalid JSON,
+fingerprints, timestamps, versions, or sitemap ownership fail closed instead of
+being treated as missing state.
 
-Current search-submission evidence (verified 2026-07-27): workflow run `#9`
-successfully submitted the sitemap to Google Search Console and Bing on July
-17. The latest reviewed run, `#19` on July 26, restored the previous state and
-correctly skipped submission because no indexable content changed. The public
-sitemap currently contains 28 canonical URLs.
+An eligible run installs dependencies, creates the production build, and
+compares the exact URL set in `.next/server/app/sitemap.xml.body` with the live
+production sitemap. Missing, duplicate, or unexpected URLs stop the run before
+either provider is called. New state is written only after both Google Search
+Console and Bing accept the sitemap. `npm run search:check` validates this
+contract locally without making a provider or sitemap network request.
 
-The authenticated Search Console review on July 27 showed the sitemap as
-`Success`, submitted July 17, last read July 21, with 28 discovered pages. URL
-Inspection reported both `/` and `/hire` as indexed, HTTPS, and carrying one
-valid Profile page item. The Page indexing snapshot, last updated July 10,
-reported 23 indexed and 10 not indexed URLs: two expected canonical-host
-redirects, five discovered but not yet indexed pages, the generated
-`/opengraph-image`, and two retired collection URLs (`/projects` and `/lab`)
-returning 404. Those retired URLs now have permanent `/work` redirects in the
-repository and require deployment before validation.
+Current search-submission evidence (rechecked 2026-07-29): workflow run `#20`
+successfully submitted the sitemap to both Google Search Console and Bing; run
+`#21` restored prior state and correctly skipped unchanged content. The public
+sitemap contains 30 canonical URLs.
 
-The stale Profile page issue for `/resume` remained in Google's stored index,
-but a fresh live test followed the current destination and detected a valid
-Profile page item. **Validate fix** was started on July 27. No duplicate sitemap
-submission or indexing request was made because the sitemap is healthy and the
-indexed content fingerprint did not change.
+The authenticated Search Console review through July 29 showed the sitemap as
+`Success`, submitted and last read July 27, with 30 discovered pages. URL
+Inspection reported `/hire` as indexed, HTTPS, and carrying one valid Profile
+item. The Page indexing snapshot, last updated July 24, reported 23 indexed and
+five excluded URLs: two expected canonical-host redirects, the generated
+`/opengraph-image`, and the two historical `/projects` and `/lab` 404 records.
+Those retired collection routes now redirect permanently to `/work`, and
+validation of their historical 404 records started July 28. The generated image
+is an expected non-HTML exclusion; its validation had started July 25.
+
+The stale Profile page issue for `/resume` remains in Google's stored index,
+but its July 28 live test succeeded, followed the redirect, selected `/hire` as
+canonical, and detected one valid Profile item. **Validate fix** started July
+27; do not request indexing for the retired redirect. Both roadmap articles
+passed live URL inspection and received **Indexing requested** confirmations on
+July 29. A priority crawl request does not guarantee indexing.
 
 ## Pre-deployment
 
@@ -186,8 +200,8 @@ This repository currently has no database migration.
   redirect to `/work`; do not restore the project to content, navigation, or the
   sitemap.
 - Keep the retired `/projects` and `/lab` collection routes as permanent `308`
-  redirects to `/work`; after deployment, start validation for the two stale
-  404 examples in Search Console.
+  redirects to `/work`; validation for their two historical 404 records started
+  on July 28.
 - Do not change blog slugs after publication without a redirect.
 
 ## Launch smoke test

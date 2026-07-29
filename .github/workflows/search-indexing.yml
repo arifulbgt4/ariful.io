@@ -6,6 +6,7 @@ on:
     - cron: '17 2 * * *'
 
 permissions:
+  actions: read
   contents: read
 
 concurrency:
@@ -19,17 +20,86 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Restore last successful submission state
-        uses: actions/cache/restore@v4
+      - name: Find latest durable submission state
+        id: previous-state
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const artifactName = 'search-submission-state';
+            const branch = context.ref.startsWith('refs/heads/')
+              ? context.ref.slice('refs/heads/'.length)
+              : context.ref;
+            const artifacts = await github.paginate(
+              github.rest.actions.listArtifactsForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: artifactName,
+                per_page: 100,
+              },
+            );
+            const candidates = artifacts
+              .filter(
+                (artifact) =>
+                  !artifact.expired &&
+                  artifact.workflow_run?.head_branch === branch,
+              )
+              .sort(
+                (left, right) =>
+                  Date.parse(right.created_at) - Date.parse(left.created_at),
+              );
+            const latest = candidates[0];
+            core.setOutput('run-id', latest?.workflow_run?.id || '');
+            core.info(
+              latest
+                ? `Restoring ${artifactName} from workflow run ${latest.workflow_run.id}.`
+                : `No durable ${artifactName} artifact exists for ${branch}.`,
+            );
+
+      - name: Restore durable submission state
+        if: steps.previous-state.outputs.run-id != ''
+        uses: actions/download-artifact@v8
+        with:
+          name: search-submission-state
+          path: .search-submission-state
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.previous-state.outputs.run-id }}
+
+      - name: Restore legacy cached state for migration
+        if: steps.previous-state.outputs.run-id == ''
+        uses: actions/cache/restore@v6
         with:
           path: .search-submission-state
           key: search-submission-state-${{ github.run_id }}
           restore-keys: |
             search-submission-state-
 
-      - name: Detect content changes and submit sitemap
+      - name: Set up repository Node version
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Check whether submission work is eligible
+        id: plan
+        env:
+          SEARCH_SITE_URL: https://ariful.io
+          SEARCH_SITEMAP_URL: https://ariful.io/sitemap.xml
+        run: node scripts/submit-search-updates.mjs --check
+
+      - name: Install dependencies for deployment parity
+        if: steps.plan.outputs.eligible == 'true'
+        run: npm ci
+
+      - name: Build the current production sitemap
+        if: steps.plan.outputs.eligible == 'true'
+        run: npm run build
+
+      - name: Verify deployment and submit sitemap
+        if: steps.plan.outputs.eligible == 'true'
         id: submit
         env:
           GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
@@ -37,11 +107,15 @@ jobs:
           BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
           SEARCH_SITE_URL: https://ariful.io
           SEARCH_SITEMAP_URL: https://ariful.io/sitemap.xml
+          SEARCH_LOCAL_SITEMAP_FILE: .next/server/app/sitemap.xml.body
         run: node scripts/submit-search-updates.mjs
 
-      - name: Save successful submission state
-        if: steps.submit.outputs.submitted == 'true'
-        uses: actions/cache/save@v4
+      - name: Preserve durable submission state
+        if: always() && !cancelled() && hashFiles('.search-submission-state/state.json') != ''
+        uses: actions/upload-artifact@v7
         with:
-          path: .search-submission-state
-          key: search-submission-state-${{ github.run_id }}
+          name: search-submission-state
+          path: .search-submission-state/state.json
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 90

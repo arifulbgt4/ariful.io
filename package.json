@@ -12,7 +12,7 @@
     "portfolio:check": "node scripts/check-portfolio.mjs",
     "seo:check": "node scripts/check-seo.mjs",
     "production:check": "node scripts/check-production.mjs",
-    "search:check": "node scripts/submit-search-updates.mjs --check",
+    "search:check": "node scripts/check-search-indexing.mjs && node scripts/submit-search-updates.mjs --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "next typegen && tsc --noEmit"

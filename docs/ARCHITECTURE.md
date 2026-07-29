@@ -162,10 +162,17 @@ adds no application server runtime or credential.
 
 `scripts/submit-search-updates.mjs` fingerprints the public structured content
 and published Markdown articles. The scheduled GitHub Actions workflow restores
-the last successful fingerprint, does nothing when content is unchanged, and
-keeps a changed fingerprint pending when the previous successful submission was
-less than 24 hours ago. It records new state only after both Google Search
-Console and Bing Webmaster Tools accept the sitemap.
+the latest validated, branch-scoped state artifact, does nothing when content is
+unchanged, and keeps a changed fingerprint pending when the previous successful
+submission was less than 24 hours ago. The former Actions cache is a one-time
+migration fallback; malformed or mismatched state fails closed.
+
+Eligible runs pin Node from `.nvmrc`, build the application, and require exact
+URL-set parity between the build-generated sitemap and the deployed production
+sitemap. Missing, duplicate, or unexpected URLs stop submission. The workflow
+records a new fingerprint only after both Google Search Console and Bing
+Webmaster Tools accept the sitemap, and re-uploads valid state on every run so
+artifact retention remains continuous.
 
 This workflow submits the sitemap, not arbitrary pages through Google's
 Indexing API. Google limits that API to eligible job-posting and livestream
