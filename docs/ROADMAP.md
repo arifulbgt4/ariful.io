@@ -49,7 +49,10 @@ Search workflow reliability hardening is implemented: Node is pinned from
 `.nvmrc`, the rolling 24-hour state is restored from a durable branch-scoped
 artifact with a one-time legacy-cache fallback, malformed state fails closed,
 and the deployed sitemap must exactly match the current production build before
-Google/Bing submission state can be saved.
+Google/Bing submission state can be saved. Remote runs `#23` and `#24` accepted
+the migration and steady-state paths respectively: `#23` migrated the cached
+state into a durable artifact, and `#24` restored that artifact, skipped the
+legacy fallback and unchanged-content provider calls, then refreshed retention.
 
 ## P1 — SEO and AEO operations
 

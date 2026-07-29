@@ -153,9 +153,11 @@ The public crawl and submission surface was rechecked through July 29, 2026:
 - the rendered homepage and `/hire` ProfilePage objects both contain an explicit
   `Person` `mainEntity` with `name`;
 - search workflow run `#20` successfully submitted the sitemap to Google and
-  Bing; and
-- the latest reviewed run, `#22`, restored the prior fingerprint and skipped an
-  unchanged-content submission.
+  Bing;
+- hardened run `#23` migrated the prior cache state into a durable artifact;
+  and
+- run `#24` restored and refreshed that artifact while correctly skipping the
+  legacy fallback, build, and provider calls for unchanged content.
 
 The authenticated Search Console review through July 29 added current dashboard
 evidence:
