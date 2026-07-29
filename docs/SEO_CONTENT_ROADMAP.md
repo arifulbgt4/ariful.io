@@ -30,6 +30,9 @@ Implementation snapshot, 2026-07-29:
   received indexing-request confirmations by July 29; the reusable
   direct-answer, takeaways, audience, and last-reviewed article contract is
   active; and
+- the Month 2 SaaS MVP scoping and PostgreSQL/Prisma multi-tenant authorization
+  articles are implemented locally with the same article contract and await
+  deployment, live inspection, and provider-side indexing evidence; and
 - service and primary case-study metadata now draw their target phrase from the
   typed content source of truth.
 
@@ -123,8 +126,8 @@ permission to publish unreviewed content in bulk.
 | --- | --- | --- | --- |
 | 1 | What an End-to-End Product Engineer Actually Owns | end-to-end product engineer | Published; indexing requested |
 | 1 | From Product Idea to Launch: A Founder's Engineering Roadmap | product development from idea to launch | Published; indexing requested |
-| 2 | How to Scope a Production-Ready SaaS MVP Without Overbuilding | SaaS MVP development | Planned |
-| 2 | Multi-Tenant Authorization with PostgreSQL and Prisma | multi-tenant authorization PostgreSQL | Planned |
+| 2 | How to Scope a Production-Ready SaaS MVP Without Overbuilding | SaaS MVP development | Implemented locally; deployment and live inspection pending |
+| 2 | Multi-Tenant Authorization with PostgreSQL and Prisma | multi-tenant authorization PostgreSQL | Implemented locally; deployment and live inspection pending |
 | 3 | How to Evaluate RAG Before Shipping It to Production | RAG evaluation framework | Planned |
 | 3 | When an AI Agent Is Worse Than a Deterministic Workflow | AI agent vs workflow automation | Planned |
 | 4 | How to Modernize a Node.js Backend Without a Full Rewrite | legacy backend modernization | Planned |

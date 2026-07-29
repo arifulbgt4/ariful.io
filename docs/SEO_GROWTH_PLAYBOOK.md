@@ -250,6 +250,14 @@ architecture and human-approval articles remain the first commercial topic
 cluster and must continue to link to the AI commerce case study and dedicated
 service without elevating that product above the other three core products.
 
+The Month 2 articles, “How to Scope a Production-Ready SaaS MVP Without
+Overbuilding” and “Multi-Tenant Authorization with PostgreSQL and Prisma,” are
+implemented locally as of July 29. They extend the SaaS cluster through first
+release scope, tenant ownership, trusted authorization, database constraints,
+failure handling, and negative isolation tests. Do not describe them as
+deployed, inspected, submitted, or indexed until the corresponding production
+and provider evidence exists.
+
 Each article needs a specific query, an original evidence-backed point of view,
 technical examples, honest maturity language, and a natural route to the
 relevant service, case study, and /hire path.

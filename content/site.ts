@@ -1492,6 +1492,14 @@ export const projects: Project[] = [
     },
     relatedArticles: [
       {
+        title: 'How to Scope a Production-Ready SaaS MVP Without Overbuilding',
+        href: '/blog/how-to-scope-production-ready-saas-mvp',
+      },
+      {
+        title: 'Multi-Tenant Authorization with PostgreSQL and Prisma',
+        href: '/blog/multi-tenant-authorization-postgresql-prisma',
+      },
+      {
         title: 'From Product Idea to Launch: A Founder’s Engineering Roadmap',
         href: '/blog/from-product-idea-to-launch-founders-engineering-roadmap',
       },
