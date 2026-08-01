@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { track } from '@vercel/analytics';
 import { useState, type InputHTMLAttributes } from 'react';
 import { siteConfig } from '@/content/site';
 import { projectBriefOptions } from '@/lib/project-brief';
@@ -33,6 +34,7 @@ export default function ProjectBriefForm() {
       }
 
       form.reset();
+      track('project_brief_success');
       setFormState({
         status: 'success',
         message: 'Thanks — your product brief has been sent. I will reply by email.',

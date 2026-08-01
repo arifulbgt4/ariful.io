@@ -145,9 +145,18 @@ verified on July 27, 2026. For production acceptance:
   processing;
 - confirm an individual Web Vital appears in Speed Insights, then check RES
   after FCP, LCP, INP, and CLS data are available; and
-- verify that URLs, query parameters, and any future custom events contain no
+- verify that URLs, query parameters, and custom events contain no
   names, email addresses, project-brief content, meeting details, credentials,
   or private identifiers.
+
+The hire flow also emits four allowlisted custom conversion events. In local
+development, verify the analytics debug output or queued calls for scheduler
+load, external Calendly fallback, and service-to-hire CTA clicks. Verify
+`project_brief_success` only after a controlled successful API response; do not
+place test identity or brief content in analytics. The CTA event may contain
+only its code-defined `source` and `intent` strings, while the other three
+events contain no properties. Custom-event dashboard acceptance requires a
+Vercel Pro or Enterprise team; the project team was Hobby on August 1, 2026.
 
 Version 2 can randomize the script and intake paths for each deployment. Inspect
 the injected element or Network panel instead of hard-coding a previous path.
@@ -156,8 +165,10 @@ exited, and dashboard processing is not immediate. The RES-only “No data
 available” package warning may therefore appear while individual metric cards
 already contain data; it is not, by itself, evidence that the package is stale.
 
-Automatic page views are route evidence only. They do not prove a successful
-contact delivery, Calendly booking, consultation attendance, or paid scope.
+Automatic page views are route evidence only. The project-brief event proves a
+successful form API response, not inbox receipt or lead quality. Scheduler and
+Calendly-link events do not prove a booking, consultation attendance, or paid
+scope.
 
 Accepted production baseline: on July 29, 2026, Web Analytics showed 6
 visitors, 12 page views, and processed route data for `/`, `/hire`, and `/work`.

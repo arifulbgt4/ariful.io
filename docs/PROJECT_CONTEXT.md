@@ -224,6 +224,12 @@ consultation was attended, or an engagement was won. Reconcile those outcomes
 from the relevant first-party inbox and provider records without sending
 personal booking or enquiry data to site analytics.
 
+The conversion flow may record fixed, non-personal events for scheduler load,
+external Calendly fallback, successful project-brief API response, and important
+service-to-hire CTA clicks. Only allowlisted public placement and intent labels
+may accompany the CTA event. Custom-event reporting requires Vercel Pro or
+Enterprise; the authenticated project team was on Hobby on August 1, 2026.
+
 Track:
 
 - qualified enquiry submissions;

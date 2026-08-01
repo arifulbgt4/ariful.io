@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
+import TrackedHireLink from '@/components/TrackedHireLink';
 import { deliveryLifecycle, productLanes, services, siteConfig } from '@/content/site';
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
@@ -120,9 +121,14 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-500">
             Product lanes: {serviceLanes.map((lane) => lane.title).join(' · ')}
           </p>
-          <Link href="/hire#consultation" className="button-primary mt-8">
+          <TrackedHireLink
+            href="/hire#consultation"
+            intent="consultation"
+            source={`${service.slug}-hero`}
+            className="button-primary mt-8"
+          >
             Book a free consultation ↗
-          </Link>
+          </TrackedHireLink>
         </header>
 
         <section className="mt-16" aria-labelledby="service-context-heading">
@@ -165,9 +171,14 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <p className="section-kicker">Best fit</p>
             <h2 className="mt-4 text-2xl font-black text-white">A useful starting context</h2>
             <p className="mt-4 leading-7 text-slate-300">{service.idealFor}</p>
-            <Link href="/hire#consultation" className="mt-6 inline-flex font-semibold text-cyan-200 hover:text-white">
+            <TrackedHireLink
+              href="/hire#consultation"
+              intent="consultation"
+              source={`${service.slug}-fit-panel`}
+              className="mt-6 inline-flex font-semibold text-cyan-200 hover:text-white"
+            >
               Confirm fit in a free call →
-            </Link>
+            </TrackedHireLink>
           </aside>
 
           <div className="space-y-14">
@@ -253,9 +264,14 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <h2 className="mt-3 text-2xl font-black text-white">Start with the outcome, current stage, and most expensive uncertainty.</h2>
             <p className="mt-2 max-w-2xl text-slate-400">Send the current context, desired change, timeline, and budget range through the product brief.</p>
           </div>
-          <Link href="/hire#project-brief" className="button-primary mt-6 shrink-0 sm:mt-0">
+          <TrackedHireLink
+            href="/hire#project-brief"
+            intent="project-brief"
+            source={`${service.slug}-project-brief`}
+            className="button-primary mt-6 shrink-0 sm:mt-0"
+          >
             Send your project brief ↗
-          </Link>
+          </TrackedHireLink>
         </section>
       </div>
     </main>

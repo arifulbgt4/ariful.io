@@ -113,9 +113,27 @@ and `/work`; the dashboard no longer showed a no-data state. Treat these as a
 dated processing snapshot rather than a permanent traffic claim.
 
 The privacy page already discloses both services. Keep personal or confidential
-data out of URLs, query parameters, and future custom events. Automatic page
+data out of URLs, query parameters, and custom events. Automatic page
 views do not prove that an enquiry was delivered or a Calendly booking was
 completed.
+
+Vercel's [custom-event documentation](https://vercel.com/docs/analytics/custom-events)
+states that custom Web Analytics events are available only on Pro and
+Enterprise, even though standard Web Analytics is available across plans.
+The authenticated `Ariful islam's projects` team showed the Hobby plan on
+August 1, 2026. The code now emits allowlisted hire-flow events, but production
+event intake and dashboard acceptance remain blocked until the owner upgrades
+that team and deploys the change. No upgrade was performed as part of the code
+change.
+
+After a Pro-or-higher deployment, verify these event names in the Analytics
+Events panel: `consultation_scheduler_load`,
+`calendly_external_fallback_click`, `project_brief_success`, and
+`service_to_hire_cta_click`. The first three must have no custom properties.
+The service CTA event may contain only the code-defined public `source` and
+`intent` strings. Confirm that no name, email, project-brief field or content,
+Calendly selection, meeting detail, full URL/query value, or identifier appears
+in an event.
 
 ### GitHub Actions search credentials
 
@@ -234,6 +252,8 @@ After deployment, verify:
 - structured data validation;
 - Vercel Web Analytics automatic page-view intake after a page load and a
   client-side route transition, plus dashboard visibility after processing;
+- on Pro or Enterprise, the four allowlisted hire-flow custom events in the
+  Analytics Events panel, including property inspection for privacy acceptance;
 - a Speed Insights script load and `POST` to the build-generated vitals route
   after the page is backgrounded or exited, plus an individual Web Vital and
   RES dashboard check without sending personal enquiry or booking data;

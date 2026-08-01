@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
+import { track } from '@vercel/analytics';
 
 type CalendlyBookingProps = {
   eventUrl: string;
@@ -18,6 +19,11 @@ export default function CalendlyBooking({
   const [shouldLoadCalendar, setShouldLoadCalendar] = useState(false);
   const [hasCalendarLoaded, setHasCalendarLoaded] = useState(false);
 
+  function loadCalendar() {
+    track('consultation_scheduler_load');
+    setShouldLoadCalendar(true);
+  }
+
   useEffect(() => {
     if (shouldLoadCalendar) statusRef.current?.focus();
   }, [shouldLoadCalendar]);
@@ -33,7 +39,7 @@ export default function CalendlyBooking({
             type="button"
             className="button-primary mt-5"
             aria-describedby={statusId}
-            onClick={() => setShouldLoadCalendar(true)}
+            onClick={loadCalendar}
           >
             {buttonLabel}
             <span aria-hidden="true">→</span>
@@ -71,6 +77,7 @@ export default function CalendlyBooking({
         target="_blank"
         rel="noopener noreferrer"
         className="button-secondary"
+        onClick={() => track('calendly_external_fallback_click')}
       >
         Open Calendly in a new tab
         <span aria-hidden="true">↗</span>

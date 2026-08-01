@@ -97,9 +97,11 @@ legacy fallback and unchanged-content provider calls, then refreshed retention.
 - Track consultation bookings, attendance, qualified next steps, and progression
   to a project brief or paid scope without sending invitee personal data to web
   analytics.
-- Decide whether non-personal custom conversion events are justified and
-  supported by the Vercel plan; automatic page views must not be interpreted as
-  completed form or booking events.
+- Deploy and accept the implemented non-personal hire-flow custom events after
+  upgrading the authenticated Vercel team from Hobby to Pro or higher. Inspect
+  every event property for privacy before treating the dashboard as accepted;
+  automatic page views must not be interpreted as completed form or booking
+  events.
 - Add uptime and contact-delivery monitoring.
 
 ## P2 — Distribution

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import JsonLd from '@/components/JsonLd';
+import TrackedHireLink from '@/components/TrackedHireLink';
 import { deliveryLifecycle, productLanes, services, siteConfig } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -84,9 +85,14 @@ export default function ServicesPage() {
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-400 sm:text-xl sm:leading-9">
             Start with the product outcome and current stage. The engagement can connect discovery, architecture, experience, software, AI, device integration, verification, launch, and handover without forcing every project into the same shape.
           </p>
-          <Link href="/hire#consultation" className="button-primary mt-8">
+          <TrackedHireLink
+            href="/hire#consultation"
+            intent="consultation"
+            source="services-index-hero"
+            className="button-primary mt-8"
+          >
             Book a free consultation ↗
-          </Link>
+          </TrackedHireLink>
         </header>
 
         <section className="mt-20" aria-labelledby="product-lanes-heading">
@@ -202,9 +208,14 @@ export default function ServicesPage() {
             <h2 className="mt-3 text-2xl font-black text-white">Describe the outcome, stage, constraint, and decision ahead.</h2>
             <p className="mt-2 max-w-2xl text-slate-400">The right service boundary can be confirmed after the current product context is clear.</p>
           </div>
-          <Link href="/hire#project-brief" className="button-primary mt-6 shrink-0 sm:mt-0">
+          <TrackedHireLink
+            href="/hire#project-brief"
+            intent="project-brief"
+            source="services-index-project-brief"
+            className="button-primary mt-6 shrink-0 sm:mt-0"
+          >
             Send your project brief ↗
-          </Link>
+          </TrackedHireLink>
         </section>
       </div>
     </main>

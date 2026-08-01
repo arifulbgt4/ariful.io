@@ -16,7 +16,8 @@ contributors.
 - Markdown with `gray-matter`, `react-markdown`, and GFM
 - Calendly direct iframe for optional 30-minute consultation booking
 - Resend REST API for contact delivery
-- Vercel Web Analytics and Speed Insights for anonymous production measurement
+- Vercel Web Analytics and Speed Insights for privacy-safe production
+  measurement, with allowlisted hire-flow custom events gated on Pro+
 
 ## Start locally
 

@@ -14,6 +14,7 @@ content/blog/*.md -> lib/blog ─┘             │
 /hire project brief -> /api/contact -> validation ─> Resend -> inbox
 /hire consultation -> explicit visitor action -> Calendly iframe / external link
 public route visit -> Vercel Web Analytics + Speed Insights -> aggregated dashboards
+allowlisted hire interaction -> Vercel custom event -> conversion dashboard (Pro+)
 
 content fingerprint -> daily scheduled check -> 24-hour gate
                                       └─> Google + Bing sitemap submission
@@ -143,12 +144,30 @@ context. Both integrations depend on the corresponding Vercel project features
 being enabled and on a deployment made after enablement. They require no public
 analytics ID or application environment variable.
 
-Only public route and performance measurements are in scope. Do not send names,
-email addresses, project-brief content, consultation or meeting details,
-credentials, private identifiers, or confidential data through URLs, query
-parameters, custom events, or analytics configuration. The current integration
-does not emit custom conversion events and cannot prove a contact submission,
-booking, attendance, or paid engagement.
+Only public route, performance, and allowlisted hire-interaction measurements
+are in scope. Custom events use fixed names and at most two controlled string
+properties:
+
+| Event | Properties | Meaning |
+| --- | --- | --- |
+| `consultation_scheduler_load` | None | The visitor chose to load the Calendly iframe. |
+| `calendly_external_fallback_click` | None | The visitor chose the normal external Calendly link. |
+| `project_brief_success` | None | `/api/contact` returned success to the browser. |
+| `service_to_hire_cta_click` | `source`, `intent` | An important service CTA selected the consultation or project-brief path. |
+
+`source` is a code-defined public service-page placement and `intent` is only
+`consultation` or `project-brief`. Never derive either property from form data,
+Calendly state, visitor input, a URL/query string, or browser storage. Do not
+send names, email addresses, project-brief fields or content, consultation
+selections or meeting details, credentials, private identifiers, or
+confidential data through analytics.
+
+These events prove only the named browser interaction or successful form API
+response. They do not prove a Calendly booking, consultation attendance, lead
+quality, or paid engagement. Vercel custom events require a Pro or Enterprise
+plan; the authenticated team was on Hobby when this implementation was checked
+on August 1, 2026, so provider-side event acceptance remains gated on an owner
+upgrade and deployment.
 
 ## Deployment model
 
