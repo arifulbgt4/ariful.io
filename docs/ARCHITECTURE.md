@@ -41,7 +41,7 @@ Node.js 20.9 or newer is required by the package manifest.
 | `/hire` | Static | Sole on-site conversion surface with fit, proof, a Calendly `#consultation`, and the `#project-brief` form |
 | `/services` | Static | End-to-End Product Engineering Services hub |
 | `/services/[slug]` | Static params | Search landing pages, deliverables, process, and FAQs |
-| `/work` | Static | Four equal core products plus a highlighted EEE Simulator research foundation and separate Lab experiments |
+| `/work` | Static | Five equal core products plus a highlighted EEE Simulator research foundation and separate Lab experiments |
 | `/work/[slug]` | Static params | Honest product evidence, lifecycle state, and client relevance |
 | `/journal` | Static | Dated engineering decision and experiment index |
 | `/journal/[slug]` | Static params | Typed journal entries with lifecycle transparency |
@@ -70,7 +70,7 @@ six delivery stages, service records, and project evidence. Project records
 declare `core` or `lab` tier, target users, buyer outcome, maturity, lifecycle
 states, constraints, public evidence, display order, and an evidence-supported
 schema type. The optional `highlighted` treatment is reserved for a Lab record
-and must not change the four-core hierarchy or imply a higher maturity stage.
+and must not change the five-core hierarchy or imply a higher maturity stage.
 Pages must not reconstruct these facts inside JSX.
 
 `lib/blog.ts` is server-only because it reads files through Node's filesystem.

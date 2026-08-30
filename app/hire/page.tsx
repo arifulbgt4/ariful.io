@@ -142,12 +142,12 @@ export default function HirePage() {
 
         <section className="mt-20 sm:mt-24" aria-labelledby="product-proof-heading">
           <div className="max-w-3xl">
-            <p className="section-kicker">Four core products / Equal evidence</p>
+            <p className="section-kicker">Five core products / Equal evidence</p>
             <h2 id="product-proof-heading" className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
               Review the product boundary, maturity, and evidence before discussing scope.
             </h2>
           </div>
-          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+          <div className="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
             {coreProjects.map((project) => (
               <article key={project.slug} className="surface-card flex h-full flex-col p-6 sm:p-8">
                 <div className="flex flex-wrap items-center justify-between gap-3">

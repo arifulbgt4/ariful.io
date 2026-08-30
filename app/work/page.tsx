@@ -6,12 +6,27 @@ import { projects, siteConfig, type Project } from '@/content/site';
 export const metadata: Metadata = {
   title: 'Product Engineering Case Studies & Lab Work',
   description:
-    'Software, AI-enabled, and connected/IoT product engineering case studies by Ariful Islam, with explicit maturity, evidence, constraints, and client relevance.',
+    'Software, AI-enabled, email infrastructure, and connected/IoT product engineering case studies by Ariful Islam, with explicit maturity, evidence, constraints, and client relevance.',
+  keywords: [
+    'product engineering case studies',
+    'self-hosted SMTP server platform',
+    'transactional email infrastructure',
+    'AI product case study',
+    'local-first automation platform',
+    'connected product research',
+  ],
   alternates: { canonical: '/work' },
   openGraph: {
     title: 'Product Engineering Case Studies — Ariful Islam',
-    description: 'Four core products plus a highlighted EEE Simulator Lab and supporting experiments, each presented at its verified maturity.',
+    description: 'Five core products plus a highlighted EEE Simulator Lab and supporting experiments, each presented at its verified maturity.',
     url: '/work',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Ariful Islam product engineering case studies' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Product Engineering Case Studies — Ariful Islam',
+    description: 'Five evidence-led product case studies plus research foundations and focused experiments.',
+    images: ['/opengraph-image'],
   },
 };
 
@@ -55,7 +70,7 @@ export default function WorkPage() {
             Complete case studies. Honest product maturity.
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-400">
-            Each page explains the user problem, owned scope, architecture, delivery state, public evidence, constraints, and next gate. A polished presentation never turns planned or in-progress work into a production claim.
+            Each page explains the user problem, owned scope, architecture, delivery state, evidence base, constraints, and next gate. A polished presentation never turns planned or in-progress work into a production claim.
           </p>
         </header>
 
@@ -63,10 +78,10 @@ export default function WorkPage() {
           <div className="max-w-3xl">
             <p className="section-kicker">Core products / Equal weight</p>
             <h2 id="core-products-heading" className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
-              Four product directions across software, AI, commerce, and connected systems.
+              Five product directions across software, AI, email infrastructure, commerce, and connected systems.
             </h2>
           </div>
-          <div className="mt-9 grid gap-5 md:grid-cols-2">
+          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {coreProjects.map((project) => <ProjectCard key={project.slug} project={project} />)}
           </div>
         </section>

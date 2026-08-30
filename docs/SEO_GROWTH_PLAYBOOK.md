@@ -47,8 +47,9 @@ specific content.
 ### Evidence intent
 
 `/work/[slug]` routes establish domain-specific entity and capability evidence.
-The four equal core products are AI Dropshipping Commerce Platform, OTask,
-Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. The
+The five equal core products are AI Dropshipping Commerce Platform, OTask,
+OTask Mail Server, Underwater Monitoring R&D, and Reusable B2C Marketplace
+Platform. The
 documentation-only EEE Simulator foundation and Local LLM Workflows are
 separate Lab & Experiments records. EEE Simulator may receive a visible
 `Highlighted Lab` treatment for discovery, but that label is not a core,
@@ -189,7 +190,7 @@ conclusion about content quality or future citation eligibility.
 
 ## Owner-controlled search actions
 
-1. Inspect the homepage, `/hire`, service pages, four core case studies, and
+1. Inspect the homepage, `/hire`, service pages, five core case studies, and
    priority articles for indexing.
 2. Confirm the canonical host redirects: HTTP to HTTPS and `www` to the chosen
    apex domain, or the reverse if deployment policy changes.

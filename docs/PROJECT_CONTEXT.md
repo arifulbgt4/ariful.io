@@ -92,13 +92,24 @@ workflows, safeguards, and test/build evidence, but do not expose the private
 repository URL, credentials, customer data, supplier tokens, or claim a live
 production launch before credentialed sandbox acceptance is complete.
 
+The `OTask Mail Server` case study is also owner-approved for public portfolio
+use. Its claims are based on the private `smtp_server` implementation, committed
+checkpoint, canonical product and architecture documents, traceability, and
+2026-08-30 release evidence. Describe the local application and Mailpit
+acceptance as complete, but do not expose the private repository, credentials,
+message content, DKIM private material, customer data, or internal
+infrastructure. Public HTTPS, provider PTR and forward DNS, public TCP 25,
+recipient-MX acceptance, controlled public DSNs, inbox placement, and reputation
+remain separate external acceptance boundaries. `REMOTE_ACCEPTED` is never an
+inbox-placement claim.
+
 No client logos, testimonials, revenue, conversion improvements, or production
 field results are currently verified. Do not add them without direct evidence
 and permission.
 
 ### Portfolio tiers and current maturity
 
-The public work hierarchy has four equal-priority core products:
+The public work hierarchy has five equal-priority core products:
 
 - AI Dropshipping Commerce Platform — operational foundation built;
   credentialed sandbox and production acceptance remain pending;
@@ -106,6 +117,9 @@ The public work hierarchy has four equal-priority core products:
   P03-001 through P03-005 have recorded six-job CI evidence; P03-006 SQLite
   persistence is active local, uncommitted work and is not yet remotely
   validated;
+- OTask Mail Server — version 0.1.0 local implementation and Mailpit acceptance
+  complete across all 87 source requirements; public SMTP infrastructure,
+  remote Internet acceptance, and inbox observations remain pending;
 - Underwater Monitoring R&D — active R&D; integrated pond validation remains
   pending; and
 - Reusable B2C Marketplace Platform — architecture and product foundation
@@ -119,7 +133,7 @@ application code, runtime configuration, deployment, working simulator, or
 numerical validation evidence. These two records belong in `Lab & Experiments`;
 neither is presented as a core client product. Highlighting EEE Simulator makes
 the unusually detailed research foundation easier to find without changing the
-equal priority of the four core products.
+equal priority of the five core products.
 
 OTask is a GUI-first, local-first task orchestration and cross-device control
 platform. Trusted desktop devices are the intended execution nodes; mobile and

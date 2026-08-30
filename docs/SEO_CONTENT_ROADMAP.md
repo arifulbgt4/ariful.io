@@ -59,6 +59,7 @@ canonical landing destination for that intent.
 | /work/ai-dropshipping-commerce-platform | AI dropshipping platform architecture | Evidence |
 | /work/reusable-b2c-marketplace-platform | B2C marketplace architecture | Evidence |
 | /work/otask-developer-platform | local-first automation platform | Evidence |
+| /work/otask-mail-server | self-hosted SMTP server platform | Evidence |
 | /work/underwater-monitoring-research | underwater monitoring system | R&D evidence |
 | /work/eee-simulator | electronics simulation platform architecture | Research evidence |
 | /blog | product engineering insights | Informational hub |
@@ -82,6 +83,7 @@ CTR, qualified enquiry, and case-study evidence.
 | AI product and RAG | AI product engineer; AI product development services; AI integration consultant; LLM integration developer; RAG application developer; retrieval augmented generation consultant; AI workflow automation engineer; AI agent development for business; AI feature evaluation framework; human in the loop AI workflow; local LLM integration; AI product architecture | AI service, local-model experiment, articles |
 | AI commerce | AI commerce platform developer; AI dropshipping platform development; dropshipping automation software; AliExpress API integration developer; AI product description workflow; AI pricing recommendation system; AI campaign automation platform; multi-country eCommerce architecture; multi-currency dropshipping platform; human approval AI commerce; supplier product ingestion system; AI commerce analytics dashboard | AI commerce service, case study, articles |
 | Backend, API, realtime | backend API engineer; Node.js backend developer; NestJS API developer; backend architecture consultant; realtime system developer; WebSocket application developer; GraphQL API developer; PostgreSQL backend architecture; API integration developer; webhook reliability engineering; legacy backend modernization; event driven backend architecture | Backend service and articles |
+| Email delivery infrastructure | self-hosted SMTP server; self-hosted transactional email; transactional email API; SMTP server platform; outbound email platform; email delivery infrastructure; Postfix Rspamd DKIM; SMTP queue architecture; DKIM rotation; SPF DKIM DMARC preflight; email delivery webhooks; multi-tenant email infrastructure | OTask Mail Server case study and backend service |
 | Authentication, data, payments | multi-tenant authorization PostgreSQL; Prisma authorization patterns; OAuth JWT authentication architecture; role based access control SaaS; Stripe integration Next.js; retry safe Stripe webhooks; payment system architecture; idempotent webhook processing; audit trail system design; secure API authorization | SaaS and backend articles |
 | Connected product and IoT | connected product prototyping; IoT product prototype developer; ESP32 prototype development; Raspberry Pi IoT developer; sensor dashboard development; realtime IoT dashboard; remote device control system; IoT telemetry architecture; WebSocket IoT dashboard; hardware software integration engineer; connected device software development; IoT prototype architecture | Connected-product service and articles |
 | Underwater and aquaculture R&D | underwater monitoring system; shrimp farm monitoring technology; aquaculture IoT monitoring; underwater camera monitoring system; turbid water camera system; water quality sensor dashboard; shrimp pond water quality monitoring; underwater robotics prototype; aquaculture sensor integration; AI shrimp monitoring research | Underwater R&D case study |
@@ -233,7 +235,7 @@ publication permission.
   data consistency.
 - Monitor indexing for the first two published articles and maintain their
   service and case-study links.
-- Review the four core case studies for summary, current maturity, and internal
+- Review the five core case studies for summary, current maturity, and internal
   links.
 - Export the Search Console query and indexing baseline.
 - Verify historical redirects for /projects, /lab, and /resume after the

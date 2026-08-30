@@ -127,12 +127,13 @@ Edit `content/site.ts` for profile, service, work, social, skills, and proof
 updates. Dynamic pages and navigation surfaces use those records. Keep public
 URLs absolute and verify them before deployment.
 
-The portfolio has four equal core products: AI Dropshipping Commerce Platform,
-OTask, Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. EEE
+The portfolio has five equal core products: AI Dropshipping Commerce Platform,
+OTask, OTask Mail Server, Underwater Monitoring R&D, and Reusable B2C
+Marketplace Platform. EEE
 Simulator and Local LLM Workflows belong in `Lab & Experiments`. EEE Simulator
 is the one highlighted Lab record; that visual discovery treatment must not
 promote it to core, imply working software, or reduce the equal presentation of
-the four core products. Do not use a flagship label or allow one core project
+the five core products. Do not use a flagship label or allow one core project
 to receive an oversized editorial or visual treatment.
 
 Every project record and case study must state target users, buyer outcome,
@@ -149,6 +150,10 @@ The current public maturity boundary is:
   and P03-001 through P03-005 have recorded six-job CI evidence, while P03-006
   SQLite persistence is active local, uncommitted work and is not yet remotely
   validated;
+- OTask Mail Server: version 0.1.0 local implementation and Mailpit acceptance
+  complete across all 87 source requirements; the repository is private, and
+  public SMTP infrastructure, remote Internet acceptance, controlled public
+  DSNs, inbox placement, and reputation evidence remain pending;
 - Underwater Monitoring R&D: active R&D; integrated pond validation pending;
 - Reusable B2C Marketplace Platform: architecture and product foundation
   planned;

@@ -447,10 +447,10 @@ export const services: Service[] = [
       primaryKeyword: 'backend API engineering',
       title: 'Backend API Engineering & Realtime Systems',
       description:
-        'Backend API engineering for secure product data, realtime workflows, integrations, authorization, and maintainable system boundaries.',
+        'Backend API engineering for secure product data, event-driven workflows, durable queues, integrations, authorization, and maintainable system boundaries.',
     },
     summary:
-      'Maintainable APIs and data systems for products that need secure access, realtime updates, third-party integrations, and room to grow.',
+      'Maintainable APIs and data systems for products that need secure access, realtime updates, durable background work, third-party integrations, and room to grow.',
     idealFor:
       'Product teams facing fragile integrations, slow feature delivery, unclear data boundaries, or a backend that no longer matches how the business works.',
     productLanes: ['software', 'ai-enabled', 'connected-iot'],
@@ -459,10 +459,11 @@ export const services: Service[] = [
       'Domain and data-model design',
       'REST, GraphQL, webhook, and WebSocket APIs',
       'Authentication, authorization, and audit trails',
+      'Durable queueing, idempotency, retries, and event delivery',
       'Payment and third-party integrations',
       'Migration, test, monitoring, and deployment strategy',
     ],
-    technologies: ['Node.js', 'NestJS', 'Express', 'PostgreSQL', 'MySQL', 'MongoDB', 'GraphQL', 'WebSocket'],
+    technologies: ['Node.js', 'NestJS', 'Express', 'PostgreSQL', 'Redis', 'BullMQ', 'GraphQL', 'WebSocket', 'Docker'],
     process: [
       'Map current workflows, consumers, data ownership, and failure modes.',
       'Choose explicit boundaries and contracts before implementation.',
@@ -485,8 +486,19 @@ export const services: Service[] = [
         answer:
           'Yes. I prefer measured extraction and replacement with observability and rollback paths over a high-risk all-at-once rewrite.',
       },
+      {
+        question: 'Can you design transactional email infrastructure?',
+        answer:
+          'Yes. I can design the application, API, queue, domain-readiness, webhook, security, and operating boundaries around transactional or consent-based email. Public SMTP delivery still needs dedicated infrastructure, DNS, provider controls, and post-deployment acceptance.',
+      },
     ],
     evidence: [
+      {
+        title: 'OTask Mail Server',
+        description: 'A complete local case study for a fleet-managed, self-hosted SMTP platform with durable queues, Postfix/Rspamd delivery, domain preflight, signed webhooks, and explicit production acceptance gates.',
+        href: '/work/otask-mail-server',
+        label: 'Review the email infrastructure case study',
+      },
       {
         title: 'OTask orchestration platform',
         description: 'Cross-platform systems evidence spanning authenticated desktop IPC, policy-controlled execution, realtime coordination, and local-first storage.',
@@ -569,6 +581,7 @@ export const services: Service[] = [
 export type ProjectTier = 'core' | 'lab';
 export type MaturityStage =
   | 'foundation-built'
+  | 'local-implementation-complete'
   | 'documentation-foundation'
   | 'in-development'
   | 'active-rnd'
@@ -597,9 +610,13 @@ export type Project = {
   displayOrder: number;
   highlighted?: boolean;
   schemaType: 'SoftwareApplication' | 'CreativeWork';
+  dateCreated?: string;
+  softwareVersion?: string;
+  operatingSystem?: string;
   summary: string;
   targetUsers: string;
   buyerOutcome: string;
+  benefits?: { title: string; description: string }[];
   challenge: string;
   approach: string;
   outcome: string;
@@ -631,6 +648,7 @@ export type Project = {
   clientApplications?: string[];
   relatedService?: { title: string; href: string };
   relatedArticles?: { title: string; href: string }[];
+  faqs?: { question: string; answer: string }[];
   repository?: string;
   liveUrl?: string;
 };
@@ -1213,6 +1231,330 @@ export const projects: Project[] = [
     repository: 'https://github.com/arifulbgt4/Otask_Desktop/tree/task/P03-005-service-ipc',
   },
   {
+    slug: 'otask-mail-server',
+    title: 'OTask Mail Server',
+    seo: {
+      primaryKeyword: 'self-hosted SMTP server platform',
+      title: 'Self-Hosted SMTP Server — OTask Mail Server',
+      description:
+        'OTask Mail Server is a verified self-hosted SMTP platform case study with Postfix, Rspamd, DKIM, durable queues, webhooks, and Mailpit acceptance.',
+    },
+    category: 'Email infrastructure · Transactional email · SMTP operations',
+    tier: 'core',
+    displayOrder: 3,
+    schemaType: 'SoftwareApplication',
+    dateCreated: '2026-08-30',
+    softwareVersion: '0.1.0',
+    operatingSystem: 'Linux server and modern web browser',
+    summary:
+      'A fleet-managed, API-first outbound email platform that combines a central control plane with isolated self-hosted Mail Nodes, durable message acceptance, domain identity checks, and a real Postfix/Rspamd delivery path.',
+    targetUsers:
+      'SaaS teams, CRM and product platforms, operators, and organizations that need controlled transactional or opt-in email infrastructure with self-hosted delivery nodes and explicit operational evidence.',
+    buyerOutcome:
+      'A reviewable email-delivery foundation with organization isolation, durable queues, sender-domain readiness, recipient-level diagnostics, signed lifecycle webhooks, and honest delivery states without operating as an open relay.',
+    benefits: [
+      {
+        title: 'One controlled ingress',
+        description:
+          'CRM and dashboard traffic enters through Fleet Hub, while each organization receives an isolated Mail Node and independent operational boundary.',
+      },
+      {
+        title: 'Durable acceptance',
+        description:
+          'PostgreSQL transactions and an outbox protect accepted work before BullMQ dispatch, while Postfix owns remote retry after local MTA acceptance.',
+      },
+      {
+        title: 'Safer domain onboarding',
+        description:
+          'A, SPF, DKIM, DMARC, forward DNS, PTR compatibility, public IP, and service health are exposed as explicit preflight evidence before sending is enabled.',
+      },
+      {
+        title: 'Truthful delivery diagnostics',
+        description:
+          'Recipient state, SMTP responses, attempts, queue IDs, DSNs, suppressions, and webhook events remain inspectable without calling SMTP acceptance an inbox delivery.',
+      },
+      {
+        title: 'Consent and abuse controls',
+        description:
+          'Scoped API keys, rate limits, suppression enforcement, one-click unsubscribe, restricted DSN intake, and open-relay denial keep legitimate use inside the product boundary.',
+      },
+      {
+        title: 'Operable recovery paths',
+        description:
+          'IP change, DNS invalidation, Rspamd failure, backup verification, paused restore, and explicit node migration are designed as observable operational workflows.',
+      },
+    ],
+    challenge:
+      'Outbound email becomes difficult when application acceptance, queue ownership, SMTP retry, sender identity, domain DNS, DKIM material, bounce processing, suppression policy, multi-tenant authorization, and delivery reporting are spread across unrelated tools. A platform can also become unsafe if it exposes an open relay, logs sensitive content, or treats a successful SMTP response as inbox placement.',
+    approach:
+      'Built a strict TypeScript monorepo with separate Fleet Hub and Mail Node applications and databases, shared API contracts, PostgreSQL outboxes, Redis/BullMQ workers, private Postfix submission, Rspamd DKIM signing, generated OpenAPI, preflight services, signed uploads and webhooks, restricted DSN intake, backup/restore tooling, Docker Compose operations, and fail-closed production configuration.',
+    outcome:
+      'Version 0.1.0 is committed with the local application and Mailpit acceptance boundary complete. The recorded release evidence includes 94/94 unit and security tests, 7/7 live integration tests, 5/5 Playwright tests, production application and Docker builds, SMTP/DKIM smoke checks, 500-message batch acceptance, and recovery drills. Public infrastructure and recipient-Internet acceptance remain separate pending gates.',
+    status: 'Local implementation and Mailpit acceptance complete',
+    maturity: {
+      stage: 'local-implementation-complete',
+      label: 'Local implementation complete',
+      summary:
+        'All 87 source requirements have an implemented local evidence path. Development, Mailpit, dashboards, API, security, backup/restore, and failure-recovery acceptance are complete; public SMTP infrastructure and inbox observations are not yet accepted.',
+      verifiedOn: '2026-08-30',
+    },
+    lifecycle: [
+      {
+        stage: 'Discovery',
+        status: 'complete',
+        summary:
+          'Legitimate transactional and opt-in mail use cases, operator roles, sender-identity requirements, abuse boundaries, delivery truth, and production infrastructure dependencies were defined.',
+      },
+      {
+        stage: 'Scope & architecture',
+        status: 'complete',
+        summary:
+          'Fleet Hub, isolated Mail Nodes, separate data ownership, queue responsibility, DKIM storage, delivery state, infrastructure identity, and explicit migration decisions are documented and traceable.',
+      },
+      {
+        stage: 'Design & prototype',
+        status: 'complete',
+        summary:
+          'Hub and Node dashboards, 81-operation OpenAPI surface, domain onboarding, message composer, diagnostics, and safe Mailpit delivery workflows are implemented and inspected.',
+      },
+      {
+        stage: 'Build & integrate',
+        status: 'complete',
+        summary:
+          'Hub, Node, worker, PostgreSQL, Redis/BullMQ, Postfix, Rspamd, Caddy, DKIM synchronization, DSN, webhooks, maintenance, and backup/restore paths are integrated locally.',
+      },
+      {
+        stage: 'Verify & launch',
+        status: 'in-progress',
+        summary:
+          'Local static, unit, integration, browser, Compose, SMTP, DKIM, batch, recovery, and restore gates passed. An authorized VM, public HTTPS, dedicated IP, PTR/DNS, TCP 25, remote MX, and controlled DSN acceptance remain.',
+      },
+      {
+        stage: 'Handover & iterate',
+        status: 'planned',
+        summary:
+          'Production runbooks, monitoring, provider acceptance evidence, post-deployment deliverability observation, versioned releases, and operational iteration follow the external launch gate.',
+      },
+    ],
+    constraints: [
+      'The implementation repository is private; source, credentials, message content, customer data, DKIM private keys, provider details, and internal infrastructure are not public portfolio evidence.',
+      'Automated tests use deterministic DNS and Mailpit and do not contact recipient MX servers. Mailpit acceptance cannot establish public delivery behavior.',
+      'REMOTE_ACCEPTED means the configured downstream SMTP service returned success; it does not mean inbox placement and a later authenticated DSN may still establish a bounce.',
+      'Public HTTPS, provider PTR and forward-confirmed DNS, public inbound and outbound TCP 25, remote Internet MX acceptance, and controlled public DSN evidence remain SKIPPED until authorized infrastructure exists.',
+      'Inbox placement, reputation, filtering, throttling, and operating-scale outcomes require post-deployment observation and are not deterministic product claims.',
+      'The platform supports legitimate transactional and opt-in mail only; it excludes spoofing, harvesting, purchased-list automation, filter bypassing, reputation evasion, and automatic IP, domain, or node cycling after rejection.',
+    ],
+    evidence: [
+      {
+        label: 'Committed implementation checkpoint',
+        detail:
+          'Private master commit 842bd0a records the version 0.1.0 Fleet Hub, Mail Node, worker, shared packages, infrastructure, tests, operations, and release documentation as one reviewable implementation checkpoint.',
+        verifiedOn: '2026-08-30',
+      },
+      {
+        label: 'Requirement and architecture traceability',
+        detail:
+          'All 87 source requirements map to implemented local evidence, with nine accepted architecture decisions separating Hub and Node ownership, queue responsibility, DKIM storage, infrastructure identity, delivery truth, and explicit migration.',
+        verifiedOn: '2026-08-30',
+      },
+      {
+        label: 'Automated and live local verification',
+        detail:
+          'The release record reports 94/94 unit and security tests across 27 files, 7/7 live Compose integration tests, 5/5 Playwright tests, application and image builds, SMTP/Mailpit smoke, DKIM alignment, open-relay denial, and 500-message batch reconciliation.',
+        verifiedOn: '2026-08-30',
+      },
+      {
+        label: 'Failure, recovery, and data-safety drills',
+        detail:
+          'Rspamd failure and recovery, public-IP change and DNS invalidation, safe resume, webhook retry, backup verification, credential-prefix protection, and paused restore behavior were exercised and recorded.',
+        verifiedOn: '2026-08-30',
+      },
+      {
+        label: 'External acceptance boundary',
+        detail:
+          'Public deployment, provider PTR, public TCP 25, recipient-MX acceptance, controlled public DSNs, inbox placement, and reputation remain explicitly SKIPPED rather than inferred from local evidence.',
+        verifiedOn: '2026-08-30',
+      },
+    ],
+    year: '2026–Present',
+    role: 'Product architecture · Full-stack and systems engineering · Email infrastructure · Security and operations design',
+    tags: [
+      'Self-hosted SMTP server',
+      'Transactional email API',
+      'Email delivery infrastructure',
+      'Postfix',
+      'Rspamd',
+      'DKIM',
+      'SPF',
+      'DMARC',
+      'Next.js',
+      'TypeScript',
+      'PostgreSQL',
+      'Redis',
+      'BullMQ',
+      'Docker',
+      'OpenAPI',
+      'Webhooks',
+    ],
+    highlights: [
+      'Fleet Hub control plane with isolated one-organization Mail Nodes and no cross-database joins',
+      'API-first single-message and 500-message batch acceptance with idempotency and explicit domain selection',
+      'PostgreSQL transactional outbox, BullMQ dispatch, private Postfix submission, and clear retry ownership',
+      'Per-domain RSA-2048 DKIM lifecycle and dynamic Rspamd signing with restrictive key materialization',
+      'A, SPF, DKIM, DMARC, forward-DNS, PTR-compatibility, public-IP, service, disk, and port preflight',
+      'Recipient-level attempts, SMTP diagnostics, late DSN updates, suppressions, complaints, and signed lifecycle webhooks',
+      'Scoped API keys, RBAC, CSRF, encryption, SSRF controls, rate limits, redacted logs, and open-relay denial',
+      'Explicit IP-change pause, node migration, backup verification, paused restore, and operational recovery workflows',
+      'Generated 81-operation OpenAPI contract plus Fleet Hub and emergency Mail Node dashboards',
+      'Mailpit-only automated acceptance with public infrastructure and inbox-placement claims kept separate',
+    ],
+    systemMap: [
+      {
+        title: 'Fleet Hub',
+        description:
+          'The public CRM API and management dashboard own organizations, users, scoped keys, node assignment, fleet operations, suppression policy, and audited migrations.',
+      },
+      {
+        title: 'Isolated Mail Node',
+        description:
+          'Each organization owns a separate Node boundary for domains, DNS, DKIM, messages, recipients, attempts, queues, health, attachments, and local enforcement.',
+      },
+      {
+        title: 'Delivery pipeline',
+        description:
+          'PostgreSQL outbox records durable acceptance, BullMQ performs application work, Rspamd signs the selected domain, and Postfix owns SMTP retry after MTA submission.',
+      },
+      {
+        title: 'Evidence and operations',
+        description:
+          'Telemetry, DSNs, suppressions, signed webhooks, preflight, reconciliation, backups, restore drills, and explicit migrations keep state inspectable and recoverable.',
+      },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Product boundary',
+        title: 'Self-hosted SMTP needs an application control plane, not only an MTA configuration.',
+        description:
+          'The product connects authorized application traffic, organization policy, domain identity, durable acceptance, operational diagnostics, and controlled SMTP delivery without exposing internal infrastructure.',
+        items: [
+          'Fleet Hub is the only CRM ingress and applies authentication, organization, scope, domain, idempotency, and suppression policy before forwarding work.',
+          'Each organization has one active isolated Mail Node and may have one explicit migration target; Hub and Node databases never rely on cross-database joins.',
+          'Hub dashboard actions and API routes share the same application services, and Node dashboards and fleet routes follow the same rule.',
+          'PostgreSQL, Redis, Rspamd controls, worker internals, private Postfix submission, and control sockets remain private.',
+        ],
+      },
+      {
+        eyebrow: '02 / Durable message flow',
+        title: 'Acceptance, queueing, SMTP submission, remote retry, and recipient truth have separate owners.',
+        description:
+          'The architecture avoids PostgreSQL/Redis dual-write loss and duplicate remote delivery by assigning each state transition to one durable subsystem.',
+        items: [
+          'A PostgreSQL transaction creates the logical message, recipients, attachment references, and outbox record before the API returns durable acceptance.',
+          'An idempotent dispatcher creates deterministic BullMQ work for validation, MIME construction, and private Postfix submission.',
+          'After Postfix accepts responsibility, BullMQ completes and Postfix owns temporary remote SMTP retry; the application does not create a second delivery job.',
+          'Single messages and batches of up to 500 logical messages preserve independent recipient and aggregate states instead of opening an uncontrolled connection burst.',
+        ],
+      },
+      {
+        eyebrow: '03 / Sender identity',
+        title: 'A sending domain becomes usable only after identity and infrastructure evidence agree.',
+        description:
+          'Domain readiness combines authoritative sender records with the Mail Node infrastructure profile and pauses safely when relevant evidence changes.',
+        items: [
+          'Creation generates an independent domain identity, RSA-2048 DKIM key, selector, and DNS plan while sending remains paused in PENDING_VERIFICATION.',
+          'A, SPF, DKIM, DMARC, forward DNS, provider-controlled PTR compatibility, outbound IP, TLS, Postfix, Rspamd, database, Redis, and disk checks feed preflight.',
+          'The caller must use an allowed verified domain and an aligned From address; resolution follows explicit domain, API-key default, then organization default and never guesses.',
+          'An outbound-IP or required-DNS change records history, invalidates evidence, pauses affected sending, emits events, and resumes only after verification.',
+        ],
+      },
+      {
+        eyebrow: '04 / Delivery truth',
+        title: 'A successful SMTP response is evidence of remote acceptance, not evidence of inbox placement.',
+        description:
+          'Recipient-level states and sanitized diagnostics preserve what the system actually knows and allow later authenticated events to refine that truth.',
+        items: [
+          'SUBMITTED_TO_MTA means local Postfix accepted responsibility; REMOTE_ACCEPTED means a configured downstream SMTP server returned success.',
+          'A later authenticated DSN can move a previously accepted recipient to BOUNCED, while temporary outcomes remain DEFERRED for Postfix retry.',
+          'Message detail records attempts, queue ID, remote host and IP when observed, outbound identity, SMTP code, enhanced status, and sanitized response.',
+          'Signed webhooks reuse stable event IDs across retry so downstream systems can verify signatures and deduplicate lifecycle updates.',
+        ],
+      },
+      {
+        eyebrow: '05 / Safety and consent',
+        title: 'The platform is designed for legitimate transactional and opt-in mail, with abuse paths deliberately excluded.',
+        description:
+          'Security controls span product authorization, content and key protection, network boundaries, consent workflows, and SMTP relay policy.',
+        items: [
+          'CRM keys, sessions, fleet credentials, DKIM material, retained bodies, recipient data, and attachments use scoped access, keyed hashes, encryption, and redacted logs.',
+          'Marketing messages add one-click unsubscribe support and enforce organization and node suppression state for hard bounce, complaint, unsubscribe, and manual reasons.',
+          'Public Postfix accepts only validated signed bounce recipients and denies unauthorized relay; normal message submission remains HTTPS through Fleet Hub.',
+          'Spoofing, harvesting, purchased lists, filter bypass, reputation evasion, and rejection-triggered IP, domain, or node cycling are outside the product.',
+        ],
+      },
+      {
+        eyebrow: '06 / Verification and launch',
+        title: 'Local product acceptance is complete while Internet delivery remains an infrastructure-specific gate.',
+        description:
+          'The release record separates deterministic application evidence from provider, network, recipient, and reputation conditions that local tests cannot establish.',
+        items: [
+          'Documentation, environment drift, secret scan, Prisma migration, Compose, lint, strict TypeScript, unit, integration, browser, build, SMTP, DKIM, and log-review gates passed.',
+          'The live local stack exercised 500-message acceptance, Rspamd failure/recovery, public-IP change/recovery, webhook retry, backup verification, and paused restore.',
+          'Automated email always terminates at Mailpit and never contacts recipient MX servers, preserving a safe deterministic test boundary.',
+          'Production acceptance still requires an authorized Linux VM, dedicated IP, public HTTPS, PTR and forward DNS, firewall/NAT, inbound and outbound TCP 25, authoritative records, remote MX evidence, and controlled DSNs.',
+        ],
+      },
+    ],
+    clientApplications: [
+      'Provide transactional email for SaaS account, security, billing, notification, and workflow events through a controlled application API.',
+      'Operate consent-based lifecycle or campaign messages with suppression enforcement, one-click unsubscribe, rate policy, and recipient-level evidence.',
+      'Give a CRM or multi-tenant product one Fleet Hub while keeping each organization on an isolated self-hosted Mail Node.',
+      'Replace fragile direct SMTP calls with durable acceptance, idempotency, scheduled work, retries, batches, signed webhooks, and inspectable failure states.',
+      'Onboard and rotate multiple sending domains with generated DNS plans, DKIM lifecycle, preflight, explicit defaults, and safe pause/reverify behavior.',
+      'Plan a deliberate node or infrastructure migration with audited prepare, verify, cutover, rollback, and completion states instead of reputation-triggered routing.',
+    ],
+    relatedService: {
+      title: 'Backend, API & Realtime Product Systems',
+      href: '/services/backend-api-engineering',
+    },
+    relatedArticles: [
+      {
+        title: 'A Practical Architecture for a Production-Ready Next.js SaaS',
+        href: '/blog/production-ready-nextjs-saas-architecture',
+      },
+      {
+        title: 'Designing Retry-Safe Stripe Webhooks in Next.js',
+        href: '/blog/retry-safe-stripe-webhooks-nextjs',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is OTask Mail Server an open SMTP relay?',
+        answer:
+          'No. Normal CRM submission enters Fleet Hub over authenticated HTTPS. Postfix private submission is internal, and the public SMTP listener accepts only validated signed bounce recipients while denying unauthorized relay.',
+      },
+      {
+        question: 'Does REMOTE_ACCEPTED mean an email reached the inbox?',
+        answer:
+          'No. It means the configured downstream SMTP server returned a successful response. Inbox placement, filtering, later DSNs, reputation, and recipient behavior remain separate observations.',
+      },
+      {
+        question: 'What email use cases does the platform support?',
+        answer:
+          'It is designed for legitimate transactional and opt-in email, including SaaS notifications, CRM lifecycle messages, account and billing events, controlled batches, templates, suppressions, unsubscribe, complaints, and signed delivery webhooks.',
+      },
+      {
+        question: 'What is complete in version 0.1.0?',
+        answer:
+          'The local product implementation, dashboards, API, queues, Postfix/Rspamd/Mailpit path, domain and security controls, operations, tests, and recovery drills are complete at the recorded checkpoint. The evidence includes 94 unit tests, 7 integration tests, and 5 Playwright tests.',
+      },
+      {
+        question: 'What remains before a production SMTP launch?',
+        answer:
+          'An authorized production environment must still provide public HTTPS, a dedicated egress IP, provider PTR, forward-confirmed DNS, authoritative SPF/DKIM/DMARC records, inbound and outbound TCP 25, remote MX acceptance, controlled DSNs, monitoring, and post-deployment observation.',
+      },
+    ],
+  },
+  {
     slug: 'underwater-monitoring-research',
     title: 'Underwater Monitoring R&D',
     seo: {
@@ -1223,7 +1565,7 @@ export const projects: Project[] = [
     },
     category: 'Connected-product research',
     tier: 'core',
-    displayOrder: 3,
+    displayOrder: 4,
     schemaType: 'CreativeWork',
     summary:
       'Long-term research into an underwater monitoring system for shrimp farming using video, water-quality sensing, remote control, and software-assisted analysis.',
@@ -1352,7 +1694,7 @@ export const projects: Project[] = [
     },
     category: 'Marketplace engineering · Commerce systems',
     tier: 'core',
-    displayOrder: 4,
+    displayOrder: 5,
     schemaType: 'CreativeWork',
     summary:
       'A reusable B2C marketplace foundation for businesses that need buyer-facing product discovery, controlled catalog operations, checkout, cash-on-delivery workflows, and admin-managed order fulfillment.',

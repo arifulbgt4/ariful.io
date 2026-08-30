@@ -54,6 +54,13 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
       title: pageTitle,
       description: pageDescription,
       url: `/work/${project.slug}`,
+      images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: `${project.title} case study` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description: pageDescription,
+      images: ['/opengraph-image'],
     },
   };
 }
@@ -66,9 +73,11 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
   const url = `${siteConfig.url}/work/${project.slug}`;
   const relatedJournal = journalEntries.filter((entry) => entry.projectSlug === project.slug);
   const systemMap = project.systemMap ?? [];
+  const benefits = project.benefits ?? [];
   const caseStudySections = project.caseStudySections ?? [];
   const clientApplications = project.clientApplications ?? [];
   const relatedArticles = project.relatedArticles ?? [];
+  const faqs = project.faqs ?? [];
   const tierLabel = project.tier === 'core' ? 'Core product' : 'Lab & experiment';
 
   const structuredData = [
@@ -89,8 +98,14 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
         audienceType: project.targetUsers,
       },
       keywords: [project.seo?.primaryKeyword, ...project.tags].filter(Boolean).join(', '),
+      ...(project.dateCreated ? { dateCreated: project.dateCreated } : {}),
       ...(project.schemaType === 'SoftwareApplication'
-        ? { applicationCategory: 'BusinessApplication', operatingSystem: 'Web' }
+        ? {
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: project.operatingSystem ?? 'Web',
+            featureList: project.highlights,
+            ...(project.softwareVersion ? { softwareVersion: project.softwareVersion } : {}),
+          }
         : {}),
       subjectOf: project.evidence
         .filter((item) => item.href)
@@ -110,6 +125,22 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
         { '@type': 'ListItem', position: 3, name: project.title, item: url },
       ],
     },
+    ...(faqs.length
+      ? [
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -228,6 +259,23 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           </section>
         ) : null}
 
+        {benefits.length ? (
+          <section className="mx-auto mt-20 max-w-5xl" aria-labelledby="benefits-heading">
+            <p className="section-kicker">Product benefits</p>
+            <h2 id="benefits-heading" className="mt-4 max-w-3xl text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Practical value without overstating the evidence.
+            </h2>
+            <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {benefits.map((benefit) => (
+                <article key={benefit.title} className="surface-card p-6">
+                  <h3 className="text-lg font-bold text-white">{benefit.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-400">{benefit.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="mx-auto mt-20 grid max-w-5xl gap-5 lg:grid-cols-2" aria-label="Project constraints and evidence">
           <div className="surface-card p-6 sm:p-8">
             <p className="section-kicker">Claim boundary</p>
@@ -243,7 +291,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           </div>
 
           <div className="surface-card p-6 sm:p-8">
-            <p className="section-kicker">Public evidence</p>
+            <p className="section-kicker">Evidence base</p>
             <h2 className="mt-4 text-2xl font-black text-white">What supports this case study</h2>
             <div className="mt-6 space-y-5">
               {project.evidence.map((item) => (
@@ -316,9 +364,9 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           <section className="mx-auto mt-20 max-w-5xl rounded-[2rem] border border-cyan-300/10 bg-gradient-to-br from-cyan-300/[0.055] via-[#0B1018] to-blue-500/[0.04] p-7 sm:p-10">
             <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
               <div>
-                <p className="section-kicker">Client relevance</p>
+                <p className="section-kicker">Use cases / Client relevance</p>
                 <h2 className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
-                  What this evidence can support in a product engagement.
+                  Where this product evidence can support a real engagement.
                 </h2>
                 <p className="mt-5 leading-7 text-slate-400">
                   These applications reflect demonstrated product reasoning and the stated maturity boundary—not an unsupported production or client-result claim.
@@ -337,6 +385,23 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
                   </li>
                 ))}
               </ul>
+            </div>
+          </section>
+        ) : null}
+
+        {faqs.length ? (
+          <section className="mx-auto mt-20 max-w-5xl" aria-labelledby="project-faq-heading">
+            <p className="section-kicker">Questions teams ask</p>
+            <h2 id="project-faq-heading" className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Scope, safety, and evidence boundaries.
+            </h2>
+            <div className="mt-8 grid gap-4 lg:grid-cols-2">
+              {faqs.map((faq) => (
+                <article key={faq.question} className="surface-card p-6 sm:p-7">
+                  <h3 className="text-lg font-bold text-white">{faq.question}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-400">{faq.answer}</p>
+                </article>
+              ))}
             </div>
           </section>
         ) : null}

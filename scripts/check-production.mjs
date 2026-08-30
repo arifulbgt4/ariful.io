@@ -19,10 +19,14 @@ const checks = [
     path: '/work/otask-developer-platform',
     expected: ['<title>', 'OTask', 'Foundation in development', 'authenticated Rust service', 'rel="canonical"', 'application/ld+json'],
   },
+  {
+    path: '/work/otask-mail-server',
+    expected: ['<title>', 'OTask Mail Server', 'Local implementation complete', 'Product benefits', 'REMOTE_ACCEPTED', 'rel="canonical"', 'application/ld+json'],
+  },
   { path: '/robots.txt', expected: ['Sitemap:'] },
   {
     path: '/sitemap.xml',
-    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>'],
+    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>', '<loc>https://ariful.io/work/otask-mail-server</loc>'],
     forbidden: [
       '<loc>https://ariful.io/resume</loc>',
       '<loc>https://ariful.io/projects</loc>',

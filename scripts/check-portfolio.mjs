@@ -17,6 +17,7 @@ const requiredCoreFields = [
   'caseStudySections',
   'clientApplications',
 ];
+const requiredMailServerFields = ['seo', 'benefits', 'faqs'];
 const forbiddenProjectFields = new Set(['flagship', 'featured']);
 const codeExtensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs']);
 const errors = [];
@@ -255,6 +256,20 @@ function validateProjects() {
           `${projectLabel} is core and must include: ${missingFields.map((field) => `"${field}"`).join(', ')}.`,
         );
       }
+
+      if (slug === 'otask-mail-server') {
+        const missingMailServerFields = requiredMailServerFields.filter((field) => !fields.has(field));
+        if (missingMailServerFields.length > 0) {
+          addNodeError(
+            sourceFile,
+            project,
+            `${projectLabel} must include: ${missingMailServerFields.map((field) => `"${field}"`).join(', ')}.`,
+          );
+        }
+        if (fields.has('repository')) {
+          addNodeError(sourceFile, fields.get('repository'), `${projectLabel} must not expose its private repository URL.`);
+        }
+      }
     } else if (tier === 'lab') {
       labCount += 1;
     } else if (tier !== undefined) {
@@ -262,14 +277,14 @@ function validateProjects() {
     }
   });
 
-  if (coreCount !== 4) {
-    errors.push(`content/site.ts must expose exactly 4 core projects; found ${coreCount}.`);
+  if (coreCount !== 5) {
+    errors.push(`content/site.ts must expose exactly 5 core projects; found ${coreCount}.`);
   }
   if (labCount !== 2) {
     errors.push(`content/site.ts must expose exactly 2 lab projects; found ${labCount}.`);
   }
-  if (initializer.elements.length !== 6) {
-    errors.push(`content/site.ts must expose exactly 6 project records; found ${initializer.elements.length}.`);
+  if (initializer.elements.length !== 7) {
+    errors.push(`content/site.ts must expose exactly 7 project records; found ${initializer.elements.length}.`);
   }
   if (highlightedProjects.length !== 1) {
     errors.push(`content/site.ts must expose exactly 1 highlighted project; found ${highlightedProjects.length}.`);

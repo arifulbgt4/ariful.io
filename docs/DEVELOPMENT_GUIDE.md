@@ -26,7 +26,7 @@ configuration error and the interface offers direct email until Resend is set.
 | `npm run dev` | Start the development server |
 | `npm run dev:restart` | Stop the current port process and restart development |
 | `npm run content:check` | Validate blog frontmatter, article structure, images, and optional FAQs |
-| `npm run portfolio:check` | Validate the four-core/two-lab portfolio contract, evidence fields, unique slugs, and retired flagship language |
+| `npm run portfolio:check` | Validate the five-core/two-lab portfolio contract, evidence fields, unique slugs, and retired flagship language |
 | `npm run seo:check` | Guard inline ProfilePage source objects against missing Google-required entity types and names |
 | `npm run search:check` | Test the durable state, sitemap-parity, and workflow contract, then check pending content without contacting either provider |
 | `npm run typecheck` | Run TypeScript without emitting files |
@@ -86,7 +86,7 @@ configuration error and the interface offers direct email until Resend is set.
 3. Separate `Delivered`, `Validated`, `In progress`, and `Planned` work.
 4. Link only public evidence, check every URL, and use a verified ISO date only
    when emitting `dateCreated`.
-5. Keep all four core products at equal presentation priority. Do not add a
+5. Keep all five core products at equal presentation priority. Do not add a
    flagship or use a generic commerce-specific template for unrelated work.
 6. Use `highlighted: true` only for a Lab record that needs an explicit
    discovery treatment. Keep exactly one highlighted Lab, never use the field

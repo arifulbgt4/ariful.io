@@ -1,6 +1,6 @@
 # Portfolio SEO Implementation
 
-Last audited: 2026-07-29
+Last audited: 2026-08-30
 
 ## Existing system and findings
 
@@ -18,8 +18,9 @@ The repository was already a strong static-first Next.js 16 App Router portfolio
 - Added `/journal` and static `/journal/[slug]` entries with date, project, problem, context, experiments, decisions, result, limitation, lessons, next step, tags, previous/next navigation, JSON-LD, canonical metadata, and project backlinks.
 - Repositioned the public site around end-to-end Product Engineering for software, AI-enabled, and connected/IoT products, with one `/hire` conversion surface containing an optional free consultation and qualified project brief.
 - Retired the recruiter brief from discovery and changed legacy `/resume` requests to a permanent `308` redirect to `/hire`.
-- Split portfolio work into four equal-priority core products and two Lab items:
-  the highlighted, documentation-only EEE Simulator research foundation and the
+- Split portfolio work into five equal-priority core products—including the
+  evidence-bounded OTask Mail Server case study—and two Lab items: the
+  highlighted, documentation-only EEE Simulator research foundation and the
   Local LLM Workflows experiment. Each record carries visible maturity,
   lifecycle, constraints, and evidence fields instead of a flagship hierarchy.
 - Added `/site-map` for visitor discovery.

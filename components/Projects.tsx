@@ -13,11 +13,11 @@ export default function Projects() {
       <div className="site-container">
         <SectionHeading
           eyebrow="Core products / Equal evidence"
-          title="Four product directions, each shown at its real maturity."
+          title="Five product directions, each shown at its real maturity."
           description="Every case study explains the buyer problem, owned scope, delivery evidence, limits, and next gate. A complete page never turns unfinished work into a completed product claim."
         />
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+        <div className="mt-12 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           {coreProjects.map((project, index) => (
             <article key={project.slug} className="surface-card group flex min-h-full flex-col overflow-hidden">
               <div className="flex-1 border-b border-white/[0.07] p-6 sm:p-8">

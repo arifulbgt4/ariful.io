@@ -3,7 +3,7 @@
 The foundational portfolio, five service pages, case studies, Markdown CMS,
 contact API, SEO outputs, and operating documentation are implemented around
 the `End-to-End Product Engineer for Software, AI & Connected/IoT Products`
-positioning. The three product lanes, six-stage lifecycle, four equal core
+positioning. The three product lanes, six-stage lifecycle, five equal core
 products, separate Lab & Experiments tier, and `/hire#project-brief` conversion
 path form the client-acquisition system. `/hire#consultation` adds an optional
 free 30-minute Calendly fit call on the same conversion surface. These next
@@ -80,6 +80,11 @@ legacy fallback and unchanged-content provider calls, then refreshed retention.
   P03-001 through P03-005 foundation; complete integrated pond validation for
   Underwater Monitoring R&D; and add implementation evidence for the Reusable
   B2C Marketplace Platform before advancing any public maturity label.
+- Complete OTask Mail Server production acceptance on an authorized VM with
+  public HTTPS, dedicated IP, PTR and forward DNS, inbound/outbound TCP 25,
+  authoritative sender records, controlled remote-MX/DSN evidence, monitoring,
+  and post-deployment observations before making a public-production or inbox
+  placement claim.
 - Keep EEE Simulator in the highlighted Lab tier at `Documentation foundation`
   until executable editor, solver, validation, and deployment evidence exists;
   do not interpret its detailed requirements, ADRs, catalog, or task plan as a
