@@ -17,7 +17,7 @@ const requiredCoreFields = [
   'caseStudySections',
   'clientApplications',
 ];
-const requiredMailServerFields = ['seo', 'benefits', 'faqs'];
+const requiredMailServerFields = ['seo', 'benefits', 'fieldSolutions', 'faqs'];
 const forbiddenProjectFields = new Set(['flagship', 'featured']);
 const codeExtensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs']);
 const errors = [];
@@ -239,6 +239,9 @@ function validateProjects() {
       if (slug === 'graphql-todo-application') {
         addNodeError(sourceFile, fields.get('slug'), `${projectLabel} is retired and must not return to the public portfolio.`);
       }
+      if (slug === 'otask-mail-server') {
+        addNodeError(sourceFile, fields.get('slug'), `${projectLabel} used an incorrect public name and must remain removed.`);
+      }
     }
 
 
@@ -257,7 +260,7 @@ function validateProjects() {
         );
       }
 
-      if (slug === 'otask-mail-server') {
+      if (slug === 'smtp-server-platform') {
         const missingMailServerFields = requiredMailServerFields.filter((field) => !fields.has(field));
         if (missingMailServerFields.length > 0) {
           addNodeError(

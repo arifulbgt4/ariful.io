@@ -28,7 +28,13 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   return {
     title: seo.title,
     description: seo.description,
-    keywords: [seo.primaryKeyword, service.title, ...laneTitles, 'end-to-end product engineering'],
+    keywords: [
+      seo.primaryKeyword,
+      ...(seo.relatedKeywords ?? []),
+      service.title,
+      ...laneTitles,
+      'end-to-end product engineering',
+    ],
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       type: 'website',

@@ -37,7 +37,8 @@ Each `/services/[slug]` route targets one outcome-led service family:
 - software product engineering;
 - AI commerce and dropshipping platform engineering;
 - AI product integration and automation;
-- backend, API, and realtime product systems; and
+- backend, API, and realtime product systems;
+- SMTP and email delivery infrastructure; and
 - connected/IoT product prototyping.
 
 Do not create thin city/technology pages with nearly identical text. Add a new
@@ -48,7 +49,7 @@ specific content.
 
 `/work/[slug]` routes establish domain-specific entity and capability evidence.
 The five equal core products are AI Dropshipping Commerce Platform, OTask,
-OTask Mail Server, Underwater Monitoring R&D, and Reusable B2C Marketplace
+SMTP Server & Email Delivery Platform, Underwater Monitoring R&D, and Reusable B2C Marketplace
 Platform. The
 documentation-only EEE Simulator foundation and Local LLM Workflows are
 separate Lab & Experiments records. EEE Simulator may receive a visible
@@ -75,8 +76,7 @@ clusters should link to the matching service and relevant work.
   data where appropriate;
 - server-rendered content with minimal client JavaScript;
 - internal links among home, services, work, articles, and contact;
-- a permanent `/resume` → `/hire` redirect with the legacy route excluded from
-  navigation and sitemap discovery;
+- a removed `/resume` route excluded from navigation and sitemap discovery;
 - custom 404 recovery; and
 - honest project status to support trust and entity consistency.
 
@@ -139,17 +139,16 @@ invalid item was `/resume`, last crawled on July 10, with validation not started
 its critical issue was an invalid object type for `mainEntity`. Diagnosis also
 found the same `@id`-only pattern on the deployed homepage, although that URL was
 not listed in the invalid-item report. This is a dated historical finding: the
-client-first information architecture retires the resume page through a
-permanent redirect to `/hire`. The live redirect, sitemap removal, structured
-data, and validation outcome are recorded in the current snapshot below; keep
+client-first information architecture removes the resume page. The route
+removal, sitemap state, structured data, and validation outcome are recorded in
+the current snapshot below; keep
 the stored legacy report under validation instead of requesting indexing for
 the retired URL.
 
 The public crawl and submission surface was rechecked through July 29, 2026:
 
 - `/` and `/hire` return indexable `200` responses with exact self-canonicals;
-- `/resume` returns a permanent `308` to `/hire` and is absent from the
-  30-URL sitemap;
+- `/resume` is retired, absent from the 30-URL sitemap, and now remains removed;
 - `robots.txt` allows public routes, blocks `/api/`, and advertises the sitemap;
 - the rendered homepage and `/hire` ProfilePage objects both contain an explicit
   `Person` `mainEntity` with `name`;
@@ -170,13 +169,13 @@ evidence:
 - the July 24 Page indexing snapshot reports 23 indexed and five excluded URLs;
 - `/opengraph-image` is the expected generated-image
   crawled-but-not-indexed example and its validation started July 25;
-- the two canonical-host redirects are expected; and
-- `/projects` and `/lab` are historical 404 examples that now redirect
-  permanently to `/work`; their validation started July 28.
+- the two canonical-host alternate URLs are expected; and
+- `/projects` and `/lab` are historical 404 examples that remain removed;
+  their validation started July 28.
 
 The stale `/resume` Profile page validation started July 27. Google's stored
-result still shows the legacy issue, but a July 28 live test followed the
-redirect, selected `/hire` as canonical, and found one valid Profile item. Do
+result still shows the legacy issue, but the route is removed from the current
+application and discovery surface. Do
 not request indexing for `/resume`. The two newly published roadmap articles
 both passed live URL inspection and received **Indexing requested**
 confirmations by July 29. A crawl-queue request is not an indexing guarantee.
@@ -192,11 +191,11 @@ conclusion about content quality or future citation eligibility.
 
 1. Inspect the homepage, `/hire`, service pages, five core case studies, and
    priority articles for indexing.
-2. Confirm the canonical host redirects: HTTP to HTTPS and `www` to the chosen
-   apex domain, or the reverse if deployment policy changes.
+2. Confirm canonical-host consistency across metadata, sitemap, RSS, structured
+   data, and public links.
 3. Test changed structured data with Google's Rich Results Test and Schema.org
    validator before starting a Search Console validation request; also confirm
-   `/resume` returns a permanent redirect without indexable profile markup.
+   `/resume` returns `404` without indexable profile markup or a `Location` header.
 4. Test Open Graph output on LinkedIn's post inspector.
 5. Verify the consultation CTA, Calendly fallback, and project brief without
    adding a second indexable booking route.
@@ -249,7 +248,7 @@ July 29 indexing requests are tracked separately from sitemap submission:
 Launch: A Founder's Engineering Roadmap.” The AI dropshipping
 architecture and human-approval articles remain the first commercial topic
 cluster and must continue to link to the AI commerce case study and dedicated
-service without elevating that product above the other three core products.
+service without elevating that product above the other four core products.
 
 The Month 2 articles, “How to Scope a Production-Ready SaaS MVP Without
 Overbuilding” and “Multi-Tenant Authorization with PostgreSQL and Prisma,” are

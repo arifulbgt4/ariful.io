@@ -48,8 +48,8 @@ Node.js 20.9 or newer is required by the package manifest.
 | `/blog` | Static | Engineering article index |
 | `/blog/[slug]` | Static params | Markdown article with Article schema |
 | `/privacy` | Static | Contact-data disclosure |
-| `/resume` | Permanent redirect | Legacy URL redirected with `308` to `/hire` |
-| `/projects`, `/lab` | Permanent redirects | Retired collection URLs redirected with `308` to `/work` |
+| `/resume`, `/projects`, `/lab` | Removed | Retired discovery URLs return `404` and stay outside navigation and the sitemap |
+| `/work/graphql-todo-application`, `/work/otask-mail-server` | Removed | Retired work slugs return `404`; only their current replacement records are indexable |
 | `/site-map` | Static | Visitor-facing content discovery |
 | `/api/contact` | Node Route Handler | Validates and emails project enquiries |
 | `/robots.txt` | Generated | Crawler policy |
@@ -131,8 +131,8 @@ The homepage, `/hire`, `/services`, and `/work` share the canonical
 “End-to-End Product Engineer for Software, AI & Connected/IoT Products” entity
 narrative. `Person.jobTitle` uses `End-to-End Product Engineer`; visible content
 retains the broader Software Engineer, multidisciplinary product builder, and
-inventor context. The legacy `/resume` redirect is not indexable and must not
-appear in the sitemap or site-navigation discovery surfaces.
+inventor context. The retired `/resume` path is removed, returns `404`, and must
+not appear in the sitemap or site-navigation discovery surfaces.
 
 ## Measurement boundary
 

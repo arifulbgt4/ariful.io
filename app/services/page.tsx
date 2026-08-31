@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     'end-to-end product engineering services',
     'software product engineering',
     'AI product engineering',
+    'self-hosted SMTP server',
+    'transactional email infrastructure',
     'connected product prototyping',
     'IoT product engineering',
     'product development from idea to launch',

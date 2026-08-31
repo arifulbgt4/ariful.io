@@ -182,16 +182,15 @@ The authenticated Search Console review through July 29 showed the sitemap as
 `Success`, submitted and last read July 27, with 30 discovered pages. URL
 Inspection reported `/hire` as indexed, HTTPS, and carrying one valid Profile
 item. The Page indexing snapshot, last updated July 24, reported 23 indexed and
-five excluded URLs: two expected canonical-host redirects, the generated
+five excluded URLs: two canonical-host alternate URLs, the generated
 `/opengraph-image`, and the two historical `/projects` and `/lab` 404 records.
-Those retired collection routes now redirect permanently to `/work`, and
-validation of their historical 404 records started July 28. The generated image
-is an expected non-HTML exclusion; its validation had started July 25.
+Those retired collection routes remain removed and return `404`; validation of
+their historical records started July 28. The generated image is an expected
+non-HTML exclusion; its validation had started July 25.
 
 The stale Profile page issue for `/resume` remains in Google's stored index,
-but its July 28 live test succeeded, followed the redirect, selected `/hire` as
-canonical, and detected one valid Profile item. **Validate fix** started July
-27; do not request indexing for the retired redirect. Both roadmap articles
+but the route is now removed from the application and crawl surface. **Validate
+fix** started July 27; do not request indexing for the retired path. Both roadmap articles
 passed live URL inspection and received **Indexing requested** confirmations on
 July 29. A priority crawl request does not guarantee indexing.
 
@@ -212,22 +211,17 @@ npm run production:check
 Review the production diff, public URLs, environment target, and migration risk.
 This repository currently has no database migration.
 
-## Domain and redirects
+## Domain and retired paths
 
 - Use `https://ariful.io` as the canonical origin.
-- Redirect HTTP to HTTPS.
-- Redirect `www.ariful.io` to `ariful.io` unless the canonical policy is changed
-  everywhere.
-- Preserve old indexed paths with permanent redirects when renaming a route.
-- Keep `/resume` as a permanent `308` redirect to `/hire`; do not restore it to
-  the sitemap or navigation.
-- Keep the retired `/work/graphql-todo-application` route as a permanent `308`
-  redirect to `/work`; do not restore the project to content, navigation, or the
-  sitemap.
-- Keep the retired `/projects` and `/lab` collection routes as permanent `308`
-  redirects to `/work`; validation for their two historical 404 records started
-  on July 28.
-- Do not change blog slugs after publication without a redirect.
+- Keep the canonical host consistent in metadata, structured data, sitemap,
+  RSS, and public links.
+- Do not add application route forwarding. Replace a route in place or remove
+  it and return `404`.
+- Keep `/resume`, `/projects`, `/lab`, `/work/graphql-todo-application`, and
+  `/work/otask-mail-server` removed from content, navigation, and the sitemap.
+- Do not change published blog slugs. If a page must be renamed, update every
+  internal reference and remove the retired path.
 
 ## Launch smoke test
 
@@ -257,8 +251,9 @@ After deployment, verify:
 - a Speed Insights script load and `POST` to the build-generated vitals route
   after the page is backgrounded or exited, plus an individual Web Vital and
   RES dashboard check without sending personal enquiry or booking data;
-- `/resume`, `/projects`, `/lab`, and the retired GraphQL project route
-  permanent redirects plus their absence from `/sitemap.xml`; and
+- `/resume`, `/projects`, `/lab`, `/work/graphql-todo-application`, and
+  `/work/otask-mail-server` return `404`, expose no `Location` header, and stay
+  absent from `/sitemap.xml`; and
 - no client or server console errors.
 
 The `production-watch.yml` workflow checks Vercel deployment-status failures,
@@ -267,7 +262,7 @@ A failed deployment or smoke check creates a visible GitHub Actions failure;
 inspect the Vercel deployment commit and logs before patching, then rerun the
 full verification chain.
 
-`npm run production:check` validates public HTTP outputs and redirects. It
+`npm run production:check` validates public HTTP outputs and removed-path 404s. It
 cannot execute the client-side measurement SDKs, trigger their exit-time
 intake, or inspect authenticated Vercel dashboards; those remain manual
 production release gates.

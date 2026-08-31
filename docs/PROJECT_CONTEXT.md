@@ -92,8 +92,8 @@ workflows, safeguards, and test/build evidence, but do not expose the private
 repository URL, credentials, customer data, supplier tokens, or claim a live
 production launch before credentialed sandbox acceptance is complete.
 
-The `OTask Mail Server` case study is also owner-approved for public portfolio
-use. Its claims are based on the private `smtp_server` implementation, committed
+The `SMTP Server & Email Delivery Platform` case study is also owner-approved
+for public portfolio use. Its claims are based on the private `smtp_server` implementation, committed
 checkpoint, canonical product and architecture documents, traceability, and
 2026-08-30 release evidence. Describe the local application and Mailpit
 acceptance as complete, but do not expose the private repository, credentials,
@@ -117,7 +117,7 @@ The public work hierarchy has five equal-priority core products:
   P03-001 through P03-005 have recorded six-job CI evidence; P03-006 SQLite
   persistence is active local, uncommitted work and is not yet remotely
   validated;
-- OTask Mail Server — version 0.1.0 local implementation and Mailpit acceptance
+- SMTP Server & Email Delivery Platform — version 0.1.0 local implementation and Mailpit acceptance
   complete across all 87 source requirements; public SMTP infrastructure,
   remote Internet acceptance, and inbox observations remain pending;
 - Underwater Monitoring R&D — active R&D; integrated pond validation remains
@@ -191,8 +191,8 @@ conversion surfaces.
 
 Direct email remains visible as the required fallback when Calendly or the form
 is unavailable or a prospect cannot use either option. The public site does not
-carry a recruiter-focused resume conversion; `/resume` permanently redirects
-to `/hire`.
+carry a recruiter-focused resume conversion; `/resume` is removed and returns
+`404`.
 
 ## Commercial entry points
 
@@ -222,7 +222,7 @@ service.
 - The direct-email fallback must always remain available.
 - `/hire` is the canonical conversion surface. Preserve both
   `/hire#consultation` and `/hire#project-brief`, keep direct email visible, and
-  keep `/resume` as a permanent redirect to `/hire`.
+  keep `/resume` removed from the application, sitemap, and navigation.
 - The consultation uses a public Calendly event link. It must not require a
   Calendly API token, OAuth application, webhook, or client-side secret.
 - No public admin surface is shipped without authentication, authorization,

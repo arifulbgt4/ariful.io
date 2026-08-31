@@ -20,18 +20,23 @@ const checks = [
     expected: ['<title>', 'OTask', 'Foundation in development', 'authenticated Rust service', 'rel="canonical"', 'application/ld+json'],
   },
   {
-    path: '/work/otask-mail-server',
-    expected: ['<title>', 'OTask Mail Server', 'Local implementation complete', 'Product benefits', 'REMOTE_ACCEPTED', 'rel="canonical"', 'application/ld+json'],
+    path: '/services/email-delivery-infrastructure',
+    expected: ['<title>', 'Self-hosted SMTP', 'transactional email', 'Common questions', 'rel="canonical"', 'application/ld+json'],
+  },
+  {
+    path: '/work/smtp-server-platform',
+    expected: ['<title>', 'SMTP Server', 'Local implementation complete', 'Real-world solutions', 'SaaS and account platforms', 'REMOTE_ACCEPTED', 'rel="canonical"', 'application/ld+json'],
   },
   { path: '/robots.txt', expected: ['Sitemap:'] },
   {
     path: '/sitemap.xml',
-    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>', '<loc>https://ariful.io/work/otask-mail-server</loc>'],
+    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/services/email-delivery-infrastructure</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>', '<loc>https://ariful.io/work/smtp-server-platform</loc>'],
     forbidden: [
       '<loc>https://ariful.io/resume</loc>',
       '<loc>https://ariful.io/projects</loc>',
       '<loc>https://ariful.io/lab</loc>',
       '<loc>https://ariful.io/work/graphql-todo-application</loc>',
+      '<loc>https://ariful.io/work/otask-mail-server</loc>',
     ],
   },
   { path: '/rss.xml', expected: ['<rss'] },
@@ -71,7 +76,7 @@ for (const check of checks) {
   const url = `${baseUrl}${check.path}`;
 
   try {
-    const response = await fetchWithTimeout(url, { redirect: 'follow' });
+    const response = await fetchWithTimeout(url);
     const body = Buffer.from(await response.arrayBuffer());
     const bodyText = body.toString('utf8');
 
@@ -102,31 +107,31 @@ for (const check of checks) {
   }
 }
 
-const redirectChecks = [
-  { path: '/resume', destination: '/hire' },
-  { path: '/projects', destination: '/work' },
-  { path: '/lab', destination: '/work' },
-  { path: '/work/graphql-todo-application', destination: '/work' },
+const removedPathChecks = [
+  '/resume',
+  '/projects',
+  '/lab',
+  '/work/graphql-todo-application',
+  '/work/otask-mail-server',
 ];
 
-for (const redirectCheck of redirectChecks) {
+for (const removedPath of removedPathChecks) {
   try {
-    const redirectUrl = `${baseUrl}${redirectCheck.path}`;
-    const response = await fetchWithTimeout(redirectUrl, { redirect: 'manual' });
+    const removedUrl = `${baseUrl}${removedPath}`;
+    const response = await fetchWithTimeout(removedUrl, { redirect: 'manual' });
     const location = response.headers.get('location');
-    const redirectTarget = location ? new URL(location, redirectUrl) : undefined;
 
-    if (response.status !== 308) {
-      errors.push(`${redirectCheck.path}: expected permanent HTTP 308, received ${response.status}`);
+    if (response.status !== 404) {
+      errors.push(`${removedPath}: expected HTTP 404 for a removed route, received ${response.status}`);
     }
 
-    if (redirectTarget?.pathname !== redirectCheck.destination) {
-      errors.push(`${redirectCheck.path}: expected redirect to ${redirectCheck.destination}, received ${location || 'no location header'}`);
+    if (location) {
+      errors.push(`${removedPath}: removed route must not return a Location header, received ${location}`);
     }
 
-    console.log(`${redirectCheck.path}: ${response.status} ${location || 'no location header'}`);
+    console.log(`${removedPath}: ${response.status} removed`);
   } catch (error) {
-    errors.push(`${redirectCheck.path}: ${error instanceof Error ? error.message : String(error)}`);
+    errors.push(`${removedPath}: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
@@ -135,4 +140,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Production watch passed for ${checks.length} public endpoints and ${redirectChecks.length} permanent redirects at ${baseUrl}.`);
+console.log(`Production watch passed for ${checks.length} public endpoints and ${removedPathChecks.length} removed routes at ${baseUrl}.`);

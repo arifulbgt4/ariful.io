@@ -1,6 +1,6 @@
 # Roadmap
 
-The foundational portfolio, five service pages, case studies, Markdown CMS,
+The foundational portfolio, six service pages, case studies, Markdown CMS,
 contact API, SEO outputs, and operating documentation are implemented around
 the `End-to-End Product Engineer for Software, AI & Connected/IoT Products`
 positioning. The three product lanes, six-stage lifecycle, five equal core
@@ -15,8 +15,8 @@ credentials, production rollout, new evidence, or an explicit product decision.
 - Verify an `ariful.io` sending domain in Resend.
 - Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` in production.
 - Verify end-to-end contact delivery and Reply-To.
-- Confirm canonical domain redirects and deploy.
-- Verify the permanent `/resume` → `/hire` redirect, sitemap removal, and all
+- Confirm canonical-domain consistency and deploy.
+- Verify the removed `/resume` path returns `404`, stays outside the sitemap, and all
   navigation/service/work/article CTAs ending at the appropriate
   `/hire#consultation` or `/hire#project-brief` anchor.
 - Maintain the accepted `Free product consultation` contract. A controlled
@@ -26,8 +26,8 @@ credentials, production rollout, new evidence, or an explicit product decision.
   2026. Repeat reschedule and full lifecycle checks after material provider or
   connected-calendar changes.
 - Monitor the legacy `/resume` Profile page validation until Google's stored
-  result refreshes. The July 28 live test followed the redirect, selected
-  `/hire` as canonical, and found one valid Profile item; do not request
+  result refreshes. The historical July 28 live test selected `/hire` as
+  canonical and found one valid Profile item; do not request
   indexing for the retired `/resume` URL.
 
 Google Search Console domain verification, Bing property import, and the initial
@@ -39,7 +39,7 @@ The live crawl surface and provider dashboards were rechecked through July 29.
 The public sitemap has 30 canonical URLs and Search Console reports it as
 `Success`, submitted and last read on July 27. The July 24 indexing snapshot
 contains 23 indexed and five excluded URLs: two expected canonical-host
-redirects, two retired 404 records whose validation started July 28, and the
+alternate-host URLs, two retired 404 records whose validation started July 28, and the
 expected generated `/opengraph-image` exclusion. `/hire` is indexed, HTTPS, and
 has one valid Profile item. Both newly published roadmap articles passed live
 URL inspection and were added to Google's priority crawl queue on July 29;
@@ -66,7 +66,7 @@ legacy fallback and unchanged-content provider calls, then refreshed retention.
   clusters, qualified briefs by product lane/lifecycle stage, and Bing AI
   Performance citations, cited pages, and grounding queries.
 - Keep the scheduled Vercel production watch green for the homepage, `/hire`,
-  permanent `/resume` redirect, robots, sitemap, and RSS endpoints.
+  removed `/resume` path, robots, sitemap, and RSS endpoints.
 
 ## P1 — Credibility upgrades
 
@@ -80,7 +80,7 @@ legacy fallback and unchanged-content provider calls, then refreshed retention.
   P03-001 through P03-005 foundation; complete integrated pond validation for
   Underwater Monitoring R&D; and add implementation evidence for the Reusable
   B2C Marketplace Platform before advancing any public maturity label.
-- Complete OTask Mail Server production acceptance on an authorized VM with
+- Complete SMTP Server & Email Delivery Platform production acceptance on an authorized VM with
   public HTTPS, dedicated IP, PTR and forward DNS, inbound/outbound TCP 25,
   authoritative sender records, controlled remote-MX/DSN evidence, monitoring,
   and post-deployment observations before making a public-production or inbox

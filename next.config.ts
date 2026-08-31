@@ -10,30 +10,6 @@ const nextConfig: NextConfig = {
     ],
   },
   poweredByHeader: false,
-  async redirects() {
-    return [
-      {
-        source: '/resume',
-        destination: '/hire',
-        permanent: true,
-      },
-      {
-        source: '/work/graphql-todo-application',
-        destination: '/work',
-        permanent: true,
-      },
-      {
-        source: '/projects',
-        destination: '/work',
-        permanent: true,
-      },
-      {
-        source: '/lab',
-        destination: '/work',
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [{
       source: '/(.*)',

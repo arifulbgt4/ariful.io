@@ -21,10 +21,10 @@ export const siteConfig = {
   },
   timezone: 'Asia/Dhaka (UTC+6)',
   proof: [
-    { value: 'Idea → release', label: 'end-to-end ownership' },
-    { value: 'Software · AI · IoT', label: 'product lanes' },
-    { value: 'Reviewable', label: 'milestones and evidence' },
-    { value: 'Worldwide', label: 'remote collaboration' },
+    { value: 'Idea → release', label: 'end-to-end ownership', icon: 'launch' },
+    { value: 'Software · AI · IoT', label: 'product lanes', icon: 'layers' },
+    { value: 'Reviewable', label: 'milestones and evidence', icon: 'verified' },
+    { value: 'Worldwide', label: 'remote collaboration', icon: 'worldwide' },
   ],
 } as const;
 
@@ -192,6 +192,7 @@ export type Service = {
   shortTitle: string;
   seo: {
     primaryKeyword: string;
+    relatedKeywords?: string[];
     title: string;
     description: string;
   };
@@ -494,9 +495,9 @@ export const services: Service[] = [
     ],
     evidence: [
       {
-        title: 'OTask Mail Server',
+        title: 'SMTP Server & Email Delivery Platform',
         description: 'A complete local case study for a fleet-managed, self-hosted SMTP platform with durable queues, Postfix/Rspamd delivery, domain preflight, signed webhooks, and explicit production acceptance gates.',
-        href: '/work/otask-mail-server',
+        href: '/work/smtp-server-platform',
         label: 'Review the email infrastructure case study',
       },
       {
@@ -514,8 +515,91 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: 'email-delivery-infrastructure',
+    eyebrow: '05 / Email infrastructure',
+    title: 'SMTP & Email Delivery Infrastructure',
+    shortTitle: 'Email infrastructure',
+    seo: {
+      primaryKeyword: 'self-hosted SMTP server',
+      relatedKeywords: [
+        'transactional email infrastructure',
+        'email delivery API',
+        'SMTP server development',
+        'Postfix DKIM setup',
+        'SPF DKIM DMARC configuration',
+        'email queue and webhook architecture',
+      ],
+      title: 'SMTP Server & Email Delivery Infrastructure',
+      description:
+        'Self-hosted SMTP and transactional email infrastructure with durable queues, sender-domain security, delivery webhooks, diagnostics, and operational handover.',
+    },
+    summary:
+      'Design and build controlled transactional and opt-in email delivery systems that connect product events to durable queues, verified sender domains, SMTP delivery, recipient diagnostics, and operational recovery.',
+    idealFor:
+      'SaaS, e-commerce, CRM, logistics, education, membership, and multi-brand product teams that need dependable email delivery without hiding queue state, domain readiness, abuse controls, or infrastructure risk.',
+    productLanes: ['software'],
+    lifecycle: ['discover', 'scope-architecture', 'design-prototype', 'build-integrate', 'verify-launch', 'handover-iterate'],
+    deliverables: [
+      'Email use-case, consent, volume, and deliverability discovery',
+      'Transactional email API, templates, idempotency, scheduling, and durable queues',
+      'Sender-domain onboarding with SPF, DKIM, DMARC, PTR, and preflight checks',
+      'Postfix/Rspamd delivery nodes, organization isolation, and secure operations',
+      'Recipient-level events, signed webhooks, DSN handling, suppressions, and unsubscribe flows',
+      'Infrastructure acceptance plan, monitoring, backup, recovery, runbooks, and handover',
+    ],
+    technologies: ['SMTP', 'Postfix', 'Rspamd', 'DKIM', 'SPF', 'DMARC', 'TypeScript', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker', 'OpenAPI', 'Webhooks'],
+    process: [
+      'Map the real product messages, recipients, consent rules, expected volume, failure costs, and current provider or infrastructure limits.',
+      'Define application acceptance, queue ownership, sender identity, SMTP retry, delivery-state, tenancy, and abuse-control boundaries.',
+      'Build a safe vertical path from an authenticated product event through durable acceptance to a controlled test inbox.',
+      'Add domain preflight, recipient diagnostics, webhooks, suppressions, recovery drills, and operator-facing evidence.',
+      'Validate public DNS, network, provider, remote-MX, DSN, monitoring, and deliverability conditions on authorized infrastructure before launch.',
+    ],
+    faqs: [
+      {
+        question: 'What real product emails can this service support?',
+        answer:
+          'Typical scopes include account verification, password reset, security alerts, invoices, order and shipping updates, CRM lifecycle messages, scheduled notices, membership communication, and consent-based campaigns.',
+      },
+      {
+        question: 'Can you integrate email delivery into an existing SaaS, e-commerce, or CRM product?',
+        answer:
+          'Yes. The work can begin with the existing event model and replace fragile direct SMTP calls with authenticated APIs, idempotent acceptance, queues, templates, webhooks, and inspectable delivery states.',
+      },
+      {
+        question: 'Does self-hosting guarantee inbox placement?',
+        answer:
+          'No. The application can make sender identity, SMTP responses, bounces, complaints, and operational evidence visible, but inbox placement also depends on provider policy, reputation, content, recipient behavior, and post-deployment observation.',
+      },
+      {
+        question: 'Do you configure SPF, DKIM, DMARC, PTR, and domain preflight?',
+        answer:
+          'They can be included in the delivery scope. PTR and network controls depend on the authorized hosting provider, so production acceptance must verify those external settings rather than infer them from local tests.',
+      },
+      {
+        question: 'Is this a bulk-spam or open-relay service?',
+        answer:
+          'No. The service is for legitimate transactional and consent-based email with authenticated ingress, scoped access, suppression and unsubscribe controls, rate policy, redacted logs, and explicit open-relay denial.',
+      },
+    ],
+    evidence: [
+      {
+        title: 'SMTP Server & Email Delivery Platform',
+        description: 'A verified local implementation covering API ingress, durable queues, Postfix/Rspamd delivery, DKIM, domain preflight, signed webhooks, safety controls, and recovery drills.',
+        href: '/work/smtp-server-platform',
+        label: 'Review the SMTP platform case study',
+      },
+      {
+        title: 'Retry-safe webhook architecture',
+        description: 'A practical guide to durable receipt, idempotent effects, queue ownership, reconciliation, and failure testing for external events.',
+        href: '/blog/retry-safe-stripe-webhooks-nextjs',
+        label: 'Read the reliability guide',
+      },
+    ],
+  },
+  {
     slug: 'connected-product-prototyping',
-    eyebrow: '05 / Physical + digital',
+    eyebrow: '06 / Physical + digital',
     title: 'Connected/IoT Product Prototyping',
     shortTitle: 'Connected products',
     seo: {
@@ -602,6 +686,7 @@ export type Project = {
   title: string;
   seo?: {
     primaryKeyword: string;
+    relatedKeywords?: string[];
     title: string;
     description: string;
   };
@@ -617,6 +702,12 @@ export type Project = {
   targetUsers: string;
   buyerOutcome: string;
   benefits?: { title: string; description: string }[];
+  fieldSolutions?: {
+    field: string;
+    problem: string;
+    solution: string;
+    boundary?: string;
+  }[];
   challenge: string;
   approach: string;
   outcome: string;
@@ -1231,13 +1322,23 @@ export const projects: Project[] = [
     repository: 'https://github.com/arifulbgt4/Otask_Desktop/tree/task/P03-005-service-ipc',
   },
   {
-    slug: 'otask-mail-server',
-    title: 'OTask Mail Server',
+    slug: 'smtp-server-platform',
+    title: 'SMTP Server & Email Delivery Platform',
     seo: {
-      primaryKeyword: 'self-hosted SMTP server platform',
-      title: 'Self-Hosted SMTP Server — OTask Mail Server',
+      primaryKeyword: 'self-hosted SMTP server',
+      relatedKeywords: [
+        'transactional email infrastructure',
+        'email delivery platform',
+        'SMTP server development',
+        'transactional email API',
+        'Postfix Rspamd DKIM',
+        'SPF DKIM DMARC preflight',
+        'email delivery webhooks',
+        'multi-tenant email infrastructure',
+      ],
+      title: 'Self-Hosted SMTP Server & Email Delivery Platform',
       description:
-        'OTask Mail Server is a verified self-hosted SMTP platform case study with Postfix, Rspamd, DKIM, durable queues, webhooks, and Mailpit acceptance.',
+        'A verified self-hosted SMTP and email delivery platform with durable queues, Postfix, Rspamd, DKIM, domain preflight, webhooks, and recovery evidence.',
     },
     category: 'Email infrastructure · Transactional email · SMTP operations',
     tier: 'core',
@@ -1247,16 +1348,16 @@ export const projects: Project[] = [
     softwareVersion: '0.1.0',
     operatingSystem: 'Linux server and modern web browser',
     summary:
-      'A fleet-managed, API-first outbound email platform that combines a central control plane with isolated self-hosted Mail Nodes, durable message acceptance, domain identity checks, and a real Postfix/Rspamd delivery path.',
+      'A self-hosted, API-first email delivery platform that turns real product events into durable transactional or consent-based messages through isolated Mail Nodes, verified sender identity, and an inspectable Postfix/Rspamd delivery path.',
     targetUsers:
-      'SaaS teams, CRM and product platforms, operators, and organizations that need controlled transactional or opt-in email infrastructure with self-hosted delivery nodes and explicit operational evidence.',
+      'SaaS, e-commerce, CRM, logistics, education, membership, and multi-brand product teams that need controlled transactional or opt-in email with self-hosted delivery nodes and explicit operational evidence.',
     buyerOutcome:
-      'A reviewable email-delivery foundation with organization isolation, durable queues, sender-domain readiness, recipient-level diagnostics, signed lifecycle webhooks, and honest delivery states without operating as an open relay.',
+      'Reliable product notifications, receipts, alerts, lifecycle messages, and operational updates backed by durable acceptance, sender-domain readiness, recipient diagnostics, signed webhooks, abuse controls, and honest delivery states.',
     benefits: [
       {
-        title: 'One controlled ingress',
+        title: 'Reliable product-to-email flow',
         description:
-          'CRM and dashboard traffic enters through Fleet Hub, while each organization receives an isolated Mail Node and independent operational boundary.',
+          'SaaS, commerce, CRM, and operational events enter through one authenticated API while each organization receives an isolated Mail Node and independent boundary.',
       },
       {
         title: 'Durable acceptance',
@@ -1264,12 +1365,12 @@ export const projects: Project[] = [
           'PostgreSQL transactions and an outbox protect accepted work before BullMQ dispatch, while Postfix owns remote retry after local MTA acceptance.',
       },
       {
-        title: 'Safer domain onboarding',
+        title: 'Safer sender-domain onboarding',
         description:
           'A, SPF, DKIM, DMARC, forward DNS, PTR compatibility, public IP, and service health are exposed as explicit preflight evidence before sending is enabled.',
       },
       {
-        title: 'Truthful delivery diagnostics',
+        title: 'Actionable delivery diagnostics',
         description:
           'Recipient state, SMTP responses, attempts, queue IDs, DSNs, suppressions, and webhook events remain inspectable without calling SMTP acceptance an inbox delivery.',
       },
@@ -1282,6 +1383,52 @@ export const projects: Project[] = [
         title: 'Operable recovery paths',
         description:
           'IP change, DNS invalidation, Rspamd failure, backup verification, paused restore, and explicit node migration are designed as observable operational workflows.',
+      },
+    ],
+    fieldSolutions: [
+      {
+        field: 'SaaS and account platforms',
+        problem:
+          'Verification, password-reset, security, billing, and workflow emails become fragile when feature code calls SMTP directly and failures disappear between the application and provider.',
+        solution:
+          'Use an authenticated email API with idempotent acceptance, templates, scheduling, durable queues, recipient events, and signed webhooks so account-critical messages remain traceable and retry-safe.',
+      },
+      {
+        field: 'E-commerce and marketplaces',
+        problem:
+          'Order confirmations, payment receipts, shipment updates, returns, and seller notifications cross multiple systems and need the exact order context that triggered each message.',
+        solution:
+          'Connect commerce events to versioned message payloads, sender-domain policy, batches, suppressions, and recipient-level delivery records that support customer care and reconciliation.',
+      },
+      {
+        field: 'CRM and customer operations',
+        problem:
+          'Lifecycle messages and opt-in campaigns need consent, unsubscribe, bounce, complaint, rate, and organization rules—not only a send button.',
+        solution:
+          'Centralize authorized CRM ingress, suppression enforcement, one-click unsubscribe, scoped API keys, scheduled work, signed lifecycle webhooks, and auditable delivery diagnostics.',
+      },
+      {
+        field: 'Logistics and field operations',
+        problem:
+          'Dispatch changes, job assignments, delayed-delivery notices, and exception escalations can become operational blind spots when messages are delayed or silently rejected.',
+        solution:
+          'Persist every accepted notification, expose queue and recipient state, separate temporary retry from permanent failure, and return webhook evidence to the operating system.',
+      },
+      {
+        field: 'Education and membership systems',
+        problem:
+          'Enrollment, verification, fee, schedule, renewal, and account notices often span several programs or organizations with different sending domains and access boundaries.',
+        solution:
+          'Use organization-isolated nodes, verified domain defaults, role-based operations, templates, controlled batches, and per-recipient history for dependable member communication.',
+      },
+      {
+        field: 'Multi-brand product operations',
+        problem:
+          'Agencies, platform operators, and product groups need separate sender identities and operational ownership without mixing domains, keys, queues, or diagnostics.',
+        solution:
+          'Assign isolated Mail Nodes and domain identities per organization, then manage preflight, health, migrations, backups, and webhook contracts through one fleet control plane.',
+        boundary:
+          'The implementation provides engineering and operational controls; legal, regulatory, retention, and industry-specific compliance still require an authorized domain review.',
       },
     ],
     challenge:
@@ -1377,7 +1524,7 @@ export const projects: Project[] = [
       },
     ],
     year: '2026–Present',
-    role: 'Product architecture · Full-stack and systems engineering · Email infrastructure · Security and operations design',
+    role: 'SMTP and email-delivery architecture · Full-stack and systems engineering · Security · Operations design',
     tags: [
       'Self-hosted SMTP server',
       'Transactional email API',
@@ -1513,8 +1660,8 @@ export const projects: Project[] = [
       'Plan a deliberate node or infrastructure migration with audited prepare, verify, cutover, rollback, and completion states instead of reputation-triggered routing.',
     ],
     relatedService: {
-      title: 'Backend, API & Realtime Product Systems',
-      href: '/services/backend-api-engineering',
+      title: 'SMTP & Email Delivery Infrastructure',
+      href: '/services/email-delivery-infrastructure',
     },
     relatedArticles: [
       {
@@ -1528,7 +1675,7 @@ export const projects: Project[] = [
     ],
     faqs: [
       {
-        question: 'Is OTask Mail Server an open SMTP relay?',
+        question: 'Is this SMTP platform an open relay?',
         answer:
           'No. Normal CRM submission enters Fleet Hub over authenticated HTTPS. Postfix private submission is internal, and the public SMTP listener accepts only validated signed bounce recipients while denying unauthorized relay.',
       },

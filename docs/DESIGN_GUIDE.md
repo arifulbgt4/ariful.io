@@ -88,6 +88,12 @@ times, consider a typed React component.
 `.skill-pill` is for compact supporting context on service and case-study detail
 pages. Do not use a large technology-pill wall on the homepage or service index.
 
+`components/InterfaceIcon.tsx` is the shared code-native icon set for compact
+interface cues. Footer utility links keep both icon and visible label; homepage
+proof items pair one meaningful icon with their existing value and label. Treat
+these icons as decorative when adjacent text already names the destination or
+fact, and preserve the 44px interactive target for linked controls.
+
 ## Page composition
 
 ### Homepage

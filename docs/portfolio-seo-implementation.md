@@ -1,6 +1,6 @@
 # Portfolio SEO Implementation
 
-Last audited: 2026-08-30
+Last audited: 2026-08-31
 
 ## Existing system and findings
 
@@ -17,9 +17,9 @@ The repository was already a strong static-first Next.js 16 App Router portfolio
 
 - Added `/journal` and static `/journal/[slug]` entries with date, project, problem, context, experiments, decisions, result, limitation, lessons, next step, tags, previous/next navigation, JSON-LD, canonical metadata, and project backlinks.
 - Repositioned the public site around end-to-end Product Engineering for software, AI-enabled, and connected/IoT products, with one `/hire` conversion surface containing an optional free consultation and qualified project brief.
-- Retired the recruiter brief from discovery and changed legacy `/resume` requests to a permanent `308` redirect to `/hire`.
+- Retired the recruiter brief from discovery and removed the legacy `/resume` route from the application and sitemap.
 - Split portfolio work into five equal-priority core products—including the
-  evidence-bounded OTask Mail Server case study—and two Lab items: the
+  evidence-bounded SMTP Server & Email Delivery Platform case study—and two Lab items: the
   highlighted, documentation-only EEE Simulator research foundation and the
   Local LLM Workflows experiment. Each record carries visible maturity,
   lifecycle, constraints, and evidence fields instead of a flagship hierarchy.
@@ -53,7 +53,7 @@ Calendly frame origin before enforcement.
 1. Edit profile, service, project, FAQ, capability, and journal records in `content/site.ts`.
 2. Keep journal status reproducible; separate research, design, prototype, implementation, validation, and production.
 3. Add articles under `content/blog/*.md` using `docs/CONTENT_AND_CMS_GUIDE.md`.
-4. Keep indexed slugs stable and add permanent redirects before renaming routes.
+4. Keep indexed slugs stable. If a route must be renamed, update every internal reference and remove the retired path.
 5. Maintain a unique title, description, canonical, H1, evidence, internal links, and visible-text-aligned schema for every indexable page.
 6. Keep consultation copy and links on `/hire#consultation`, qualified written
    enquiries on `/hire#project-brief`, and direct email as the shared fallback.
@@ -63,12 +63,12 @@ Calendly frame origin before enforcement.
 
 After deployment:
 
-1. Confirm `https://ariful.io` is canonical and HTTP/`www` redirect consistently.
+1. Confirm `https://ariful.io` is canonical across metadata, sitemap, RSS, and structured data.
 2. Add a Google Search Console Domain property (DNS) or URL-prefix property. For HTML verification, set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`.
 3. Add Bing Webmaster Tools. Set `NEXT_PUBLIC_BING_SITE_VERIFICATION` for HTML meta verification, or import the verified Search Console property.
 4. Deploy, inspect rendered verification tags, and complete ownership verification.
 5. Submit `https://ariful.io/sitemap.xml` to both services.
-6. Request indexing for the homepage, Hire, Services, core case studies, Journal, and strongest articles. Do not submit the redirected `/resume` URL.
+6. Request indexing for the homepage, Hire, Services, core case studies, Journal, and strongest articles. Do not submit the removed `/resume` URL.
 7. Review crawl, canonical, schema, Core Web Vitals, and indexing reports monthly.
 8. Yandex may use the same sitemap if relevant. Baidu is optional for a future China-market requirement.
 
@@ -76,7 +76,7 @@ IndexNow was not added: the current update volume does not justify a key endpoin
 
 ## Manual setup and limitations
 
-- Configure domain redirects, Resend variables, and verified sender ownership.
+- Configure the canonical domain, Resend variables, and verified sender ownership.
 - Maintain the accepted public 30-minute Calendly event, connected Google
   calendar and Meet location, 4-hour minimum notice, no buffer, four-per-day
   limit, 30-day horizon, name/email-only form, disabled guest collection, and

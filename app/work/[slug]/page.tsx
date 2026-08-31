@@ -48,7 +48,9 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
   return {
     title: pageTitle,
     description: pageDescription,
-    keywords: project.seo ? [project.seo.primaryKeyword, ...project.tags] : project.tags,
+    keywords: project.seo
+      ? [project.seo.primaryKeyword, ...(project.seo.relatedKeywords ?? []), ...project.tags]
+      : project.tags,
     alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
       title: pageTitle,
@@ -74,6 +76,7 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
   const relatedJournal = journalEntries.filter((entry) => entry.projectSlug === project.slug);
   const systemMap = project.systemMap ?? [];
   const benefits = project.benefits ?? [];
+  const fieldSolutions = project.fieldSolutions ?? [];
   const caseStudySections = project.caseStudySections ?? [];
   const clientApplications = project.clientApplications ?? [];
   const relatedArticles = project.relatedArticles ?? [];
@@ -232,6 +235,38 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
             </ol>
           </div>
         </section>
+
+        {fieldSolutions.length ? (
+          <section className="mx-auto mt-20 max-w-5xl" aria-labelledby="field-solutions-heading">
+            <p className="section-kicker">Real-world solutions</p>
+            <h2 id="field-solutions-heading" className="mt-4 max-w-4xl text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
+              How the service solves operational email problems across real fields.
+            </h2>
+            <p className="mt-5 max-w-3xl leading-8 text-slate-400">
+              Each pattern connects a business event to a dependable delivery path while keeping consent, sender identity, failure evidence, and infrastructure limits visible.
+            </p>
+            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+              {fieldSolutions.map((item) => (
+                <article key={item.field} className="surface-card p-6 sm:p-7">
+                  <h3 className="text-xl font-black text-white">{item.field}</h3>
+                  <div className="mt-5 space-y-5">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-200/80">Operational problem</p>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.problem}</p>
+                    </div>
+                    <div className="border-t border-white/[0.07] pt-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200/80">Solution pattern</p>
+                      <p className="mt-2 text-sm leading-7 text-slate-300">{item.solution}</p>
+                    </div>
+                    {item.boundary ? (
+                      <p className="border-l-2 border-amber-300/30 pl-4 text-xs leading-6 text-slate-500">{item.boundary}</p>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {systemMap.length ? (
           <section className="mx-auto mt-20 max-w-5xl" aria-labelledby="system-map-heading">

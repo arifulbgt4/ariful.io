@@ -85,35 +85,35 @@ for (const filename of requiredProfilePageFiles) {
 
 const resumePage = path.join(appDirectory, 'resume', 'page.tsx');
 if (fs.existsSync(resumePage)) {
-  errors.push('app/resume/page.tsx: /resume must remain a redirect-only legacy route.');
+  errors.push('app/resume/page.tsx: /resume is retired and must remain removed.');
 }
+
+const retiredIndexablePaths = [
+  '/resume',
+  '/projects',
+  '/lab',
+  '/work/graphql-todo-application',
+  '/work/otask-mail-server',
+];
 
 for (const filename of ['app/sitemap.ts', 'app/site-map/page.tsx']) {
   const source = fs.readFileSync(path.join(process.cwd(), filename), 'utf8');
-  if (/['"]\/resume['"]/.test(source)) {
-    errors.push(`${filename}: redirected /resume must not be advertised as an indexable destination.`);
+  for (const retiredPath of retiredIndexablePaths) {
+    if (source.includes(`'${retiredPath}'`) || source.includes(`"${retiredPath}"`)) {
+      errors.push(`${filename}: removed path ${retiredPath} must not be advertised as an indexable destination.`);
+    }
   }
 }
 
 const nextConfigSource = fs.readFileSync(path.join(process.cwd(), 'next.config.ts'), 'utf8');
-const requiredRedirects = [
-  ['/resume', '/hire'],
-  ['/work/graphql-todo-application', '/work'],
-  ['/projects', '/work'],
-  ['/lab', '/work'],
-];
+if (/\bredirects\s*\(/.test(nextConfigSource)) {
+  errors.push('next.config.ts: application redirect rules are not allowed; replace or remove the route instead.');
+}
 
-for (const [source, destination] of requiredRedirects) {
-  const sourceMarker = `source: '${source}'`;
-  const sourceIndex = nextConfigSource.indexOf(sourceMarker);
-  const redirectBlock = sourceIndex >= 0 ? nextConfigSource.slice(sourceIndex, sourceIndex + 180) : '';
-
-  if (
-    sourceIndex < 0
-    || !redirectBlock.includes(`destination: '${destination}'`)
-    || !redirectBlock.includes('permanent: true')
-  ) {
-    errors.push(`next.config.ts: missing permanent ${source} -> ${destination} redirect contract.`);
+for (const filename of listTsxFiles(appDirectory)) {
+  const source = fs.readFileSync(filename, 'utf8');
+  if (/\b(?:permanentRedirect|redirect)\s*\(/.test(source)) {
+    errors.push(`${path.relative(process.cwd(), filename)}: route redirects are not allowed; replace or remove the route instead.`);
   }
 }
 
@@ -130,5 +130,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `SEO source guard passed for ${profilePageCount} inline ProfilePage documents, the product-engineer identity, and ${requiredRedirects.length} legacy redirect contracts.`,
+  `SEO source guard passed for ${profilePageCount} inline ProfilePage documents, the product-engineer identity, no application redirects, and ${retiredIndexablePaths.length} removed discovery paths.`,
 );

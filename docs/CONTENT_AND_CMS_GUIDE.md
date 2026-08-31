@@ -128,7 +128,7 @@ updates. Dynamic pages and navigation surfaces use those records. Keep public
 URLs absolute and verify them before deployment.
 
 The portfolio has five equal core products: AI Dropshipping Commerce Platform,
-OTask, OTask Mail Server, Underwater Monitoring R&D, and Reusable B2C
+OTask, SMTP Server & Email Delivery Platform, Underwater Monitoring R&D, and Reusable B2C
 Marketplace Platform. EEE
 Simulator and Local LLM Workflows belong in `Lab & Experiments`. EEE Simulator
 is the one highlighted Lab record; that visual discovery treatment must not
@@ -142,6 +142,10 @@ and current maturity. Use the same lifecycle vocabulary and separate
 `Delivered`, `Validated`, `In progress`, and `Planned`. A complete case-study
 page is not proof that the underlying product is complete.
 
+When a project supports distinct operational fields, add evidence-bounded
+problem-to-solution patterns for those fields. Lead with the real workflow and
+buyer outcome; use architecture and technology as supporting evidence.
+
 The current public maturity boundary is:
 
 - AI Dropshipping Commerce Platform: operational foundation built;
@@ -150,7 +154,7 @@ The current public maturity boundary is:
   and P03-001 through P03-005 have recorded six-job CI evidence, while P03-006
   SQLite persistence is active local, uncommitted work and is not yet remotely
   validated;
-- OTask Mail Server: version 0.1.0 local implementation and Mailpit acceptance
+- SMTP Server & Email Delivery Platform: version 0.1.0 local implementation and Mailpit acceptance
   complete across all 87 source requirements; the repository is private, and
   public SMTP infrastructure, remote Internet acceptance, controlled public
   DSNs, inbox placement, and reputation evidence remain pending;
@@ -181,9 +185,9 @@ not trigger search-console submission. If multiple content changes happen within
 All service, work, article, navigation, and footer conversion copy must keep the
 buyer on `/hire`. Use `/hire#consultation` when the promise is a free 30-minute
 fit conversation and `/hire#project-brief` when asking for project details.
-Direct email remains the fallback. `/resume` is a legacy URL that permanently
-redirects to `/hire`; do not restore resume navigation, metadata, sitemap,
-schema, or recruiter-first copy.
+Direct email remains the fallback. `/resume` is removed and returns `404`; do
+not restore resume navigation, metadata, sitemap, schema, or recruiter-first
+copy.
 
 The public Calendly event URL, provider name, 30-minute duration, and
 consultation wording belong in `content/site.ts` so UI, validation, and docs do

@@ -1,5 +1,17 @@
 import Link from 'next/link';
+import InterfaceIcon, { type InterfaceIconName } from '@/components/InterfaceIcon';
 import { services, siteConfig } from '@/content/site';
+
+const utilityLinkClass =
+  'inline-flex min-h-11 items-center gap-2 rounded-lg px-2 text-slate-500 hover:bg-white/[0.035] hover:text-cyan-200';
+
+function UtilityIcon({ name }: { name: InterfaceIconName }) {
+  return (
+    <span className="grid h-7 w-7 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.025] text-current">
+      <InterfaceIcon name={name} className="h-4 w-4" />
+    </span>
+  );
+}
 
 export default function Footer() {
   return (
@@ -34,12 +46,27 @@ export default function Footer() {
 
       <div className="site-container mt-12 flex flex-col gap-4 border-t border-white/[0.07] pt-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Ariful Islam. Built with Next.js.</p>
-        <div className="flex flex-wrap gap-5">
-          <a href={siteConfig.social.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/site-map">Site map</Link>
-          <Link href="/rss.xml">RSS</Link>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 sm:justify-end">
+          <a href={siteConfig.social.github} target="_blank" rel="noreferrer" className={utilityLinkClass}>
+            <UtilityIcon name="github" />
+            <span>GitHub</span>
+          </a>
+          <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" className={utilityLinkClass}>
+            <UtilityIcon name="linkedin" />
+            <span>LinkedIn</span>
+          </a>
+          <Link href="/privacy" className={utilityLinkClass}>
+            <UtilityIcon name="privacy" />
+            <span>Privacy</span>
+          </Link>
+          <Link href="/site-map" className={utilityLinkClass}>
+            <UtilityIcon name="site-map" />
+            <span>Site map</span>
+          </Link>
+          <Link href="/rss.xml" className={utilityLinkClass}>
+            <UtilityIcon name="rss" />
+            <span>RSS</span>
+          </Link>
         </div>
       </div>
     </footer>
