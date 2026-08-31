@@ -104,6 +104,88 @@ textarea:focus-visible {
     @apply flex items-center justify-between rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 hover:border-cyan-300/20 hover:bg-cyan-300/[0.04];
   }
 
+  .timeline-list {
+    counter-reset: timeline-item;
+    @apply list-none;
+  }
+
+  .timeline-list > li {
+    counter-increment: timeline-item;
+    min-height: 2.5rem;
+    padding-left: 3rem;
+    position: relative;
+  }
+
+  .timeline-list > li::before {
+    align-items: center;
+    background: rgb(103 232 249 / 0.045);
+    border: 1px solid rgb(103 232 249 / 0.18);
+    border-radius: 0.5rem;
+    color: rgb(165 243 252 / 0.82);
+    content: counter(timeline-item, decimal-leading-zero);
+    display: grid;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.625rem;
+    height: 2rem;
+    left: 0;
+    letter-spacing: 0.08em;
+    place-items: center;
+    position: absolute;
+    top: 0.15rem;
+    width: 2rem;
+    z-index: 1;
+  }
+
+  .timeline-list > li:not(:last-child)::after {
+    background: linear-gradient(to bottom, rgb(103 232 249 / 0.25), rgb(103 232 249 / 0.06));
+    bottom: -0.75rem;
+    content: '';
+    left: calc(1rem - 0.5px);
+    position: absolute;
+    top: 2.15rem;
+    width: 1px;
+  }
+
+  .timeline-list-amber > li::before {
+    background: rgb(252 211 77 / 0.04);
+    border-color: rgb(252 211 77 / 0.2);
+    color: rgb(253 230 138 / 0.85);
+  }
+
+  .timeline-list-amber > li:not(:last-child)::after {
+    background: linear-gradient(to bottom, rgb(252 211 77 / 0.25), rgb(252 211 77 / 0.05));
+  }
+
+  .sequence-grid {
+    counter-reset: sequence-item;
+    @apply list-none;
+  }
+
+  .sequence-grid > li {
+    counter-increment: sequence-item;
+    padding-left: 4rem;
+    position: relative;
+  }
+
+  .sequence-grid > li::before {
+    align-items: center;
+    background: rgb(103 232 249 / 0.045);
+    border: 1px solid rgb(103 232 249 / 0.18);
+    border-radius: 0.5rem;
+    color: rgb(165 243 252 / 0.82);
+    content: counter(sequence-item, decimal-leading-zero);
+    display: grid;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.625rem;
+    height: 2rem;
+    left: 1rem;
+    letter-spacing: 0.08em;
+    place-items: center;
+    position: absolute;
+    top: 1rem;
+    width: 2rem;
+  }
+
   .form-label {
     @apply mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-slate-500;
   }
@@ -138,15 +220,48 @@ textarea:focus-visible {
 
   .prose-portfolio ul,
   .prose-portfolio ol {
-    @apply my-5 space-y-2 pl-6;
+    counter-reset: prose-timeline;
+    @apply my-7 list-none space-y-3 pl-0;
   }
 
-  .prose-portfolio ul {
-    @apply list-disc;
+  .prose-portfolio ul > li,
+  .prose-portfolio ol > li {
+    counter-increment: prose-timeline;
+    min-height: 2.5rem;
+    padding-left: 3.25rem;
+    position: relative;
   }
 
-  .prose-portfolio ol {
-    @apply list-decimal;
+  .prose-portfolio ul > li::before,
+  .prose-portfolio ol > li::before {
+    align-items: center;
+    background: rgb(103 232 249 / 0.045);
+    border: 1px solid rgb(103 232 249 / 0.18);
+    border-radius: 0.5rem;
+    color: rgb(165 243 252 / 0.82);
+    content: counter(prose-timeline, decimal-leading-zero);
+    display: grid;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.625rem;
+    height: 2rem;
+    left: 0;
+    letter-spacing: 0.08em;
+    place-items: center;
+    position: absolute;
+    top: 0.15rem;
+    width: 2rem;
+    z-index: 1;
+  }
+
+  .prose-portfolio ul > li:not(:last-child)::after,
+  .prose-portfolio ol > li:not(:last-child)::after {
+    background: linear-gradient(to bottom, rgb(103 232 249 / 0.25), rgb(103 232 249 / 0.06));
+    bottom: -0.75rem;
+    content: '';
+    left: calc(1rem - 0.5px);
+    position: absolute;
+    top: 2.15rem;
+    width: 1px;
   }
 
   .prose-portfolio strong {

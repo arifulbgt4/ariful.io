@@ -80,6 +80,9 @@ Shared CSS classes live in `app/globals.css`:
 - `.surface-card`
 - `.skill-pill`
 - `.form-control`
+- `.timeline-list`
+- `.timeline-list-amber`
+- `.sequence-grid`
 - `.prose-portfolio`
 
 Reuse these before introducing a one-off variant. If a pattern appears three
@@ -87,6 +90,13 @@ times, consider a typed React component.
 
 `.skill-pill` is for compact supporting context on service and case-study detail
 pages. Do not use a large technology-pill wall on the homepage or service index.
+
+Do not use dot, dash, or checkmark bullets in the public interface. Preserve
+semantic `ul` and `ol` markup, then use `.timeline-list` for single-column
+capability, evidence, decision, or risk sequences. Use
+`.timeline-list-amber` when the same pattern communicates constraints or
+cautions, and `.sequence-grid` for compact multi-column sequences. Article
+lists inherit the numbered timeline treatment from `.prose-portfolio`.
 
 `components/InterfaceIcon.tsx` is the shared code-native icon set for compact
 interface cues. Footer utility links keep both icon and visible label; homepage

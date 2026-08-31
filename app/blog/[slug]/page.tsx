@@ -155,8 +155,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="mt-7 grid gap-7 border-t border-white/[0.08] pt-6 sm:grid-cols-2">
             <div>
               <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-cyan-200">Key takeaways</h3>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
-                {post.takeaways.map((takeaway) => <li key={takeaway} className="flex gap-3"><span aria-hidden="true" className="text-cyan-300">✓</span><span>{takeaway}</span></li>)}
+              <ul className="timeline-list mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                {post.takeaways.map((takeaway) => <li key={takeaway}>{takeaway}</li>)}
               </ul>
             </div>
             <div>

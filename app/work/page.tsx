@@ -144,12 +144,9 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
         </div>
       ) : null}
       {project.highlighted ? (
-        <ul className="mt-6 grid gap-3 md:grid-cols-2">
+        <ul className="sequence-grid mt-6 grid gap-3 md:grid-cols-2">
           {project.highlights.slice(0, 4).map((highlight) => (
-            <li key={highlight} className="flex gap-3 text-sm leading-6 text-slate-400">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
-              {highlight}
-            </li>
+            <li key={highlight} className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 text-sm leading-6 text-slate-400">{highlight}</li>
           ))}
         </ul>
       ) : null}

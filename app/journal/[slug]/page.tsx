@@ -49,5 +49,14 @@ export default async function JournalEntryPage({ params }: Props) {
   );
 }
 function TextSection({ title, text }: { title: string; text: string }) { return <section className="surface-card p-6 sm:p-8"><h2 className="text-xl font-bold text-white">{title}</h2><p className="mt-4 leading-8 text-slate-400">{text}</p></section>; }
-function ListSection({ title, items }: { title: string; items: string[] }) { return <section className="surface-card p-6 sm:p-8"><h2 className="text-xl font-bold text-white">{title}</h2><ul className="mt-4 space-y-3">{items.map((item) => <li key={item} className="flex gap-3 leading-7 text-slate-400"><span className="text-cyan-300">✓</span>{item}</li>)}</ul></section>; }
+function ListSection({ title, items }: { title: string; items: string[] }) {
+  return (
+    <section className="surface-card p-6 sm:p-8">
+      <h2 className="text-xl font-bold text-white">{title}</h2>
+      <ul className="timeline-list mt-4 space-y-3">
+        {items.map((item) => <li key={item} className="leading-7 text-slate-400">{item}</li>)}
+      </ul>
+    </section>
+  );
+}
 function formatDate(date: string) { return new Intl.DateTimeFormat('en', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(date)); }

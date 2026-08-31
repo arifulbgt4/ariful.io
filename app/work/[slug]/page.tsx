@@ -315,12 +315,9 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           <div className="surface-card p-6 sm:p-8">
             <p className="section-kicker">Claim boundary</p>
             <h2 className="mt-4 text-2xl font-black text-white">Constraints and unresolved risks</h2>
-            <ul className="mt-6 space-y-4">
+            <ul className="timeline-list timeline-list-amber mt-6 space-y-4">
               {project.constraints.map((constraint) => (
-                <li key={constraint} className="flex gap-3 text-sm leading-7 text-slate-400">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                  {constraint}
-                </li>
+                <li key={constraint} className="text-sm leading-7 text-slate-400">{constraint}</li>
               ))}
             </ul>
           </div>
@@ -350,12 +347,9 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
         <section className="mx-auto mt-8 grid max-w-5xl gap-5 md:grid-cols-2" aria-label="Engineering highlights and technologies">
           <div className="surface-card p-6 sm:p-8">
             <h2 className="text-xl font-bold text-white">Engineering highlights</h2>
-            <ul className="mt-5 space-y-3">
+            <ul className="timeline-list mt-5 space-y-3">
               {project.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3 text-sm leading-6 text-slate-400">
-                  <span className="text-cyan-300">✓</span>
-                  {highlight}
-                </li>
+                <li key={highlight} className="text-sm leading-6 text-slate-400">{highlight}</li>
               ))}
             </ul>
           </div>
@@ -412,12 +406,9 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
                   </Link>
                 ) : null}
               </div>
-              <ul className="grid gap-3">
+              <ul className="sequence-grid grid gap-3">
                 {clientApplications.map((application) => (
-                  <li key={application} className="flex gap-3 rounded-xl border border-white/[0.07] bg-black/10 p-5 text-sm leading-7 text-slate-300">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
-                    {application}
-                  </li>
+                  <li key={application} className="rounded-xl border border-white/[0.07] bg-black/10 p-5 text-sm leading-7 text-slate-300">{application}</li>
                 ))}
               </ul>
             </div>

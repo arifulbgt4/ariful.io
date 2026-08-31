@@ -193,12 +193,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <p className="mt-4 max-w-3xl leading-7 text-slate-400">
                 Final outputs are narrowed during discovery, but the engagement can cover these product outcomes when the scope requires them.
               </p>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              <ul className="sequence-grid mt-6 grid gap-3 sm:grid-cols-2">
                 {service.deliverables.map((deliverable) => (
-                  <li key={deliverable} className="surface-card flex gap-3 p-5 text-sm leading-6 text-slate-300">
-                    <span aria-hidden="true" className="text-cyan-300">✓</span>
-                    {deliverable}
-                  </li>
+                  <li key={deliverable} className="surface-card p-5 text-sm leading-6 text-slate-300">{deliverable}</li>
                 ))}
               </ul>
             </section>

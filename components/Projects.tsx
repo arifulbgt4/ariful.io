@@ -33,12 +33,9 @@ export default function Projects() {
                   <p className="mt-2 text-sm leading-6 text-slate-300">{project.buyerOutcome}</p>
                 </div>
 
-                <ul className="mt-6 grid gap-3">
+                <ul className="timeline-list mt-6 space-y-3">
                   {project.highlights.slice(0, 3).map((highlight) => (
-                    <li key={highlight} className="flex gap-3 text-sm leading-6 text-slate-400">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
-                      {highlight}
-                    </li>
+                    <li key={highlight} className="text-sm leading-6 text-slate-400">{highlight}</li>
                   ))}
                 </ul>
               </div>
@@ -73,12 +70,9 @@ export default function Projects() {
               <div className="bg-[#090D14]/95 p-6 sm:p-8 lg:p-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Current evidence</p>
                 <p className="mt-4 text-sm leading-7 text-slate-300">{highlightedLab.maturity.summary}</p>
-                <ul className="mt-6 space-y-3">
+                <ul className="timeline-list mt-6 space-y-3">
                   {highlightedLab.highlights.slice(0, 3).map((highlight) => (
-                    <li key={highlight} className="flex gap-3 text-sm leading-6 text-slate-400">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
-                      {highlight}
-                    </li>
+                    <li key={highlight} className="text-sm leading-6 text-slate-400">{highlight}</li>
                   ))}
                 </ul>
               </div>

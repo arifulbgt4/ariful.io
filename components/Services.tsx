@@ -21,12 +21,9 @@ export default function Services() {
               <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300/60">{lane.eyebrow}</p>
               <h3 className="mt-4 text-2xl font-black tracking-tight text-white">{lane.title}</h3>
               <p className="mt-4 leading-7 text-slate-400">{lane.summary}</p>
-              <ul className="mt-6 space-y-3 border-t border-white/[0.07] pt-5">
+              <ul className="timeline-list mt-6 space-y-3 border-t border-white/[0.07] pt-5">
                 {lane.outcomes.map((outcome) => (
-                  <li key={outcome} className="flex gap-3 text-sm leading-6 text-slate-300">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
-                    {outcome}
-                  </li>
+                  <li key={outcome} className="text-sm leading-6 text-slate-300">{outcome}</li>
                 ))}
               </ul>
             </article>

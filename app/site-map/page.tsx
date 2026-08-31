@@ -52,7 +52,7 @@ export default function SiteMapPage() {
           {groups.map((group) => (
             <section key={group.title} className="surface-card p-6 sm:p-8">
               <h2 className="text-xl font-bold text-white">{group.title}</h2>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-5 list-none space-y-3">
                 {group.links.map(([label, href]) => (
                   <li key={href}>
                     <Link href={href} className="text-slate-400 hover:text-cyan-200">

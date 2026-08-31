@@ -127,12 +127,9 @@ export default function HirePage() {
                 </p>
                 <h3 className="mt-4 text-2xl font-black text-white">{lane.title}</h3>
                 <p className="mt-4 flex-1 leading-7 text-slate-400">{lane.summary}</p>
-                <ul className="mt-6 space-y-3 border-t border-white/[0.07] pt-5">
+                <ul className="timeline-list mt-6 space-y-3 border-t border-white/[0.07] pt-5">
                   {lane.outcomes.map((outcome) => (
-                    <li key={outcome} className="flex gap-3 text-sm leading-6 text-slate-300">
-                      <span className="text-cyan-300" aria-hidden="true">✓</span>
-                      {outcome}
-                    </li>
+                    <li key={outcome} className="text-sm leading-6 text-slate-300">{outcome}</li>
                   ))}
                 </ul>
               </article>
@@ -221,19 +218,10 @@ export default function HirePage() {
 
               <div className="mt-8 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
                 <h3 className="text-base font-bold text-white">What this call covers</h3>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
-                  <li className="flex gap-3">
-                    <span className="text-cyan-300" aria-hidden="true">✓</span>
-                    Clarify the outcome you need and the current product stage.
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-cyan-300" aria-hidden="true">✓</span>
-                    Surface the main delivery, technical, or operational constraint.
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-cyan-300" aria-hidden="true">✓</span>
-                    Check whether my delivery model fits your team and identify a sensible next step.
-                  </li>
+                <ul className="timeline-list mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                  <li>Clarify the outcome you need and the current product stage.</li>
+                  <li>Surface the main delivery, technical, or operational constraint.</li>
+                  <li>Check whether my delivery model fits your team and identify a sensible next step.</li>
                 </ul>
               </div>
 
@@ -320,14 +308,9 @@ function FitPanel({
   return (
     <article className="surface-card p-6 sm:p-8">
       <h2 className="text-2xl font-black text-white">{title}</h2>
-      <ul className="mt-6 space-y-4">
+      <ul className={`timeline-list mt-6 space-y-4 ${tone === 'caution' ? 'timeline-list-amber' : ''}`}>
         {items.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-7 text-slate-400">
-            <span className={tone === 'positive' ? 'text-cyan-300' : 'text-amber-200'} aria-hidden="true">
-              {tone === 'positive' ? '✓' : '—'}
-            </span>
-            {item}
-          </li>
+          <li key={item} className="text-sm leading-7 text-slate-400">{item}</li>
         ))}
       </ul>
     </article>
