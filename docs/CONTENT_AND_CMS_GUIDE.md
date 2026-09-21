@@ -127,13 +127,13 @@ Edit `content/site.ts` for profile, service, work, social, skills, and proof
 updates. Dynamic pages and navigation surfaces use those records. Keep public
 URLs absolute and verify them before deployment.
 
-The portfolio has five equal core products: AI Dropshipping Commerce Platform,
-OTask, SMTP Server & Email Delivery Platform, Underwater Monitoring R&D, and Reusable B2C
-Marketplace Platform. EEE
+The portfolio has six equal core products: AI Dropshipping Commerce Platform,
+OTask, SMTP Server & Email Delivery Platform, n8n Automation SaaS,
+Underwater Monitoring R&D, and Reusable B2C Marketplace Platform. EEE
 Simulator and Local LLM Workflows belong in `Lab & Experiments`. EEE Simulator
 is the one highlighted Lab record; that visual discovery treatment must not
 promote it to core, imply working software, or reduce the equal presentation of
-the five core products. Do not use a flagship label or allow one core project
+the six core products. Do not use a flagship label or allow one core project
 to receive an oversized editorial or visual treatment.
 
 Every project record and case study must state target users, buyer outcome,
@@ -158,6 +158,10 @@ The current public maturity boundary is:
   complete across all 87 source requirements; the repository is private, and
   public SMTP infrastructure, remote Internet acceptance, controlled public
   DSNs, inbox placement, and reputation evidence remain pending;
+- n8n Automation SaaS: private repository implementation built across API,
+  worker, customer/admin panels, migrations, and six workflow artifacts;
+  live provider, workflow cutover, storage, recovery, and pilot acceptance
+  remain pending;
 - Underwater Monitoring R&D: active R&D; integrated pond validation pending;
 - Reusable B2C Marketplace Platform: architecture and product foundation
   planned;

@@ -48,8 +48,9 @@ specific content.
 ### Evidence intent
 
 `/work/[slug]` routes establish domain-specific entity and capability evidence.
-The five equal core products are AI Dropshipping Commerce Platform, OTask,
-SMTP Server & Email Delivery Platform, Underwater Monitoring R&D, and Reusable B2C Marketplace
+The six equal core products are AI Dropshipping Commerce Platform, OTask,
+SMTP Server & Email Delivery Platform, n8n Automation SaaS,
+Underwater Monitoring R&D, and Reusable B2C Marketplace
 Platform. The
 documentation-only EEE Simulator foundation and Local LLM Workflows are
 separate Lab & Experiments records. EEE Simulator may receive a visible
@@ -189,7 +190,7 @@ conclusion about content quality or future citation eligibility.
 
 ## Owner-controlled search actions
 
-1. Inspect the homepage, `/hire`, service pages, five core case studies, and
+1. Inspect the homepage, `/hire`, service pages, six core case studies, and
    priority articles for indexing.
 2. Confirm canonical-host consistency across metadata, sitemap, RSS, structured
    data, and public links.
@@ -248,7 +249,7 @@ July 29 indexing requests are tracked separately from sitemap submission:
 Launch: A Founder's Engineering Roadmap.” The AI dropshipping
 architecture and human-approval articles remain the first commercial topic
 cluster and must continue to link to the AI commerce case study and dedicated
-service without elevating that product above the other four core products.
+service without elevating that product above the other five core products.
 
 The Month 2 articles, “How to Scope a Production-Ready SaaS MVP Without
 Overbuilding” and “Multi-Tenant Authorization with PostgreSQL and Prisma,” are

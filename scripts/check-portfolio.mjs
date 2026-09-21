@@ -17,7 +17,7 @@ const requiredCoreFields = [
   'caseStudySections',
   'clientApplications',
 ];
-const requiredMailServerFields = ['seo', 'benefits', 'fieldSolutions', 'faqs'];
+const requiredDetailedCaseStudyFields = ['seo', 'benefits', 'fieldSolutionsIntro', 'fieldSolutions', 'faqs'];
 const forbiddenProjectFields = new Set(['flagship', 'featured']);
 const codeExtensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs']);
 const errors = [];
@@ -260,17 +260,17 @@ function validateProjects() {
         );
       }
 
-      if (slug === 'smtp-server-platform') {
-        const missingMailServerFields = requiredMailServerFields.filter((field) => !fields.has(field));
-        if (missingMailServerFields.length > 0) {
+      if (slug === 'smtp-server-platform' || slug === 'n8n-automation-saas') {
+        const missingDetailedFields = requiredDetailedCaseStudyFields.filter((field) => !fields.has(field));
+        if (missingDetailedFields.length > 0) {
           addNodeError(
             sourceFile,
             project,
-            `${projectLabel} must include: ${missingMailServerFields.map((field) => `"${field}"`).join(', ')}.`,
+            `${projectLabel} must include: ${missingDetailedFields.map((field) => `"${field}"`).join(', ')}.`,
           );
         }
         if (fields.has('repository')) {
-          addNodeError(sourceFile, fields.get('repository'), `${projectLabel} must not expose its private repository URL.`);
+          addNodeError(sourceFile, fields.get('repository'), `${projectLabel} must not expose a private repository URL.`);
         }
       }
     } else if (tier === 'lab') {
@@ -280,14 +280,14 @@ function validateProjects() {
     }
   });
 
-  if (coreCount !== 5) {
-    errors.push(`content/site.ts must expose exactly 5 core projects; found ${coreCount}.`);
+  if (coreCount !== 6) {
+    errors.push(`content/site.ts must expose exactly 6 core projects; found ${coreCount}.`);
   }
   if (labCount !== 2) {
     errors.push(`content/site.ts must expose exactly 2 lab projects; found ${labCount}.`);
   }
-  if (initializer.elements.length !== 7) {
-    errors.push(`content/site.ts must expose exactly 7 project records; found ${initializer.elements.length}.`);
+  if (initializer.elements.length !== 8) {
+    errors.push(`content/site.ts must expose exactly 8 project records; found ${initializer.elements.length}.`);
   }
   if (highlightedProjects.length !== 1) {
     errors.push(`content/site.ts must expose exactly 1 highlighted project; found ${highlightedProjects.length}.`);

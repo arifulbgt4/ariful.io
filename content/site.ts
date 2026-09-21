@@ -420,6 +420,12 @@ export const services: Service[] = [
     ],
     evidence: [
       {
+        title: 'n8n Automation SaaS',
+        description: 'A multi-tenant automation implementation connecting customer and operator panels, guarded AI workflows, business actions, an application API, workers, and versioned n8n artifacts; production provider cutover remains pending.',
+        href: '/work/n8n-automation-saas',
+        label: 'Review the automation platform case study',
+      },
+      {
         title: 'Local LLM Workflows',
         description: 'A public experiment exploring local inference, privacy, latency, hardware, and OpenAI-compatible integration tradeoffs.',
         href: '/work/local-llm-workflows',
@@ -494,6 +500,12 @@ export const services: Service[] = [
       },
     ],
     evidence: [
+      {
+        title: 'n8n Automation SaaS',
+        description: 'A private-source platform case study showing tenant-scoped APIs, durable business state, Redis/BullMQ workers, workflow contracts, and explicit production activation gates.',
+        href: '/work/n8n-automation-saas',
+        label: 'Review the automation systems case study',
+      },
       {
         title: 'SMTP Server & Email Delivery Platform',
         description: 'A complete local case study for a fleet-managed, self-hosted SMTP platform with durable queues, Postfix/Rspamd delivery, domain preflight, signed webhooks, and explicit production acceptance gates.',
@@ -702,6 +714,7 @@ export type Project = {
   targetUsers: string;
   buyerOutcome: string;
   benefits?: { title: string; description: string }[];
+  fieldSolutionsIntro?: { heading: string; description: string };
   fieldSolutions?: {
     field: string;
     problem: string;
@@ -1385,6 +1398,11 @@ export const projects: Project[] = [
           'IP change, DNS invalidation, Rspamd failure, backup verification, paused restore, and explicit node migration are designed as observable operational workflows.',
       },
     ],
+    fieldSolutionsIntro: {
+      heading: 'How the service solves operational email problems across real fields.',
+      description:
+        'Each pattern connects a business event to a dependable delivery path while keeping consent, sender identity, failure evidence, and infrastructure limits visible.',
+    },
     fieldSolutions: [
       {
         field: 'SaaS and account platforms',
@@ -1702,6 +1720,205 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'n8n-automation-saas',
+    title: 'n8n Automation SaaS',
+    seo: {
+      primaryKeyword: 'multi-tenant n8n automation platform',
+      relatedKeywords: [
+        'n8n automation SaaS',
+        'AI customer messaging platform',
+        'WhatsApp business automation architecture',
+        'multi-channel conversation automation',
+        'human handoff AI automation',
+        'BullMQ n8n integration',
+      ],
+      title: 'Multi-Tenant n8n Automation SaaS — Product Case Study',
+      description:
+        'A multi-tenant n8n automation SaaS implementation for customer messaging, AI-assisted workflows, business actions, and human handoff, with production gates stated clearly.',
+    },
+    category: 'AI automation · Customer messaging · Multi-tenant SaaS',
+    tier: 'core',
+    displayOrder: 4,
+    schemaType: 'SoftwareApplication',
+    operatingSystem: 'Modern web browsers and Node.js server runtime',
+    summary:
+      'A configurable automation platform combining tenant-facing and operator panels, a business API, dedicated workers, and version-controlled n8n workflows for customer conversations and operational tasks.',
+    targetUsers:
+      'Businesses and platform operators coordinating Facebook, Instagram, WhatsApp, customer conversations, leads, bookings, orders, knowledge, and AI-assisted responses across separate teams or tenants.',
+    buyerOutcome:
+      'One controlled operating surface for channel conversations, AI assistance, human handoff, and business actions, with tenant-owned records and reviewable automation boundaries instead of scattered workflow logic.',
+    benefits: [
+      {
+        title: 'Business data stays authoritative',
+        description:
+          'PostgreSQL holds tenant, conversation, order, booking, and usage records; n8n orchestrates work through application contracts rather than becoming an unreviewable second business database.',
+      },
+      {
+        title: 'Automation can yield to people',
+        description:
+          'The conversation model supports human takeover and suppresses pending automated replies when a staff member owns the turn.',
+      },
+      {
+        title: 'One workflow across channels',
+        description:
+          'Channel adapters normalize Facebook, Instagram, and WhatsApp events so AI, business actions, media, and audit rules can share a consistent application boundary.',
+      },
+      {
+        title: 'AI remains configurable',
+        description:
+          'Provider and model selection, prompt versions, retrieval, training candidates, usage, fallback, and review controls are represented in the application rather than buried in individual workflows.',
+      },
+    ],
+    fieldSolutionsIntro: {
+      heading: 'How controlled automation fits real customer operations.',
+      description:
+        'Each pattern links a specific operating problem to the implemented application boundary and makes remaining provider acceptance visible.',
+    },
+    fieldSolutions: [
+      {
+        field: 'Commerce and social selling',
+        problem:
+          'Product questions, media, stock context, and order requests arrive through several social channels while staff need one consistent record of the customer conversation.',
+        solution:
+          'Use channel-normalized messages, business-owned catalog data, guarded AI response planning, order actions, and staff takeover in one tenant-scoped workflow.',
+        boundary:
+          'Live Meta permissions, connected channel accounts, and provider messaging behavior still need credentialed production acceptance.',
+      },
+      {
+        field: 'Appointment and service operations',
+        problem:
+          'Incoming enquiries, availability questions, follow-ups, and bookings are easy to lose when they stay inside chat threads or disconnected automations.',
+        solution:
+          'Capture conversations as durable records, apply validated booking and lead actions, schedule follow-ups through workers and n8n, and expose the state to staff.',
+      },
+      {
+        field: 'Customer support and handoff',
+        problem:
+          'An automated reply can conflict with a human agent or continue after a sensitive issue needs staff ownership.',
+        solution:
+          'Keep AI and HUMAN modes explicit, suppress pending AI output after takeover, and retain conversation and audit context for the operator.',
+      },
+      {
+        field: 'Multi-brand or agency operations',
+        problem:
+          'Different businesses need separate users, channel credentials, knowledge, quotas, and reporting without leaking data across tenants.',
+        solution:
+          'Scope API authorization, business records, encrypted provider configuration, media mapping, queue namespaces, and usage views by tenant and business.',
+      },
+    ],
+    challenge:
+      'A workflow editor alone cannot safely own tenant authorization, durable customer records, AI configuration, retries, human handoff, and business-state changes. The product needed clear boundaries between its application database, API, background worker, existing n8n runtime, and channel providers.',
+    approach:
+      'Built a TypeScript monorepo with a Fastify API, BullMQ worker, PostgreSQL/pgvector schema, Redis coordination, customer and super-admin Next.js panels, channel adapters, AI and retrieval modules, server-side media integration, and a sanitized six-workflow n8n bundle with validation and deployment tooling.',
+    outcome:
+      'The repository implementation and its CI-oriented verification path are in place. The n8n workflow bundle validated locally on 2026-09-21. Live workflow import/cutover, Meta permissions and credentials, storage and backup checks, staging load/recovery exercises, and a controlled pilot remain external production gates.',
+    status: 'Repository implementation built; production activation pending',
+    maturity: {
+      stage: 'local-implementation-complete',
+      label: 'Implementation built',
+      summary:
+        'API, worker, two web panels, migrations, channel/AI/business modules, tests, and workflow artifacts are present in the private repository. This review does not establish a live end-to-end production SaaS.',
+      verifiedOn: '2026-09-21',
+    },
+    lifecycle: [
+      { stage: 'Discovery', status: 'complete', summary: 'Customer messaging, tenant/business ownership, channel integration, human handoff, and operational failure cases were defined.' },
+      { stage: 'Scope & architecture', status: 'complete', summary: 'PostgreSQL was assigned durable business state; the API owns authorization and mutations; Redis/workers handle asynchronous work; n8n remains an orchestration runtime.' },
+      { stage: 'Design & prototype', status: 'complete', summary: 'Customer and operator panels, workflow contracts, and channel-to-business actions were implemented as reviewable repository slices.' },
+      { stage: 'Build & integrate', status: 'complete', summary: 'The API, worker, two panels, database migrations, AI/RAG modules, channel adapters, and version-controlled n8n workflow bundle were implemented.' },
+      { stage: 'Verify & launch', status: 'in-progress', summary: 'Repository verification and workflow-bundle validation exist; live n8n import, Meta approval, Media Storage acceptance, staging recovery/load, and pilot checks remain.' },
+      { stage: 'Handover & iterate', status: 'planned', summary: 'Production cutover evidence, runbooks, provider operations, monitoring, and post-pilot improvement follow the external acceptance gates.' },
+    ],
+    constraints: [
+      'The application repository is private. Credentials, customer messages, internal service endpoints, and infrastructure details are not public portfolio evidence.',
+      'Six version-controlled workflow artifacts validated locally, but this does not prove they have been imported, activated, or accepted on the live n8n runtime.',
+      'Facebook, Instagram, and WhatsApp provider permissions, real webhook subscriptions, and end-to-end messaging need credentialed production tests.',
+      'Production Media Storage mapping, backup/restore, load and failure-injection exercises, and controlled pilot operation remain unverified.',
+      'The billing model is provider-ready; no payment provider has been selected or accepted for live checkout.',
+    ],
+    evidence: [
+      { label: 'Repository implementation review', detail: 'The private monorepo contains the Fastify API, BullMQ worker, customer and super-admin panels, PostgreSQL migrations, channel/AI modules, tests, and operational documentation. This is source evidence, not public deployment evidence.', verifiedOn: '2026-09-21' },
+      { label: 'n8n bundle validation', detail: 'The repository validator accepted bundle 1.0.0 with six sanitized workflow JSON artifacts on 2026-09-21. Live import and activation are separate gates.', verifiedOn: '2026-09-21' },
+      { label: 'Recorded CI verification', detail: 'The implementation status records isolated PostgreSQL/pgvector and Redis migration checks, workflow validation, TypeScript, automated tests, and application builds. These records do not substitute for production provider acceptance.' },
+      { label: 'Production readiness boundary', detail: 'The implementation status explicitly keeps live n8n cutover, Meta approval, Media Storage verification, backups, staging load/recovery, and pilot checks open.' },
+    ],
+    year: '2026–Present',
+    role: 'Product architecture · Full-stack engineering · AI and automation systems',
+    tags: ['n8n', 'Next.js', 'Fastify', 'TypeScript', 'PostgreSQL', 'pgvector', 'Redis', 'BullMQ', 'Meta messaging', 'RAG'],
+    highlights: [
+      'Customer and super-admin panels around a tenant-scoped Fastify API',
+      'Durable PostgreSQL business records with separate n8n workflow state',
+      'BullMQ worker and Redis coordination for retryable background work',
+      'Facebook, Instagram, and WhatsApp adapter code with human handoff',
+      'Configurable AI providers, training versions, retrieval, and usage controls',
+      'Six validated, version-controlled n8n workflow artifacts',
+    ],
+    systemMap: [
+      { title: 'Customer and operator panels', description: 'Tenant-facing configuration and conversation workflows are separated from platform administration.' },
+      { title: 'Application API and PostgreSQL', description: 'Authorization, business mutations, audit, conversations, actions, and durable state remain in the application boundary.' },
+      { title: 'Redis and dedicated worker', description: 'Queues and short-lived coordination support retryable background work without making Redis the business source of truth.' },
+      { title: 'n8n and channel providers', description: 'Versioned workflows orchestrate integrations through application contracts; provider acceptance and live cutover are still pending.' },
+    ],
+    caseStudySections: [
+      {
+        eyebrow: '01 / Product boundary',
+        title: 'The workflow editor is not the business database.',
+        description: 'The platform separates customer-owned state from automation execution so rules remain testable and recoverable.',
+        items: [
+          'PostgreSQL owns tenants, businesses, channels, conversations, actions, and usage.',
+          'The API enforces tenant/business authorization, validation, audit, and idempotency before a business mutation.',
+          'n8n and the worker orchestrate or execute work through application contracts rather than directly owning business truth.',
+        ],
+      },
+      {
+        eyebrow: '02 / Customer operations',
+        title: 'Conversations and business actions share a controlled path.',
+        description: 'The tenant-facing product joins channel messages, staff handoff, knowledge, media, leads, orders, bookings, and follow-ups.',
+        items: [
+          'Normalized channel adapters reduce channel-specific logic in AI and business-action workflows.',
+          'Human takeover prevents pending automated replies from racing a staff response.',
+          'Dynamic business records keep product or service facts under customer control instead of letting AI invent them.',
+        ],
+      },
+      {
+        eyebrow: '03 / AI and reliability',
+        title: 'AI and async work have explicit review and retry boundaries.',
+        description: 'Provider routing, prompt versions, retrieval, worker jobs, and operational controls are visible product concerns.',
+        items: [
+          'AI provider configuration, usage tracking, prompt candidates, rollback, and scoped retrieval live outside individual n8n nodes.',
+          'Redis/BullMQ jobs carry retry and dead-letter behavior while durable business changes remain in PostgreSQL.',
+          'Operator views expose queue, workflow-bundle, infrastructure, and security signals without treating a green dashboard as provider acceptance.',
+        ],
+      },
+      {
+        eyebrow: '04 / Verification and cutover',
+        title: 'Repository readiness and live service acceptance are different milestones.',
+        description: 'Implementation evidence supports an engineering case study, while external systems still determine production readiness.',
+        items: [
+          'The six-workflow bundle passed repository validation at the recorded checkpoint.',
+          'The status record describes migration, typecheck, test, build, and tenant/security integration gates for the application code.',
+          'Live n8n import, Meta permissions, real storage and backups, load/recovery exercises, and a controlled pilot remain to be accepted.',
+        ],
+      },
+    ],
+    clientApplications: [
+      'Connect commerce conversations to approved product data, staff handoff, and order intake across social channels.',
+      'Build service enquiry, booking, lead, and follow-up workflows without leaving the only record inside a chat thread.',
+      'Introduce AI-assisted support while preserving human ownership of sensitive or escalated conversations.',
+      'Give multi-brand operators tenant-separated channel configuration, knowledge, quotas, and audit history.',
+    ],
+    relatedService: { title: 'AI-Enabled Product Engineering', href: '/services/ai-integration-automation' },
+    relatedArticles: [
+      { title: 'Reliable AI Features Need Evaluation and Human Review', href: '/blog/reliable-ai-features-rag-agents-human-review' },
+      { title: 'Multi-Tenant Authorization with PostgreSQL and Prisma', href: '/blog/multi-tenant-authorization-postgresql-prisma' },
+    ],
+    faqs: [
+      { question: 'Is this automation SaaS live for customers?', answer: 'The repository implementation is built, but this case study does not claim a live end-to-end production launch. Existing n8n runtime import, Meta approval, storage, backup, staging, and pilot acceptance are separate gates.' },
+      { question: 'Does n8n store the application business data?', answer: 'No. PostgreSQL is the SaaS source of truth. n8n owns workflow definitions and execution state and uses approved application contracts for business actions.' },
+      { question: 'Which customer workflows can it support?', answer: 'The implemented product models channel conversations, AI-assisted replies, human handoff, leads, orders, bookings, follow-ups, media, knowledge, and operator oversight. Actual channel-provider use requires connected accounts and live verification.' },
+      { question: 'Are payments already integrated?', answer: 'No payment provider has been selected. Billing-ready records do not establish provider checkout or webhook acceptance.' },
+    ],
+  },
+  {
     slug: 'underwater-monitoring-research',
     title: 'Underwater Monitoring R&D',
     seo: {
@@ -1712,7 +1929,7 @@ export const projects: Project[] = [
     },
     category: 'Connected-product research',
     tier: 'core',
-    displayOrder: 4,
+    displayOrder: 5,
     schemaType: 'CreativeWork',
     summary:
       'Long-term research into an underwater monitoring system for shrimp farming using video, water-quality sensing, remote control, and software-assisted analysis.',
@@ -1841,7 +2058,7 @@ export const projects: Project[] = [
     },
     category: 'Marketplace engineering · Commerce systems',
     tier: 'core',
-    displayOrder: 5,
+    displayOrder: 6,
     schemaType: 'CreativeWork',
     summary:
       'A reusable B2C marketplace foundation for businesses that need buyer-facing product discovery, controlled catalog operations, checkout, cash-on-delivery workflows, and admin-managed order fulfillment.',

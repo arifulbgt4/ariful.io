@@ -240,10 +240,10 @@ export default async function WorkDetailPage({ params }: WorkPageProps) {
           <section className="mx-auto mt-20 max-w-5xl" aria-labelledby="field-solutions-heading">
             <p className="section-kicker">Real-world solutions</p>
             <h2 id="field-solutions-heading" className="mt-4 max-w-4xl text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
-              How the service solves operational email problems across real fields.
+              {project.fieldSolutionsIntro?.heading ?? 'How this product addresses real operational problems.'}
             </h2>
             <p className="mt-5 max-w-3xl leading-8 text-slate-400">
-              Each pattern connects a business event to a dependable delivery path while keeping consent, sender identity, failure evidence, and infrastructure limits visible.
+              {project.fieldSolutionsIntro?.description ?? 'Each pattern connects a specific problem to a scoped solution and its current evidence boundary.'}
             </p>
             <div className="mt-8 grid gap-5 lg:grid-cols-2">
               {fieldSolutions.map((item) => (

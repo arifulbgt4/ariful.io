@@ -23,7 +23,7 @@ behind animation.
 6. **Products before stacks.** Buyer outcomes, lifecycle ownership, maturity,
    and evidence lead; frameworks and tools appear only where they explain a
    delivery decision.
-7. **Equal core evidence.** The five core products use the same card scale,
+7. **Equal core evidence.** The six core products use the same card scale,
    hierarchy, status prominence, and call to action. No flagship treatment or
    oversized promotional card is allowed.
 
@@ -108,7 +108,7 @@ fact, and preserve the 44px interactive target for linked controls.
 
 ### Homepage
 
-Positioning hero → delivery ownership → five equal core products → highlighted
+Positioning hero → delivery ownership → six equal core products → highlighted
 EEE Simulator Lab foundation → lifecycle and services → evidence and working
 style → compact profile summary/FAQ → Hire CTA.
 
@@ -139,7 +139,7 @@ project look complete.
 
 ### Hire page
 
-Offer → fit criteria → five-product proof → engagement options → free
+Offer → fit criteria → six-product proof → engagement options → free
 `#consultation` option → inline `#project-brief` form → direct-email fallback.
 Keep this route focused and shorter than a general profile page; it is the
 site's sole conversion surface.

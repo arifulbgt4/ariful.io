@@ -13,7 +13,7 @@ export default function Projects() {
       <div className="site-container">
         <SectionHeading
           eyebrow="Core products / Equal evidence"
-          title="Five product directions, each shown at its real maturity."
+          title="Six product directions, each shown at its real maturity."
           description="Every case study explains the buyer problem, owned scope, delivery evidence, limits, and next gate. A complete page never turns unfinished work into a completed product claim."
         />
 

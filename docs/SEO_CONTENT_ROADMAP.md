@@ -236,7 +236,7 @@ publication permission.
   data consistency.
 - Monitor indexing for the first two published articles and maintain their
   service and case-study links.
-- Review the five core case studies for summary, current maturity, and internal
+- Review the six core case studies for summary, current maturity, and internal
   links.
 - Export the Search Console query and indexing baseline.
 - Verify `/projects`, `/lab`, and `/resume` remain removed and return `404`

@@ -139,7 +139,7 @@ export default function HirePage() {
 
         <section className="mt-20 sm:mt-24" aria-labelledby="product-proof-heading">
           <div className="max-w-3xl">
-            <p className="section-kicker">Five core products / Equal evidence</p>
+            <p className="section-kicker">Six core products / Equal evidence</p>
             <h2 id="product-proof-heading" className="mt-4 text-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
               Review the product boundary, maturity, and evidence before discussing scope.
             </h2>

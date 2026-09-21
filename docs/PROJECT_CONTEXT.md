@@ -103,13 +103,23 @@ recipient-MX acceptance, controlled public DSNs, inbox placement, and reputation
 remain separate external acceptance boundaries. `REMOTE_ACCEPTED` is never an
 inbox-placement claim.
 
+The `n8n Automation SaaS` case study is owner-approved for public portfolio
+use. A local review on 2026-09-21 found the private application's API, worker,
+customer and operator panels, migrations, channel/AI modules, tests, and six
+version-controlled n8n workflows. The workflow bundle passed its local
+validator on that date. Repository implementation is not evidence of live
+n8n cutover, Meta provider approval, Media Storage acceptance, backup/restore,
+staging load/recovery, payment-provider integration, or a production pilot.
+Keep the private source URL, credentials, customer data, internal endpoints,
+and infrastructure details out of public content.
+
 No client logos, testimonials, revenue, conversion improvements, or production
 field results are currently verified. Do not add them without direct evidence
 and permission.
 
 ### Portfolio tiers and current maturity
 
-The public work hierarchy has five equal-priority core products:
+The public work hierarchy has six equal-priority core products:
 
 - AI Dropshipping Commerce Platform — operational foundation built;
   credentialed sandbox and production acceptance remain pending;
@@ -120,6 +130,9 @@ The public work hierarchy has five equal-priority core products:
 - SMTP Server & Email Delivery Platform — version 0.1.0 local implementation and Mailpit acceptance
   complete across all 87 source requirements; public SMTP infrastructure,
   remote Internet acceptance, and inbox observations remain pending;
+- n8n Automation SaaS — repository implementation built across API, worker,
+  two panels, business/AI modules, and workflow artifacts; live provider,
+  infrastructure, workflow cutover, and pilot acceptance remain pending;
 - Underwater Monitoring R&D — active R&D; integrated pond validation remains
   pending; and
 - Reusable B2C Marketplace Platform — architecture and product foundation
@@ -133,7 +146,7 @@ application code, runtime configuration, deployment, working simulator, or
 numerical validation evidence. These two records belong in `Lab & Experiments`;
 neither is presented as a core client product. Highlighting EEE Simulator makes
 the unusually detailed research foundation easier to find without changing the
-equal priority of the five core products.
+equal priority of the six core products.
 
 OTask is a GUI-first, local-first task orchestration and cross-device control
 platform. Trusted desktop devices are the intended execution nodes; mobile and

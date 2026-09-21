@@ -12,20 +12,21 @@ export const metadata: Metadata = {
     'self-hosted SMTP server platform',
     'transactional email infrastructure',
     'AI product case study',
+    'n8n automation SaaS case study',
     'local-first automation platform',
     'connected product research',
   ],
   alternates: { canonical: '/work' },
   openGraph: {
     title: 'Product Engineering Case Studies — Ariful Islam',
-    description: 'Five core products plus a highlighted EEE Simulator Lab and supporting experiments, each presented at its verified maturity.',
+    description: 'Six core products plus a highlighted EEE Simulator Lab and supporting experiments, each presented at its verified maturity.',
     url: '/work',
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Ariful Islam product engineering case studies' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Product Engineering Case Studies — Ariful Islam',
-    description: 'Five evidence-led product case studies plus research foundations and focused experiments.',
+    description: 'Six evidence-led product case studies plus research foundations and focused experiments.',
     images: ['/opengraph-image'],
   },
 };
@@ -78,7 +79,7 @@ export default function WorkPage() {
           <div className="max-w-3xl">
             <p className="section-kicker">Core products / Equal weight</p>
             <h2 id="core-products-heading" className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
-              Five product directions across software, AI, email infrastructure, commerce, and connected systems.
+              Six product directions across software, AI automation, email infrastructure, commerce, and connected systems.
             </h2>
           </div>
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">

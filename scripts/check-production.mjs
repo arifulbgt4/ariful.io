@@ -27,10 +27,14 @@ const checks = [
     path: '/work/smtp-server-platform',
     expected: ['<title>', 'SMTP Server', 'Local implementation complete', 'Real-world solutions', 'SaaS and account platforms', 'REMOTE_ACCEPTED', 'rel="canonical"', 'application/ld+json'],
   },
+  {
+    path: '/work/n8n-automation-saas',
+    expected: ['<title>', 'n8n Automation SaaS', 'Implementation built', 'Real-world solutions', 'Commerce and social selling', 'live end-to-end production SaaS', 'rel="canonical"', 'application/ld+json'],
+  },
   { path: '/robots.txt', expected: ['Sitemap:'] },
   {
     path: '/sitemap.xml',
-    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/services/email-delivery-infrastructure</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>', '<loc>https://ariful.io/work/smtp-server-platform</loc>'],
+    expected: ['<urlset', '<loc>https://ariful.io/hire</loc>', '<loc>https://ariful.io/services/email-delivery-infrastructure</loc>', '<loc>https://ariful.io/work/eee-simulator</loc>', '<loc>https://ariful.io/work/otask-developer-platform</loc>', '<loc>https://ariful.io/work/smtp-server-platform</loc>', '<loc>https://ariful.io/work/n8n-automation-saas</loc>'],
     forbidden: [
       '<loc>https://ariful.io/resume</loc>',
       '<loc>https://ariful.io/projects</loc>',

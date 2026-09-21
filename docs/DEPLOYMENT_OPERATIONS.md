@@ -227,7 +227,7 @@ This repository currently has no database migration.
 
 After deployment, verify:
 
-- `/`, `/hire`, `/services`, one service, `/work`, all five core case studies,
+- `/`, `/hire`, `/services`, one service, `/work`, all six core case studies,
   the highlighted EEE Simulator Lab case study, Local LLM Workflows, `/blog`,
   and one article;
 - mobile menu and keyboard navigation;
